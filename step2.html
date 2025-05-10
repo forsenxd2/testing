@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Toán Khoản Vay - Bước 2</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .result p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .highlight {
+            color: #2196F3;
+            font-weight: bold;
+        }
+        .button-group {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-left: 10px;
+        }
+        .button:hover {
+            background-color: #45a049;
+        }
+        .button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .button.secondary {
+            background-color: #666;
+        }
+        .button.secondary:hover {
+            background-color: #555;
+        }
+        .restart-button {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            background: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .restart-button:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tính Toán Khoản Vay - Bước 2</h1>
+        
+        <div class="form-group">
+            <label for="interestRate">Lãi suất tạm tính (%/năm):</label>
+            <input type="number" id="interestRate" min="0" step="0.1" placeholder="Nhập lãi suất">
+        </div>
+
+        <div class="form-group">
+            <label for="loanTerm">Thời hạn vay (tháng):</label>
+            <input type="number" id="loanTerm" min="1" placeholder="Nhập số tháng">
+        </div>
+
+        <div class="result">
+            <p>Số tiền gốc phải trả hàng tháng: <span id="monthlyPrincipal" class="highlight">0 VND</span></p>
+            <p>Số tiền lãi phải trả hàng tháng: <span id="monthlyInterest" class="highlight">0 VND</span></p>
+            <p>Tổng số tiền phải trả hàng tháng: <span id="monthlyTotal" class="highlight">0 VND</span></p>
+        </div>
+
+        <div class="button-group">
+            <button id="prevButton" class="button secondary">Quay lại</button>
+            <button id="nextButton" class="button" disabled>Tiếp tục</button>
+        </div>
+        <button id="restartButton" class="restart-button">Bắt đầu lại</button>
+    </div>
+
+    <script>
+        const interestRateInput = document.getElementById('interestRate');
+        const loanTermInput = document.getElementById('loanTerm');
+        const monthlyPrincipalSpan = document.getElementById('monthlyPrincipal');
+        const monthlyInterestSpan = document.getElementById('monthlyInterest');
+        const monthlyTotalSpan = document.getElementById('monthlyTotal');
+        const prevButton = document.getElementById('prevButton');
+        const nextButton = document.getElementById('nextButton');
+
+        // Lấy dữ liệu từ bước trước
+        const loanData = JSON.parse(localStorage.getItem('loanData') || '{}');
+
+        function calculateMonthlyPayment() {
+            const principal = loanData.proposedAmount || 0;
+            const interestRate = parseFloat(interestRateInput.value) || 0;
+            const term = parseInt(loanTermInput.value) || 0;
+
+            if (principal > 0 && interestRate > 0 && term > 0) {
+                // Tính lãi suất hàng tháng
+                const monthlyRate = interestRate / 12 / 100;
+                
+                // Tính số tiền phải trả hàng tháng
+                const monthlyPayment = principal * monthlyRate * Math.pow(1 + monthlyRate, term) / (Math.pow(1 + monthlyRate, term) - 1);
+                
+                // Tính gốc và lãi hàng tháng
+                const monthlyPrincipal = principal / term;
+                const monthlyInterest = monthlyPayment - monthlyPrincipal;
+
+                // Hiển thị kết quả
+                monthlyPrincipalSpan.textContent = Math.round(monthlyPrincipal).toLocaleString('vi-VN') + ' VND';
+                monthlyInterestSpan.textContent = Math.round(monthlyInterest).toLocaleString('vi-VN') + ' VND';
+                monthlyTotalSpan.textContent = Math.round(monthlyPayment).toLocaleString('vi-VN') + ' VND';
+
+                // Lưu kết quả
+                loanData.monthlyPayment = Math.round(monthlyPayment);
+                localStorage.setItem('loanData', JSON.stringify(loanData));
+
+                nextButton.disabled = false;
+            } else {
+                nextButton.disabled = true;
+            }
+        }
+
+        // Event listeners
+        interestRateInput.addEventListener('input', calculateMonthlyPayment);
+        loanTermInput.addEventListener('input', function() {
+            calculateMonthlyPayment();
+            loanData.loanTerm = parseInt(loanTermInput.value) || 0;
+            localStorage.setItem('loanData', JSON.stringify(loanData));
+        });
+
+        prevButton.addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        nextButton.addEventListener('click', function() {
+            loanData.loanTerm = parseInt(loanTermInput.value) || 0;
+            localStorage.setItem('loanData', JSON.stringify(loanData));
+            window.location.href = 'step3.html';
+        });
+
+        document.getElementById('restartButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html> 

@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lịch trả nợ chi tiết</title>
+    <style>
+        body { font-family: Arial, sans-serif; background: #f0f0f0; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
+        h1 { text-align: center; color: #1976D2; }
+        .info-group { margin-bottom: 20px; }
+        .info-label { font-weight: bold; color: #333; }
+        .select-group, .input-group { margin-bottom: 16px; }
+        label { display: block; margin-bottom: 6px; color: #555; }
+        select, input[type="number"] { width: 100%; padding: 8px; border: 1px solid #ccc; border-radius: 4px; }
+        table { width: 100%; border-collapse: collapse; margin-top: 24px; }
+        th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
+        th { background: #e3f2fd; color: #1976D2; }
+        tr:nth-child(even) { background: #f9f9f9; }
+        .button-group { margin-top: 24px; text-align: right; }
+        .button { background: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
+        .button:hover { background: #388e3c; }
+        .restart-button {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            background: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .restart-button:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Lịch trả nợ chi tiết</h1>
+        <div class="info-group">
+            <div><span class="info-label">Giá trị tài sản đảm bảo:</span> <span id="assetValue">0</span> VND</div>
+            <div><span class="info-label">Số tiền vay:</span> <span id="loanAmount">0</span> VND</div>
+        </div>
+        <div class="input-group">
+            <label for="loanTermInput"><span class="info-label">Thời hạn vay (tháng):</span></label>
+            <input type="number" id="loanTermInput" min="1" max="360" placeholder="Nhập thời hạn vay (ví dụ: 60)" style="width:200px;display:inline-block;">
+        </div>
+        <div class="select-group">
+            <label for="fixedPackage">Chọn gói cố định lãi suất:</label>
+            <select id="fixedPackage">
+                <option value="12">Cố định 12 tháng (6%/năm)</option>
+                <option value="18">Cố định 18 tháng (6.3%/năm)</option>
+                <option value="24">Cố định 24 tháng (6.5%/năm)</option>
+                <option value="36">Cố định 36 tháng (8%/năm)</option>
+            </select>
+        </div>
+        <div class="input-group">
+            <label for="afterFixedRate">Lãi suất sau thời gian ưu đãi (%/năm):</label>
+            <input type="number" id="afterFixedRate" min="0" step="0.01" placeholder="Nhập lãi suất sau ưu đãi">
+        </div>
+        <div class="button-group">
+            <button class="button" id="generateBtn">Tạo bảng lịch trả nợ</button>
+            <button class="button" id="downloadBtn" style="display:none;">Tải bảng về máy</button>
+        </div>
+        <div id="scheduleTableContainer"></div>
+        <button id="restartButton" class="restart-button">Bắt đầu lại</button>
+    </div>
+    <script>
+        // Lấy dữ liệu từ localStorage
+        const loanData = JSON.parse(localStorage.getItem('loanData') || '{}');
+        document.getElementById('assetValue').textContent = (loanData.assetValue || 0).toLocaleString('vi-VN');
+        document.getElementById('loanAmount').textContent = (loanData.proposedAmount || 0).toLocaleString('vi-VN');
+        const loanTermInput = document.getElementById('loanTermInput');
+        loanTermInput.value = loanData.loanTerm || '';
+
+        // Hàm tính toán bảng lịch trả nợ
+        function generateSchedule(principal, term, fixedMonths, fixedRate, afterRate) {
+            let schedule = [];
+            let remaining = principal;
+            let monthlyPrincipal = Math.round(principal / term);
+            for (let i = 1; i <= term; i++) {
+                let rate = (i <= fixedMonths) ? fixedRate : afterRate;
+                let monthlyRate = rate / 12 / 100;
+                let interest = Math.round(remaining * monthlyRate);
+                let total = monthlyPrincipal + interest;
+                schedule.push({
+                    period: i,
+                    begin: remaining,
+                    principal: monthlyPrincipal,
+                    end: remaining - monthlyPrincipal,
+                    rate: rate,
+                    interest: interest,
+                    total: total
+                });
+                remaining -= monthlyPrincipal;
+                if (remaining < 0) remaining = 0;
+            }
+            return schedule;
+        }
+
+        // Hiển thị bảng
+        function renderTable(schedule) {
+            let html = `<table><thead><tr>
+                <th>Kỳ</th>
+                <th>Dư nợ đầu kỳ</th>
+                <th>Nợ gốc phải trả</th>
+                <th>Dư nợ cuối kỳ</th>
+                <th>Lãi suất/năm (%)</th>
+                <th>Nợ lãi phải trả</th>
+                <th>Tổng gốc+lãi</th>
+            </tr></thead><tbody>`;
+            schedule.forEach(row => {
+                html += `<tr>
+                    <td>${row.period}</td>
+                    <td>${row.begin.toLocaleString('vi-VN')}</td>
+                    <td>${row.principal.toLocaleString('vi-VN')}</td>
+                    <td>${row.end.toLocaleString('vi-VN')}</td>
+                    <td>${row.rate}</td>
+                    <td>${row.interest.toLocaleString('vi-VN')}</td>
+                    <td>${row.total.toLocaleString('vi-VN')}</td>
+                </tr>`;
+            });
+            html += '</tbody></table>';
+            document.getElementById('scheduleTableContainer').innerHTML = html;
+        }
+
+        // Xuất CSV
+        function downloadCSV(schedule) {
+            let csv = 'Kỳ,Dư nợ đầu kỳ,Nợ gốc phải trả,Dư nợ cuối kỳ,Lãi suất/năm (%),Nợ lãi phải trả,Tổng gốc+lãi\n';
+            schedule.forEach(row => {
+                csv += `${row.period},${row.begin},${row.principal},${row.end},${row.rate},${row.interest},${row.total}\n`;
+            });
+            const blob = new Blob([csv], { type: 'text/csv' });
+            const url = URL.createObjectURL(blob);
+            const a = document.createElement('a');
+            a.href = url;
+            a.download = 'lich-tra-no.csv';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+        }
+
+        function getLoanTerm() {
+            return parseInt(loanTermInput.value) || 0;
+        }
+
+        document.getElementById('generateBtn').onclick = function() {
+            const principal = loanData.proposedAmount || 0;
+            const term = getLoanTerm();
+            loanData.loanTerm = term;
+            localStorage.setItem('loanData', JSON.stringify(loanData));
+            const fixedMonths = parseInt(document.getElementById('fixedPackage').value);
+            let fixedRate = 6;
+            if (fixedMonths === 12) fixedRate = 6;
+            else if (fixedMonths === 18) fixedRate = 6.3;
+            else if (fixedMonths === 24) fixedRate = 6.5;
+            else if (fixedMonths === 36) fixedRate = 8;
+            const afterRate = parseFloat(document.getElementById('afterFixedRate').value) || fixedRate;
+            if (!principal || !term || !afterRate) {
+                alert('Vui lòng nhập đầy đủ thông tin!');
+                return;
+            }
+            const schedule = generateSchedule(principal, term, fixedMonths, fixedRate, afterRate);
+            renderTable(schedule);
+            document.getElementById('downloadBtn').style.display = 'inline-block';
+            document.getElementById('downloadBtn').onclick = function() { downloadCSV(schedule); };
+        };
+
+        document.getElementById('restartButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+
+        // Cho phép nhập lại thời hạn vay và tự động cập nhật bảng nếu đã có bảng
+        loanTermInput.addEventListener('input', function() {
+            loanData.loanTerm = getLoanTerm();
+            localStorage.setItem('loanData', JSON.stringify(loanData));
+            // Nếu đã có bảng thì tự động cập nhật lại
+            if (document.getElementById('scheduleTableContainer').innerHTML.trim() !== '') {
+                document.getElementById('generateBtn').click();
+            }
+        });
+    </script>
+</body>
+</html> 

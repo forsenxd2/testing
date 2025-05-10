@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tính Toán Khoản Vay</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+        }
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            background-color: white;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        h1 {
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+        .form-group {
+            margin-bottom: 20px;
+        }
+        label {
+            display: block;
+            margin-bottom: 5px;
+            color: #555;
+        }
+        input {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-top: 20px;
+            padding: 15px;
+            background-color: #f8f9fa;
+            border-radius: 4px;
+        }
+        .result p {
+            margin: 5px 0;
+            color: #333;
+        }
+        .highlight {
+            color: #2196F3;
+            font-weight: bold;
+        }
+        .error-message {
+            color: #dc3545;
+            font-size: 14px;
+            margin-top: 5px;
+            display: none;
+        }
+        .button-group {
+            margin-top: 20px;
+            text-align: right;
+        }
+        .next-button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .next-button:hover {
+            background-color: #45a049;
+        }
+        .next-button:disabled {
+            background-color: #cccccc;
+            cursor: not-allowed;
+        }
+        .restart-button {
+            position: fixed;
+            left: 30px;
+            bottom: 30px;
+            background: #f44336;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+            z-index: 1000;
+        }
+        .restart-button:hover {
+            background: #b71c1c;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tính Toán Khoản Vay</h1>
+        
+        <div class="form-group">
+            <label for="assetValue">Giá trị tài sản đảm bảo (VND):</label>
+            <input type="text" id="assetValue" placeholder="Nhập giá trị tài sản">
+        </div>
+
+        <div class="form-group">
+            <label for="loanRate">Tỉ lệ cho vay (%):</label>
+            <input type="number" id="loanRate" min="0" max="100" step="0.1" placeholder="Nhập tỉ lệ cho vay">
+        </div>
+
+        <div class="result">
+            <p>Số tiền cho vay tối đa: <span id="maxLoan" class="highlight">0 VND</span></p>
+        </div>
+
+        <div class="form-group">
+            <label for="proposedAmount">Số tiền khách hàng đề xuất (VND):</label>
+            <input type="text" id="proposedAmount" placeholder="Nhập số tiền đề xuất">
+            <div id="errorMessage" class="error-message">Số tiền đề xuất vượt quá hạn mức cho vay!</div>
+        </div>
+
+        <div class="button-group">
+            <button id="nextButton" class="next-button" disabled style="display: inline-block;">Tiếp tục</button>
+        </div>
+        <button id="restartButton" class="restart-button">Bắt đầu lại</button>
+    </div>
+
+    <script>
+        const assetValueInput = document.getElementById('assetValue');
+        const loanRateInput = document.getElementById('loanRate');
+        const maxLoanSpan = document.getElementById('maxLoan');
+        const proposedAmountInput = document.getElementById('proposedAmount');
+        const errorMessage = document.getElementById('errorMessage');
+        const nextButton = document.getElementById('nextButton');
+
+        // Hàm định dạng số tiền với dấu chấm
+        function formatCurrency(input) {
+            let value = input.value.replace(/[^\d]/g, '');
+            value = value.replace(/\B(?=(\d{3})+(?!\d))/g, '.');
+            input.value = value;
+            return parseInt(value.replace(/\./g, '')) || 0;
+        }
+
+        function calculateMaxLoan() {
+            const assetValue = formatCurrency(assetValueInput);
+            const loanRate = parseFloat(loanRateInput.value) || 0;
+            const maxLoan = (assetValue * loanRate) / 100;
+            
+            maxLoanSpan.textContent = maxLoan.toLocaleString('vi-VN') + ' VND';
+            proposedAmountInput.max = maxLoan;
+            
+            checkProposedAmount();
+            validateForm();
+        }
+
+        function checkProposedAmount() {
+            const maxLoan = parseFloat(proposedAmountInput.max);
+            const proposedAmount = formatCurrency(proposedAmountInput);
+            
+            if (proposedAmount > maxLoan) {
+                errorMessage.style.display = 'block';
+                nextButton.disabled = true;
+            } else {
+                errorMessage.style.display = 'none';
+                validateForm();
+            }
+        }
+
+        function validateForm() {
+            const assetValue = formatCurrency(assetValueInput);
+            const loanRate = parseFloat(loanRateInput.value) || 0;
+            const proposedAmount = formatCurrency(proposedAmountInput);
+            
+            nextButton.disabled = !(assetValue > 0 && loanRate > 0 && proposedAmount > 0 && proposedAmount <= (assetValue * loanRate / 100));
+        }
+
+        // Event listeners
+        assetValueInput.addEventListener('input', function() {
+            formatCurrency(this);
+            calculateMaxLoan();
+        });
+        
+        loanRateInput.addEventListener('input', calculateMaxLoan);
+        
+        proposedAmountInput.addEventListener('input', function() {
+            formatCurrency(this);
+            checkProposedAmount();
+        });
+
+        // Lưu dữ liệu và chuyển trang
+        nextButton.addEventListener('click', function() {
+            const data = {
+                assetValue: formatCurrency(assetValueInput),
+                loanRate: parseFloat(loanRateInput.value),
+                proposedAmount: formatCurrency(proposedAmountInput)
+            };
+            localStorage.setItem('loanData', JSON.stringify(data));
+            window.location.href = 'step2.html';
+        });
+
+        document.getElementById('restartButton').addEventListener('click', function() {
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html> 
