@@ -33,8 +33,18 @@
             justify-content: space-between;
             align-items: center;
         }
-        .button { background: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
-        .button:hover { background: #388e3c; }
+        .button {
+            background: #4CAF50;
+            color: #fff;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+        .button:hover {
+            background: #388e3c;
+        }
         .restart-button {
             background: #f44336;
             color: #fff;
@@ -47,6 +57,82 @@
         }
         .restart-button:hover {
             background: #b71c1c;
+        }
+        .schedule-table {
+            width: 100%;
+            overflow-x: auto;
+            margin-top: 20px;
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 24px;
+            min-width: 800px; /* Đảm bảo bảng không bị co quá nhỏ */
+        }
+        th, td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: right;
+            white-space: nowrap; /* Ngăn text wrap */
+        }
+        th {
+            background: #e3f2fd;
+            color: #1976D2;
+            position: sticky;
+            top: 0;
+        }
+        tr:nth-child(even) {
+            background: #f9f9f9;
+        }
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+                margin-bottom: 80px;
+            }
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .button-group {
+                flex-direction: column;
+                gap: 15px;
+                margin-top: 30px;
+            }
+            .button {
+                width: 100%;
+                margin: 5px 0;
+                padding: 12px 20px;
+            }
+            .restart-button {
+                position: fixed;
+                left: 50%;
+                transform: translateX(-50%);
+                bottom: 20px;
+                width: calc(100% - 40px);
+                max-width: 300px;
+                z-index: 100;
+            }
+            .schedule-table {
+                margin: 0 -15px; /* Bù trừ padding của container */
+                padding: 0 15px;
+                width: calc(100% + 30px);
+            }
+            table {
+                font-size: 14px;
+            }
+            th, td {
+                padding: 6px;
+            }
+            .select-group, .input-group {
+                margin-bottom: 12px;
+            }
+            select, input[type="number"] {
+                padding: 10px;
+                font-size: 16px; /* Tránh zoom trên iOS */
+            }
         }
     </style>
 </head>
@@ -81,7 +167,9 @@
                 <button class="button" id="downloadBtn" style="display:none;">Tải bảng về máy</button>
             </div>
         </div>
-        <div id="scheduleTableContainer"></div>
+        <div class="schedule-table">
+            <div id="scheduleTableContainer"></div>
+        </div>
     </div>
     <script>
         // Lấy dữ liệu từ localStorage
