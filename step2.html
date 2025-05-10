@@ -139,8 +139,8 @@
         <h1>Tính Toán Khoản Vay - Bước 2</h1>
         
         <div class="form-group">
-            <label for="interestRate">Lãi suất tạm tính (%/năm):</label>
-            <input type="number" id="interestRate" min="0" step="0.1" placeholder="Nhập lãi suất">
+            <label for="tempRate">Lãi suất tạm tính (%/năm):</label>
+            <input type="number" id="tempRate" min="0" max="100" step="0.01" placeholder="Nhập lãi suất tạm tính">
         </div>
 
         <div class="form-group">
@@ -161,7 +161,7 @@
     </div>
 
     <script>
-        const interestRateInput = document.getElementById('interestRate');
+        const interestRateInput = document.getElementById('tempRate');
         const loanTermInput = document.getElementById('loanTerm');
         const monthlyPrincipalSpan = document.getElementById('monthlyPrincipal');
         const monthlyInterestSpan = document.getElementById('monthlyInterest');
@@ -175,6 +175,12 @@
             const principal = loanData.proposedAmount || 0;
             const interestRate = parseFloat(interestRateInput.value) || 0;
             const term = parseInt(loanTermInput.value) || 0;
+
+            // Kiểm tra lãi suất không được vượt quá 100%
+            if (interestRate > 100) {
+                interestRateInput.value = 100;
+                return;
+            }
 
             if (principal > 0 && interestRate > 0 && term > 0) {
                 // Tính lãi suất hàng tháng
@@ -203,7 +209,24 @@
         }
 
         // Event listeners
-        interestRateInput.addEventListener('input', calculateMonthlyPayment);
+        interestRateInput.addEventListener('input', function() {
+            if (parseFloat(this.value) > 100) {
+                this.value = 100;
+            }
+            if (parseFloat(this.value) < 0) {
+                this.value = 0;
+            }
+            calculateMonthlyPayment();
+        });
+        interestRateInput.addEventListener('blur', function() {
+            if (parseFloat(this.value) > 100) {
+                this.value = 100;
+            }
+            if (parseFloat(this.value) < 0) {
+                this.value = 0;
+            }
+            calculateMonthlyPayment();
+        });
         loanTermInput.addEventListener('input', function() {
             calculateMonthlyPayment();
             loanData.loanTerm = parseInt(loanTermInput.value) || 0;

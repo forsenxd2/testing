@@ -177,7 +177,42 @@
         document.getElementById('assetValue').textContent = (loanData.assetValue || 0).toLocaleString('vi-VN');
         document.getElementById('loanAmount').textContent = (loanData.proposedAmount || 0).toLocaleString('vi-VN');
         const loanTermInput = document.getElementById('loanTermInput');
+        const fixedPackageSelect = document.getElementById('fixedPackage');
         loanTermInput.value = loanData.loanTerm || '';
+
+        // Hàm kiểm tra và cập nhật gói cố định lãi suất
+        function updateFixedPackage() {
+            const loanTerm = parseInt(loanTermInput.value) || 0;
+            const fixedPackage = parseInt(fixedPackageSelect.value) || 0;
+            
+            // Nếu thời hạn vay nhỏ hơn gói đã chọn, tự động chọn gói phù hợp
+            if (loanTerm > 0 && fixedPackage > loanTerm) {
+                // Tìm gói phù hợp nhất
+                const packages = [12, 18, 24, 36];
+                let suitablePackage = packages.find(p => p <= loanTerm) || packages[0];
+                fixedPackageSelect.value = suitablePackage;
+            }
+
+            // Disable các gói không phù hợp
+            Array.from(fixedPackageSelect.options).forEach(option => {
+                const packageTerm = parseInt(option.value);
+                option.disabled = packageTerm > loanTerm;
+            });
+        }
+
+        // Cập nhật gói cố định khi thay đổi thời hạn vay
+        loanTermInput.addEventListener('input', function() {
+            updateFixedPackage();
+            loanData.loanTerm = parseInt(loanTermInput.value) || 0;
+            localStorage.setItem('loanData', JSON.stringify(loanData));
+            // Nếu đã có bảng thì tự động cập nhật lại
+            if (document.getElementById('scheduleTableContainer').innerHTML.trim() !== '') {
+                document.getElementById('generateBtn').click();
+            }
+        });
+
+        // Khởi tạo trạng thái ban đầu
+        updateFixedPackage();
 
         // Hàm tính toán bảng lịch trả nợ
         function generateSchedule(principal, term, fixedMonths, fixedRate, afterRate) {
@@ -247,16 +282,12 @@
             URL.revokeObjectURL(url);
         }
 
-        function getLoanTerm() {
-            return parseInt(loanTermInput.value) || 0;
-        }
-
         document.getElementById('generateBtn').onclick = function() {
             const principal = loanData.proposedAmount || 0;
-            const term = getLoanTerm();
+            const term = parseInt(loanTermInput.value) || 0;
             loanData.loanTerm = term;
             localStorage.setItem('loanData', JSON.stringify(loanData));
-            const fixedMonths = parseInt(document.getElementById('fixedPackage').value);
+            const fixedMonths = parseInt(fixedPackageSelect.value);
             let fixedRate = 6;
             if (fixedMonths === 12) fixedRate = 6;
             else if (fixedMonths === 18) fixedRate = 6.3;
@@ -276,16 +307,6 @@
         document.getElementById('restartButton').addEventListener('click', function() {
             localStorage.clear();
             window.location.href = 'index.html';
-        });
-
-        // Cho phép nhập lại thời hạn vay và tự động cập nhật bảng nếu đã có bảng
-        loanTermInput.addEventListener('input', function() {
-            loanData.loanTerm = getLoanTerm();
-            localStorage.setItem('loanData', JSON.stringify(loanData));
-            // Nếu đã có bảng thì tự động cập nhật lại
-            if (document.getElementById('scheduleTableContainer').innerHTML.trim() !== '') {
-                document.getElementById('generateBtn').click();
-            }
         });
     </script>
 </body>
