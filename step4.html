@@ -10,11 +10,16 @@
             margin: 0;
             padding: 20px;
             background-color: #f0f0f0;
+            background-image: url('images/logo.png');
+            background-size: 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
         }
         .container {
             max-width: 600px;
             margin: 0 auto;
-            background-color: white;
+            background-color: rgba(255, 255, 255, 0.9);
             padding: 20px;
             border-radius: 8px;
             box-shadow: 0 2px 4px rgba(0,0,0,0.1);
@@ -55,7 +60,9 @@
         }
         .button-group {
             margin-top: 20px;
-            text-align: right;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
         }
         .button {
             background-color: #4CAF50;
@@ -98,9 +105,6 @@
             margin: 10px 0;
         }
         .restart-button {
-            position: fixed;
-            left: 30px;
-            bottom: 30px;
             background: #f44336;
             color: #fff;
             border: none;
@@ -108,10 +112,39 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .restart-button:hover {
             background: #b71c1c;
+        }
+        @media screen and (max-width: 480px) {
+            body {
+                padding: 10px;
+            }
+            .container {
+                padding: 15px;
+            }
+            h1 {
+                font-size: 24px;
+                margin-bottom: 20px;
+            }
+            .button {
+                width: 100%;
+                margin: 10px 0;
+                padding: 12px 20px;
+            }
+            .button-group {
+                text-align: center;
+            }
+            .final-result {
+                padding: 15px;
+            }
+            .final-result h2 {
+                font-size: 20px;
+            }
+            .final-result .amount {
+                font-size: 20px;
+            }
         }
     </style>
 </head>
@@ -137,11 +170,12 @@
         </div>
 
         <div class="button-group">
-            <button id="prevButton" class="button secondary">Quay lại</button>
-            <button id="finishButton" class="button">Hoàn thành</button>
-            <button id="scheduleButton" class="button" style="background:#1976D2; margin-left:10px;">Xem lịch trả nợ chi tiết</button>
+            <button id="restartButton" class="restart-button">Bắt đầu lại</button>
+            <div style="display: flex; gap: 10px;">
+                <button id="finishButton" class="button">Hoàn thành</button>
+                <button id="scheduleButton" class="button" style="background:#1976D2;">Xem lịch trả nợ chi tiết</button>
+            </div>
         </div>
-        <button id="restartButton" class="restart-button">Bắt đầu lại</button>
     </div>
 
     <script>
@@ -151,7 +185,6 @@
         const creditCardPaymentDisplaySpan = document.getElementById('creditCardPaymentDisplay');
         const totalPaymentSpan = document.getElementById('totalPayment');
         const requiredIncomeSpan = document.getElementById('requiredIncome');
-        const prevButton = document.getElementById('prevButton');
         const finishButton = document.getElementById('finishButton');
         const scheduleButton = document.getElementById('scheduleButton');
 
@@ -197,10 +230,6 @@
             calculateTotalPayments();
         });
 
-        prevButton.addEventListener('click', function() {
-            window.location.href = 'step3.html';
-        });
-
         finishButton.addEventListener('click', function() {
             window.location.href = 'index.html';
         });
@@ -210,6 +239,7 @@
         });
 
         document.getElementById('restartButton').addEventListener('click', function() {
+            localStorage.clear();
             window.location.href = 'index.html';
         });
 

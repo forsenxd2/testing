@@ -5,7 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Lịch trả nợ chi tiết</title>
     <style>
-        body { font-family: Arial, sans-serif; background: #f0f0f0; margin: 0; padding: 20px; }
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 20px;
+            background-color: #f0f0f0;
+            background-image: url('images/logo.png');
+            background-size: 300px;
+            background-position: center;
+            background-repeat: no-repeat;
+            position: relative;
+        }
         .container { max-width: 900px; margin: 0 auto; background: #fff; padding: 24px; border-radius: 8px; box-shadow: 0 2px 8px rgba(0,0,0,0.08); }
         h1 { text-align: center; color: #1976D2; }
         .info-group { margin-bottom: 20px; }
@@ -17,13 +27,15 @@
         th, td { border: 1px solid #ddd; padding: 8px; text-align: right; }
         th { background: #e3f2fd; color: #1976D2; }
         tr:nth-child(even) { background: #f9f9f9; }
-        .button-group { margin-top: 24px; text-align: right; }
+        .button-group {
+            margin-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
         .button { background: #4CAF50; color: #fff; padding: 10px 20px; border: none; border-radius: 4px; cursor: pointer; font-size: 16px; }
         .button:hover { background: #388e3c; }
         .restart-button {
-            position: fixed;
-            left: 30px;
-            bottom: 30px;
             background: #f44336;
             color: #fff;
             border: none;
@@ -31,7 +43,7 @@
             padding: 10px 20px;
             font-size: 16px;
             cursor: pointer;
-            z-index: 1000;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         .restart-button:hover {
             background: #b71c1c;
@@ -63,11 +75,13 @@
             <input type="number" id="afterFixedRate" min="0" step="0.01" placeholder="Nhập lãi suất sau ưu đãi">
         </div>
         <div class="button-group">
-            <button class="button" id="generateBtn">Tạo bảng lịch trả nợ</button>
-            <button class="button" id="downloadBtn" style="display:none;">Tải bảng về máy</button>
+            <button id="restartButton" class="restart-button">Bắt đầu lại</button>
+            <div style="display: flex; gap: 10px;">
+                <button class="button" id="generateBtn">Tạo bảng lịch trả nợ</button>
+                <button class="button" id="downloadBtn" style="display:none;">Tải bảng về máy</button>
+            </div>
         </div>
         <div id="scheduleTableContainer"></div>
-        <button id="restartButton" class="restart-button">Bắt đầu lại</button>
     </div>
     <script>
         // Lấy dữ liệu từ localStorage
@@ -172,6 +186,7 @@
         };
 
         document.getElementById('restartButton').addEventListener('click', function() {
+            localStorage.clear();
             window.location.href = 'index.html';
         });
 
