@@ -56,6 +56,11 @@
 </head>
 <body>
     <div class="container mt-4">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-success btn-sm fw-bold" onclick="window.location.href='projects.html'">
+                Danh mục các dự án mà VCB Thủ Thiêm thực hiện cho vay khách hàng cá nhân
+            </button>
+        </div>
         <h1 class="text-center mb-4">Tính toán khoản vay</h1>
         
         <!-- Step 1: Thông tin khoản vay -->
@@ -227,26 +232,77 @@
 
         function calculateMaxLoan() {
             const assetValue = parseFormattedNumber(assetValueInput.value);
-            let loanRate = parseFloat(loanRateInput.value) || 0;
-            
-            if (loanRate < 0) loanRate = 0;
-            if (loanRate > 100) loanRate = 100;
-            loanRateInput.value = loanRate;
-            
-            const maxLoan = (assetValue * loanRate) / 100;
-            maxLoanSpan.textContent = formatCurrency(Math.round(maxLoan));
-            
+            const loanRate = parseFloat(loanRateInput.value) || 0;
             const loanAmount = parseFormattedNumber(loanAmountInput.value);
-            if (loanAmount > maxLoan) {
-                errorMessage.style.display = 'block';
+            
+            // Chỉ tính và kiểm tra khi có đủ cả giá trị tài sản và tỉ lệ cho vay
+            if (assetValue > 0 && loanRate > 0) {
+                if (loanRate < 0) loanRateInput.value = 0;
+                if (loanRate > 100) loanRateInput.value = 100;
+                
+                const maxLoan = (assetValue * loanRate) / 100;
+                maxLoanSpan.textContent = formatCurrency(Math.round(maxLoan));
+                
+                // Kiểm tra số tiền đề xuất chỉ khi có nhập số tiền
+                if (loanAmount > 0) {
+                    if (loanAmount > maxLoan) {
+                        errorMessage.style.display = 'block';
+                    } else {
+                        errorMessage.style.display = 'none';
+                    }
+                } else {
+                    errorMessage.style.display = 'none';
+                }
             } else {
+                // Nếu không có đủ thông tin, ẩn thông báo lỗi và không kiểm tra hạn mức
                 errorMessage.style.display = 'none';
+                maxLoanSpan.textContent = '0 VND';
             }
         }
 
-        assetValueInput.addEventListener('input', calculateMaxLoan);
-        loanRateInput.addEventListener('input', calculateMaxLoan);
-        loanAmountInput.addEventListener('input', calculateMaxLoan);
+        // Thêm event listener cho input số tiền đề xuất
+        loanAmountInput.addEventListener('input', function(e) {
+            const loanAmount = parseFormattedNumber(e.target.value);
+            const assetValue = parseFormattedNumber(assetValueInput.value);
+            const loanRate = parseFloat(loanRateInput.value) || 0;
+            
+            // Nếu có nhập số tiền đề xuất
+            if (loanAmount > 0) {
+                // Nếu có đủ thông tin tài sản và tỉ lệ cho vay
+                if (assetValue > 0 && loanRate > 0) {
+                    const maxLoan = (assetValue * loanRate) / 100;
+                    if (loanAmount > maxLoan) {
+                        errorMessage.style.display = 'block';
+                    } else {
+                        errorMessage.style.display = 'none';
+                    }
+                } else {
+                    // Nếu không có đủ thông tin, cho phép nhập số tiền đề xuất và không hiển thị cảnh báo
+                    errorMessage.style.display = 'none';
+                }
+            } else {
+                errorMessage.style.display = 'none';
+            }
+        });
+
+        // Thêm event listener cho input giá trị tài sản và tỉ lệ cho vay
+        [assetValueInput, loanRateInput].forEach(input => {
+            input.addEventListener('input', function() {
+                const assetValue = parseFormattedNumber(assetValueInput.value);
+                const loanRate = parseFloat(loanRateInput.value) || 0;
+                const loanAmount = parseFormattedNumber(loanAmountInput.value);
+                
+                // Nếu có đủ thông tin và có số tiền đề xuất
+                if (assetValue > 0 && loanRate > 0 && loanAmount > 0) {
+                    const maxLoan = (assetValue * loanRate) / 100;
+                    if (loanAmount > maxLoan) {
+                        errorMessage.style.display = 'block';
+                    } else {
+                        errorMessage.style.display = 'none';
+                    }
+                }
+            });
+        });
 
         // Xử lý khoản vay khác
         const hasOtherLoanYes = document.getElementById('hasOtherLoanYes');

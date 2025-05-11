@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Danh mục các dự án VCB Thủ Thiêm</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-secondary btn-sm fw-bold" onclick="window.location.href='index.html'">
+                Quay lại trang tính khoản vay
+            </button>
+        </div>
+        <h1 class="text-center mb-4">Danh mục các dự án mà VCB Thủ Thiêm thực hiện cho vay khách hàng cá nhân</h1>
+        <div class="mb-4 d-flex justify-content-center">
+            <input type="text" id="searchInput" class="form-control form-control-lg w-50" placeholder="🔍 Tìm kiếm tên dự án...">
+        </div>
+        <div class="table-responsive">
+            <table class="table table-bordered table-striped align-middle" id="projectsTable">
+                <thead class="table-success">
+                    <tr>
+                        <th>Chủ đầu tư</th>
+                        <th>Tên thương mại của dự án</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>An Gia</td>
+                        <td>Westgate, The Standard Bình Dương, River Panorama, Sky 89, An Gia Skyline.</td>
+                    </tr>
+                    <tr>
+                        <td>Gamuda Land</td>
+                        <td>Celedon City, Eaton Park, Artisan Park.</td>
+                    </tr>
+                    <tr>
+                        <td>Bcons</td>
+                        <td>Chuỗi dự án Bcons City, Bcons Avanue, Bcons Polaris, Bcons Polygon.</td>
+                    </tr>
+                    <tr>
+                        <td>Phú Đông</td>
+                        <td>Phú Đông Sky garden.</td>
+                    </tr>
+                    <tr>
+                        <td>Điền Phúc Thành</td>
+                        <td>MT Eastmark City, Centana Thủ Thiêm, Dlusso, Precia.</td>
+                    </tr>
+                    <tr>
+                        <td>Novaland</td>
+                        <td>Sun Avenue.</td>
+                    </tr>
+                    <tr>
+                        <td>Nam Long</td>
+                        <td>Akari, Mizuki, Waterpoint.</td>
+                    </tr>
+                    <tr>
+                        <td>Ecopark</td>
+                        <td>Eco retreat, Eco village.</td>
+                    </tr>
+                    <tr>
+                        <td>Kusto</td>
+                        <td>Diamond Island.</td>
+                    </tr>
+                    <tr>
+                        <td>Phú Long</td>
+                        <td>Dragon Village, Essensia Sky và Essensia Parkway.</td>
+                    </tr>
+                    <tr>
+                        <td>Vinhomes</td>
+                        <td>Các dự án của Vinhomes triển khai hiện tại: Vinhomes Grand Park, Vinhomes Central Park.</td>
+                    </tr>
+                    <tr>
+                        <td>Keppel Land</td>
+                        <td>Infinity Quận 7, Empire City.</td>
+                    </tr>
+                    <tr>
+                        <td>Sơn Kim Land</td>
+                        <td>Metropole.</td>
+                    </tr>
+                    <tr>
+                        <td>Masterise Home</td>
+                        <td>Cụm dự án Masterise An Phú, Thảo Điền, Lumiere.<br>Theo các dự án được TSC phê duyệt từng thời kì.</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <script>
+            const searchInput = document.getElementById('searchInput');
+            const table = document.getElementById('projectsTable');
+            const rows = table.querySelectorAll('tbody tr');
+
+            searchInput.addEventListener('input', function() {
+                const keyword = this.value.trim().toLowerCase();
+                rows.forEach(row => {
+                    const projectCell = row.cells[1];
+                    const text = projectCell.textContent;
+                    if (!keyword || text.toLowerCase().includes(keyword)) {
+                        row.style.display = '';
+                        // Highlight phần khớp
+                        if (keyword) {
+                            const regex = new RegExp(`(${keyword})`, 'gi');
+                            projectCell.innerHTML = text.replace(regex, '<span style="background:yellow;">$1</span>');
+                        } else {
+                            projectCell.innerHTML = text;
+                        }
+                    } else {
+                        row.style.display = 'none';
+                        projectCell.innerHTML = text;
+                    }
+                });
+            });
+        </script>
+    </div>
+</body>
+</html> 

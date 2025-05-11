@@ -39,6 +39,11 @@
 </head>
 <body>
     <div class="container mt-4">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-success btn-sm fw-bold" onclick="window.location.href='projects.html'">
+                Danh mục các dự án mà VCB Thủ Thiêm thực hiện cho vay khách hàng cá nhân
+            </button>
+        </div>
         <h1 class="text-center mb-4">Lịch trả nợ chi tiết</h1>
 
         <!-- Form nhập liệu -->
@@ -55,23 +60,34 @@
                     <label for="loanAmount" class="form-label">Số tiền vay (VND)</label>
                     <input type="text" class="form-control" id="loanAmount" required min="0" max="999999999999">
                 </div>
-                <div class="mb-3">
-                    <label for="loanTerm" class="form-label">Thời hạn vay (tháng)</label>
-                    <input type="number" class="form-control" id="loanTerm" required min="1">
-                </div>
-                <div class="mb-3">
-                    <label for="fixedPackage" class="form-label">Chọn gói cố định lãi suất</label>
+                <div id="fixedPackageHighlight" class="mb-3 p-3 border border-primary rounded bg-light">
+                    <label for="fixedPackage" class="form-label fw-bold" style="font-size:1.15rem; color:#0d6efd;">
+                        <i class="bi bi-star-fill"></i> Chọn gói cố định lãi suất
+                    </label>
                     <select class="form-select" id="fixedPackage">
                         <option value="12">Cố định 12 tháng (6%/năm)</option>
                         <option value="18">Cố định 18 tháng (6.3%/năm)</option>
                         <option value="24">Cố định 24 tháng (6.5%/năm)</option>
                         <option value="36">Cố định 36 tháng (8%/năm)</option>
-                        <option value="young_1">Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc 5 năm)</option>
-                        <option value="young_2">Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - 12 tháng, 6.6% - 24 tháng, ân hạn gốc 5 năm)</option>
+                        <option value="young_1">Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)</option>
+                        <option value="young_2">Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - 12 tháng, 6.6% - 24 tháng, ân hạn gốc tối đa 5 năm)</option>
                     </select>
+                    <div id="gracePeriodGroup" class="mt-3" style="display:none;">
+                        <label for="gracePeriod" class="form-label">Chọn thời gian ân hạn gốc (tháng)</label>
+                        <select class="form-select" id="gracePeriod">
+                            <option value="36">36 tháng (3 năm)</option>
+                            <option value="48">48 tháng (4 năm)</option>
+                            <option value="60">60 tháng (5 năm)</option>
+                        </select>
+                    </div>
+                    <div id="graceError" class="text-danger mt-2" style="display:none;">Thời hạn vay phải lớn hơn hoặc bằng thời gian ân hạn gốc!</div>
                 </div>
                 <div class="mb-3">
-                    <label for="afterFixedRate" class="form-label">Lãi suất sau thời gian ưu đãi (%/năm)</label>
+                    <label for="loanTerm" class="form-label">Thời hạn vay (tháng)</label>
+                    <input type="number" class="form-control" id="loanTerm" required min="1">
+                </div>
+                <div class="mb-3">
+                    <label for="afterFixedRate" class="form-label">Lãi suất sau thời gian ưu đãi tạm tính (%/năm)</label>
                     <input type="number" class="form-control" id="afterFixedRate" min="0" step="0.1" value="9.0">
                 </div>
                 <div class="text-center">
@@ -91,10 +107,12 @@
                         <tr>
                             <th>Kỳ</th>
                             <th>Ngày thanh toán</th>
-                            <th>Gốc còn lại</th>
-                            <th>Gốc trả</th>
-                            <th>Lãi trả</th>
-                            <th>Tổng phải trả</th>
+                            <th>Dư nợ đầu kỳ</th>
+                            <th>Gốc trả hàng tháng</th>
+                            <th>Dư nợ cuối kỳ</th>
+                            <th>Lãi suất/năm</th>
+                            <th>Nợ lãi phải trả</th>
+                            <th>Tổng nợ gốc và lãi phải trả tạm tính</th>
                         </tr>
                     </thead>
                     <tbody id="scheduleBody">
@@ -135,6 +153,29 @@
             }).format(amount);
         }
 
+        // --- Hàm kiểm tra ngày nghỉ lễ ---
+        function isHoliday(date) {
+            // Danh sách ngày nghỉ lễ cố định (dd-mm)
+            const holidays = [
+                '01-01', // Tết Dương lịch
+                '30-04', // Giải phóng miền Nam
+                '01-05', // Quốc tế Lao động
+                '02-09', // Quốc khánh
+            ];
+            const ddmm = (date.getDate().toString().padStart(2, '0')) + '-' + (date.getMonth() + 1).toString().padStart(2, '0');
+            // Chỉ kiểm tra ngày nghỉ lễ, KHÔNG kiểm tra cuối tuần
+            if (holidays.includes(ddmm)) return true;
+            return false;
+        }
+        // --- Hàm tìm ngày làm việc gần nhất sau ngày truyền vào (chỉ bỏ qua ngày nghỉ lễ) ---
+        function getNextWorkingDay(date) {
+            let d = new Date(date);
+            while (isHoliday(d)) {
+                d.setDate(d.getDate() + 1);
+            }
+            return d;
+        }
+
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue').value);
@@ -142,10 +183,18 @@
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            let graceMonths = 0;
+            if (fixedPackage === 'young_1' || fixedPackage === 'young_2') {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value) || 60;
+            }
 
             // Kiểm tra số tiền vay không được vượt quá giá trị tài sản
-            if (loanAmount > assetValue) {
+            if (assetValue > 0 && loanAmount > 0 && loanAmount > assetValue) {
                 alert('Số tiền vay không được vượt quá giá trị tài sản mua/Tài sản bảo đảm!');
+                return;
+            }
+            // Kiểm tra điều kiện gói và thời hạn vay
+            if (!checkPackageTerm()) {
                 return;
             }
 
@@ -155,7 +204,6 @@
                 let secondFixedRate = null;
                 let fixedMonths = 12;
                 let secondFixedMonths = 0;
-                let graceMonths = 0;
 
                 if (fixedPackage === '12') {
                     fixedRate = 6.0;
@@ -172,13 +220,11 @@
                 } else if (fixedPackage === 'young_1') {
                     fixedRate = 5.5;
                     fixedMonths = 36;
-                    graceMonths = 60; // 5 năm ân hạn gốc
                 } else if (fixedPackage === 'young_2') {
                     fixedRate = 5.2;
                     secondFixedRate = 6.6;
                     fixedMonths = 12;
                     secondFixedMonths = 24;
-                    graceMonths = 60; // 5 năm ân hạn gốc
                 }
 
                 const monthlyRate = fixedRate / 12 / 100;
@@ -193,13 +239,16 @@
                 
                 for (let i = 1; i <= term; i++) {
                     // Xác định lãi suất áp dụng cho kỳ hiện tại
-                    let currentRate;
+                    let currentRate, currentRateYear;
                     if (i <= fixedMonths) {
                         currentRate = monthlyRate;
+                        currentRateYear = fixedRate;
                     } else if (secondFixedRate && i <= fixedMonths + secondFixedMonths) {
                         currentRate = secondMonthlyRate;
+                        currentRateYear = secondFixedRate;
                     } else {
                         currentRate = afterMonthlyRate;
+                        currentRateYear = afterFixedRate;
                     }
 
                     const interestPayment = remainingPrincipal * currentRate;
@@ -216,15 +265,24 @@
                     remainingPrincipal -= monthlyPrincipal;
                     if (remainingPrincipal < 0) remainingPrincipal = 0;
 
-                    const paymentDate = new Date(today);
-                    paymentDate.setMonth(today.getMonth() + i);
+                    // Ngày thanh toán: ngày 5 mỗi tháng, nếu rơi vào ngày nghỉ lễ thì chuyển sang ngày làm việc gần nhất sau đó
+                    const paymentDate = new Date(today.getFullYear(), today.getMonth() + i, 5);
+                    const workingDate = getNextWorkingDay(paymentDate);
+
+                    // Dư nợ đầu kỳ
+                    const openingPrincipal = remainingPrincipal;
+                    // Dư nợ cuối kỳ
+                    let closingPrincipal = openingPrincipal - monthlyPrincipal;
+                    if (closingPrincipal < 0) closingPrincipal = 0;
 
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${i}</td>
-                        <td>${paymentDate.toLocaleDateString('vi-VN')}</td>
-                        <td>${formatCurrency(Math.round(remainingPrincipal))}</td>
+                        <td>${workingDate.toLocaleDateString('vi-VN')}</td>
+                        <td>${formatCurrency(Math.round(openingPrincipal))}</td>
                         <td>${formatCurrency(Math.round(monthlyPrincipal))}</td>
+                        <td>${formatCurrency(Math.round(closingPrincipal))}</td>
+                        <td>${currentRateYear.toFixed(2)}%</td>
                         <td>${formatCurrency(Math.round(interestPayment))}</td>
                         <td>${formatCurrency(Math.round(totalPayment))}</td>
                     `;
@@ -234,40 +292,6 @@
                 document.getElementById('scheduleTable').style.display = 'block';
             }
         }
-
-        // Thêm event listener cho input thời hạn vay
-        document.getElementById('loanTerm').addEventListener('input', function(e) {
-            const term = parseInt(e.target.value) || 0;
-            const fixedPackage = document.getElementById('fixedPackage');
-            const options = fixedPackage.options;
-
-            // Disable các gói không phù hợp với thời hạn vay
-            for (let i = 0; i < options.length; i++) {
-                const option = options[i];
-                if (option.value === 'young_1' || option.value === 'young_2') {
-                    // Gói ưu đãi đặc biệt chỉ áp dụng cho khoản vay từ 60 tháng trở lên
-                    option.disabled = term < 60;
-                } else {
-                    // Các gói thông thường
-                    const packageMonths = parseInt(option.value);
-                    option.disabled = term < packageMonths;
-                }
-            }
-
-            // Nếu gói hiện tại bị disable, chọn gói phù hợp nhất
-            if (fixedPackage.value && options[fixedPackage.selectedIndex].disabled) {
-                let suitablePackage = null;
-                for (let i = options.length - 1; i >= 0; i--) {
-                    if (!options[i].disabled) {
-                        suitablePackage = options[i].value;
-                        break;
-                    }
-                }
-                if (suitablePackage) {
-                    fixedPackage.value = suitablePackage;
-                }
-            }
-        });
 
         // Hàm reset form
         function resetForm() {
@@ -295,9 +319,6 @@
                 document.getElementById('loanAmount').value = formatNumber(loanData.loanAmount);
                 document.getElementById('loanTerm').value = loanData.loanTerm;
                 
-                // Trigger sự kiện input để kiểm tra và disable các gói không phù hợp
-                document.getElementById('loanTerm').dispatchEvent(new Event('input'));
-                
                 calculateSchedule();
             }
         });
@@ -321,7 +342,15 @@
         document.getElementById('loanAmount').addEventListener('input', function(e) {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue').value);
             const loanAmount = parseFormattedNumber(e.target.value);
-            
+            // Nếu chưa nhập giá trị tài sản thì không cảnh báo
+            if (!assetValue || assetValue === 0) {
+                e.target.classList.remove('is-invalid');
+                const feedback = e.target.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.remove();
+                }
+                return;
+            }
             if (loanAmount > assetValue) {
                 e.target.classList.add('is-invalid');
                 const feedback = e.target.nextElementSibling;
@@ -344,7 +373,16 @@
         document.getElementById('assetValue').addEventListener('input', function(e) {
             const assetValue = parseFormattedNumber(e.target.value);
             const loanAmount = parseFormattedNumber(document.getElementById('loanAmount').value);
-            
+            // Nếu chưa nhập giá trị tài sản thì không cảnh báo
+            if (!assetValue || assetValue === 0) {
+                const loanAmountInput = document.getElementById('loanAmount');
+                loanAmountInput.classList.remove('is-invalid');
+                const feedback = loanAmountInput.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.remove();
+                }
+                return;
+            }
             if (loanAmount > assetValue) {
                 const loanAmountInput = document.getElementById('loanAmount');
                 loanAmountInput.classList.add('is-invalid');
@@ -355,8 +393,79 @@
                     div.textContent = 'Số tiền vay không được vượt quá giá trị tài sản mua/Tài sản bảo đảm!';
                     loanAmountInput.parentNode.insertBefore(div, loanAmountInput.nextSibling);
                 }
+            } else {
+                const loanAmountInput = document.getElementById('loanAmount');
+                loanAmountInput.classList.remove('is-invalid');
+                const feedback = loanAmountInput.nextElementSibling;
+                if (feedback && feedback.classList.contains('invalid-feedback')) {
+                    feedback.remove();
+                }
             }
         });
+
+        // --- Thêm xử lý cho phần chọn gói và ân hạn ---
+        const fixedPackageSelect = document.getElementById('fixedPackage');
+        const gracePeriodGroup = document.getElementById('gracePeriodGroup');
+        const gracePeriodSelect = document.getElementById('gracePeriod');
+        const loanTermInput = document.getElementById('loanTerm');
+        const graceError = document.getElementById('graceError');
+        // Thêm dòng báo lỗi cho các gói thường
+        let packageError = document.getElementById('packageError');
+        if (!packageError) {
+            packageError = document.createElement('div');
+            packageError.id = 'packageError';
+            packageError.className = 'text-danger mt-2';
+            packageError.style.display = 'none';
+            fixedPackageSelect.parentNode.appendChild(packageError);
+        }
+
+        function checkPackageTerm() {
+            const fixedPackage = fixedPackageSelect.value;
+            const term = parseInt(loanTermInput.value) || 0;
+            let valid = true;
+            let errorMsg = '';
+            // Nếu thời hạn vay chưa nhập hoặc = 0 thì không báo lỗi gì cả
+            if (!loanTermInput.value || term === 0) {
+                gracePeriodGroup.style.display = (fixedPackage === 'young_1' || fixedPackage === 'young_2') ? '' : 'none';
+                graceError.style.display = 'none';
+                packageError.textContent = '';
+                packageError.style.display = 'none';
+                return true;
+            }
+            // Gói ân hạn
+            if (fixedPackage === 'young_1' || fixedPackage === 'young_2') {
+                gracePeriodGroup.style.display = '';
+                const graceMonths = parseInt(gracePeriodSelect.value);
+                if (term > 0 && graceMonths > 0 && term < graceMonths) {
+                    graceError.style.display = '';
+                    valid = false;
+                } else {
+                    graceError.style.display = 'none';
+                }
+            } else {
+                gracePeriodGroup.style.display = 'none';
+                graceError.style.display = 'none';
+                // Các gói thường: kiểm tra thời hạn vay >= số tháng của gói
+                let minMonths = parseInt(fixedPackage);
+                if (!isNaN(minMonths) && term > 0 && term < minMonths) {
+                    errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
+                    valid = false;
+                }
+            }
+            // Hiện hoặc ẩn lỗi cho gói thường
+            if (errorMsg) {
+                packageError.textContent = errorMsg;
+                packageError.style.display = '';
+            } else {
+                packageError.textContent = '';
+                packageError.style.display = 'none';
+            }
+            return valid && graceError.style.display === 'none';
+        }
+
+        fixedPackageSelect.addEventListener('change', checkPackageTerm);
+        gracePeriodSelect.addEventListener('change', checkPackageTerm);
+        loanTermInput.addEventListener('input', checkPackageTerm);
     </script>
 </body>
 </html> 
