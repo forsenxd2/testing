@@ -235,13 +235,16 @@
 
         function calculateMaxLoan() {
             const assetValue = parseFormattedNumber(assetValueInput.value);
-            const loanRate = parseFloat(loanRateInput.value) || 0;
+            let loanRate = parseFloat(loanRateInput.value) || 0;
             const loanAmount = parseFormattedNumber(loanAmountInput.value);
             
             // Chỉ tính và kiểm tra khi có đủ cả giá trị tài sản và tỉ lệ cho vay
             if (assetValue > 0 && loanRate > 0) {
-                if (loanRate < 0) loanRateInput.value = 0;
-                if (loanRate > 100) loanRateInput.value = 100;
+                if (loanRate < 0) loanRate = 0;
+                if (loanRate > 100) loanRate = 100;
+                loanRateInput.value = loanRate;
+                // Cập nhật lại biến loanRate sau khi giới hạn
+                loanRate = parseFloat(loanRateInput.value) || 0;
                 
                 const maxLoan = (assetValue * loanRate) / 100;
                 maxLoanSpan.textContent = formatCurrency(Math.round(maxLoan));
