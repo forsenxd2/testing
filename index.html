@@ -56,13 +56,15 @@
 </head>
 <body>
     <div class="container mt-4">
-        <div class="d-flex justify-content-end mb-3 gap-2">
-            <button type="button" class="btn btn-danger btn-sm fw-bold" style="background-color:#e75480;border:none;" onclick="window.location.href='projects.html'">
-                DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
-            </button>
-            <button type="button" class="btn btn-info btn-sm fw-bold text-white" style="background-color:#1e90ff;border:none;" onclick="window.location.href='hosovay.html'">
-                DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
-            </button>
+        <div class="d-flex justify-content-end mb-3">
+            <div class="d-flex flex-column gap-2">
+                <button type="button" class="btn btn-primary btn-sm fw-bold" style="background-color: #1e90ff; border-color: #1e90ff;" onclick="window.location.href='projects.html'">
+                    DANH MỤC CÁC DỰ ÁN MÀ VCB THỦ THIÊM THỰC HIỆN CHO VAY KHÁCH HÀNG CÁ NHÂN
+                </button>
+                <button type="button" class="btn btn-primary btn-sm fw-bold" style="background-color: #ffd700; border-color: #ffd700; color: #000;" onclick="window.location.href='hosovay.html'">
+                    DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
+                </button>
+            </div>
         </div>
         <h1 class="text-center mb-4">Tính toán khoản vay</h1>
         
@@ -124,8 +126,8 @@
                         <input type="number" class="form-control" id="otherLoanRate" min="0" max="100" step="0.1">
                     </div>
                     <div class="mb-3">
-                        <label for="otherLoanTerm" class="form-label">Thời hạn vay (tháng)</label>
-                        <input type="number" class="form-control" id="otherLoanTerm" min="1">
+                        <label for="otherLoanTerm" class="form-label">Thời hạn vay còn lại (tháng)</label>
+                        <input type="number" class="form-control" id="otherLoanTerm" min="1" placeholder="Nhập số tháng còn lại">
                     </div>
                     <div class="mb-3">
                         <label for="creditCardPayment" class="form-label">Số tiền trả nợ thẻ tín dụng bình quân hàng tháng(VND)</label>
@@ -162,9 +164,11 @@
             </div>
             <div class="alert alert-info">
                 <h5>Chi tiết khoản vay:</h5>
-                <p>Gốc hàng tháng: <span id="monthlyPrincipal">0 VND</span></p>
-                <p>Lãi hàng tháng (tạm tính theo lãi suất thả nổi 9%): <span id="monthlyInterest">0 VND</span></p>
-                <p>Tổng gốc, lãi phải trả hàng tháng tại VCB: <span id="monthlyTotal">0 VND</span></p>
+                <div style="border: 2px solid #228B22; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
+                    <p>Gốc hàng tháng: <span id="monthlyPrincipal">0 VND</span></p>
+                    <p>Lãi hàng tháng (tạm tính theo lãi suất thả nổi 9%): <span id="monthlyInterest">0 VND</span></p>
+                    <p>Tổng gốc, lãi phải trả hàng tháng tại VCB: <span id="monthlyTotal">0 VND</span></p>
+                </div>
                 <p>Khoản vay khác hàng tháng: <span id="otherLoanMonthly">0 VND</span></p>
                 <p>Thẻ tín dụng hàng tháng: <span id="creditCardMonthly">0 VND</span></p>
                 <p>Tổng nợ phải trả hàng tháng: <span id="totalMonthlyPayment">0 VND</span></p>
@@ -369,6 +373,7 @@
                     
                     if (otherAmount > 0 && otherRate > 0 && otherTerm > 0) {
                         const otherMonthlyRate = otherRate / 12 / 100;
+                        // Tính số tiền trả hàng tháng dựa trên số tiền vay và thời hạn còn lại
                         otherLoanMonthly = otherAmount * otherMonthlyRate * Math.pow(1 + otherMonthlyRate, otherTerm) / (Math.pow(1 + otherMonthlyRate, otherTerm) - 1);
                     }
                 }
