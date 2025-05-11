@@ -58,7 +58,7 @@
     <div class="container mt-4">
         <div class="d-flex justify-content-end mb-3">
             <button type="button" class="btn btn-danger btn-sm fw-bold" style="background-color:#e75480;border:none;" onclick="window.location.href='projects.html'">
-                Danh mục các dự án mà VCB Thủ Thiêm thực hiện cho vay khách hàng cá nhân
+                DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
             </button>
         </div>
         <h1 class="text-center mb-4">Tính toán khoản vay</h1>
@@ -229,6 +229,9 @@
                 }
             });
         });
+        // Đảm bảo luôn cập nhật số tiền cho vay tối đa khi nhập giá trị tài sản hoặc tỉ lệ cho vay
+        assetValueInput.addEventListener('input', calculateMaxLoan);
+        loanRateInput.addEventListener('input', calculateMaxLoan);
 
         function calculateMaxLoan() {
             const assetValue = parseFormattedNumber(assetValueInput.value);
