@@ -56,9 +56,12 @@
 </head>
 <body>
     <div class="container mt-4">
-        <div class="d-flex justify-content-end mb-3">
+        <div class="d-flex justify-content-end mb-3 gap-2">
             <button type="button" class="btn btn-danger btn-sm fw-bold" style="background-color:#e75480;border:none;" onclick="window.location.href='projects.html'">
                 DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
+            </button>
+            <button type="button" class="btn btn-info btn-sm fw-bold text-white" style="background-color:#1e90ff;border:none;" onclick="window.location.href='hosovay.html'">
+                DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
             </button>
         </div>
         <h1 class="text-center mb-4">Tính toán khoản vay</h1>
@@ -125,7 +128,7 @@
                         <input type="number" class="form-control" id="otherLoanTerm" min="1">
                     </div>
                     <div class="mb-3">
-                        <label for="creditCardPayment" class="form-label">Số tiền trả nợ thẻ tín dụng hằng tháng (VND)</label>
+                        <label for="creditCardPayment" class="form-label">Số tiền trả nợ thẻ tín dụng bình quân hàng tháng(VND)</label>
                         <input type="text" class="form-control" id="creditCardPayment" min="0" max="999999999999" placeholder="Nhập số tiền">
                     </div>
                 </div>
@@ -139,7 +142,7 @@
             </div>
             <form id="incomeForm">
                 <div class="mb-3">
-                    <label class="form-label">Thu nhập hằng tháng</label>
+                    <label class="form-label">Thu nhập bình quân hàng tháng</label>
                     <div class="form-check">
                         <input class="form-check-input" type="radio" name="incomeLevel" id="incomeHigh" value="high">
                         <label class="form-check-label" for="incomeHigh">>= 60 triệu/tháng</label>
@@ -160,8 +163,8 @@
             <div class="alert alert-info">
                 <h5>Chi tiết khoản vay:</h5>
                 <p>Gốc hàng tháng: <span id="monthlyPrincipal">0 VND</span></p>
-                <p>Lãi hàng tháng: <span id="monthlyInterest">0 VND</span></p>
-                <p>Tổng phải trả hàng tháng: <span id="monthlyTotal">0 VND</span></p>
+                <p>Lãi hàng tháng (tạm tính theo lãi suất thả nổi 9%): <span id="monthlyInterest">0 VND</span></p>
+                <p>Tổng gốc, lãi phải trả hàng tháng tại VCB: <span id="monthlyTotal">0 VND</span></p>
                 <p>Khoản vay khác hàng tháng: <span id="otherLoanMonthly">0 VND</span></p>
                 <p>Thẻ tín dụng hàng tháng: <span id="creditCardMonthly">0 VND</span></p>
                 <p>Tổng nợ phải trả hàng tháng: <span id="totalMonthlyPayment">0 VND</span></p>
