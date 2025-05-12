@@ -244,7 +244,6 @@
             }
         }
         function handleMillionFocus(e) {
-            // Khi focus, hiển thị lại số gốc nếu có
             if (e.target.dataset.raw) {
                 e.target.value = e.target.dataset.raw;
             } else if (e.target.value === '000000') {
@@ -252,7 +251,6 @@
             }
         }
         function handleMillionInput(e) {
-            // Chỉ cho nhập số, tối đa 6 ký tự
             let value = e.target.value.replace(/\D/g, '').substring(0, 6);
             e.target.value = value;
             e.target.dataset.raw = value;
@@ -266,6 +264,14 @@
                 let num = parseInt(value) * 1000000;
                 e.target.value = formatNumber(num);
                 e.target.dataset.raw = value;
+            }
+        }
+        // Hàm lấy giá trị thực tế từ input triệu
+        function getMillionValue(input) {
+            if (input.dataset && input.dataset.raw) {
+                return parseInt(input.dataset.raw) * 1000000;
+            } else {
+                return parseFormattedNumber(input.value);
             }
         }
         // Gán sự kiện cho các input số tiền
@@ -301,9 +307,9 @@
         loanRateInput.addEventListener('input', calculateMaxLoan);
 
         function calculateMaxLoan() {
-            const assetValue = parseFormattedNumber(assetValueInput.value);
+            const assetValue = getMillionValue(assetValueInput);
             let loanRate = parseFloat(loanRateInput.value) || 0;
-            const loanAmount = parseFormattedNumber(loanAmountInput.value);
+            const loanAmount = getMillionValue(loanAmountInput);
             
             // Chỉ tính và kiểm tra khi có đủ cả giá trị tài sản và tỉ lệ cho vay
             if (assetValue > 0 && loanRate > 0) {
@@ -335,8 +341,8 @@
 
         // Thêm event listener cho input số tiền đề xuất
         loanAmountInput.addEventListener('input', function(e) {
-            const loanAmount = parseFormattedNumber(e.target.value);
-            const assetValue = parseFormattedNumber(assetValueInput.value);
+            const loanAmount = getMillionValue(e.target);
+            const assetValue = getMillionValue(assetValueInput);
             const loanRate = parseFloat(loanRateInput.value) || 0;
             
             // Nếu có nhập số tiền đề xuất
@@ -361,9 +367,9 @@
         // Thêm event listener cho input giá trị tài sản và tỉ lệ cho vay
         [assetValueInput, loanRateInput].forEach(input => {
             input.addEventListener('input', function() {
-                const assetValue = parseFormattedNumber(assetValueInput.value);
+                const assetValue = getMillionValue(assetValueInput);
                 const loanRate = parseFloat(loanRateInput.value) || 0;
-                const loanAmount = parseFormattedNumber(loanAmountInput.value);
+                const loanAmount = getMillionValue(loanAmountInput);
                 
                 // Nếu có đủ thông tin và có số tiền đề xuất
                 if (assetValue > 0 && loanRate > 0 && loanAmount > 0) {
@@ -387,7 +393,7 @@
 
         // Tính toán khoản vay
         function calculateLoan() {
-            const loanAmount = parseFormattedNumber(loanAmountInput.value);
+            const loanAmount = getMillionValue(loanAmountInput);
             const term = parseInt(loanTermInput.value) || 0;
             const interestRate = 9.0; // Lãi suất cố định 9%
 
@@ -400,7 +406,7 @@
                 // Tính khoản vay khác
                 let otherLoanMonthly = 0;
                 if (hasOtherLoanYes.checked) {
-                    const otherAmount = parseFormattedNumber(otherLoanAmountInput.value);
+                    const otherAmount = getMillionValue(otherLoanAmountInput);
                     const otherRate = parseFloat(otherLoanRateInput.value) || 0;
                     const otherTerm = parseInt(otherLoanTermInput.value) || 0;
                     
@@ -412,14 +418,14 @@
                 }
 
                 // Tính thẻ tín dụng
-                const creditCardMonthly = hasOtherLoanYes.checked ? parseFormattedNumber(creditCardPaymentInput.value) * 0.1 : 0;
+                const creditCardMonthly = hasOtherLoanYes.checked ? getMillionValue(creditCardPaymentInput) * 0.1 : 0;
 
                 // Tính tổng nợ phải trả
                 const totalMonthlyPayment = monthlyPayment + otherLoanMonthly + creditCardMonthly;
 
                 // Tính thu nhập cần chứng minh
                 let debtRatio = 0.6;
-                const incomeAmount = parseFormattedNumber(incomeAmountInput.value);
+                const incomeAmount = getMillionValue(incomeAmountInput);
                 if (incomeAmount >= 60000000) {
                     debtRatio = 0.7;
                 }
@@ -457,15 +463,15 @@
 
                 // Lưu dữ liệu
                 loanData = {
-                    assetValue: parseFormattedNumber(assetValueInput.value),
+                    assetValue: getMillionValue(assetValueInput),
                     loanRate: parseFloat(loanRateInput.value),
                     loanAmount: loanAmount,
                     loanTerm: term,
                     hasOtherLoan: hasOtherLoanYes.checked,
-                    otherLoanAmount: parseFormattedNumber(otherLoanAmountInput.value),
+                    otherLoanAmount: getMillionValue(otherLoanAmountInput),
                     otherLoanRate: parseFloat(otherLoanRateInput.value) || 0,
                     otherLoanTerm: parseInt(otherLoanTermInput.value) || 0,
-                    creditCardPayment: parseFormattedNumber(creditCardPaymentInput.value),
+                    creditCardPayment: getMillionValue(creditCardPaymentInput),
                     incomeAmount: incomeAmount,
                     monthlyPayment: Math.round(monthlyPayment),
                     otherLoanMonthly: Math.round(otherLoanMonthly),
