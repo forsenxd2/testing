@@ -80,6 +80,9 @@
             text-align: right;
             padding-left: 2px;
             padding-right: 0;
+            width: auto;
+            max-width: none;
+            min-width: 0;
         }
         .input-million-suffix {
             background: transparent;
@@ -124,7 +127,7 @@
                 <div class="mb-3">
                     <label for="assetValue_million" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
                     <div class="input-million-group">
-                        <input type="text" class="form-control" id="assetValue_million" maxlength="8" style="max-width:120px;" autocomplete="off">
+                        <input type="text" class="form-control" id="assetValue_million" maxlength="8" size="4" autocomplete="off">
                         <span class="input-million-suffix">.000.000</span>
                     </div>
                     <span id="assetValue_display" class="ms-2 text-success"></span>
@@ -132,7 +135,7 @@
                 <div class="mb-3">
                     <label for="loanAmount_million" class="form-label">Số tiền vay (VND)</label>
                     <div class="input-million-group">
-                        <input type="text" class="form-control" id="loanAmount_million" maxlength="8" style="max-width:120px;" autocomplete="off">
+                        <input type="text" class="form-control" id="loanAmount_million" maxlength="8" size="4" autocomplete="off">
                         <span class="input-million-suffix">.000.000</span>
                     </div>
                     <span id="loanAmount_display" class="ms-2 text-success"></span>
