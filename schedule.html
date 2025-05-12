@@ -274,6 +274,28 @@
         setupMillionInput('assetValue_million', 'assetValue_display');
         setupMillionInput('loanAmount_million', 'loanAmount_display');
 
+        // Hàm kiểm tra ngày nghỉ lễ
+        function isHoliday(date) {
+            // Danh sách ngày nghỉ lễ cố định (dd-mm)
+            const holidays = [
+                '01-01', // Tết Dương lịch
+                '30-04', // Giải phóng miền Nam
+                '01-05', // Quốc tế Lao động
+                '02-09', // Quốc khánh
+            ];
+            const ddmm = (date.getDate().toString().padStart(2, '0')) + '-' + (date.getMonth() + 1).toString().padStart(2, '0');
+            // Chỉ kiểm tra ngày nghỉ lễ, KHÔNG kiểm tra cuối tuần
+            return holidays.includes(ddmm);
+        }
+        // Hàm tìm ngày làm việc gần nhất sau ngày truyền vào (chỉ bỏ qua ngày nghỉ lễ)
+        function getNextWorkingDay(date) {
+            let d = new Date(date);
+            while (isHoliday(d)) {
+                d.setDate(d.getDate() + 1);
+            }
+            return d;
+        }
+
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
