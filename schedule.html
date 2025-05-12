@@ -402,12 +402,14 @@
         window.addEventListener('load', function() {
             const loanData = JSON.parse(localStorage.getItem('loanData')) || {};
             if (loanData.assetValue) {
-                document.getElementById('assetValue_million').value = Math.floor(loanData.assetValue / 1000000) || '';
-                document.getElementById('assetValue_display').textContent = formatMoney(Math.floor(loanData.assetValue / 1000000));
+                const assetValue = Math.floor(loanData.assetValue / 1000000) || '';
+                document.getElementById('assetValue_million').value = assetValue ? formatNumber(assetValue) : '';
+                document.getElementById('assetValue_display').textContent = formatMoney(assetValue);
             }
             if (loanData.loanAmount) {
-                document.getElementById('loanAmount_million').value = Math.floor(loanData.loanAmount / 1000000) || '';
-                document.getElementById('loanAmount_display').textContent = formatMoney(Math.floor(loanData.loanAmount / 1000000));
+                const loanAmount = Math.floor(loanData.loanAmount / 1000000) || '';
+                document.getElementById('loanAmount_million').value = loanAmount ? formatNumber(loanAmount) : '';
+                document.getElementById('loanAmount_display').textContent = formatMoney(loanAmount);
             }
             if (loanData.loanTerm) {
                 document.getElementById('loanTerm').value = loanData.loanTerm;
