@@ -243,14 +243,15 @@
             }
         }
         function handleMillionInput(e) {
-            let value = e.target.value.replace(/\./g, '');
+            // Lấy toàn bộ số, loại bỏ dấu chấm
+            let value = e.target.value.replace(/\D/g, '');
             // Nếu giá trị rỗng hoặc không phải số, trả về 000000
             if (!value || isNaN(value)) {
                 e.target.value = '000000';
                 return;
             }
             // Chỉ lấy tối đa 6 số đầu
-            value = value.slice(0, 6);
+            value = value.substring(0, 6);
             let num = parseInt(value);
             if (isNaN(num) || num === 0) {
                 e.target.value = '000000';
