@@ -78,6 +78,12 @@
             0%, 100% { opacity: 1; }
             50% { opacity: 0.2; }
         }
+        .input-million-suffix {
+            color: #212529;
+            font-size: 1rem;
+            font-weight: 400;
+            line-height: 1.5;
+        }
     </style>
 </head>
 <body>
@@ -108,7 +114,7 @@
                     <label for="assetValue_million" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
                     <div class="d-flex align-items-center gap-2">
                         <input type="text" class="form-control" id="assetValue_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
-                        <span style="font-weight:bold;">000000</span>
+                        <span class="input-million-suffix">000000</span>
                         <span id="assetValue_display" class="ms-2 text-success"></span>
                     </div>
                 </div>
@@ -124,7 +130,7 @@
                     <label for="loanAmount_million" class="form-label">Số tiền Khách hàng đề xuất (VND)</label>
                     <div class="d-flex align-items-center gap-2">
                         <input type="text" class="form-control" id="loanAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
-                        <span style="font-weight:bold;">000000</span>
+                        <span class="input-million-suffix">000000</span>
                         <span id="loanAmount_display" class="ms-2 text-success"></span>
                     </div>
                     <div id="errorMessage" class="text-danger" style="display: none;">Số tiền đề xuất vượt quá hạn mức cho vay!</div>
@@ -159,7 +165,7 @@
                         <label for="otherLoanAmount_million" class="form-label">Số tiền vay/dư nợ còn lại (VND)</label>
                         <div class="d-flex align-items-center gap-2">
                             <input type="text" class="form-control" id="otherLoanAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
-                            <span style="font-weight:bold;">000000</span>
+                            <span class="input-million-suffix">000000</span>
                             <span id="otherLoanAmount_display" class="ms-2 text-success"></span>
                         </div>
                     </div>
@@ -175,7 +181,7 @@
                         <label for="creditCardPayment_million" class="form-label">Số tiền trả nợ thẻ tín dụng bình quân hàng tháng(VND)</label>
                         <div class="d-flex align-items-center gap-2">
                             <input type="text" class="form-control" id="creditCardPayment_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
-                            <span style="font-weight:bold;">000000</span>
+                            <span class="input-million-suffix">000000</span>
                             <span id="creditCardPayment_display" class="ms-2 text-success"></span>
                         </div>
                     </div>
@@ -193,7 +199,7 @@
                     <label for="incomeAmount_million" class="form-label">Tổng thu nhập bình quân hàng tháng (bao gồm cả vợ/chồng)</label>
                     <div class="d-flex align-items-center gap-2">
                         <input type="text" class="form-control" id="incomeAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
-                        <span style="font-weight:bold;">000000</span>
+                        <span class="input-million-suffix">000000</span>
                         <span id="incomeAmount_display" class="ms-2 text-success"></span>
                     </div>
                 </div>
