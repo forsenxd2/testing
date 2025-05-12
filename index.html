@@ -394,7 +394,7 @@
                 // Tính thu nhập cần chứng minh
                 let debtRatio = 0.6;
                 const incomeAmount = parseFormattedNumber(incomeAmountInput.value);
-                if (incomeAmount > 60000000) {
+                if (incomeAmount >= 60000000) {
                     debtRatio = 0.7;
                 }
                 const requiredIncome = totalMonthlyPayment / debtRatio;
