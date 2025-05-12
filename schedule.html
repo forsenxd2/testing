@@ -193,44 +193,44 @@
             }).format(amount);
         }
 
-        // --- BẮT ĐẦU LOGIC NHẬP HÀNG TRIỆU ---
+        // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN ---
         function setDefaultMillion(input) {
             if (!input.value || input.value === '0') {
                 input.value = '000000';
+                input.dataset.raw = '';
+            }
+        }
+        function handleMillionFocus(e) {
+            if (e.target.dataset.raw) {
+                e.target.value = e.target.dataset.raw;
+            } else if (e.target.value === '000000') {
+                e.target.value = '';
             }
         }
         function handleMillionInput(e) {
-            // Lấy toàn bộ số, loại bỏ dấu chấm
+            let value = e.target.value.replace(/\D/g, '').substring(0, 6);
+            e.target.value = value;
+            e.target.dataset.raw = value;
+        }
+        function handleMillionBlur(e) {
             let value = e.target.value.replace(/\D/g, '');
-            // Nếu giá trị rỗng hoặc không phải số, trả về 000000
-            if (!value || isNaN(value)) {
+            if (!value || isNaN(value) || value === '0') {
                 e.target.value = '000000';
-                return;
-            }
-            // Chỉ lấy tối đa 6 số đầu
-            value = value.substring(0, 6);
-            let num = parseInt(value);
-            if (isNaN(num) || num === 0) {
-                e.target.value = '000000';
+                e.target.dataset.raw = '';
             } else {
-                num = num * 1000000;
+                let num = parseInt(value) * 1000000;
                 e.target.value = formatNumber(num);
+                e.target.dataset.raw = value;
             }
         }
-        // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
-
-        // Áp dụng cho các input số tiền
+        // Gán sự kiện cho các input số tiền
         const assetValueInput = document.getElementById('assetValue');
         const loanAmountInput = document.getElementById('loanAmount');
         [assetValueInput, loanAmountInput].forEach(input => {
             setDefaultMillion(input);
-            input.addEventListener('focus', function() {
-                if (input.value === '000000') input.value = '';
-            });
-            input.addEventListener('blur', function() {
-                setDefaultMillion(input);
-            });
+            input.addEventListener('focus', handleMillionFocus);
             input.addEventListener('input', handleMillionInput);
+            input.addEventListener('blur', handleMillionBlur);
         });
 
         // --- Hàm kiểm tra ngày nghỉ lễ ---

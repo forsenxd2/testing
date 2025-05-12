@@ -236,31 +236,45 @@
             return parseInt(str.replace(/\./g, '')) || 0;
         }
 
-        // --- BẮT ĐẦU LOGIC NHẬP HÀNG TRIỆU ---
+        // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN ---
         function setDefaultMillion(input) {
             if (!input.value || input.value === '0') {
                 input.value = '000000';
+                input.dataset.raw = '';
+            }
+        }
+        function handleMillionFocus(e) {
+            // Khi focus, hiển thị lại số gốc nếu có
+            if (e.target.dataset.raw) {
+                e.target.value = e.target.dataset.raw;
+            } else if (e.target.value === '000000') {
+                e.target.value = '';
             }
         }
         function handleMillionInput(e) {
-            // Lấy toàn bộ số, loại bỏ dấu chấm
+            // Chỉ cho nhập số, tối đa 6 ký tự
+            let value = e.target.value.replace(/\D/g, '').substring(0, 6);
+            e.target.value = value;
+            e.target.dataset.raw = value;
+        }
+        function handleMillionBlur(e) {
             let value = e.target.value.replace(/\D/g, '');
-            // Nếu giá trị rỗng hoặc không phải số, trả về 000000
-            if (!value || isNaN(value)) {
+            if (!value || isNaN(value) || value === '0') {
                 e.target.value = '000000';
-                return;
-            }
-            // Chỉ lấy tối đa 6 số đầu
-            value = value.substring(0, 6);
-            let num = parseInt(value);
-            if (isNaN(num) || num === 0) {
-                e.target.value = '000000';
+                e.target.dataset.raw = '';
             } else {
-                num = num * 1000000;
+                let num = parseInt(value) * 1000000;
                 e.target.value = formatNumber(num);
+                e.target.dataset.raw = value;
             }
         }
-        // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
+        // Gán sự kiện cho các input số tiền
+        [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
+            setDefaultMillion(input);
+            input.addEventListener('focus', handleMillionFocus);
+            input.addEventListener('input', handleMillionInput);
+            input.addEventListener('blur', handleMillionBlur);
+        });
 
         // Khởi tạo dữ liệu
         let loanData = JSON.parse(localStorage.getItem('loanData')) || {};
@@ -281,18 +295,6 @@
         const hasOtherLoanYes = document.getElementById('hasOtherLoanYes');
         const hasOtherLoanNo = document.getElementById('hasOtherLoanNo');
         const otherLoanDetails = document.getElementById('otherLoanDetails');
-
-        // --- GÁN SỰ KIỆN VÀ ĐẶT MẶC ĐỊNH 000000 ---
-        [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
-            setDefaultMillion(input);
-            input.addEventListener('focus', function() {
-                if (input.value === '000000') input.value = '';
-            });
-            input.addEventListener('blur', function() {
-                setDefaultMillion(input);
-            });
-            input.addEventListener('input', handleMillionInput);
-        });
 
         // Đảm bảo luôn cập nhật số tiền cho vay tối đa khi nhập giá trị tài sản hoặc tỉ lệ cho vay
         assetValueInput.addEventListener('input', calculateMaxLoan);
