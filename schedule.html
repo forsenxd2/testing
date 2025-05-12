@@ -208,10 +208,14 @@
         // Hàm format tiền
         function formatMoney(million) {
             if (!million || isNaN(million)) return '';
-            let num = parseInt(million) * 1000000;
-            if (num >= 1000000000 && num % 1000000000 === 0) return (num/1000000000) + ' tỷ đồng';
-            if (num % 1000000 === 0) return (num/1000000) + ' triệu đồng';
-            return num.toLocaleString('vi-VN') + ' đồng';
+            let num = parseInt(million);
+            if (num >= 1000) {
+                let ty = Math.floor(num / 1000);
+                let trieu = num % 1000;
+                if (trieu === 0) return ty + ' tỷ đồng';
+                return ty + ' tỷ ' + trieu + ' triệu đồng';
+            }
+            return num + ' triệu đồng';
         }
 
         // Gán sự kiện cho các input triệu
@@ -436,9 +440,11 @@
             const loanData = JSON.parse(localStorage.getItem('loanData')) || {};
             if (loanData.assetValue) {
                 document.getElementById('assetValue_million').value = Math.floor(loanData.assetValue / 1000000) || '';
+                document.getElementById('assetValue_display').textContent = formatMoney(Math.floor(loanData.assetValue / 1000000));
             }
             if (loanData.loanAmount) {
                 document.getElementById('loanAmount_million').value = Math.floor(loanData.loanAmount / 1000000) || '';
+                document.getElementById('loanAmount_display').textContent = formatMoney(Math.floor(loanData.loanAmount / 1000000));
             }
             if (loanData.loanTerm) {
                 document.getElementById('loanTerm').value = loanData.loanTerm;
