@@ -276,8 +276,8 @@
 
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
-            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value);
-            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value);
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
@@ -433,8 +433,8 @@
 
         // Thêm event listener cho input số tiền vay
         document.getElementById('loanAmount_million').addEventListener('input', function(e) {
-            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value);
-            const loanAmount = parseFormattedNumber(e.target.value);
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
+            const loanAmount = parseFormattedNumber(e.target.value) * 1000000;
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
             if (!assetValue || assetValue === 0) {
                 e.target.classList.remove('is-invalid');
@@ -464,8 +464,8 @@
 
         // Thêm event listener cho input giá trị tài sản
         document.getElementById('assetValue_million').addEventListener('input', function(e) {
-            const assetValue = parseFormattedNumber(e.target.value);
-            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value);
+            const assetValue = parseFormattedNumber(e.target.value) * 1000000;
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
             if (!assetValue || assetValue === 0) {
                 const loanAmountInput = document.getElementById('loanAmount_million');
