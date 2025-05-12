@@ -415,7 +415,15 @@
                     if (incomeAmount >= requiredIncome) {
                         incomeStatus.innerHTML = '<span style="color:#228B22;font-weight:bold;font-size:1.1rem;"><i class="bi bi-patch-check-fill" style="font-size:1.5rem;vertical-align:middle;color:#228B22;"></i> THU NHẬP ĐÁP ỨNG ĐIỀU KIỆN VAY</span>';
                     } else {
-                        incomeStatus.innerHTML = '<span style="color:#b8860b;font-weight:bold;font-size:1.1rem;background:#fffbe6;padding:6px 12px;border-radius:8px;display:inline-block;">THU NHẬP CHƯA ĐÁP ỨNG ĐIỀU KIỆN VAY</span>';
+                        incomeStatus.innerHTML = `
+                            <span style="color:#b8860b;font-weight:bold;font-size:1.1rem;background:#fffbe6;padding:6px 12px;border-radius:8px;display:inline-block;margin-bottom:10px;">
+                                THU NHẬP CHƯA ĐÁP ỨNG ĐIỀU KIỆN VAY
+                            </span>
+                            <div>
+                                <button type="button" class="btn btn-warning btn-lg" onclick="window.location.href='nhomkhachhang.html'" style="margin-top:10px;">
+                                    <i class="bi bi-search"></i> RÀ SOÁT LẠI BỘ ĐIỀU KIỆN
+                                </button>
+                            </div>`;
                     }
                 } else {
                     incomeStatus.innerHTML = '';
