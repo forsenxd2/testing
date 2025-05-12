@@ -84,13 +84,16 @@
     <div class="container mt-4">
         <div class="d-flex flex-column align-items-start mb-3 gap-2">
             <button type="button" class="btn btn-primary btn-sm fw-bold menu-btn" style="background-color: #1e90ff; border-color: #1e90ff; min-width: 260px;" onclick="window.location.href='projects.html'">
-                <i class="bi bi-hand-index-thumb-fill blink-cursor"></i>DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
-            </button>
-            <button type="button" class="btn btn-primary btn-sm fw-bold menu-btn" style="background-color: #ffd700; border-color: #ffd700; color: #000; min-width: 260px;" onclick="window.location.href='hosovay.html'">
-                <i class="bi bi-hand-index-thumb-fill blink-cursor"></i>DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
+                <i class="bi bi-hand-index-thumb-fill blink-cursor" style="color:#228B22;"></i>DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
             </button>
             <button type="button" class="btn btn-danger btn-sm fw-bold menu-btn" style="background-color:#e75480;border:none;min-width:260px;" onclick="window.location.href='laisuat.html'">
-                <i class="bi bi-hand-index-thumb-fill blink-cursor"></i>Các gói Lãi suất cho vay KHCN hiện hành
+                <i class="bi bi-hand-index-thumb-fill blink-cursor" style="color:#228B22;"></i>CÁC GÓI LÃI SUẤT CHO VAY KHCN HIỆN HÀNH
+            </button>
+            <button type="button" class="btn btn-primary btn-sm fw-bold menu-btn" style="background-color: #228B22; border-color: #228B22; color: #fff; min-width: 260px;" onclick="window.location.href='hosovay.html'">
+                <i class="bi bi-hand-index-thumb-fill blink-cursor" style="color:#fff;"></i>DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
+            </button>
+            <button type="button" class="btn btn-success btn-sm fw-bold menu-btn" style="background-color:#fffbe6;color:#b8860b;border:none;min-width:260px;" onclick="window.location.href='nhomkhachhang.html'">
+                <i class="bi bi-hand-index-thumb-fill blink-cursor" style="color:#228B22;"></i>NHÓM KHÁCH HÀNG CÓ KHẢ NĂNG TRẢ NỢ KHÁC
             </button>
         </div>
         <h1 class="text-center mb-4">Tính toán khoản vay</h1>
@@ -171,15 +174,8 @@
             </div>
             <form id="incomeForm">
                 <div class="mb-3">
-                    <label class="form-label">Thu nhập bình quân hàng tháng</label>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="incomeLevel" id="incomeHigh" value="high">
-                        <label class="form-check-label" for="incomeHigh">>= 60 triệu/tháng</label>
-                    </div>
-                    <div class="form-check">
-                        <input class="form-check-input" type="radio" name="incomeLevel" id="incomeLow" value="low" checked>
-                        <label class="form-check-label" for="incomeLow">< 60 triệu/tháng</label>
-                    </div>
+                    <label for="incomeAmount" class="form-label">Tổng thu nhập bình quân hàng tháng (bao gồm cả vợ/chồng)</label>
+                    <input type="text" class="form-control" id="incomeAmount" min="0" max="999999999999" placeholder="Nhập tổng thu nhập (VND)">
                 </div>
             </form>
         </div>
@@ -203,6 +199,7 @@
                 <div class="required-income">
                     <h5>Thu nhập cần chứng minh:</h5>
                     <p class="required-income-value"><span id="requiredIncome">0 VND</span></p>
+                    <div id="incomeStatus"></div>
                 </div>
             </div>
         </div>
@@ -248,6 +245,16 @@
         const maxLoanSpan = document.getElementById('maxLoan');
         const loanAmountInput = document.getElementById('loanAmount');
         const errorMessage = document.getElementById('errorMessage');
+        const otherLoanAmountInput = document.getElementById('otherLoanAmount');
+        const creditCardPaymentInput = document.getElementById('creditCardPayment');
+        const loanTermInput = document.getElementById('loanTerm');
+        const otherLoanRateInput = document.getElementById('otherLoanRate');
+        const otherLoanTermInput = document.getElementById('otherLoanTerm');
+        const incomeAmountInput = document.getElementById('incomeAmount');
+        // Thêm khai báo cho radio button khoản vay khác
+        const hasOtherLoanYes = document.getElementById('hasOtherLoanYes');
+        const hasOtherLoanNo = document.getElementById('hasOtherLoanNo');
+        const otherLoanDetails = document.getElementById('otherLoanDetails');
 
         // Thêm định dạng số cho các input tiền
         [assetValueInput, loanAmountInput].forEach(input => {
@@ -345,27 +352,6 @@
         });
 
         // Xử lý khoản vay khác
-        const hasOtherLoanYes = document.getElementById('hasOtherLoanYes');
-        const hasOtherLoanNo = document.getElementById('hasOtherLoanNo');
-        const otherLoanDetails = document.getElementById('otherLoanDetails');
-        const otherLoanAmountInput = document.getElementById('otherLoanAmount');
-        const creditCardPaymentInput = document.getElementById('creditCardPayment');
-
-        // Thêm định dạng số cho các input tiền trong khoản vay khác
-        [otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
-            input.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\./g, '');
-                if (value) {
-                    // Giới hạn độ dài số là 12 chữ số
-                    if (value.length > 12) {
-                        value = value.slice(0, 12);
-                    }
-                    value = parseInt(value);
-                    e.target.value = formatNumber(value);
-                }
-            });
-        });
-
         function toggleOtherLoanDetails() {
             otherLoanDetails.classList.toggle('hidden', !hasOtherLoanYes.checked);
         }
@@ -374,12 +360,6 @@
         hasOtherLoanNo.addEventListener('change', toggleOtherLoanDetails);
 
         // Tính toán khoản vay
-        const loanTermInput = document.getElementById('loanTerm');
-        const otherLoanRateInput = document.getElementById('otherLoanRate');
-        const otherLoanTermInput = document.getElementById('otherLoanTerm');
-        const incomeHigh = document.getElementById('incomeHigh');
-        const incomeLow = document.getElementById('incomeLow');
-
         function calculateLoan() {
             const loanAmount = parseFormattedNumber(loanAmountInput.value);
             const term = parseInt(loanTermInput.value) || 0;
@@ -412,7 +392,11 @@
                 const totalMonthlyPayment = monthlyPayment + otherLoanMonthly + creditCardMonthly;
 
                 // Tính thu nhập cần chứng minh
-                const debtRatio = incomeHigh.checked ? 0.7 : 0.6;
+                let debtRatio = 0.6;
+                const incomeAmount = parseFormattedNumber(incomeAmountInput.value);
+                if (incomeAmount > 60000000) {
+                    debtRatio = 0.7;
+                }
                 const requiredIncome = totalMonthlyPayment / debtRatio;
 
                 // Cập nhật kết quả
@@ -425,6 +409,18 @@
                 document.getElementById('debtRatio').textContent = (debtRatio * 100) + '%';
                 document.getElementById('requiredIncome').textContent = formatCurrency(Math.round(requiredIncome));
 
+                // Thông báo kiểm tra thu nhập
+                const incomeStatus = document.getElementById('incomeStatus');
+                if (incomeAmount > 0) {
+                    if (incomeAmount >= requiredIncome) {
+                        incomeStatus.innerHTML = '<span style="color:#228B22;font-weight:bold;font-size:1.1rem;"><i class="bi bi-patch-check-fill" style="font-size:1.5rem;vertical-align:middle;color:#228B22;"></i> THU NHẬP ĐÁP ỨNG ĐIỀU KIỆN VAY</span>';
+                    } else {
+                        incomeStatus.innerHTML = '<span style="color:#b8860b;font-weight:bold;font-size:1.1rem;background:#fffbe6;padding:6px 12px;border-radius:8px;display:inline-block;">THU NHẬP CHƯA ĐÁP ỨNG ĐIỀU KIỆN VAY</span>';
+                    }
+                } else {
+                    incomeStatus.innerHTML = '';
+                }
+
                 // Lưu dữ liệu
                 loanData = {
                     assetValue: parseFormattedNumber(assetValueInput.value),
@@ -436,7 +432,7 @@
                     otherLoanRate: parseFloat(otherLoanRateInput.value) || 0,
                     otherLoanTerm: parseInt(otherLoanTermInput.value) || 0,
                     creditCardPayment: parseFormattedNumber(creditCardPaymentInput.value),
-                    incomeLevel: incomeHigh.checked ? 'high' : 'low',
+                    incomeAmount: incomeAmount,
                     monthlyPayment: Math.round(monthlyPayment),
                     otherLoanMonthly: Math.round(otherLoanMonthly),
                     creditCardMonthly: Math.round(creditCardMonthly),
@@ -451,7 +447,7 @@
         const inputs = [
             loanAmountInput, loanTermInput, otherLoanAmountInput, 
             otherLoanRateInput, otherLoanTermInput, creditCardPaymentInput,
-            incomeHigh, incomeLow
+            incomeAmountInput
         ];
         inputs.forEach(input => input.addEventListener('input', calculateLoan));
 
@@ -469,7 +465,6 @@
             
             // Reset radio buttons
             document.getElementById('hasOtherLoanNo').checked = true;
-            document.getElementById('incomeLow').checked = true;
             
             // Ẩn phần khoản vay khác
             document.getElementById('otherLoanDetails').classList.add('hidden');
@@ -484,6 +479,7 @@
             document.getElementById('totalMonthlyPayment').textContent = '0 VND';
             document.getElementById('debtRatio').textContent = '60%';
             document.getElementById('requiredIncome').textContent = '0 VND';
+            document.getElementById('incomeStatus').innerHTML = '';
             
             // Xóa dữ liệu đã lưu
             localStorage.removeItem('loanData');
