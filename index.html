@@ -257,7 +257,7 @@
         const otherLoanDetails = document.getElementById('otherLoanDetails');
 
         // Thêm định dạng số cho các input tiền
-        [assetValueInput, loanAmountInput].forEach(input => {
+        [assetValueInput, loanAmountInput, incomeAmountInput].forEach(input => {
             input.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\./g, '');
                 if (value) {
