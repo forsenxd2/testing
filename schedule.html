@@ -70,7 +70,12 @@
             overflow: hidden;
             max-width: 200px;
         }
-        .input-million-group input {
+        .input-million-group input,
+        .input-million {
+            width: 4ch;
+            min-width: 4ch;
+            max-width: 10ch;
+            transition: width 0.2s;
             border: none;
             box-shadow: none;
             outline: none;
@@ -80,9 +85,11 @@
             text-align: right;
             padding-left: 2px;
             padding-right: 0;
-            width: auto;
-            max-width: none;
-            min-width: 0;
+        }
+        .input-million-group input:focus,
+        .input-million:focus {
+            box-shadow: none;
+            outline: none;
         }
         .input-million-suffix {
             background: transparent;
@@ -94,9 +101,6 @@
             line-height: 1.5;
             border-radius: 0;
             margin-left: -2px;
-        }
-        .input-million-group input:focus {
-            box-shadow: none;
         }
     </style>
 </head>
@@ -127,7 +131,7 @@
                 <div class="mb-3">
                     <label for="assetValue_million" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
                     <div class="input-million-group">
-                        <input type="text" class="form-control" id="assetValue_million" maxlength="8" size="4" autocomplete="off">
+                        <input type="text" id="assetValue_million" maxlength="8" size="4" autocomplete="off" class="input-million">
                         <span class="input-million-suffix">.000.000</span>
                     </div>
                     <span id="assetValue_display" class="ms-2 text-success"></span>
@@ -135,7 +139,7 @@
                 <div class="mb-3">
                     <label for="loanAmount_million" class="form-label">Số tiền vay (VND)</label>
                     <div class="input-million-group">
-                        <input type="text" class="form-control" id="loanAmount_million" maxlength="8" size="4" autocomplete="off">
+                        <input type="text" id="loanAmount_million" maxlength="8" size="4" autocomplete="off" class="input-million">
                         <span class="input-million-suffix">.000.000</span>
                     </div>
                     <span id="loanAmount_display" class="ms-2 text-success"></span>
