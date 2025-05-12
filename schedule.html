@@ -274,83 +274,10 @@
         setupMillionInput('assetValue_million', 'assetValue_display');
         setupMillionInput('loanAmount_million', 'loanAmount_display');
 
-        // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN CHỈ CHO TRƯỜNG SỐ TIỀN ---
-        function setDefaultMillion(input) {
-            if (!input.value || input.value === '0') {
-                input.value = '000000';
-                input.dataset.raw = '';
-            }
-        }
-        function handleMillionFocus(e) {
-            if (e.target.dataset.raw) {
-                e.target.value = e.target.dataset.raw;
-            } else if (e.target.value === '000000') {
-                e.target.value = '';
-            }
-        }
-        function handleMillionInput(e) {
-            let value = e.target.value.replace(/\D/g, '').substring(0, 6);
-            if (!value) {
-                e.target.value = '000000';
-                e.target.dataset.raw = '';
-            } else {
-                e.target.dataset.raw = value;
-                let num = parseInt(value + '000000');
-                e.target.value = formatNumber(num);
-            }
-        }
-        function handleMillionBlur(e) {
-            let value = e.target.value.replace(/\D/g, '');
-            if (!value || isNaN(value) || value === '0') {
-                e.target.value = '000000';
-                e.target.dataset.raw = '';
-            } else {
-                let num = parseInt(value) * 1000000;
-                e.target.value = formatNumber(num);
-                e.target.dataset.raw = value;
-            }
-        }
-        function getMillionValue(input) {
-            let value = input.value.replace(/\D/g, '');
-            return value ? parseInt(value) * 1000000 : 0;
-        }
-        // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
-        const assetValueInput = document.getElementById('assetValue_million');
-        const loanAmountInput = document.getElementById('loanAmount_million');
-        [assetValueInput, loanAmountInput].forEach(input => {
-            setDefaultMillion(input);
-            input.addEventListener('focus', handleMillionFocus);
-            input.addEventListener('input', handleMillionInput);
-            input.addEventListener('blur', handleMillionBlur);
-        });
-
-        // --- Hàm kiểm tra ngày nghỉ lễ ---
-        function isHoliday(date) {
-            // Danh sách ngày nghỉ lễ cố định (dd-mm)
-            const holidays = [
-                '01-01', // Tết Dương lịch
-                '30-04', // Giải phóng miền Nam
-                '01-05', // Quốc tế Lao động
-                '02-09', // Quốc khánh
-            ];
-            const ddmm = (date.getDate().toString().padStart(2, '0')) + '-' + (date.getMonth() + 1).toString().padStart(2, '0');
-            // Chỉ kiểm tra ngày nghỉ lễ, KHÔNG kiểm tra cuối tuần
-            if (holidays.includes(ddmm)) return true;
-            return false;
-        }
-        // --- Hàm tìm ngày làm việc gần nhất sau ngày truyền vào (chỉ bỏ qua ngày nghỉ lễ) ---
-        function getNextWorkingDay(date) {
-            let d = new Date(date);
-            while (isHoliday(d)) {
-                d.setDate(d.getDate() + 1);
-            }
-            return d;
-        }
-
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
-            const assetValue = getMillionValue(assetValueInput);
-            const loanAmount = getMillionValue(loanAmountInput);
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value);
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value);
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
@@ -506,8 +433,8 @@
 
         // Thêm event listener cho input số tiền vay
         document.getElementById('loanAmount_million').addEventListener('input', function(e) {
-            const assetValue = getMillionValue(assetValueInput);
-            const loanAmount = getMillionValue(e.target);
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value);
+            const loanAmount = parseFormattedNumber(e.target.value);
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
             if (!assetValue || assetValue === 0) {
                 e.target.classList.remove('is-invalid');
@@ -537,8 +464,8 @@
 
         // Thêm event listener cho input giá trị tài sản
         document.getElementById('assetValue_million').addEventListener('input', function(e) {
-            const assetValue = getMillionValue(e.target);
-            const loanAmount = getMillionValue(loanAmountInput);
+            const assetValue = parseFormattedNumber(e.target.value);
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value);
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
             if (!assetValue || assetValue === 0) {
                 const loanAmountInput = document.getElementById('loanAmount_million');
