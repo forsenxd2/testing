@@ -240,10 +240,8 @@
     <script>
         // Hàm chuyển đổi số thành định dạng tiền tệ
         function formatCurrency(amount) {
-            return new Intl.NumberFormat('vi-VN', {
-                style: 'currency',
-                currency: 'VND'
-            }).format(amount);
+            if (!amount || isNaN(amount)) return '0 VND';
+            return amount.toLocaleString('vi-VN') + ' VND';
         }
 
         // Hàm định dạng số với dấu chấm ngăn cách
@@ -287,11 +285,8 @@
             }
         }
         function getMillionValue(input) {
-            if (input.dataset && input.dataset.raw) {
-                return parseInt(input.dataset.raw) * 1000000;
-            } else {
-                return parseFormattedNumber(input.value);
-            }
+            let value = input.value.replace(/\D/g, '');
+            return value ? parseInt(value) * 1000000 : 0;
         }
         // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
         setupMillionInput('assetValue_million', 'assetValue_display');
@@ -552,8 +547,7 @@
         function formatMoney(million) {
             if (!million || isNaN(million)) return '';
             let num = parseInt(million) * 1000000;
-            if (isNaN(num) || num === 0) return '';
-            if (num % 1000000000 === 0) return (num/1000000000) + ' tỷ đồng';
+            if (num >= 1000000000 && num % 1000000000 === 0) return (num/1000000000) + ' tỷ đồng';
             if (num % 1000000 === 0) return (num/1000000) + ' triệu đồng';
             return num.toLocaleString('vi-VN') + ' đồng';
         }
