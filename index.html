@@ -236,7 +236,7 @@
             return parseInt(str.replace(/\./g, '')) || 0;
         }
 
-        // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN ---
+        // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN CHỈ CHO TRƯỜNG SỐ TIỀN ---
         function setDefaultMillion(input) {
             if (!input.value || input.value === '0') {
                 input.value = '000000';
@@ -266,7 +266,6 @@
                 e.target.dataset.raw = value;
             }
         }
-        // Hàm lấy giá trị thực tế từ input triệu
         function getMillionValue(input) {
             if (input.dataset && input.dataset.raw) {
                 return parseInt(input.dataset.raw) * 1000000;
@@ -274,7 +273,7 @@
                 return parseFormattedNumber(input.value);
             }
         }
-        // Gán sự kiện cho các input số tiền
+        // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
         [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
             setDefaultMillion(input);
             input.addEventListener('focus', handleMillionFocus);
