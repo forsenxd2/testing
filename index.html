@@ -105,8 +105,12 @@
             </div>
             <form id="loanForm">
                 <div class="mb-3">
-                    <label for="assetValue" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
-                    <input type="text" class="form-control" id="assetValue" required min="0" max="999999999999">
+                    <label for="assetValue_million" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" id="assetValue_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                        <span style="font-weight:bold;">000000</span>
+                        <span id="assetValue_display" class="ms-2 text-success"></span>
+                    </div>
                 </div>
                 <div class="mb-3">
                     <label for="loanRate" class="form-label">Tỉ lệ cho vay (%)</label>
@@ -117,8 +121,12 @@
                     <p>Số tiền cho vay tối đa: <span id="maxLoan">0 VND</span></p>
                 </div>
                 <div class="mb-3">
-                    <label for="loanAmount" class="form-label">Số tiền Khách hàng đề xuất (VND)</label>
-                    <input type="text" class="form-control" id="loanAmount" required min="0" max="999999999999">
+                    <label for="loanAmount_million" class="form-label">Số tiền Khách hàng đề xuất (VND)</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" id="loanAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                        <span style="font-weight:bold;">000000</span>
+                        <span id="loanAmount_display" class="ms-2 text-success"></span>
+                    </div>
                     <div id="errorMessage" class="text-danger" style="display: none;">Số tiền đề xuất vượt quá hạn mức cho vay!</div>
                 </div>
                 <div class="mb-3">
@@ -148,8 +156,12 @@
 
                 <div id="otherLoanDetails" class="hidden">
                     <div class="mb-3">
-                        <label for="otherLoanAmount" class="form-label">Số tiền vay/dư nợ còn lại (VND)</label>
-                        <input type="text" class="form-control" id="otherLoanAmount" min="0" max="999999999999">
+                        <label for="otherLoanAmount_million" class="form-label">Số tiền vay/dư nợ còn lại (VND)</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="text" class="form-control" id="otherLoanAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                            <span style="font-weight:bold;">000000</span>
+                            <span id="otherLoanAmount_display" class="ms-2 text-success"></span>
+                        </div>
                     </div>
                     <div class="mb-3">
                         <label for="otherLoanRate" class="form-label">Lãi suất (%)</label>
@@ -160,8 +172,12 @@
                         <input type="number" class="form-control" id="otherLoanTerm" min="1" placeholder="Nhập số tháng còn lại">
                     </div>
                     <div class="mb-3">
-                        <label for="creditCardPayment" class="form-label">Số tiền trả nợ thẻ tín dụng bình quân hàng tháng(VND)</label>
-                        <input type="text" class="form-control" id="creditCardPayment" min="0" max="999999999999" placeholder="Nhập số tiền">
+                        <label for="creditCardPayment_million" class="form-label">Số tiền trả nợ thẻ tín dụng bình quân hàng tháng(VND)</label>
+                        <div class="d-flex align-items-center gap-2">
+                            <input type="text" class="form-control" id="creditCardPayment_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                            <span style="font-weight:bold;">000000</span>
+                            <span id="creditCardPayment_display" class="ms-2 text-success"></span>
+                        </div>
                     </div>
                 </div>
             </form>
@@ -174,8 +190,12 @@
             </div>
             <form id="incomeForm">
                 <div class="mb-3">
-                    <label for="incomeAmount" class="form-label">Tổng thu nhập bình quân hàng tháng (bao gồm cả vợ/chồng)</label>
-                    <input type="text" class="form-control" id="incomeAmount" min="0" max="999999999999" placeholder="Nhập tổng thu nhập (VND)">
+                    <label for="incomeAmount_million" class="form-label">Tổng thu nhập bình quân hàng tháng (bao gồm cả vợ/chồng)</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" id="incomeAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                        <span style="font-weight:bold;">000000</span>
+                        <span id="incomeAmount_display" class="ms-2 text-success"></span>
+                    </div>
                 </div>
             </form>
         </div>
@@ -274,7 +294,7 @@
             }
         }
         // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
-        [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
+        [assetValue_million, loanAmount_million, incomeAmount_million, otherLoanAmount_million, creditCardPayment_million].forEach(input => {
             setDefaultMillion(input);
             input.addEventListener('focus', handleMillionFocus);
             input.addEventListener('input', handleMillionInput);
@@ -285,30 +305,30 @@
         let loanData = JSON.parse(localStorage.getItem('loanData')) || {};
 
         // Tính toán số tiền cho vay tối đa
-        const assetValueInput = document.getElementById('assetValue');
+        const assetValue_million = document.getElementById('assetValue_million');
         const loanRateInput = document.getElementById('loanRate');
         const maxLoanSpan = document.getElementById('maxLoan');
-        const loanAmountInput = document.getElementById('loanAmount');
+        const loanAmount_million = document.getElementById('loanAmount_million');
         const errorMessage = document.getElementById('errorMessage');
-        const otherLoanAmountInput = document.getElementById('otherLoanAmount');
-        const creditCardPaymentInput = document.getElementById('creditCardPayment');
+        const otherLoanAmount_million = document.getElementById('otherLoanAmount_million');
+        const creditCardPayment_million = document.getElementById('creditCardPayment_million');
         const loanTermInput = document.getElementById('loanTerm');
         const otherLoanRateInput = document.getElementById('otherLoanRate');
         const otherLoanTermInput = document.getElementById('otherLoanTerm');
-        const incomeAmountInput = document.getElementById('incomeAmount');
+        const incomeAmount_million = document.getElementById('incomeAmount_million');
         // Thêm khai báo cho radio button khoản vay khác
         const hasOtherLoanYes = document.getElementById('hasOtherLoanYes');
         const hasOtherLoanNo = document.getElementById('hasOtherLoanNo');
         const otherLoanDetails = document.getElementById('otherLoanDetails');
 
         // Đảm bảo luôn cập nhật số tiền cho vay tối đa khi nhập giá trị tài sản hoặc tỉ lệ cho vay
-        assetValueInput.addEventListener('input', calculateMaxLoan);
+        assetValue_million.addEventListener('input', calculateMaxLoan);
         loanRateInput.addEventListener('input', calculateMaxLoan);
 
         function calculateMaxLoan() {
-            const assetValue = getMillionValue(assetValueInput);
+            const assetValue = getMillionValue(assetValue_million);
             let loanRate = parseFloat(loanRateInput.value) || 0;
-            const loanAmount = getMillionValue(loanAmountInput);
+            const loanAmount = getMillionValue(loanAmount_million);
             
             // Chỉ tính và kiểm tra khi có đủ cả giá trị tài sản và tỉ lệ cho vay
             if (assetValue > 0 && loanRate > 0) {
@@ -339,9 +359,9 @@
         }
 
         // Thêm event listener cho input số tiền đề xuất
-        loanAmountInput.addEventListener('input', function(e) {
+        loanAmount_million.addEventListener('input', function(e) {
             const loanAmount = getMillionValue(e.target);
-            const assetValue = getMillionValue(assetValueInput);
+            const assetValue = getMillionValue(assetValue_million);
             const loanRate = parseFloat(loanRateInput.value) || 0;
             
             // Nếu có nhập số tiền đề xuất
@@ -364,11 +384,11 @@
         });
 
         // Thêm event listener cho input giá trị tài sản và tỉ lệ cho vay
-        [assetValueInput, loanRateInput].forEach(input => {
+        [assetValue_million, loanRateInput].forEach(input => {
             input.addEventListener('input', function() {
-                const assetValue = getMillionValue(assetValueInput);
+                const assetValue = getMillionValue(assetValue_million);
                 const loanRate = parseFloat(loanRateInput.value) || 0;
-                const loanAmount = getMillionValue(loanAmountInput);
+                const loanAmount = getMillionValue(loanAmount_million);
                 
                 // Nếu có đủ thông tin và có số tiền đề xuất
                 if (assetValue > 0 && loanRate > 0 && loanAmount > 0) {
@@ -392,7 +412,7 @@
 
         // Tính toán khoản vay
         function calculateLoan() {
-            const loanAmount = getMillionValue(loanAmountInput);
+            const loanAmount = getMillionValue(loanAmount_million);
             const term = parseInt(loanTermInput.value) || 0;
             const interestRate = 9.0; // Lãi suất cố định 9%
 
@@ -405,7 +425,7 @@
                 // Tính khoản vay khác
                 let otherLoanMonthly = 0;
                 if (hasOtherLoanYes.checked) {
-                    const otherAmount = getMillionValue(otherLoanAmountInput);
+                    const otherAmount = getMillionValue(otherLoanAmount_million);
                     const otherRate = parseFloat(otherLoanRateInput.value) || 0;
                     const otherTerm = parseInt(otherLoanTermInput.value) || 0;
                     
@@ -417,14 +437,14 @@
                 }
 
                 // Tính thẻ tín dụng
-                const creditCardMonthly = hasOtherLoanYes.checked ? getMillionValue(creditCardPaymentInput) * 0.1 : 0;
+                const creditCardMonthly = hasOtherLoanYes.checked ? getMillionValue(creditCardPayment_million) * 0.1 : 0;
 
                 // Tính tổng nợ phải trả
                 const totalMonthlyPayment = monthlyPayment + otherLoanMonthly + creditCardMonthly;
 
                 // Tính thu nhập cần chứng minh
                 let debtRatio = 0.6;
-                const incomeAmount = getMillionValue(incomeAmountInput);
+                const incomeAmount = getMillionValue(incomeAmount_million);
                 if (incomeAmount >= 60000000) {
                     debtRatio = 0.7;
                 }
@@ -462,15 +482,15 @@
 
                 // Lưu dữ liệu
                 loanData = {
-                    assetValue: getMillionValue(assetValueInput),
+                    assetValue: getMillionValue(assetValue_million),
                     loanRate: parseFloat(loanRateInput.value),
                     loanAmount: loanAmount,
                     loanTerm: term,
                     hasOtherLoan: hasOtherLoanYes.checked,
-                    otherLoanAmount: getMillionValue(otherLoanAmountInput),
+                    otherLoanAmount: getMillionValue(otherLoanAmount_million),
                     otherLoanRate: parseFloat(otherLoanRateInput.value) || 0,
                     otherLoanTerm: parseInt(otherLoanTermInput.value) || 0,
-                    creditCardPayment: getMillionValue(creditCardPaymentInput),
+                    creditCardPayment: getMillionValue(creditCardPayment_million),
                     incomeAmount: incomeAmount,
                     monthlyPayment: Math.round(monthlyPayment),
                     otherLoanMonthly: Math.round(otherLoanMonthly),
@@ -484,23 +504,23 @@
 
         // Thêm event listeners cho tất cả các input
         const inputs = [
-            loanAmountInput, loanTermInput, otherLoanAmountInput, 
-            otherLoanRateInput, otherLoanTermInput, creditCardPaymentInput,
-            incomeAmountInput
+            loanAmount_million, loanTermInput, otherLoanAmount_million, 
+            otherLoanRateInput, otherLoanTermInput, creditCardPayment_million,
+            incomeAmount_million
         ];
         inputs.forEach(input => input.addEventListener('input', calculateLoan));
 
         // Hàm reset form
         function resetForm() {
             // Reset tất cả các input về giá trị mặc định
-            document.getElementById('assetValue').value = '';
+            document.getElementById('assetValue_million').value = '';
             document.getElementById('loanRate').value = '70';
-            document.getElementById('loanAmount').value = '';
+            document.getElementById('loanAmount_million').value = '';
             document.getElementById('loanTerm').value = '';
-            document.getElementById('otherLoanAmount').value = '';
+            document.getElementById('otherLoanAmount_million').value = '';
             document.getElementById('otherLoanRate').value = '';
             document.getElementById('otherLoanTerm').value = '';
-            document.getElementById('creditCardPayment').value = '';
+            document.getElementById('creditCardPayment_million').value = '';
             
             // Reset radio buttons
             document.getElementById('hasOtherLoanNo').checked = true;
@@ -528,6 +548,38 @@
         window.addEventListener('load', function() {
             resetForm();
         });
+
+        // Hàm format tiền
+        function formatMoney(million) {
+            if (!million || isNaN(million)) return '';
+            let num = parseInt(million) * 1000000;
+            if (isNaN(num) || num === 0) return '';
+            if (num % 1000000000 === 0) return (num/1000000000) + ' tỷ đồng';
+            if (num % 1000000 === 0) return (num/1000000) + ' triệu đồng';
+            return num.toLocaleString('vi-VN') + ' đồng';
+        }
+        // Gán sự kiện cho các input triệu
+        function setupMillionInput(inputId, displayId) {
+            const input = document.getElementById(inputId);
+            const display = document.getElementById(displayId);
+            input.addEventListener('input', function() {
+                let value = input.value.replace(/\D/g, '').substring(0,8);
+                input.value = value;
+                display.textContent = formatMoney(value);
+            });
+            input.addEventListener('blur', function() {
+                let value = input.value.replace(/\D/g, '').substring(0,8);
+                input.value = value;
+                display.textContent = formatMoney(value);
+            });
+            // Hiển thị mặc định
+            display.textContent = '';
+        }
+        setupMillionInput('assetValue_million', 'assetValue_display');
+        setupMillionInput('loanAmount_million', 'loanAmount_display');
+        setupMillionInput('otherLoanAmount_million', 'otherLoanAmount_display');
+        setupMillionInput('creditCardPayment_million', 'creditCardPayment_display');
+        setupMillionInput('incomeAmount_million', 'incomeAmount_display');
     </script>
 </body>
 </html> 

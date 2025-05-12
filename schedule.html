@@ -88,12 +88,20 @@
             </div>
             <form id="loanForm">
                 <div class="mb-3">
-                    <label for="assetValue" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
-                    <input type="text" class="form-control" id="assetValue" required min="0" max="999999999999">
+                    <label for="assetValue_million" class="form-label">Giá trị tài sản mua/Tài sản bảo đảm (VND)</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" id="assetValue_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                        <span style="font-weight:bold;">000000</span>
+                        <span id="assetValue_display" class="ms-2 text-success"></span>
+                    </div>
                 </div>
                 <div class="mb-3">
-                    <label for="loanAmount" class="form-label">Số tiền vay (VND)</label>
-                    <input type="text" class="form-control" id="loanAmount" required min="0" max="999999999999">
+                    <label for="loanAmount_million" class="form-label">Số tiền vay (VND)</label>
+                    <div class="d-flex align-items-center gap-2">
+                        <input type="text" class="form-control" id="loanAmount_million" maxlength="8" style="max-width:120px;" placeholder="Triệu" autocomplete="off">
+                        <span style="font-weight:bold;">000000</span>
+                        <span id="loanAmount_display" class="ms-2 text-success"></span>
+                    </div>
                 </div>
                 <div id="fixedPackageHighlight" class="mb-3 p-3 border border-primary rounded" style="background-color: #fffacd;">
                     <label for="fixedPackage" class="form-label fw-bold" style="font-size:1.15rem; color:#0d6efd;">
@@ -193,6 +201,36 @@
             }).format(amount);
         }
 
+        // Hàm format tiền
+        function formatMoney(million) {
+            if (!million || isNaN(million)) return '';
+            let num = parseInt(million) * 1000000;
+            if (isNaN(num) || num === 0) return '';
+            if (num % 1000000000 === 0) return (num/1000000000) + ' tỷ đồng';
+            if (num % 1000000 === 0) return (num/1000000) + ' triệu đồng';
+            return num.toLocaleString('vi-VN') + ' đồng';
+        }
+
+        // Gán sự kiện cho các input triệu
+        function setupMillionInput(inputId, displayId) {
+            const input = document.getElementById(inputId);
+            const display = document.getElementById(displayId);
+            input.addEventListener('input', function() {
+                let value = input.value.replace(/\D/g, '').substring(0,8);
+                input.value = value;
+                display.textContent = formatMoney(value);
+            });
+            input.addEventListener('blur', function() {
+                let value = input.value.replace(/\D/g, '').substring(0,8);
+                input.value = value;
+                display.textContent = formatMoney(value);
+            });
+            // Hiển thị mặc định
+            display.textContent = '';
+        }
+        setupMillionInput('assetValue_million', 'assetValue_display');
+        setupMillionInput('loanAmount_million', 'loanAmount_display');
+
         // --- LOGIC NHẬP HÀNG TRIỆU THÂN THIỆN CHỈ CHO TRƯỜNG SỐ TIỀN ---
         function setDefaultMillion(input) {
             if (!input.value || input.value === '0') {
@@ -237,8 +275,8 @@
             }
         }
         // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
-        const assetValueInput = document.getElementById('assetValue');
-        const loanAmountInput = document.getElementById('loanAmount');
+        const assetValueInput = document.getElementById('assetValue_million');
+        const loanAmountInput = document.getElementById('loanAmount_million');
         [assetValueInput, loanAmountInput].forEach(input => {
             setDefaultMillion(input);
             input.addEventListener('focus', handleMillionFocus);
@@ -378,8 +416,8 @@
 
         // Hàm reset form
         function resetForm() {
-            document.getElementById('assetValue').value = '';
-            document.getElementById('loanAmount').value = '';
+            document.getElementById('assetValue_million').value = '';
+            document.getElementById('loanAmount_million').value = '';
             document.getElementById('loanTerm').value = '';
             document.getElementById('fixedPackage').value = '12';
             document.getElementById('afterFixedRate').value = '9.0';
@@ -398,8 +436,8 @@
             const loanData = JSON.parse(localStorage.getItem('loanData')) || {};
             
             if (loanData.assetValue && loanData.loanAmount && loanData.loanTerm) {
-                document.getElementById('assetValue').value = formatNumber(loanData.assetValue);
-                document.getElementById('loanAmount').value = formatNumber(loanData.loanAmount);
+                document.getElementById('assetValue_million').value = formatNumber(loanData.assetValue);
+                document.getElementById('loanAmount_million').value = formatNumber(loanData.loanAmount);
                 document.getElementById('loanTerm').value = loanData.loanTerm;
                 
                 calculateSchedule();
@@ -407,7 +445,7 @@
         });
 
         // Thêm định dạng số cho các input tiền
-        ['assetValue', 'loanAmount'].forEach(id => {
+        ['assetValue_million', 'loanAmount_million'].forEach(id => {
             const input = document.getElementById(id);
             input.addEventListener('input', function(e) {
                 let value = e.target.value.replace(/\./g, '');
@@ -422,7 +460,7 @@
         });
 
         // Thêm event listener cho input số tiền vay
-        document.getElementById('loanAmount').addEventListener('input', function(e) {
+        document.getElementById('loanAmount_million').addEventListener('input', function(e) {
             const assetValue = getMillionValue(assetValueInput);
             const loanAmount = getMillionValue(e.target);
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
@@ -453,12 +491,12 @@
         });
 
         // Thêm event listener cho input giá trị tài sản
-        document.getElementById('assetValue').addEventListener('input', function(e) {
+        document.getElementById('assetValue_million').addEventListener('input', function(e) {
             const assetValue = getMillionValue(e.target);
             const loanAmount = getMillionValue(loanAmountInput);
             // Nếu chưa nhập giá trị tài sản thì không cảnh báo
             if (!assetValue || assetValue === 0) {
-                const loanAmountInput = document.getElementById('loanAmount');
+                const loanAmountInput = document.getElementById('loanAmount_million');
                 loanAmountInput.classList.remove('is-invalid');
                 const feedback = loanAmountInput.nextElementSibling;
                 if (feedback && feedback.classList.contains('invalid-feedback')) {
@@ -467,7 +505,7 @@
                 return;
             }
             if (loanAmount > assetValue) {
-                const loanAmountInput = document.getElementById('loanAmount');
+                const loanAmountInput = document.getElementById('loanAmount_million');
                 loanAmountInput.classList.add('is-invalid');
                 const feedback = loanAmountInput.nextElementSibling;
                 if (!feedback || !feedback.classList.contains('invalid-feedback')) {
@@ -477,7 +515,7 @@
                     loanAmountInput.parentNode.insertBefore(div, loanAmountInput.nextSibling);
                 }
             } else {
-                const loanAmountInput = document.getElementById('loanAmount');
+                const loanAmountInput = document.getElementById('loanAmount_million');
                 loanAmountInput.classList.remove('is-invalid');
                 const feedback = loanAmountInput.nextElementSibling;
                 if (feedback && feedback.classList.contains('invalid-feedback')) {
