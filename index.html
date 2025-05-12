@@ -249,28 +249,14 @@
                 e.target.value = '000000';
                 return;
             }
-            // Nếu người dùng chỉ nhập số nhỏ hơn 1 triệu (dưới 7 ký tự)
-            if (/^\d{1,6}$/.test(value)) {
-                if (value === '' || value === '0') {
-                    e.target.value = '000000';
-                } else {
-                    let num = parseInt(value);
-                    if (isNaN(num)) {
-                        e.target.value = '000000';
-                    } else {
-                        num = num * 1000000;
-                        e.target.value = formatNumber(num);
-                    }
-                }
+            // Chỉ lấy tối đa 6 số đầu
+            value = value.slice(0, 6);
+            let num = parseInt(value);
+            if (isNaN(num) || num === 0) {
+                e.target.value = '000000';
             } else {
-                // Nếu nhập lớn hơn 6 số, chỉ format lại
-                if (value.length > 12) value = value.slice(0, 12);
-                let num = parseInt(value);
-                if (isNaN(num)) {
-                    e.target.value = '000000';
-                } else {
-                    e.target.value = formatNumber(num);
-                }
+                num = num * 1000000;
+                e.target.value = formatNumber(num);
             }
         }
         // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
