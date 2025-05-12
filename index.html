@@ -294,12 +294,11 @@
             }
         }
         // Gán sự kiện cho các input số tiền (chỉ các trường số tiền)
-        [assetValue_million, loanAmount_million, incomeAmount_million, otherLoanAmount_million, creditCardPayment_million].forEach(input => {
-            setDefaultMillion(input);
-            input.addEventListener('focus', handleMillionFocus);
-            input.addEventListener('input', handleMillionInput);
-            input.addEventListener('blur', handleMillionBlur);
-        });
+        setupMillionInput('assetValue_million', 'assetValue_display');
+        setupMillionInput('loanAmount_million', 'loanAmount_display');
+        setupMillionInput('otherLoanAmount_million', 'otherLoanAmount_display');
+        setupMillionInput('creditCardPayment_million', 'creditCardPayment_display');
+        setupMillionInput('incomeAmount_million', 'incomeAmount_display');
 
         // Khởi tạo dữ liệu
         let loanData = JSON.parse(localStorage.getItem('loanData')) || {};
