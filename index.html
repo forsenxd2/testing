@@ -236,6 +236,31 @@
             return parseInt(str.replace(/\./g, '')) || 0;
         }
 
+        // --- BẮT ĐẦU LOGIC NHẬP HÀNG TRIỆU ---
+        function setDefaultMillion(input) {
+            if (!input.value || input.value === '0') {
+                input.value = '000000';
+            }
+        }
+        function handleMillionInput(e) {
+            let value = e.target.value.replace(/\./g, '');
+            // Nếu người dùng chỉ nhập số nhỏ hơn 1 triệu (dưới 7 ký tự)
+            if (/^\d{1,6}$/.test(value)) {
+                if (value === '' || value === '0') {
+                    e.target.value = '000000';
+                } else {
+                    value = parseInt(value) * 1000000;
+                    e.target.value = formatNumber(value);
+                }
+            } else {
+                // Nếu nhập lớn hơn 6 số, chỉ format lại
+                if (value.length > 12) value = value.slice(0, 12);
+                value = parseInt(value);
+                e.target.value = formatNumber(value);
+            }
+        }
+        // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
+
         // Khởi tạo dữ liệu
         let loanData = JSON.parse(localStorage.getItem('loanData')) || {};
 
@@ -256,20 +281,18 @@
         const hasOtherLoanNo = document.getElementById('hasOtherLoanNo');
         const otherLoanDetails = document.getElementById('otherLoanDetails');
 
-        // Thêm định dạng số cho các input tiền
-        [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput].forEach(input => {
-            input.addEventListener('input', function(e) {
-                let value = e.target.value.replace(/\./g, '');
-                if (value) {
-                    // Giới hạn độ dài số là 12 chữ số
-                    if (value.length > 12) {
-                        value = value.slice(0, 12);
-                    }
-                    value = parseInt(value);
-                    e.target.value = formatNumber(value);
-                }
+        // --- GÁN SỰ KIỆN VÀ ĐẶT MẶC ĐỊNH 000000 ---
+        [assetValueInput, loanAmountInput, incomeAmountInput, otherLoanAmountInput, creditCardPaymentInput].forEach(input => {
+            setDefaultMillion(input);
+            input.addEventListener('focus', function() {
+                if (input.value === '000000') input.value = '';
             });
+            input.addEventListener('blur', function() {
+                setDefaultMillion(input);
+            });
+            input.addEventListener('input', handleMillionInput);
         });
+
         // Đảm bảo luôn cập nhật số tiền cho vay tối đa khi nhập giá trị tài sản hoặc tỉ lệ cho vay
         assetValueInput.addEventListener('input', calculateMaxLoan);
         loanRateInput.addEventListener('input', calculateMaxLoan);

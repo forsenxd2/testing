@@ -193,6 +193,43 @@
             }).format(amount);
         }
 
+        // --- BẮT ĐẦU LOGIC NHẬP HÀNG TRIỆU ---
+        function setDefaultMillion(input) {
+            if (!input.value || input.value === '0') {
+                input.value = '000000';
+            }
+        }
+        function handleMillionInput(e) {
+            let value = e.target.value.replace(/\./g, '');
+            if (/^\d{1,6}$/.test(value)) {
+                if (value === '' || value === '0') {
+                    e.target.value = '000000';
+                } else {
+                    value = parseInt(value) * 1000000;
+                    e.target.value = formatNumber(value);
+                }
+            } else {
+                if (value.length > 12) value = value.slice(0, 12);
+                value = parseInt(value);
+                e.target.value = formatNumber(value);
+            }
+        }
+        // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
+
+        // Áp dụng cho các input số tiền
+        const assetValueInput = document.getElementById('assetValue');
+        const loanAmountInput = document.getElementById('loanAmount');
+        [assetValueInput, loanAmountInput].forEach(input => {
+            setDefaultMillion(input);
+            input.addEventListener('focus', function() {
+                if (input.value === '000000') input.value = '';
+            });
+            input.addEventListener('blur', function() {
+                setDefaultMillion(input);
+            });
+            input.addEventListener('input', handleMillionInput);
+        });
+
         // --- Hàm kiểm tra ngày nghỉ lễ ---
         function isHoliday(date) {
             // Danh sách ngày nghỉ lễ cố định (dd-mm)
