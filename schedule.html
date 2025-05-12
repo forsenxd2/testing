@@ -209,8 +209,14 @@
         }
         function handleMillionInput(e) {
             let value = e.target.value.replace(/\D/g, '').substring(0, 6);
-            e.target.value = value;
-            e.target.dataset.raw = value;
+            if (!value) {
+                e.target.value = '000000';
+                e.target.dataset.raw = '';
+            } else {
+                e.target.dataset.raw = value;
+                let num = parseInt(value + '000000');
+                e.target.value = formatNumber(num);
+            }
         }
         function handleMillionBlur(e) {
             let value = e.target.value.replace(/\D/g, '');
