@@ -94,6 +94,8 @@
             border-radius: 0;
             background: transparent;
             flex: 1 1 0;
+            text-align: right;
+            padding-left: 2px;
         }
         .input-million-suffix {
             background: transparent;
@@ -591,12 +593,12 @@
             const display = document.getElementById(displayId);
             input.addEventListener('input', function() {
                 let value = input.value.replace(/\D/g, '').substring(0,8);
-                input.value = value;
+                input.value = value ? formatNumber(value) : '';
                 display.textContent = formatMoney(value);
             });
             input.addEventListener('blur', function() {
                 let value = input.value.replace(/\D/g, '').substring(0,8);
-                input.value = value;
+                input.value = value ? formatNumber(value) : '';
                 display.textContent = formatMoney(value);
             });
             // Hiển thị mặc định
