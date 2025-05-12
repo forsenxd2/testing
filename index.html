@@ -244,19 +244,33 @@
         }
         function handleMillionInput(e) {
             let value = e.target.value.replace(/\./g, '');
+            // Nếu giá trị rỗng hoặc không phải số, trả về 000000
+            if (!value || isNaN(value)) {
+                e.target.value = '000000';
+                return;
+            }
             // Nếu người dùng chỉ nhập số nhỏ hơn 1 triệu (dưới 7 ký tự)
             if (/^\d{1,6}$/.test(value)) {
                 if (value === '' || value === '0') {
                     e.target.value = '000000';
                 } else {
-                    value = parseInt(value) * 1000000;
-                    e.target.value = formatNumber(value);
+                    let num = parseInt(value);
+                    if (isNaN(num)) {
+                        e.target.value = '000000';
+                    } else {
+                        num = num * 1000000;
+                        e.target.value = formatNumber(num);
+                    }
                 }
             } else {
                 // Nếu nhập lớn hơn 6 số, chỉ format lại
                 if (value.length > 12) value = value.slice(0, 12);
-                value = parseInt(value);
-                e.target.value = formatNumber(value);
+                let num = parseInt(value);
+                if (isNaN(num)) {
+                    e.target.value = '000000';
+                } else {
+                    e.target.value = formatNumber(num);
+                }
             }
         }
         // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---

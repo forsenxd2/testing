@@ -201,17 +201,31 @@
         }
         function handleMillionInput(e) {
             let value = e.target.value.replace(/\./g, '');
+            // Nếu giá trị rỗng hoặc không phải số, trả về 000000
+            if (!value || isNaN(value)) {
+                e.target.value = '000000';
+                return;
+            }
             if (/^\d{1,6}$/.test(value)) {
                 if (value === '' || value === '0') {
                     e.target.value = '000000';
                 } else {
-                    value = parseInt(value) * 1000000;
-                    e.target.value = formatNumber(value);
+                    let num = parseInt(value);
+                    if (isNaN(num)) {
+                        e.target.value = '000000';
+                    } else {
+                        num = num * 1000000;
+                        e.target.value = formatNumber(num);
+                    }
                 }
             } else {
                 if (value.length > 12) value = value.slice(0, 12);
-                value = parseInt(value);
-                e.target.value = formatNumber(value);
+                let num = parseInt(value);
+                if (isNaN(num)) {
+                    e.target.value = '000000';
+                } else {
+                    e.target.value = formatNumber(num);
+                }
             }
         }
         // --- KẾT THÚC LOGIC NHẬP HÀNG TRIỆU ---
