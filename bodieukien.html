@@ -16,7 +16,7 @@
             50% { box-shadow: 0 0 0 0 #fffbe6; background: #fff; }
         }
         .blink-highlight {
-            animation: blink 0.7s linear 0s 4 alternate;
+            animation: blink 0.3s linear 0s infinite alternate;
             position: relative;
         }
         .blink-cursor-img {
@@ -26,7 +26,7 @@
             transform: translateY(-50%);
             width: 32px;
             height: 32px;
-            animation: blink 0.7s linear 0s 4 alternate;
+            animation: blink 0.3s linear 0s infinite alternate;
             pointer-events: none;
             z-index: 10;
         }
@@ -195,13 +195,15 @@
             if(btn) {
                 btn.scrollIntoView({behavior: 'smooth', block: 'center'});
                 btn.classList.add('blink-highlight');
-                if(mouseImg) {
-                    mouseImg.style.display = 'block';
-                }
-                setTimeout(() => {
+                if(mouseImg) mouseImg.style.display = 'block';
+
+                // Dừng nhấp nháy khi rê chuột vào nút hoặc sau 5 giây
+                const stopBlink = () => {
                     btn.classList.remove('blink-highlight');
                     if(mouseImg) mouseImg.style.display = 'none';
-                }, 2800);
+                };
+                btn.addEventListener('mouseenter', stopBlink);
+                setTimeout(stopBlink, 5000);
             }
         }
     });
