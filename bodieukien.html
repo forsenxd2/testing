@@ -158,10 +158,32 @@
         </tbody>
     </table>
     <div class="mt-4">
-        <button type="button" class="btn btn-success btn-lg fw-bold" onclick="window.location.href='nhomkhachhang.html'">
+        <button id="btn-nhomkhachhang" type="button" class="btn btn-success btn-lg fw-bold" onclick="window.location.href='nhomkhachhang.html'">
             <i class="bi bi-search" style="color:#fff; margin-right: 8px;"></i>NHÓM KHÁCH HÀNG CÓ KHẢ NĂNG TRẢ NỢ KHÁC
         </button>
     </div>
 </div>
+<script>
+    // Hàm lấy tham số trên URL
+    function getQueryParam(param) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(param);
+    }
+    // Nếu có focus=nhomkhachhang thì scroll và highlight nút
+    window.addEventListener('DOMContentLoaded', function() {
+        if(getQueryParam('focus') === 'nhomkhachhang') {
+            const btn = document.getElementById('btn-nhomkhachhang');
+            if(btn) {
+                btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+                btn.classList.add('border', 'border-warning', 'shadow');
+                btn.style.backgroundColor = '#fffbe6';
+                setTimeout(() => {
+                    btn.classList.remove('border-warning', 'shadow');
+                    btn.style.backgroundColor = '';
+                }, 3000);
+            }
+        }
+    });
+</script>
 </body>
 </html> 
