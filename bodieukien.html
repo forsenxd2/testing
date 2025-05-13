@@ -12,12 +12,13 @@
         th, td { vertical-align: top; }
         .table thead th { background: #e6f4ea; }
         @keyframes blink {
-            0%, 100% { box-shadow: 0 0 10px 4px #ffc107; background: #fffbe6; }
-            50% { box-shadow: 0 0 0 0 #fffbe6; background: #fff; }
+            0%, 100% { box-shadow: 0 0 16px 6px #43b581; background: #43b581; color: #fff; }
+            50% { box-shadow: 0 0 16px 6px #ffc0cb; background: #ffc0cb; color: #b8860b; }
         }
         .blink-highlight {
             animation: blink 0.3s linear 0s infinite alternate;
             position: relative;
+            color: #fff !important;
         }
         .blink-cursor-img {
             position: absolute;
