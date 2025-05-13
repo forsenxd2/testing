@@ -11,6 +11,25 @@
         table { font-size: 1rem; }
         th, td { vertical-align: top; }
         .table thead th { background: #e6f4ea; }
+        @keyframes blink {
+            0%, 100% { box-shadow: 0 0 10px 4px #ffc107; background: #fffbe6; }
+            50% { box-shadow: 0 0 0 0 #fffbe6; background: #fff; }
+        }
+        .blink-highlight {
+            animation: blink 0.7s linear 0s 4 alternate;
+            position: relative;
+        }
+        .blink-cursor-img {
+            position: absolute;
+            right: -40px;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 32px;
+            height: 32px;
+            animation: blink 0.7s linear 0s 4 alternate;
+            pointer-events: none;
+            z-index: 10;
+        }
     </style>
 </head>
 <body>
@@ -157,30 +176,32 @@
             </tr>
         </tbody>
     </table>
-    <div class="mt-4">
+    <div class="mt-4" style="position:relative;display:inline-block;">
         <button id="btn-nhomkhachhang" type="button" class="btn btn-success btn-lg fw-bold" onclick="window.location.href='nhomkhachhang.html'">
             <i class="bi bi-search" style="color:#fff; margin-right: 8px;"></i>NHÓM KHÁCH HÀNG CÓ KHẢ NĂNG TRẢ NỢ KHÁC
         </button>
+        <img id="mouse-cursor-img" src="images/mouse.png" style="display:none;" class="blink-cursor-img" alt="mouse">
     </div>
 </div>
 <script>
-    // Hàm lấy tham số trên URL
     function getQueryParam(param) {
         const urlParams = new URLSearchParams(window.location.search);
         return urlParams.get(param);
     }
-    // Nếu có focus=nhomkhachhang thì scroll và highlight nút
     window.addEventListener('DOMContentLoaded', function() {
         if(getQueryParam('focus') === 'nhomkhachhang') {
             const btn = document.getElementById('btn-nhomkhachhang');
+            const mouseImg = document.getElementById('mouse-cursor-img');
             if(btn) {
                 btn.scrollIntoView({behavior: 'smooth', block: 'center'});
-                btn.classList.add('border', 'border-warning', 'shadow');
-                btn.style.backgroundColor = '#fffbe6';
+                btn.classList.add('blink-highlight');
+                if(mouseImg) {
+                    mouseImg.style.display = 'block';
+                }
                 setTimeout(() => {
-                    btn.classList.remove('border-warning', 'shadow');
-                    btn.style.backgroundColor = '';
-                }, 3000);
+                    btn.classList.remove('blink-highlight');
+                    if(mouseImg) mouseImg.style.display = 'none';
+                }, 2800);
             }
         }
     });
