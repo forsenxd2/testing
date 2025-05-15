@@ -258,5 +258,30 @@
             </div>
         </div>
     </div>
+    <script>
+        function getQueryParam(param) {
+            const urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(param);
+        }
+        window.addEventListener('DOMContentLoaded', function() {
+            if(getQueryParam('focus') === 'nhomkhachhang') {
+                const btn = document.getElementById('btn-nhomkhachhang');
+                const mouseImg = document.getElementById('mouse-cursor-img');
+                if(btn) {
+                    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
+                    btn.classList.add('blink-highlight');
+                    if(mouseImg) mouseImg.style.display = 'block';
+
+                    // Dừng nhấp nháy khi rê chuột vào nút hoặc sau 5 giây
+                    const stopBlink = () => {
+                        btn.classList.remove('blink-highlight');
+                        if(mouseImg) mouseImg.style.display = 'none';
+                    };
+                    btn.addEventListener('mouseenter', stopBlink);
+                    setTimeout(stopBlink, 5000);
+                }
+            }
+        });
+    </script>
 </body>
 </html> 
