@@ -82,6 +82,24 @@
         .download-btn:hover {
             background-color: #1a6b1a;
         }
+        .pdf-export {
+            background: #fff8dc;
+            color: #228B22;
+            padding: 32px 32px 32px 32px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        @media print {
+            body {
+                background: #fff8dc !important;
+            }
+            .pdf-export {
+                box-shadow: none !important;
+                margin: 0 !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -98,7 +116,7 @@
             <h1 class="main-title">HƯỚNG DẪN HỒ SƠ VAY</h1>
 
             <!-- Nội dung trang -->
-            <div id="content">
+            <div id="content" class="pdf-export">
                 <div class="bordered-box p-3 mb-3">
                     <div class="section-title mb-2">HỒ SƠ PHÁP LÝ</div>
                     <ul class="hosovay-list">
@@ -154,13 +172,12 @@
         function downloadPDF() {
             const element = document.getElementById('content');
             const opt = {
-                margin: 1,
-                filename: 'huong-dan-ho-so-vay.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                margin:       0,
+                filename:     'huong-dan-ho-so-vay.pdf',
+                image:        { type: 'jpeg', quality: 0.98 },
+                html2canvas:  { scale: 2, backgroundColor: '#fff8dc' },
+                jsPDF:        { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
             html2pdf().set(opt).from(element).save();
         }
     </script>

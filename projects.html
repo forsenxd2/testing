@@ -77,6 +77,19 @@
                 padding-right: 2px;
             }
         }
+        .pdf-export {
+            background: #fff8dc;
+            color: #228B22;
+            padding: 32px 32px 32px 32px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        @media print {
+            body { background: #fff8dc !important; }
+            .pdf-export { box-shadow: none !important; margin: 0 !important; }
+        }
     </style>
 </head>
 <body>
@@ -93,7 +106,7 @@
             <h1 class="main-title">Danh mục các dự án liên kết với VCB Thủ Thiêm</h1>
 
             <!-- Nội dung trang -->
-            <div id="content">
+            <div id="content" class="pdf-export">
                 <div class="mb-4 d-flex justify-content-center">
                     <input type="text" id="searchInput" class="form-control form-control-lg w-50" placeholder="🔍 Tìm kiếm tên dự án...">
                 </div>
@@ -209,13 +222,12 @@
         function downloadPDF() {
             const element = document.getElementById('content');
             const opt = {
-                margin: 1,
+                margin: 0,
                 filename: 'danh-muc-du-an.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                html2canvas: { scale: 2, backgroundColor: '#fff8dc' },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
             html2pdf().set(opt).from(element).save();
         }
     </script>

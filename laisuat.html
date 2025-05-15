@@ -64,6 +64,19 @@
         .download-btn:hover {
             background-color: #1a6b1a;
         }
+        .pdf-export {
+            background: #fff8dc;
+            color: #228B22;
+            padding: 32px 32px 32px 32px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        @media print {
+            body { background: #fff8dc !important; }
+            .pdf-export { box-shadow: none !important; margin: 0 !important; }
+        }
     </style>
 </head>
 <body>
@@ -80,7 +93,7 @@
             <h1 class="main-title">Các gói Lãi suất cho vay KHCN hiện hành</h1>
 
             <!-- Nội dung trang -->
-            <div id="content">
+            <div id="content" class="pdf-export">
                 <div class="rate-box">
                     <div class="rate-title">Gói cố định 12 tháng: <span style="color:#0d6efd">6%/năm</span></div>
                     <div class="rate-desc">Lãi suất ưu đãi cố định trong 12 tháng đầu, sau đó áp dụng lãi suất thả nổi theo quy định từng thời kỳ. Phù hợp khách hàng muốn trả nhanh, thời hạn vay ngắn.</div>
@@ -123,6 +136,7 @@
         function downloadPDF() {
             const element = document.getElementById('content');
             const opt = {
+                margin: 0,
                 margin: 1,
                 filename: 'goi-lai-suat.pdf',
                 image: { type: 'jpeg', quality: 0.98 },

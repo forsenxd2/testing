@@ -62,6 +62,19 @@
         .download-btn:hover {
             background-color: #1a6b1a;
         }
+        .pdf-export {
+            background: #fff8dc;
+            color: #228B22;
+            padding: 32px 32px 32px 32px;
+            border-radius: 12px;
+            max-width: 900px;
+            margin: 0 auto;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.08);
+        }
+        @media print {
+            body { background: #fff8dc !important; }
+            .pdf-export { box-shadow: none !important; margin: 0 !important; }
+        }
     </style>
 </head>
 <body>
@@ -78,7 +91,7 @@
             <h1 class="main-title">NHÓM KHÁCH HÀNG CÓ TIỀM LỰC TÀI CHÍNH KHÁC</h1>
 
             <!-- Nội dung trang -->
-            <div id="content">
+            <div id="content" class="pdf-export">
                 <ol>
                     <li>
                         <b>Nhóm khách hàng có địa vị, tri thức, công việc ổn định trong xã hội:</b>
@@ -130,13 +143,12 @@
         function downloadPDF() {
             const element = document.getElementById('content');
             const opt = {
-                margin: 1,
+                margin: 0,
                 filename: 'nhom-khach-hang.pdf',
                 image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+                html2canvas: { scale: 2, backgroundColor: '#fff8dc' },
+                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
             };
-
             html2pdf().set(opt).from(element).save();
         }
     </script>
