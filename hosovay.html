@@ -5,7 +5,55 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh mục hồ sơ vay vốn khách hàng cung cấp</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
+        body {
+            background-color: #fff8dc;
+            color: #228B22;
+        }
+        .container {
+            max-width: 800px;
+            margin-top: 40px;
+            margin-bottom: 40px;
+        }
+        .main-title {
+            color: #228B22;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+        }
+        .content-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .back-btn {
+            min-width: 180px;
+            background-color: #228B22;
+            color: #fff;
+            border: none;
+        }
+        .back-btn:hover {
+            background-color: #1a6b1a;
+            color: #fff;
+        }
+        .download-btn {
+            background-color: #228B22;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .download-btn:hover {
+            background-color: #1a6b1a;
+            color: #fff;
+        }
         .section-title {
             background: #e6f4ea;
             font-weight: bold;
@@ -13,6 +61,7 @@
             padding: 8px 12px;
             border-radius: 4px;
             margin-bottom: 0;
+            color: #228B22;
         }
         .bordered-box {
             border: 1.5px solid #b2d8b2;
@@ -22,13 +71,14 @@
         }
         .hosovay-list {
             margin-bottom: 0;
+            color: #228B22;
         }
         .hosovay-list li {
             margin-bottom: 4px;
         }
         .note {
             font-size: 0.95rem;
-            color: #555;
+            color: #228B22;
         }
         .vcb-branch {
             color: #228B22;
@@ -43,53 +93,74 @@
     </style>
 </head>
 <body>
-    <div class="container mt-4 mb-4">
-        <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-secondary btn-sm fw-bold" onclick="window.location.href='index.html'">
-                Quay lại trang tính khoản vay
+    <div class="container">
+        <div class="d-flex justify-content-between mb-3">
+            <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.location.href='index.html'">
+                <i class="bi bi-arrow-left"></i> Quay về trang chủ
+            </button>
+            <button type="button" class="btn download-btn" onclick="downloadPDF()">
+                <i class="bi bi-download"></i> Tải xuống PDF
             </button>
         </div>
-        <h1 class="text-center mb-4" style="color:#228B22;">HƯỚNG DẪN HỒ SƠ VAY</h1>
-        <div class="bordered-box p-3 mb-3">
-            <div class="section-title mb-2">HỒ SƠ PHÁP LÝ</div>
-            <ul class="hosovay-list">
-                <li>CMND/CCCD</li>
-                <li>Xác nhận thường trú/ VneID thường trú</li>
-                <li>Đăng ký kết hôn/ Xác nhận hôn nhân</li>
-            </ul>
-        </div>
-        <div class="bordered-box p-3 mb-3">
-            <div class="section-title mb-2">HỒ SƠ MỤC ĐÍCH VAY / TÀI SẢN BẢO ĐẢM</div>
-            <ul class="hosovay-list">
-                <li>Hợp đồng mua bán căn hộ/ GCN nhà thế chấp</li>
-            </ul>
-        </div>
-        <div class="bordered-box p-3 mb-3">
-            <div class="section-title mb-2">HỒ SƠ THU NHẬP</div>
-            <div class="mb-2"><b>a. Từ lương:</b></div>
-            <ul class="hosovay-list">
-                <li>Hợp đồng lao động</li>
-                <li>Sao kê tài khoản lương 06 tháng gần nhất</li>
-            </ul>
-            <div class="mb-2"><b>b. Từ cho thuê nhà, thuê xe:</b></div>
-            <ul class="hosovay-list">
-                <li>Giấy chứng nhận chủ quyền nhà/xe cho thuê</li>
-                <li>Hợp đồng cho thuê nhà/thuê xe</li>
-                <li>Sao kê tài khoản nhận tiền cho thuê tối thiểu 03 tháng gần nhất (nếu có)</li>
-            </ul>
-            <div class="mb-2"><b>c. Từ góp vốn doanh nghiệp:</b></div>
-            <ul class="hosovay-list">
-                <li>Giấy đăng ký kinh doanh</li>
-                <li>Báo cáo tài chính 2 năm gần nhất</li>
-                <li>Tờ khai VAT năm gần nhất</li>
-            </ul>
-            <div class="mb-2"><b>d. Thu nhập hợp pháp khác (nếu có)</b><span class="note">(*)</span></div>
-        </div>
-        <div class="note mb-3">(*) Liên hệ trực tiếp chuyên viên khách hàng để được tư vấn cụ thể</div>
-        <div class="text-center mt-4">
-            <div class="vcb-branch">Vietcombank Thủ Thiêm</div>
-            <div class="vcb-address">55-56 Song Hành, P. An Phú, Thủ Đức, TP.HCM</div>
+        
+        <div class="content-box">
+            <h1 class="main-title">DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP</h1>
+            <div class="bordered-box p-3 mb-3">
+                <div class="section-title mb-2">HỒ SƠ PHÁP LÝ</div>
+                <ul class="hosovay-list">
+                    <li>CMND/CCCD</li>
+                    <li>Xác nhận thường trú/ VneID thường trú</li>
+                    <li>Đăng ký kết hôn/ Xác nhận hôn nhân</li>
+                </ul>
+            </div>
+            <div class="bordered-box p-3 mb-3">
+                <div class="section-title mb-2">HỒ SƠ MỤC ĐÍCH VAY / TÀI SẢN BẢO ĐẢM</div>
+                <ul class="hosovay-list">
+                    <li>Hợp đồng mua bán căn hộ/ GCN nhà thế chấp</li>
+                </ul>
+            </div>
+            <div class="bordered-box p-3 mb-3">
+                <div class="section-title mb-2">HỒ SƠ THU NHẬP</div>
+                <div class="mb-2"><b>a. Từ lương:</b></div>
+                <ul class="hosovay-list">
+                    <li>Hợp đồng lao động</li>
+                    <li>Sao kê tài khoản lương 06 tháng gần nhất</li>
+                </ul>
+                <div class="mb-2"><b>b. Từ cho thuê nhà, thuê xe:</b></div>
+                <ul class="hosovay-list">
+                    <li>Giấy chứng nhận chủ quyền nhà/xe cho thuê</li>
+                    <li>Hợp đồng cho thuê nhà/thuê xe</li>
+                    <li>Sao kê tài khoản nhận tiền cho thuê tối thiểu 03 tháng gần nhất (nếu có)</li>
+                </ul>
+                <div class="mb-2"><b>c. Từ góp vốn doanh nghiệp:</b></div>
+                <ul class="hosovay-list">
+                    <li>Giấy đăng ký kinh doanh</li>
+                    <li>Báo cáo tài chính 2 năm gần nhất</li>
+                    <li>Tờ khai VAT năm gần nhất</li>
+                </ul>
+                <div class="mb-2"><b>d. Thu nhập hợp pháp khác (nếu có)</b><span class="note">(*)</span></div>
+            </div>
+            <div class="note mb-3">(*) Liên hệ trực tiếp chuyên viên khách hàng để được tư vấn cụ thể</div>
+            <div class="text-center mt-4">
+                <div class="vcb-branch">Vietcombank Thủ Thiêm</div>
+                <div class="vcb-address">55-56 Song Hành, P. An Phú, Thủ Đức, TP.HCM</div>
+            </div>
         </div>
     </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.content-box');
+            const opt = {
+                margin: 1,
+                filename: 'ho-so-vay.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html> 

@@ -5,153 +5,158 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Danh mục các dự án liên kết với VCB Thủ Thiêm</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
-            background: #f8f9fa;
+            background-color: #fff8dc;
+            color: #228B22;
         }
-        h1 {
-            font-size: 2rem;
+        .container {
+            max-width: 800px;
+            margin-top: 40px;
+            margin-bottom: 40px;
         }
-        @media (max-width: 576px) {
-            h1 {
-                font-size: 1.2rem;
-            }
-            .form-control-lg {
-                font-size: 1rem;
-                padding: 0.5rem 1rem;
-            }
-            .btn-sm {
-                font-size: 0.9rem;
-                padding: 0.5rem 1rem;
-            }
-            .table-responsive {
-                font-size: 0.95rem;
-            }
-            .container {
-                padding-left: 2px;
-                padding-right: 2px;
-            }
+        .main-title {
+            color: #228B22;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 30px;
+            text-transform: uppercase;
         }
-        .table-responsive {
-            overflow-x: auto;
+        .content-box {
+            background-color: #fff;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
         }
-        .form-control-lg {
+        .back-btn {
             min-width: 180px;
+            background-color: #228B22;
+            color: #fff;
+            border: none;
         }
-        .btn-sm {
-            min-width: 180px;
+        .back-btn:hover {
+            background-color: #1a6b1a;
+            color: #fff;
+        }
+        .download-btn {
+            background-color: #228B22;
+            color: #fff;
+            border: none;
+            padding: 10px 20px;
+            border-radius: 5px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .download-btn:hover {
+            background-color: #1a6b1a;
+            color: #fff;
+        }
+        .project-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        .project-item {
+            background-color: #fff;
+            border: 1px solid #b2d8b2;
+            border-radius: 8px;
+            padding: 15px;
+            margin-bottom: 15px;
+        }
+        .project-name {
+            color: #228B22;
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 10px;
+        }
+        .project-details {
+            color: #228B22;
+            margin-bottom: 5px;
+        }
+        .project-status {
+            display: inline-block;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-size: 0.9rem;
+            font-weight: bold;
+        }
+        .status-active {
+            background-color: #e6f4ea;
+            color: #228B22;
+        }
+        .status-completed {
+            background-color: #f8f9fa;
+            color: #6c757d;
+        }
+        .vcb-branch {
+            color: #228B22;
+            font-weight: bold;
+            font-size: 1.1rem;
+        }
+        .vcb-address {
+            color: #228B22;
+            font-weight: bold;
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
-    <div class="container mt-4">
-        <div class="d-flex justify-content-end mb-3">
-            <button type="button" class="btn btn-secondary btn-sm fw-bold" onclick="window.location.href='index.html'">
-                Quay lại trang tính khoản vay
+    <div class="container">
+        <div class="d-flex justify-content-between mb-3">
+            <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.location.href='index.html'">
+                <i class="bi bi-arrow-left"></i> Quay về trang chủ
+            </button>
+            <button type="button" class="btn download-btn" onclick="downloadPDF()">
+                <i class="bi bi-download"></i> Tải xuống PDF
             </button>
         </div>
-        <h1 class="text-center mb-4">Danh mục các dự án liên kết với VCB Thủ Thiêm</h1>
-        <div class="mb-4 d-flex justify-content-center">
-            <input type="text" id="searchInput" class="form-control form-control-lg w-50" placeholder="🔍 Tìm kiếm tên dự án...">
-        </div>
-        <div class="table-responsive">
-            <table class="table table-bordered table-striped align-middle" id="projectsTable">
-                <thead class="table-success">
-                    <tr>
-                        <th>Chủ đầu tư</th>
-                        <th>Tên thương mại của dự án</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>An Gia</td>
-                        <td>Westgate, The Standard Bình Dương, River Panorama, Sky 89, An Gia Skyline.</td>
-                    </tr>
-                    <tr>
-                        <td>Gamuda Land</td>
-                        <td>Celedon City, Eaton Park, Artisan Park.</td>
-                    </tr>
-                    <tr>
-                        <td>Bcons</td>
-                        <td>Chuỗi dự án Bcons City, Bcons Avanue, Bcons Polaris, Bcons Polygon.</td>
-                    </tr>
-                    <tr>
-                        <td>Phú Đông</td>
-                        <td>Phú Đông Sky garden.</td>
-                    </tr>
-                    <tr>
-                        <td>Điền Phúc Thành</td>
-                        <td>MT Eastmark City, Centana Thủ Thiêm, Dlusso, Precia.</td>
-                    </tr>
-                    <tr>
-                        <td>Novaland</td>
-                        <td>Sun Avenue.</td>
-                    </tr>
-                    <tr>
-                        <td>Nam Long</td>
-                        <td>Akari, Mizuki, Waterpoint.</td>
-                    </tr>
-                    <tr>
-                        <td>Ecopark</td>
-                        <td>Eco retreat, Eco village.</td>
-                    </tr>
-                    <tr>
-                        <td>Kusto</td>
-                        <td>Diamond Island, Urban Green.</td>
-                    </tr>
-                    <tr>
-                        <td>Phú Long</td>
-                        <td>Dragon Village, Essensia Sky và Essensia Parkway.</td>
-                    </tr>
-                    <tr>
-                        <td>Vinhomes</td>
-                        <td>Vinhomes Golden River</td>
-                    </tr>
-                    <tr>
-                        <td>Keppel Land</td>
-                        <td>Infinity Quận 7, Empire City.</td>
-                    </tr>
-                    <tr>
-                        <td>Sơn Kim Land</td>
-                        <td>Metropole.</td>
-                    </tr>
-                    <tr>
-                        <td>Masterise Home</td>
-                        <td>Cụm dự án Masterise An Phú, Thảo Điền, Lumiere.<br>Theo các dự án được TSC phê duyệt từng thời kì.</td>
-                    </tr>
-                    <tr>
-                        <td>Các Chủ đầu tư khác</td>
-                        <td>Sunwah Pearl, The MarQ, Đông Tăng Long, The Gateway, Lavida Plus</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
-        <script>
-            const searchInput = document.getElementById('searchInput');
-            const table = document.getElementById('projectsTable');
-            const rows = table.querySelectorAll('tbody tr');
+        
+        <div class="content-box">
+            <h1 class="main-title">DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM</h1>
+            
+            <ul class="project-list">
+                <li class="project-item">
+                    <div class="project-name">Dự án A</div>
+                    <div class="project-details">
+                        <strong>Địa chỉ:</strong> 123 Đường ABC, Quận XYZ, TP.HCM<br>
+                        <strong>Chủ đầu tư:</strong> Công ty ABC<br>
+                        <strong>Tiến độ:</strong> <span class="project-status status-active">Đang triển khai</span>
+                    </div>
+                </li>
+                <li class="project-item">
+                    <div class="project-name">Dự án B</div>
+                    <div class="project-details">
+                        <strong>Địa chỉ:</strong> 456 Đường DEF, Quận UVW, TP.HCM<br>
+                        <strong>Chủ đầu tư:</strong> Công ty DEF<br>
+                        <strong>Tiến độ:</strong> <span class="project-status status-completed">Đã hoàn thành</span>
+                    </div>
+                </li>
+                <!-- Thêm các dự án khác tương tự -->
+            </ul>
 
-            searchInput.addEventListener('input', function() {
-                const keyword = this.value.trim().toLowerCase();
-                rows.forEach(row => {
-                    const projectCell = row.cells[1];
-                    const text = projectCell.textContent;
-                    if (!keyword || text.toLowerCase().includes(keyword)) {
-                        row.style.display = '';
-                        // Highlight phần khớp
-                        if (keyword) {
-                            const regex = new RegExp(`(${keyword})`, 'gi');
-                            projectCell.innerHTML = text.replace(regex, '<span style="background:yellow;">$1</span>');
-                        } else {
-                            projectCell.innerHTML = text;
-                        }
-                    } else {
-                        row.style.display = 'none';
-                        projectCell.innerHTML = text;
-                    }
-                });
-            });
-        </script>
+            <div class="text-center mt-4">
+                <div class="vcb-branch">Vietcombank Thủ Thiêm</div>
+                <div class="vcb-address">55-56 Song Hành, P. An Phú, Thủ Đức, TP.HCM</div>
+            </div>
+        </div>
     </div>
+
+    <script>
+        function downloadPDF() {
+            const element = document.querySelector('.content-box');
+            const opt = {
+                margin: 1,
+                filename: 'danh-muc-du-an.pdf',
+                image: { type: 'jpeg', quality: 0.98 },
+                html2canvas: { scale: 2 },
+                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
+            };
+
+            html2pdf().set(opt).from(element).save();
+        }
+    </script>
 </body>
 </html> 
