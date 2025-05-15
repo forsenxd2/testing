@@ -125,27 +125,11 @@
 
             <!-- Nút download -->
             <div class="text-center">
-                <button class="download-btn" onclick="downloadPDF()">
+                <a class="download-btn" href="pdf/laisuat.pdf" download>
                     <i class="bi bi-download"></i> Tải xuống PDF
-                </button>
+                </a>
             </div>
         </div>
     </div>
-
-    <script>
-        function downloadPDF() {
-            const element = document.getElementById('content');
-            const opt = {
-                margin: 0,
-                margin: 1,
-                filename: 'goi-lai-suat.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save();
-        }
-    </script>
 </body>
 </html> 

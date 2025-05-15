@@ -245,49 +245,11 @@
 
             <!-- Nút download -->
             <div class="text-center">
-                <button class="download-btn" onclick="downloadPDF()">
+                <a class="download-btn" href="pdf/bodieukien.pdf" download>
                     <i class="bi bi-download"></i> Tải xuống PDF
-                </button>
+                </a>
             </div>
         </div>
     </div>
-
-    <script>
-        function downloadPDF() {
-            const element = document.getElementById('content');
-            const opt = {
-                margin: 0,
-                filename: 'bo-dieu-kien.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2, backgroundColor: '#fff8dc' },
-                jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-            };
-            html2pdf().set(opt).from(element).save();
-        }
-
-        function getQueryParam(param) {
-            const urlParams = new URLSearchParams(window.location.search);
-            return urlParams.get(param);
-        }
-        window.addEventListener('DOMContentLoaded', function() {
-            if(getQueryParam('focus') === 'nhomkhachhang') {
-                const btn = document.getElementById('btn-nhomkhachhang');
-                const mouseImg = document.getElementById('mouse-cursor-img');
-                if(btn) {
-                    btn.scrollIntoView({behavior: 'smooth', block: 'center'});
-                    btn.classList.add('blink-highlight');
-                    if(mouseImg) mouseImg.style.display = 'block';
-
-                    // Dừng nhấp nháy khi rê chuột vào nút hoặc sau 5 giây
-                    const stopBlink = () => {
-                        btn.classList.remove('blink-highlight');
-                        if(mouseImg) mouseImg.style.display = 'none';
-                    };
-                    btn.addEventListener('mouseenter', stopBlink);
-                    setTimeout(stopBlink, 5000);
-                }
-            }
-        });
-    </script>
 </body>
 </html> 
