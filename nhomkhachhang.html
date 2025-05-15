@@ -3,56 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Nhóm khách hàng có tiềm lực tài chính khác</title>
+    <title>Nhóm khách hàng có thu nhập trả nợ khác</title>
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body {
-            background-color: #fff8dc;
-            color: #228B22;
+            background-color: #f8f9fa;
         }
         .container {
-            max-width: 800px;
+            max-width: 700px;
             margin-top: 40px;
-            margin-bottom: 40px;
         }
         .main-title {
-            color: #228B22;
+            color: #43b581;
             font-weight: bold;
             text-align: center;
             margin-bottom: 30px;
             text-transform: uppercase;
-        }
-        .content-box {
-            background-color: #fff;
-            border-radius: 8px;
-            padding: 20px;
-            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-        }
-        .back-btn {
-            min-width: 180px;
-            background-color: #228B22;
-            color: #fff;
-            border: none;
-        }
-        .back-btn:hover {
-            background-color: #1a6b1a;
-            color: #fff;
-        }
-        .download-btn {
-            background-color: #228B22;
-            color: #fff;
-            border: none;
-            padding: 10px 20px;
-            border-radius: 5px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        .download-btn:hover {
-            background-color: #1a6b1a;
-            color: #fff;
         }
         .group-title {
             color: #228B22;
@@ -61,77 +28,62 @@
             margin-bottom: 10px;
             font-size: 1.15rem;
         }
+        .back-btn {
+            min-width: 180px;
+        }
+        .icon {
+            color: #43b581;
+            margin-right: 8px;
+        }
         ul {
             margin-bottom: 0;
-            color: #228B22;
         }
     </style>
 </head>
 <body>
-    <div class="container">
-        <div class="d-flex justify-content-between mb-3">
-            <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.location.href='index.html'">
-                <i class="bi bi-arrow-left"></i> Quay về trang chủ
-            </button>
-            <button type="button" class="btn download-btn" onclick="downloadPDF()">
-                <i class="bi bi-download"></i> Tải xuống PDF
+    <div class="container bg-white rounded shadow p-4">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.history.back()">
+                <i class="bi bi-arrow-left"></i> Quay lại
             </button>
         </div>
-        
-        <div class="content-box">
-            <h1 class="main-title">NHÓM KHÁCH HÀNG CÓ TIỀM LỰC TÀI CHÍNH KHÁC</h1>
-            <ol>
-                <li>
-                    <b>Nhóm khách hàng có địa vị, tri thức, công việc ổn định trong xã hội:</b>
-                    <ul>
-                        <li>Cán bộ, công, viên chức công tác tại các cơ quan Đảng, nhà nước 
-                            <br><i>(vd: Thẩm phán, kiểm sát viên, công an, quân đội, các bộ, sở, ban, ngành…)</i>
-                        </li>
-                        <li>Người giữ chức vụ tại các công ty có vốn nhà nước, công ty uy tín 
-                            <br><i>(vd: Cấp lãnh đạo tại các Công ty thuộc Tổng Công ty Tân Cảng, Điện lực, Viễn thông,…)</i>
-                        </li>
-                        <li>Người có địa vị, học thức cao trong xã hội: Bác sĩ, Giáo sư, Tiến sĩ giảng dạy tại các trường đại học uy tín.
-                            <br><i>(vd: Bác sĩ Bệnh viện Từ Dzũ, BV Quân y 108, Giảng viên tại các trường thuộc ĐHQG, ĐH Ngoại thương, ĐH Kinh tế…)</i>
-                        </li>
-                    </ul>
-                </li>
-                <li>
-                    <b>Nhóm khách hàng có thu nhập trả nợ khác:</b>
-                    <ul>
-                        <li>Có nhiều tài sản tích luỹ, và tổng giá trị tài sản tối thiểu bằng: x3 tổng dư nợ vay
-                            <br><i>(vd: Khách hàng có 3 lô đất, tổng giá trị định giá sơ bộ là: 15 tỷ đồng, tổng dư nợ của KH bao gồm cả khoản vay lần này sẽ là 5 tỷ đồng => Tổng giá trị định giá bằng x3 tổng dư nợ vay).</i>
-                        </li>
-                        <li>Là chủ doanh nghiệp, hộ kinh doanh lâu đời có doanh thu tốt, hiệu quả nhưng BCTC kê khai lợi nhuận thấp, không có sổ sách rõ ràng
-                            <br><i>(vd: các chủ sạp bán hàng ở chợ Bến Thành; Doanh nghiệp có doanh thu hơn 10 tỷ nhưng chỉ kê khai lợi nhuận vài chục triệu…)</i>
-                        </li>
-                        <li>Nhóm người trẻ có bố mẹ hậu thuẫn, đồng trả nợ
-                            <br><i>(vd: người trẻ có thu nhập 1 phần, một phần từ thu nhập của bố mẹ cam kết đồng trả nợ, ủy quyền cho thuê tài sản…)</i>
-                        </li>
-                        <li>Nhóm KH vay dưới 50% giá trị TSBĐ và có phương án trả nợ phù hợp
-                            <br><i>(vd: có nguồn tiền trả nợ từ bán BĐS [có thể bằng tài sản mua hoặc tài sản khác], hoặc góp vốn kinh doanh, thừa kế khác để trả nợ vay)</i>
-                        </li>
-                        <li>Có thu nhập rõ ràng nhưng chỉ đủ chứng minh khả năng trả gốc, lãi (không đáp ứng hệ số trả nợ DTI)
-                            <br><i>(vd: KH có thu nhập hàng tháng là 60.000.00 VNĐ, tổng số tiền trả nợ hàng tháng là 50.000.000 VNĐ, với hệ số trả nợ 70% => thu nhập cần chứng minh tối thiểu: 71.428.571 VNĐ, KH không đáp ứng được DTI nhưng có khả năng trả nợ và tiêu dùng cá nhân từ nguồn khác)</i>
-                        </li>
-                    </ul>
-                </li>
-            </ol>
-        </div>
+        <h1 class="main-title">NHÓM KHÁCH HÀNG CÓ TIỀM LỰC TÀI CHÍNH KHÁC</h1>
+        <ol>
+            <li>
+                <b>Nhóm khách hàng có địa vị, tri thức, công việc ổn định trong xã hội:</b>
+                <ul>
+                    <li>Cán bộ, công, viên chức công tác tại các cơ quan Đảng, nhà nước 
+                        <br><i>(vd: Thẩm phán, kiểm sát viên, công an, quân đội, các bộ, sở, ban, ngành…)</i>
+                    </li>
+                    <li>Người giữ chức vụ tại các công ty có vốn nhà nước, công ty uy tín 
+                        <br><i>(vd: Cấp lãnh đạo tại các Công ty thuộc Tổng Công ty Tân Cảng, Điện lực, Viễn thông,…)</i>
+                    </li>
+                    <li>Người có địa vị, học thức cao trong xã hội: Bác sĩ, Giáo sư, Tiến sĩ giảng dạy tại các trường đại học uy tín.
+                        <br><i>(vd: Bác sĩ Bệnh viện Từ Dzũ, BV Quân y 108, Giảng viên tại các trường thuộc ĐHQG, ĐH Ngoại thương, ĐH Kinh tế…)</i>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <b>Nhóm khách hàng có thu nhập trả nợ khác:</b>
+                <ul>
+                    <li>Có nhiều tài sản tích luỹ, và tổng giá trị tài sản tối thiểu bằng: x3 tổng dư nợ vay
+                        <br><i>(vd: Khách hàng có 3 lô đất, tổng giá trị định giá sơ bộ là: 15 tỷ đồng, tổng dư nợ của KH bao gồm cả khoản vay lần này sẽ là 5 tỷ đồng => Tổng giá trị định giá bằng x3 tổng dư nợ vay).</i>
+                    </li>
+                    <li>Là chủ doanh nghiệp, hộ kinh doanh lâu đời có doanh thu tốt, hiệu quả nhưng BCTC kê khai lợi nhuận thấp, không có sổ sách rõ ràng
+                        <br><i>(vd: các chủ sạp bán hàng ở chợ Bến Thành; Doanh nghiệp có doanh thu hơn 10 tỷ nhưng chỉ kê khai lợi nhuận vài chục triệu…)</i>
+                    </li>
+                    <li>Nhóm người trẻ có bố mẹ hậu thuẫn, đồng trả nợ
+                        <br><i>(vd: người trẻ có thu nhập 1 phần, một phần từ thu nhập của bố mẹ cam kết đồng trả nợ, ủy quyền cho thuê tài sản…)</i>
+                    </li>
+                    <li>Nhóm KH vay dưới 50% giá trị TSBĐ và có phương án trả nợ phù hợp
+                        <br><i>(vd: có nguồn tiền trả nợ từ bán BĐS [có thể bằng tài sản mua hoặc tài sản khác], hoặc góp vốn kinh doanh, thừa kế khác để trả nợ vay)</i>
+                    </li>
+                    <li>Có thu nhập rõ ràng nhưng chỉ đủ chứng minh khả năng trả gốc, lãi (không đáp ứng hệ số trả nợ DTI)
+                        <br><i>(vd: KH có thu nhập hàng tháng là 60.000.00 VNĐ, tổng số tiền trả nợ hàng tháng là 50.000.000 VNĐ, với hệ số trả nợ 70% => thu nhập cần chứng minh tối thiểu: 71.428.571 VNĐ, KH không đáp ứng được DTI nhưng có khả năng trả nợ và tiêu dùng cá nhân từ nguồn khác)</i>
+                    </li>
+                </ul>
+            </li>
+        </ol>
     </div>
-
-    <script>
-        function downloadPDF() {
-            const element = document.querySelector('.content-box');
-            const opt = {
-                margin: 1,
-                filename: 'nhom-khach-hang.pdf',
-                image: { type: 'jpeg', quality: 0.98 },
-                html2canvas: { scale: 2 },
-                jsPDF: { unit: 'in', format: 'letter', orientation: 'portrait' }
-            };
-
-            html2pdf().set(opt).from(element).save();
-        }
-    </script>
 </body>
 </html> 
