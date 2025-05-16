@@ -588,37 +588,26 @@
         loanTermInput.addEventListener('input', checkPackageTerm);
 
         function downloadCSV() {
-            // Tạo nội dung CSV với BOM để Excel nhận diện UTF-8
-            let csvContent = "\uFEFF"; // Thêm BOM
-            
-            // Thêm header
-            csvContent += "Kỳ trả nợ,Số tiền gốc phải trả,Số tiền lãi phải trả,Tổng số tiền phải trả\n";
-            
-            // Lấy dữ liệu từ bảng
+            let csvContent = "\uFEFF"; // BOM cho UTF-8
+
+            // Lấy header động từ bảng
+            const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
+            const headers = Array.from(headerCells).map(cell => `"${cell.textContent.trim()}"`);
+            csvContent += headers.join(',') + '\n';
+
+            // Lấy dữ liệu từng dòng
             const rows = document.querySelectorAll('#scheduleTable tbody tr');
             rows.forEach(row => {
                 const cells = row.querySelectorAll('td');
-                const rowData = Array.from(cells).map(cell => {
-                    // Xử lý định dạng số tiền
-                    let value = cell.textContent.trim();
-                    if (value.includes('.')) {
-                        value = value.replace(/\./g, ''); // Xóa dấu chấm ngăn cách hàng nghìn
-                    }
-                    // Thêm dấu ngoặc kép để tránh vấn đề với dấu phẩy trong số
-                    return `"${value}"`;
-                });
+                const rowData = Array.from(cells).map(cell => `"${cell.textContent.trim()}"`);
                 csvContent += rowData.join(',') + '\n';
             });
 
-            // Tạo blob với encoding UTF-8
+            // Tạo file và tải về
             const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
-            
-            // Tạo link download
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = 'lich_tra_no.csv';
-            
-            // Trigger download
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
