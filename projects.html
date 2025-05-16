@@ -199,5 +199,33 @@
             </div>
         </div>
     </div>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const searchInput = document.getElementById('searchInput');
+        const table = document.getElementById('projectsTable');
+        const rows = table.querySelectorAll('tbody tr');
+
+        searchInput.addEventListener('input', function() {
+            const keyword = this.value.trim().toLowerCase();
+            rows.forEach(row => {
+                const projectCell = row.cells[1];
+                const text = projectCell.textContent;
+                if (!keyword || text.toLowerCase().includes(keyword)) {
+                    row.style.display = '';
+                    // Highlight phần khớp
+                    if (keyword) {
+                        const regex = new RegExp(`(${keyword})`, 'gi');
+                        projectCell.innerHTML = text.replace(regex, '<span style="background:yellow;">$1</span>');
+                    } else {
+                        projectCell.innerHTML = text;
+                    }
+                } else {
+                    row.style.display = 'none';
+                    projectCell.innerHTML = text;
+                }
+            });
+        });
+    });
+    </script>
 </body>
 </html> 
