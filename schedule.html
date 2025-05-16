@@ -193,6 +193,13 @@
             </form>
         </div>
 
+        <!-- Nút tải file -->
+        <div class="d-flex justify-content-end mb-2" id="downloadScheduleBtn" style="display:none;">
+            <button type="button" class="btn btn-success btn-lg" onclick="downloadSchedule()">
+                <i class="bi bi-download"></i> Tải file
+            </button>
+        </div>
+
         <!-- Bảng lịch trả nợ -->
         <div class="step-container" id="scheduleTable" style="display: none;">
             <div class="step-header">
@@ -216,19 +223,6 @@
                     </tbody>
                 </table>
             </div>
-        </div>
-
-        <!-- Nút điều hướng -->
-        <div class="d-flex justify-content-between mb-4">
-            <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='index.html'">
-                <i class="bi bi-arrow-left"></i> Quay lại
-            </button>
-            <button type="button" class="btn btn-warning btn-lg" onclick="resetForm()">
-                <i class="bi bi-arrow-counterclockwise"></i> Bắt đầu lại
-            </button>
-            <button type="button" class="btn btn-success btn-lg" onclick="downloadSchedule()">
-                <i class="bi bi-download"></i> Tải file
-            </button>
         </div>
     </div>
 
@@ -410,6 +404,7 @@
                 }
 
                 document.getElementById('scheduleTable').style.display = 'block';
+                document.getElementById('downloadScheduleBtn').style.display = 'flex';
             }
         }
 
