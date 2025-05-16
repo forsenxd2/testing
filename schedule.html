@@ -192,7 +192,7 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
-                    <button type="button" class="btn btn-success" onclick="downloadSchedule()">
+                    <button type="button" class="btn btn-success" onclick="downloadCSV()">
                         <i class="bi bi-download"></i> Tải file
                     </button>
                 </div>
@@ -587,23 +587,38 @@
         gracePeriodSelect.addEventListener('change', checkPackageTerm);
         loanTermInput.addEventListener('input', checkPackageTerm);
 
-        function downloadSchedule() {
-            const table = document.querySelector('#scheduleBody').parentElement.parentElement;
-            let csv = '';
-            // Lấy header
-            const headers = table.querySelectorAll('thead th');
-            csv += Array.from(headers).map(th => '"' + th.innerText.trim() + '"').join(',') + '\n';
-            // Lấy từng dòng dữ liệu
-            const rows = table.querySelectorAll('tbody tr');
+        function downloadCSV() {
+            // Tạo nội dung CSV với BOM để Excel nhận diện UTF-8
+            let csvContent = "\uFEFF"; // Thêm BOM
+            
+            // Thêm header
+            csvContent += "Kỳ trả nợ,Số tiền gốc phải trả,Số tiền lãi phải trả,Tổng số tiền phải trả\n";
+            
+            // Lấy dữ liệu từ bảng
+            const rows = document.querySelectorAll('#scheduleTable tbody tr');
             rows.forEach(row => {
-                const cols = row.querySelectorAll('td');
-                csv += Array.from(cols).map(td => '"' + td.innerText.trim() + '"').join(',') + '\n';
+                const cells = row.querySelectorAll('td');
+                const rowData = Array.from(cells).map(cell => {
+                    // Xử lý định dạng số tiền
+                    let value = cell.textContent.trim();
+                    if (value.includes('.')) {
+                        value = value.replace(/\./g, ''); // Xóa dấu chấm ngăn cách hàng nghìn
+                    }
+                    // Thêm dấu ngoặc kép để tránh vấn đề với dấu phẩy trong số
+                    return `"${value}"`;
+                });
+                csvContent += rowData.join(',') + '\n';
             });
-            // Tạo file và tải về
-            const blob = new Blob([csv], { type: 'text/csv;charset=utf-8;' });
+
+            // Tạo blob với encoding UTF-8
+            const blob = new Blob([csvContent], { type: 'text/csv;charset=utf-8' });
+            
+            // Tạo link download
             const link = document.createElement('a');
             link.href = URL.createObjectURL(blob);
             link.download = 'lich_tra_no.csv';
+            
+            // Trigger download
             document.body.appendChild(link);
             link.click();
             document.body.removeChild(link);
