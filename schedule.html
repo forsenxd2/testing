@@ -233,6 +233,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://unpkg.com/@jsreport/jsreport-pdf-font-dejavu@1.0.0/dist/jsreport-pdf-font-dejavu.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
@@ -716,7 +717,7 @@
             let y = 12;
             // Tiêu đề lớn
             doc.setFontSize(18);
-            doc.setFont('times', 'bold');
+            doc.setFont('DejaVu', 'bold');
             doc.text('BẢNG LÃI SUẤT TẠM TÍNH', 148, y, { align: 'center' });
             y += 8;
             // Lấy thông tin tóm tắt
@@ -747,7 +748,7 @@
             if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
             // In tóm tắt
             doc.setFontSize(12);
-            doc.setFont('times', 'normal');
+            doc.setFont('DejaVu', 'normal');
             summary.forEach(row => {
                 doc.text(`${row[0]}:`, 18, y);
                 doc.text(`${row[1]}`, 70, y);
@@ -772,7 +773,7 @@
                 theme: 'grid',
                 headStyles: { fillColor: [34, 139, 34], textColor: 255, fontStyle: 'bold', halign: 'center', fontSize: 11 },
                 bodyStyles: { fontSize: 10, halign: 'right', valign: 'middle' },
-                styles: { cellPadding: 2, overflow: 'linebreak', minCellHeight: 7 },
+                styles: { cellPadding: 2, overflow: 'linebreak', minCellHeight: 7, font: 'DejaVu' },
                 columnStyles: {
                     0: { halign: 'center' }, // Kỳ
                     1: { halign: 'center' }, // Ngày thanh toán
