@@ -102,6 +102,48 @@
             display: flex;
             align-items: center;
         }
+        @media print {
+            body * {
+                visibility: hidden !important;
+            }
+            #scheduleTable, #scheduleTable * {
+                visibility: visible !important;
+            }
+            #scheduleTable {
+                position: absolute;
+                left: 0;
+                top: 0;
+                width: 100vw;
+                margin: 0;
+                padding: 0;
+                background: #fff !important;
+            }
+            .step-container, .step-header, .table-responsive, table {
+                background: #fff !important;
+                color: #000 !important;
+            }
+            .table th, .table td {
+                background: #fff !important;
+                color: #000 !important;
+                border: 1px solid #333 !important;
+            }
+            .container, .step-container {
+                box-shadow: none !important;
+            }
+            .d-flex, .btn, .menu-btn, .input-million-group, .input-million-suffix, .input-million, .form-label, .form-control, .form-select {
+                box-shadow: none !important;
+            }
+            /* Ẩn các nút, chỉ in bảng */
+            .btn, .menu-btn, .input-million-group, .input-million-suffix, .input-million, .form-label, .form-control, .form-select, #inputForm, .d-flex.flex-column, .d-flex.gap-2, .d-flex.justify-content-between {
+                display: none !important;
+            }
+            h1, .step-header h3 {
+                text-align: center !important;
+                color: #228B22 !important;
+                font-size: 2rem !important;
+                margin-bottom: 1rem !important;
+            }
+        }
     </style>
 </head>
 <body>
@@ -194,6 +236,9 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
                     <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-secondary" onclick="printSchedule()">
+                            <i class="bi bi-printer"></i> In ra PDF
+                        </button>
                         <button type="button" class="btn btn-danger" onclick="downloadPDF()">
                             <i class="bi bi-file-earmark-pdf"></i> Tải file PDF
                         </button>
@@ -788,6 +833,10 @@
                 tableWidth: 'auto',
             });
             doc.save('lich_tra_no.pdf');
+        }
+
+        function printSchedule() {
+            window.print();
         }
     </script>
 </body>
