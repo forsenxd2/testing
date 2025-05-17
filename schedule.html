@@ -193,9 +193,14 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
-                    <button type="button" class="btn btn-success" onclick="downloadExcel()">
-                        <i class="bi bi-download"></i> Tải file
-                    </button>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-danger" onclick="downloadPDF()">
+                            <i class="bi bi-file-earmark-pdf"></i> Tải file PDF
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="downloadExcel()">
+                            <i class="bi bi-download"></i> Tải file Excel
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -229,6 +234,8 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
     <script>
         // Hàm định dạng số với dấu chấm ngăn cách
         function formatNumber(number) {
@@ -702,10 +709,85 @@
             XLSX.utils.book_append_sheet(wb, ws, 'LichTraNo');
             XLSX.writeFile(wb, 'lich_tra_no.xlsx');
         }
-        // Thay đổi nút tải file để gọi downloadExcel
-        document.querySelectorAll('button.btn-success').forEach(btn => {
-            btn.onclick = downloadExcel;
-        });
+
+        function downloadPDF() {
+            const { jsPDF } = window.jspdf;
+            const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
+            let y = 12;
+            // Tiêu đề lớn
+            doc.setFontSize(18);
+            doc.setFont('helvetica', 'bold');
+            doc.text('BẢNG LÃI SUẤT TẠM TÍNH', 148, y, { align: 'center' });
+            y += 8;
+            // Lấy thông tin tóm tắt
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
+            const term = parseInt(document.getElementById('loanTerm').value);
+            const fixedPackage = document.getElementById('fixedPackage');
+            const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
+            const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            let graceMonths = 0;
+            let graceText = '';
+            if (fixedPackage.value === 'young_1' || fixedPackage.value === 'young_2') {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value) || 60;
+                graceText = graceMonths + ' tháng';
+            }
+            const today = new Date();
+            const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
+            // Tóm tắt
+            const summary = [
+                ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
+                ['THỜI GIAN VAY', term ? term : ''],
+                ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
+                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value + ' tháng'))],
+                ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
+                ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
+                ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
+            ];
+            if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
+            // In tóm tắt
+            doc.setFontSize(12);
+            doc.setFont('helvetica', 'normal');
+            summary.forEach(row => {
+                doc.text(`${row[0]}:`, 18, y);
+                doc.text(`${row[1]}`, 70, y);
+                y += 7;
+            });
+            y += 2;
+            // Lấy bảng lịch trả nợ
+            const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
+            const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
+            const rows = document.querySelectorAll('#scheduleTable tbody tr');
+            const data = [];
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowData = Array.from(cells).map(cell => cell.textContent.trim());
+                data.push(rowData);
+            });
+            // In bảng chi tiết
+            doc.autoTable({
+                head: [headers],
+                body: data,
+                startY: y,
+                theme: 'grid',
+                headStyles: { fillColor: [34, 139, 34], textColor: 255, fontStyle: 'bold', halign: 'center', fontSize: 11 },
+                bodyStyles: { fontSize: 10, halign: 'right', valign: 'middle' },
+                styles: { cellPadding: 2, overflow: 'linebreak', minCellHeight: 7 },
+                columnStyles: {
+                    0: { halign: 'center' }, // Kỳ
+                    1: { halign: 'center' }, // Ngày thanh toán
+                    2: { halign: 'right' },
+                    3: { halign: 'right' },
+                    4: { halign: 'right' },
+                    5: { halign: 'center' },
+                    6: { halign: 'right' },
+                    7: { halign: 'right' },
+                },
+                margin: { left: 12, right: 12 },
+                tableWidth: 'auto',
+            });
+            doc.save('lich_tra_no.pdf');
+        }
     </script>
 </body>
 </html> 
