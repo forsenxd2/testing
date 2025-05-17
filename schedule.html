@@ -301,6 +301,18 @@
             return d;
         }
 
+        // Hàm kiểm tra và dời ngày nếu rơi vào thứ 7/CN
+        function adjustToNextMonday(date) {
+            const d = new Date(date);
+            const day = d.getDay();
+            if (day === 6) { // Thứ 7
+                d.setDate(d.getDate() + 2);
+            } else if (day === 0) { // Chủ nhật
+                d.setDate(d.getDate() + 1);
+            }
+            return d;
+        }
+
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
@@ -387,7 +399,8 @@
                     if (closingPrincipal < 0) closingPrincipal = 0;
                     // Ngày thanh toán: ngày 5 mỗi tháng, nếu rơi vào ngày nghỉ lễ thì chuyển sang ngày làm việc gần nhất sau đó
                     const paymentDate = new Date(today.getFullYear(), today.getMonth() + i, 5);
-                    const workingDate = getNextWorkingDay(paymentDate);
+                    let workingDate = getNextWorkingDay(paymentDate);
+                    workingDate = adjustToNextMonday(workingDate);
                     const row = document.createElement('tr');
                     row.innerHTML = `
                         <td>${i}</td>
