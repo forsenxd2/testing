@@ -768,6 +768,13 @@
             XLSX.writeFile(wb, 'lich_tra_no.xlsx');
         }
 
+        // Hàm bỏ dấu tiếng Việt
+        function removeVietnameseTones(str) {
+            return str.normalize('NFD')
+                .replace(/\p{Diacritic}/gu, '')
+                .replace(/đ/g, 'd').replace(/Đ/g, 'D');
+        }
+
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
@@ -775,7 +782,7 @@
             // Tiêu đề lớn
             doc.setFontSize(18);
             doc.setFont('DejaVu', 'bold');
-            doc.text('BẢNG LÃI SUẤT TẠM TÍNH', 148, y, { align: 'center' });
+            doc.text(removeVietnameseTones('BẢNG LÃI SUẤT TẠM TÍNH'), 148, y, { align: 'center' });
             y += 8;
             // Lấy thông tin tóm tắt
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
@@ -788,21 +795,21 @@
             let graceText = '';
             if (fixedPackage.value === 'young_1' || fixedPackage.value === 'young_2') {
                 graceMonths = parseInt(document.getElementById('gracePeriod').value) || 60;
-                graceText = graceMonths + ' tháng';
+                graceText = graceMonths + ' thang';
             }
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
             // Tóm tắt
             const summary = [
-                ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
-                ['THỜI GIAN VAY', term ? term : ''],
-                ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
-                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value + ' tháng'))],
-                ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
-                ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
-                ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
+                [removeVietnameseTones('SỐ TIỀN VAY'), loanAmount ? formatNumber(loanAmount) : ''],
+                [removeVietnameseTones('THỜI GIAN VAY'), term ? term : ''],
+                [removeVietnameseTones('LÃI SUẤT ƯU ĐÃI'), fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
+                [removeVietnameseTones('Thời gian ưu đãi'), fixedPackage.value === 'young_2' ? '12 thang (5.2%), 24 thang (6.6%)' : (fixedPackage.value === 'young_1' ? '36 thang (5.5%)' : (fixedPackage.value + ' thang'))],
+                [removeVietnameseTones('Lãi suất thả nổi'), afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
+                [removeVietnameseTones('Ngày giải ngân dự kiến'), today.toLocaleDateString('vi-VN')],
+                [removeVietnameseTones('Ngày trả nợ đầu tiên'), firstPayment.toLocaleDateString('vi-VN')],
             ];
-            if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
+            if (graceText) summary.push([removeVietnameseTones('Người nhận ưu đãi ân hạn gốc'), graceText]);
             // In tóm tắt
             doc.setFontSize(12);
             doc.setFont('DejaVu', 'normal');
@@ -814,7 +821,8 @@
             y += 2;
             // Lấy bảng lịch trả nợ
             const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
-            const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
+            // Chuyển header sang không dấu
+            const headers = Array.from(headerCells).map(cell => removeVietnameseTones(cell.textContent.trim()));
             const rows = document.querySelectorAll('#scheduleTable tbody tr');
             const data = [];
             rows.forEach(row => {
@@ -832,8 +840,8 @@
                 bodyStyles: { fontSize: 10, halign: 'right', valign: 'middle' },
                 styles: { cellPadding: 2, overflow: 'linebreak', minCellHeight: 7, font: 'DejaVu' },
                 columnStyles: {
-                    0: { halign: 'center' }, // Kỳ
-                    1: { halign: 'center' }, // Ngày thanh toán
+                    0: { halign: 'center' }, // Ky
+                    1: { halign: 'center' }, // Ngay thanh toan
                     2: { halign: 'right' },
                     3: { halign: 'right' },
                     4: { halign: 'right' },
