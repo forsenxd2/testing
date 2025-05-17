@@ -605,6 +605,8 @@
             // Ngày trả nợ đầu tiên
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
+            // 0. Thêm dòng tiêu đề lớn
+            const titleRow = ['BẢNG LÃI SUẤT TẠM TÍNH'];
             // 2. Tạo dữ liệu phần tóm tắt
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
@@ -628,11 +630,21 @@
             });
             // 4. Gộp dữ liệu vào 1 sheet
             let ws_data = [];
+            ws_data.push(titleRow);
+            ws_data.push([]); // dòng trống
             summary.forEach(row => ws_data.push(row));
             ws_data.push([]); // dòng trống
             scheduleData.forEach(row => ws_data.push(row));
             // 5. Tạo workbook và xuất file
             const ws = XLSX.utils.aoa_to_sheet(ws_data);
+            // Merge ô cho dòng tiêu đề lớn
+            ws['!merges'] = ws['!merges'] || [];
+            ws['!merges'].push({s: {r:0, c:0}, e: {r:0, c:headers.length-1}});
+            // Định dạng font đậm và căn giữa cho dòng đầu
+            ws['A1'].s = {
+                font: { bold: true, sz: 16 },
+                alignment: { horizontal: 'center', vertical: 'center' }
+            };
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, 'LichTraNo');
             XLSX.writeFile(wb, 'lich_tra_no.xlsx');
