@@ -291,7 +291,6 @@
     <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf-autotable/3.7.0/jspdf.plugin.autotable.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
     <script>
         // Hàm định dạng số với dấu chấm ngăn cách
         function formatNumber(number) {
@@ -776,30 +775,81 @@
         function downloadPDF() {
             const { jsPDF } = window.jspdf;
             const doc = new jsPDF({ orientation: 'landscape', unit: 'mm', format: 'a4' });
-            const scheduleTable = document.getElementById('scheduleTable');
-            // Hiện bảng nếu đang ẩn
-            const prevDisplay = scheduleTable.style.display;
-            scheduleTable.style.display = 'block';
-            html2canvas(scheduleTable, { scale: 2 }).then(canvas => {
-                const imgData = canvas.toDataURL('image/png');
-                const pageWidth = doc.internal.pageSize.getWidth();
-                const pageHeight = doc.internal.pageSize.getHeight();
-                // Tính toán tỉ lệ để ảnh vừa trang
-                const imgProps = {
-                    width: canvas.width,
-                    height: canvas.height
-                };
-                let pdfWidth = pageWidth - 20;
-                let pdfHeight = (imgProps.height * pdfWidth) / imgProps.width;
-                if (pdfHeight > pageHeight - 20) {
-                    pdfHeight = pageHeight - 20;
-                    pdfWidth = (imgProps.width * pdfHeight) / imgProps.height;
-                }
-                doc.addImage(imgData, 'PNG', 10, 10, pdfWidth, pdfHeight);
-                doc.save('lich_tra_no.pdf');
-                // Khôi phục trạng thái hiển thị bảng
-                scheduleTable.style.display = prevDisplay;
+            let y = 12;
+            // Tiêu đề lớn
+            doc.setFontSize(18);
+            doc.setFont('DejaVu', 'bold');
+            doc.text(removeVietnameseTones('BẢNG LÃI SUẤT TẠM TÍNH'), 148, y, { align: 'center' });
+            y += 8;
+            // Lấy thông tin tóm tắt
+            const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
+            const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
+            const term = parseInt(document.getElementById('loanTerm').value);
+            const fixedPackage = document.getElementById('fixedPackage');
+            const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
+            const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            let graceMonths = 0;
+            let graceText = '';
+            if (fixedPackage.value === 'young_1' || fixedPackage.value === 'young_2') {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value) || 60;
+                graceText = graceMonths + ' thang';
+            }
+            const today = new Date();
+            const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
+            // Tóm tắt
+            const summary = [
+                [removeVietnameseTones('SỐ TIỀN VAY'), loanAmount ? formatNumber(loanAmount) : ''],
+                [removeVietnameseTones('THỜI GIAN VAY'), term ? term : ''],
+                [removeVietnameseTones('LÃI SUẤT ƯU ĐÃI'), fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
+                [removeVietnameseTones('Thời gian ưu đãi'), fixedPackage.value === 'young_2' ? '12 thang (5.2%), 24 thang (6.6%)' : (fixedPackage.value === 'young_1' ? '36 thang (5.5%)' : (fixedPackage.value + ' thang'))],
+                [removeVietnameseTones('Lãi suất thả nổi'), afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
+                [removeVietnameseTones('Ngày giải ngân dự kiến'), today.toLocaleDateString('vi-VN')],
+                [removeVietnameseTones('Ngày trả nợ đầu tiên'), firstPayment.toLocaleDateString('vi-VN')],
+            ];
+            if (graceText) summary.push([removeVietnameseTones('Người nhận ưu đãi ân hạn gốc'), graceText]);
+            // In tóm tắt
+            doc.setFontSize(12);
+            doc.setFont('DejaVu', 'normal');
+            summary.forEach(row => {
+                doc.text(`${row[0]}:`, 18, y);
+                doc.text(`${row[1]}`, 70, y);
+                y += 7;
             });
+            y += 2;
+            // Lấy bảng lịch trả nợ
+            const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
+            // Chuyển header sang không dấu
+            const headers = Array.from(headerCells).map(cell => removeVietnameseTones(cell.textContent.trim()));
+            const rows = document.querySelectorAll('#scheduleTable tbody tr');
+            const data = [];
+            rows.forEach(row => {
+                const cells = row.querySelectorAll('td');
+                const rowData = Array.from(cells).map(cell => cell.textContent.trim());
+                data.push(rowData);
+            });
+            // In bảng chi tiết
+            doc.autoTable({
+                head: [headers],
+                body: data,
+                startY: y,
+                theme: 'grid',
+                headStyles: { fillColor: [34, 139, 34], textColor: 255, fontStyle: 'bold', halign: 'center', fontSize: 11 },
+                bodyStyles: { fontSize: 10, halign: 'right', valign: 'middle' },
+                styles: { cellPadding: 2, overflow: 'linebreak', minCellHeight: 7, font: 'DejaVu' },
+                columnStyles: {
+                    0: { halign: 'center' }, // Ky
+                    1: { halign: 'center' }, // Ngay thanh toan
+                    2: { halign: 'right' },
+                    3: { halign: 'right' },
+                    4: { halign: 'right' },
+                    5: { halign: 'center' },
+                    6: { halign: 'right' },
+                    7: { halign: 'right' },
+                },
+                margin: { left: 12, right: 12 },
+                tableWidth: 'auto',
+            });
+            doc.save('lich_tra_no.pdf');
         }
     </script>
 </body>
