@@ -716,7 +716,7 @@
             let y = 12;
             // Tiêu đề lớn
             doc.setFontSize(18);
-            doc.setFont('helvetica', 'bold');
+            doc.setFont('times', 'bold');
             doc.text('BẢNG LÃI SUẤT TẠM TÍNH', 148, y, { align: 'center' });
             y += 8;
             // Lấy thông tin tóm tắt
@@ -747,7 +747,7 @@
             if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
             // In tóm tắt
             doc.setFontSize(12);
-            doc.setFont('helvetica', 'normal');
+            doc.setFont('times', 'normal');
             summary.forEach(row => {
                 doc.text(`${row[0]}:`, 18, y);
                 doc.text(`${row[1]}`, 70, y);
