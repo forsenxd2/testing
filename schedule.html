@@ -640,11 +640,50 @@
             // Merge ô cho dòng tiêu đề lớn
             ws['!merges'] = ws['!merges'] || [];
             ws['!merges'].push({s: {r:0, c:0}, e: {r:0, c:headers.length-1}});
-            // Định dạng font đậm và căn giữa cho dòng đầu
+            // Định dạng font đậm, lớn, căn giữa, wrap text cho dòng đầu
             ws['A1'].s = {
                 font: { bold: true, sz: 16 },
-                alignment: { horizontal: 'center', vertical: 'center' }
+                alignment: { horizontal: 'center', vertical: 'center', wrapText: true }
             };
+            // Định dạng phần tóm tắt: căn trái, wrap text
+            for (let i = 2; i < 2 + summary.length; i++) {
+                const cellA = ws[`A${i+1}`];
+                const cellB = ws[`B${i+1}`];
+                if (cellA) cellA.s = { font: { bold: true }, alignment: { horizontal: 'left', wrapText: true } };
+                if (cellB) cellB.s = { alignment: { horizontal: 'left', wrapText: true } };
+            }
+            // Định dạng header bảng chi tiết: đậm, căn giữa, wrap text
+            const headerRowIdx = 2 + summary.length + 2;
+            for (let c = 0; c < headers.length; c++) {
+                const col = String.fromCharCode(65 + c);
+                const cell = ws[`${col}${headerRowIdx+1}`];
+                if (cell) cell.s = { font: { bold: true }, alignment: { horizontal: 'center', wrapText: true } };
+            }
+            // Định dạng dữ liệu bảng chi tiết
+            for (let r = headerRowIdx + 1; r < ws_data.length; r++) {
+                for (let c = 0; c < headers.length; c++) {
+                    const col = String.fromCharCode(65 + c);
+                    const cell = ws[`${col}${r+1}`];
+                    if (cell) {
+                        // Cột số: căn phải, wrap text; Cột ngày/kỳ: căn giữa
+                        if (c === 0 || c === 1) {
+                            cell.s = { alignment: { horizontal: 'center', wrapText: true } };
+                        } else {
+                            cell.s = { alignment: { horizontal: 'right', wrapText: true } };
+                        }
+                    }
+                }
+            }
+            // Set width cho các cột hợp lý hơn
+            ws['!cols'] = headers.map((h, idx) => {
+                if (idx === 0) return { wch: 5 };
+                if (idx === 1) return { wch: 13 };
+                if (h.includes('Dư nợ')) return { wch: 18 };
+                if (h.includes('Gốc')) return { wch: 15 };
+                if (h.includes('Lãi')) return { wch: 15 };
+                if (h.includes('Tổng')) return { wch: 22 };
+                return { wch: 12 };
+            });
             const wb = XLSX.utils.book_new();
             XLSX.utils.book_append_sheet(wb, ws, 'LichTraNo');
             XLSX.writeFile(wb, 'lich_tra_no.xlsx');
