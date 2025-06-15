@@ -466,7 +466,7 @@
                     const interestPayment = openingPrincipal * currentRate;
                     // Tính gốc trả hàng tháng
                     let monthlyPrincipal = 0;
-                    if (i > graceMonths) {
+                    if (graceMonths === 0 || i > graceMonths) {
                         monthlyPrincipal = loanAmount / (term - graceMonths);
                     }
                     // Dư nợ cuối kỳ
