@@ -863,6 +863,20 @@
             };
             pdfMake.createPdf(docDefinition).download('lich_tra_no.pdf');
         }
+
+        // Đảm bảo luôn cập nhật bảng trước khi tải file
+        document.querySelector('button.btn-danger[onclick="downloadPDF()"]')?.addEventListener('click', function(e) {
+            calculateSchedule();
+            setTimeout(downloadPDF, 0);
+            e.stopImmediatePropagation();
+            return false;
+        });
+        document.querySelector('button.btn-success[onclick="downloadExcel()"]')?.addEventListener('click', function(e) {
+            calculateSchedule();
+            setTimeout(downloadExcel, 0);
+            e.stopImmediatePropagation();
+            return false;
+        });
     </script>
 </body>
 </html> 
