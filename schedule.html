@@ -228,6 +228,7 @@
                     <div id="gracePeriodGroup" class="mt-3" style="display:none;">
                         <label for="gracePeriod" class="form-label">Chọn thời gian ân hạn gốc (tháng)</label>
                         <select class="form-select" id="gracePeriod">
+                            <option value="0">0 tháng (không ân hạn)</option>
                             <option value="12">12 tháng (1 năm)</option>
                             <option value="24">24 tháng (2 năm)</option>
                             <option value="36">36 tháng (3 năm)</option>
@@ -441,15 +442,25 @@
                 for (let i = 1; i <= term; i++) {
                     // Xác định lãi suất áp dụng cho kỳ hiện tại
                     let currentRate, currentRateYear;
-                    if (i <= fixedMonths) {
-                        currentRate = monthlyRate;
-                        currentRateYear = fixedRate;
-                    } else if (secondFixedRate && i <= fixedMonths + secondFixedMonths) {
-                        currentRate = secondMonthlyRate;
-                        currentRateYear = secondFixedRate;
+                    if (secondFixedRate) {
+                        if (i <= fixedMonths) {
+                            currentRate = monthlyRate;
+                            currentRateYear = fixedRate;
+                        } else if (i <= fixedMonths + secondFixedMonths) {
+                            currentRate = secondMonthlyRate;
+                            currentRateYear = secondFixedRate;
+                        } else {
+                            currentRate = afterMonthlyRate;
+                            currentRateYear = afterFixedRate;
+                        }
                     } else {
-                        currentRate = afterMonthlyRate;
-                        currentRateYear = afterFixedRate;
+                        if (i <= fixedMonths) {
+                            currentRate = monthlyRate;
+                            currentRateYear = fixedRate;
+                        } else {
+                            currentRate = afterMonthlyRate;
+                            currentRateYear = afterFixedRate;
+                        }
                     }
 
                     const interestPayment = openingPrincipal * currentRate;
