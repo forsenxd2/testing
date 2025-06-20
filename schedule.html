@@ -225,7 +225,7 @@
                         <option value="young_1">Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)</option>
                         <option value="young_2">Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - 12 tháng, 6.6% - 24 tháng, ân hạn gốc tối đa 5 năm)</option>
                     </select>
-                    <div id="gracePeriodGroup" class="mt-3" style="display:none;">
+                    <div id="gracePeriodGroup" class="mt-3">
                         <label for="gracePeriod" class="form-label">Chọn thời gian ân hạn gốc (tháng)</label>
                         <select class="form-select" id="gracePeriod">
                             <option value="0">0 tháng (không ân hạn)</option>
@@ -385,10 +385,8 @@
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
-            let graceMonths = 0;
-            if (fixedPackage === 'young_1' || fixedPackage === 'young_2') {
-                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-            }
+            // Lấy thời gian ân hạn cho tất cả các gói
+            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
 
             // Kiểm tra số tiền vay không được vượt quá giá trị tài sản
             if (assetValue > 0 && loanAmount > 0 && loanAmount > assetValue) {
@@ -688,12 +686,9 @@
             const fixedPackage = document.getElementById('fixedPackage');
             const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
-            let graceMonths = 0;
-            let graceText = '';
-            if (fixedPackage.value === 'young_1' || fixedPackage.value === 'young_2') {
-                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-                graceText = graceMonths + ' tháng';
-            }
+            // Lấy thời gian ân hạn cho tất cả các gói
+            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+            let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
             // Ngày trả nợ đầu tiên
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
@@ -709,7 +704,7 @@
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
-            if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
+            if (graceText) summary.push(['Thời gian ân hạn gốc', graceText]);
             // 3. Lấy dữ liệu bảng lịch trả nợ
             const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
             const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
@@ -789,12 +784,9 @@
             const fixedPackage = document.getElementById('fixedPackage');
             const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
             const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
-            let graceMonths = 0;
-            let graceText = '';
-            if (fixedPackage.value === 'young_1' || fixedPackage.value === 'young_2') {
-                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-                graceText = graceMonths + ' tháng';
-            }
+            // Lấy thời gian ân hạn cho tất cả các gói
+            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+            let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
             // Tóm tắt
@@ -807,7 +799,7 @@
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
-            if (graceText) summary.push(['Người nhận ưu đãi ân hạn gốc', graceText]);
+            if (graceText) summary.push(['Thời gian ân hạn gốc', graceText]);
             // Lấy bảng lịch trả nợ
             const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
             const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
