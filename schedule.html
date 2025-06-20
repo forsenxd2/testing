@@ -637,34 +637,34 @@
             const term = parseInt(loanTermInput.value) || 0;
             let valid = true;
             let errorMsg = '';
+            
+            // Hiển thị tùy chọn ân hạn cho tất cả các gói
+            gracePeriodGroup.style.display = '';
+            
             // Nếu thời hạn vay chưa nhập hoặc = 0 thì không báo lỗi gì cả
             if (!loanTermInput.value || term === 0) {
-                gracePeriodGroup.style.display = (fixedPackage === 'young_1' || fixedPackage === 'young_2') ? '' : 'none';
                 graceError.style.display = 'none';
                 packageError.textContent = '';
                 packageError.style.display = 'none';
                 return true;
             }
-            // Gói ân hạn
-            if (fixedPackage === 'young_1' || fixedPackage === 'young_2') {
-                gracePeriodGroup.style.display = '';
-                const graceMonths = parseInt(gracePeriodSelect.value, 10);
-                if (term > 0 && graceMonths > 0 && term < graceMonths) {
-                    graceError.style.display = '';
-                    valid = false;
-                } else {
-                    graceError.style.display = 'none';
-                }
+            
+            // Kiểm tra ân hạn cho tất cả các gói
+            const graceMonths = parseInt(gracePeriodSelect.value, 10);
+            if (term > 0 && graceMonths > 0 && term < graceMonths) {
+                graceError.style.display = '';
+                valid = false;
             } else {
-                gracePeriodGroup.style.display = 'none';
                 graceError.style.display = 'none';
-                // Các gói thường: kiểm tra thời hạn vay >= số tháng của gói
-                let minMonths = parseInt(fixedPackage);
-                if (!isNaN(minMonths) && term > 0 && term < minMonths) {
-                    errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
-                    valid = false;
-                }
             }
+            
+            // Kiểm tra thời hạn vay với số tháng của gói
+            let minMonths = parseInt(fixedPackage);
+            if (!isNaN(minMonths) && term > 0 && term < minMonths) {
+                errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
+                valid = false;
+            }
+            
             // Hiện hoặc ẩn lỗi cho gói thường
             if (errorMsg) {
                 packageError.textContent = errorMsg;
