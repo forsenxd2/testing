@@ -221,6 +221,7 @@
                         <option value="12">Cố định 12 tháng (6%/năm)</option>
                         <option value="18">Cố định 18 tháng (6.3%/năm)</option>
                         <option value="24">Cố định 24 tháng (6.5%/năm)</option>
+                        <option value="consumption">Vay tiêu dùng cố định 24 tháng (6.8%/năm)</option>
                         <option value="36">Cố định 36 tháng (8%/năm)</option>
                         <option value="young_1">Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)</option>
                         <option value="young_2">Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - 12 tháng, 6.6% - 24 tháng, ân hạn gốc tối đa 5 năm)</option>
@@ -413,6 +414,9 @@
                     fixedMonths = 18;
                 } else if (fixedPackage === '24') {
                     fixedRate = 6.5;
+                    fixedMonths = 24;
+                } else if (fixedPackage === 'consumption') {
+                    fixedRate = 6.8;
                     fixedMonths = 24;
                 } else if (fixedPackage === '36') {
                     fixedRate = 8.0;
@@ -658,6 +662,9 @@
             
             // Kiểm tra thời hạn vay với số tháng của gói
             let minMonths = parseInt(fixedPackage);
+            if (fixedPackage === 'consumption') {
+                minMonths = 24;
+            }
             if (!isNaN(minMonths) && term > 0 && term < minMonths) {
                 errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
                 valid = false;
@@ -699,7 +706,7 @@
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
-                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value + ' tháng'))],
+                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value === 'consumption' ? '24 tháng (6.8%)' : (fixedPackage.value + ' tháng')))],
                 ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
@@ -794,7 +801,7 @@
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
-                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value + ' tháng'))],
+                ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? '12 tháng (5.2%), 24 tháng (6.6%)' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value === 'consumption' ? '24 tháng (6.8%)' : (fixedPackage.value + ' tháng')))],
                 ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
