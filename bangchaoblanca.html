@@ -11,6 +11,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/file-saver/2.0.5/FileSaver.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
     <style>
         body { background: #f8f9fa; }
         .container { max-width: 600px; margin-top: 40px; }
@@ -60,6 +61,18 @@
         <div id="qrCodeContainer" class="mt-3 text-center"></div>
     </div>
 </div>
+<div id="pdfPreview" style="display:none;">
+    <h2 style="text-align:center;">BẢNG CHÀO BLANCA CITY</h2>
+    <table style="width:100%;border-collapse:collapse;">
+        <tr><td style="font-weight:bold;width:140px;">Chức vụ</td><td>:
+            <span id="pdfChucVu"></span></td></tr>
+        <tr><td style="font-weight:bold;">Tên cán bộ</td><td>:
+            <span id="pdfTenCanBo"></span></td></tr>
+        <tr><td style="font-weight:bold;">Số điện thoại</td><td>:
+            <span id="pdfSoDienThoai"></span></td></tr>
+    </table>
+</div>
+<button type="button" class="btn btn-danger mt-2" onclick="exportBangChaoPDF()">Tải file bảng chào (PDF)</button>
 <script>
 function updatePreview() {
     var chucVu = document.getElementById('chucVu').value.trim();
@@ -181,6 +194,26 @@ function generateAndDownloadDocx() {
         .catch(error => {
             alert('Lỗi khi tạo file: ' + error.message);
         });
+}
+
+function fillPdfPreview() {
+    document.getElementById('pdfChucVu').textContent = document.getElementById('chucVu').value;
+    document.getElementById('pdfTenCanBo').textContent = document.getElementById('tenCanBo').value;
+    document.getElementById('pdfSoDienThoai').textContent = document.getElementById('soDienThoai').value;
+}
+
+function exportBangChaoPDF() {
+    fillPdfPreview();
+    var element = document.getElementById('pdfPreview');
+    element.style.display = 'block';
+    html2pdf().set({
+        margin: 15,
+        filename: 'bang_chao_blanca.pdf',
+        html2canvas: { scale: 2 },
+        jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
+    }).from(element).save().then(() => {
+        element.style.display = 'none';
+    });
 }
 </script>
 </body>
