@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tạo Template DOCX mẫu</title>
+    <script src="https://cdn.jsdelivr.net/npm/pizzip@3.1.5/dist/pizzip.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/docxtemplater/3.37.13/docxtemplater.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/file-saver/2.0.5/FileSaver.min.js"></script>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .template-content { 
+            border: 1px solid #ccc; 
+            padding: 20px; 
+            margin: 20px 0; 
+            background: #f9f9f9; 
+            white-space: pre-wrap;
+            font-family: 'Times New Roman', serif;
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+    <h1>Tạo Template DOCX mẫu cho Bảng chào Blanca City</h1>
+    
+    <h3>Nội dung template mẫu:</h3>
+    <div class="template-content">
+BẢNG CHÀO BLANCA CITY
+
+Chức vụ: {chuc_vu}
+Tên cán bộ: {ten_can_bo}
+Số điện thoại (Zalo): {so_dien_thoai}
+
+Dự án Blanca City - Nơi an cư lý tưởng cho gia đình bạn.
+
+Thông tin liên hệ:
+- Điện thoại: {so_dien_thoai}
+- Zalo: {so_dien_thoai}
+
+QR Code Zalo để liên hệ nhanh:
+{qr_code}
+
+Trân trọng,
+{ten_can_bo}
+{chuc_vu}
+    </div>
+    
+    <button onclick="createTemplate()" style="padding: 10px 20px; font-size: 16px; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer;">
+        Tạo file template DOCX mẫu
+    </button>
+    
+    <div style="margin-top: 20px; padding: 15px; background: #e7f3ff; border-radius: 5px;">
+        <h4>Hướng dẫn sử dụng:</h4>
+        <ol>
+            <li>Nhấn nút "Tạo file template DOCX mẫu" để tải về file template</li>
+            <li>Mở file bằng Microsoft Word</li>
+            <li>Chỉnh sửa nội dung theo ý muốn (giữ nguyên các placeholder {chuc_vu}, {ten_can_bo}, {so_dien_thoai}, {qr_code})</li>
+            <li>Lưu file với tên "bangchao.docx" vào thư mục "pdf/"</li>
+            <li>Sử dụng trong trang bangchaoblanca.html</li>
+        </ol>
+    </div>
+</div>
+
+<script>
+function createTemplate() {
+    // Tạo nội dung DOCX cơ bản
+    var content = `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<w:document xmlns:w="http://schemas.openxmlformats.org/wordprocessingml/2006/main">
+    <w:body>
+        <w:p>
+            <w:r>
+                <w:t>BẢNG CHÀO BLANCA CITY</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Chức vụ: {chuc_vu}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Tên cán bộ: {ten_can_bo}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Số điện thoại (Zalo): {so_dien_thoai}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t></w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Dự án Blanca City - Nơi an cư lý tưởng cho gia đình bạn.</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t></w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Thông tin liên hệ:</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>- Điện thoại: {so_dien_thoai}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>- Zalo: {so_dien_thoai}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t></w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>QR Code Zalo để liên hệ nhanh:</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>{qr_code}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t></w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>Trân trọng,</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>{ten_can_bo}</w:t>
+            </w:r>
+        </w:p>
+        <w:p>
+            <w:r>
+                <w:t>{chuc_vu}</w:t>
+            </w:r>
+        </w:p>
+    </w:body>
+</w:document>`;
+
+    // Tạo file DOCX đơn giản
+    var zip = new PizZip();
+    zip.file("word/document.xml", content);
+    zip.file("[Content_Types].xml", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Types xmlns="http://schemas.openxmlformats.org/package/2006/content-types">
+    <Default Extension="xml" ContentType="application/xml"/>
+    <Override PartName="/word/document.xml" ContentType="application/vnd.openxmlformats-officedocument.wordprocessingml.document.main+xml"/>
+</Types>`);
+    zip.file("_rels/.rels", `<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<Relationships xmlns="http://schemas.openxmlformats.org/package/2006/relationships">
+    <Relationship Id="rId1" Type="http://schemas.openxmlformats.org/officeDocument/2006/relationships/officeDocument" Target="word/document.xml"/>
+</Relationships>`);
+
+    var blob = zip.generate({ type: 'blob' });
+    saveAs(blob, 'template_bangchao.docx');
+    
+    alert('File template đã được tạo! Mở file bằng Word để chỉnh sửa và lưu vào thư mục pdf/');
+}
+</script>
+</body>
+</html> 

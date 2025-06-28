@@ -51,6 +51,7 @@
     <div id="previewArea" class="preview-area">
         <h5>Preview nội dung:</h5>
         <div id="previewContent" class="preview-content"></div>
+        <div id="qrCodeContainer" class="mt-3 text-center"></div>
     </div>
 </div>
 <script>
@@ -101,31 +102,41 @@ function generateAndDownloadDocx() {
             console.log('Docxtemplater created successfully');
             
             console.log('Điền dữ liệu:', { chuc_vu: chucVu, ten_can_bo: tenCanBo, so_dien_thoai: soDienThoai });
-            doc.setData({
-                chuc_vu: chucVu,
-                ten_can_bo: tenCanBo,
-                so_dien_thoai: soDienThoai
-            });
             
-            console.log('Render document...');
-            doc.render();
-            console.log('Document rendered successfully');
-            
-            console.log('Generate output...');
-            var out = doc.getZip().generate({ type: 'blob' });
-            console.log('Output generated, size:', out.size, 'bytes');
-            
-            // Tải file ngay lập tức
-            var url = URL.createObjectURL(out);
-            var a = document.createElement('a');
-            a.href = url;
-            a.download = 'bang_chao_blanca.docx';
-            document.body.appendChild(a);
-            a.click();
-            document.body.removeChild(a);
-            URL.revokeObjectURL(url);
-            
-            console.log('File downloaded successfully');
+            // Tạo QR code base64
+            generateQRCodeBase64(soDienThoai)
+                .then(qrCodeBase64 => {
+                    doc.setData({
+                        chuc_vu: chucVu,
+                        ten_can_bo: tenCanBo,
+                        so_dien_thoai: soDienThoai,
+                        qr_code: qrCodeBase64
+                    });
+                    
+                    console.log('Render document...');
+                    doc.render();
+                    console.log('Document rendered successfully');
+                    
+                    console.log('Generate output...');
+                    var out = doc.getZip().generate({ type: 'blob' });
+                    console.log('Output generated, size:', out.size, 'bytes');
+                    
+                    // Tải file ngay lập tức
+                    var url = URL.createObjectURL(out);
+                    var a = document.createElement('a');
+                    a.href = url;
+                    a.download = 'bang_chao_blanca.docx';
+                    document.body.appendChild(a);
+                    a.click();
+                    document.body.removeChild(a);
+                    URL.revokeObjectURL(url);
+                    
+                    console.log('File downloaded successfully');
+                })
+                .catch(error => {
+                    console.error('Lỗi khi tạo QR code:', error);
+                    alert('Lỗi khi tạo QR code: ' + error.message);
+                });
             
         } catch (error) {
             console.error('Lỗi chi tiết:', error);
@@ -137,6 +148,7 @@ function generateAndDownloadDocx() {
 function showPreview(chucVu, tenCanBo, soDienThoai) {
     var previewContent = document.getElementById('previewContent');
     var previewArea = document.getElementById('previewArea');
+    var qrCodeContainer = document.getElementById('qrCodeContainer');
     
     var previewText = `BẢNG CHÀO BLANCA CITY
 
@@ -149,6 +161,61 @@ File thực tế sẽ có định dạng và layout đầy đủ như template g
     
     previewContent.textContent = previewText;
     previewArea.style.display = 'block';
+    
+    // Xóa QR code cũ nếu có
+    qrCodeContainer.innerHTML = '';
+    
+    // Tạo QR code Zalo với link
+    var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
+    var qrCode = new QRCode(qrCodeContainer, {
+        text: zaloLink,
+        width: 128,
+        height: 128,
+        colorDark: "#000000",
+        colorLight: "#ffffff",
+        correctLevel: QRCode.CorrectLevel.H
+    });
+    
+    // Thêm label cho QR code
+    var qrLabel = document.createElement('p');
+    qrLabel.className = 'mt-2 text-muted';
+    qrLabel.textContent = 'QR Code Zalo - Quét để liên hệ';
+    qrCodeContainer.appendChild(qrLabel);
+}
+
+function generateQRCodeBase64(phoneNumber) {
+    return new Promise((resolve) => {
+        // Tạo QR code tạm thời để lấy base64
+        var tempContainer = document.createElement('div');
+        tempContainer.style.position = 'absolute';
+        tempContainer.style.left = '-9999px';
+        document.body.appendChild(tempContainer);
+        
+        var zaloLink = `https://zalo.me/${phoneNumber.replace(/\s/g, '')}`;
+        var qrCode = new QRCode(tempContainer, {
+            text: zaloLink,
+            width: 128,
+            height: 128,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        
+        // Chờ QR code được tạo xong
+        setTimeout(() => {
+            var canvas = tempContainer.querySelector('canvas');
+            if (canvas) {
+                var base64 = canvas.toDataURL('image/png');
+                console.log('QR Code base64 generated successfully');
+                document.body.removeChild(tempContainer);
+                resolve(base64);
+            } else {
+                console.log('QR Code generation failed, using placeholder');
+                document.body.removeChild(tempContainer);
+                resolve('[QR_CODE_PLACEHOLDER]');
+            }
+        }, 200);
+    });
 }
 </script>
 </body>
