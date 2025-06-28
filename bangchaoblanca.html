@@ -52,7 +52,10 @@
             <label class="form-label">Số điện thoại</label>
             <input type="text" class="form-control" id="soDienThoai" required oninput="updatePreview()">
         </div>
-        <button type="button" class="btn btn-primary" onclick="generateAndDownloadDocx()">Tải file bảng chào (DOCX)</button>
+        <div class="d-flex gap-2 mt-3">
+            <button type="button" class="btn btn-primary" onclick="generateAndDownloadDocx()">Tải file bảng chào (DOCX)</button>
+            <button type="button" class="btn btn-danger" onclick="exportBangChaoPDF()">Tải file bảng chào (PDF)</button>
+        </div>
     </form>
     
     <div id="previewArea" class="preview-area">
@@ -72,7 +75,6 @@
             <span id="pdfSoDienThoai"></span></td></tr>
     </table>
 </div>
-<button type="button" class="btn btn-danger mt-2" onclick="exportBangChaoPDF()">Tải file bảng chào (PDF)</button>
 <script>
 function updatePreview() {
     var chucVu = document.getElementById('chucVu').value.trim();
