@@ -64,29 +64,156 @@
         <div id="qrCodeContainer" class="mt-3 text-center"></div>
     </div>
 </div>
-<div id="pdfPreview" style="display:none;max-width:700px;margin:auto;font-family:'Times New Roman',Times,serif;">
-    <h2 style="text-align:center;font-size:1.6em;font-weight:bold;margin-bottom:18px;">BẢNG CHÀO BLANCA CITY</h2>
-    <table style="width:100%;border-collapse:collapse;font-size:1.08em;">
-        <tr>
-            <td style="font-weight:bold;width:160px;border:1px solid #333;padding:8px 6px;background:#f8f9fa;">Chức vụ</td>
-            <td style="border:1px solid #333;padding:8px 6px;">
-                <span id="pdfChucVu"></span>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-weight:bold;border:1px solid #333;padding:8px 6px;background:#f8f9fa;">Tên cán bộ</td>
-            <td style="border:1px solid #333;padding:8px 6px;">
-                <span id="pdfTenCanBo"></span>
-            </td>
-        </tr>
-        <tr>
-            <td style="font-weight:bold;border:1px solid #333;padding:8px 6px;background:#f8f9fa;">Số điện thoại</td>
-            <td style="border:1px solid #333;padding:8px 6px;">
-                <span id="pdfSoDienThoai"></span>
-            </td>
-        </tr>
-    </table>
-    <div style="margin-top:32px;font-size:0.98em;color:#888;text-align:center;">(Vui lòng liên hệ cán bộ để được tư vấn chi tiết về sản phẩm Blanca City)</div>
+<div id="pdfPreview" style="display:none;max-width:900px;margin:auto;font-family:'Times New Roman',Times,serif;font-size:1.08em;position:relative;background:#fff;">
+    <img src="images/back.png" style="position:absolute;top:0;left:0;width:100%;height:100%;z-index:0;opacity:0.13;object-fit:cover;" alt="background">
+    <div style="position:relative;z-index:1;">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:8px;">
+            <img src="images/vcbtth.png" alt="Vietcombank" style="height:54px;">
+            <img src="images/blanca.png" alt="Blanca City" style="height:48px;">
+        </div>
+        <div style="font-weight:bold;text-align:center;font-size:1.25em;margin-bottom:8px;">CHƯƠNG TRÌNH CHO VAY ƯU ĐÃI DỰ ÁN BLANCA CITY CỦA SUNGROUP</div>
+        <div style="margin-bottom:8px;text-align:center;">Ngân hàng Thương mại cổ phần Ngoại Thương Việt Nam – Chi nhánh Thủ Thiêm hân hạnh là Chi nhánh <span style="color:#d40000;font-weight:bold;">ĐẦU MỐI</span> dự án Blanca City.</div>
+        <div style="margin-bottom:8px;">Chúng tôi gửi tới Quý khách hàng về chương trình lãi suất để hỗ trợ khách hàng vay vốn đối với <b>dự án Blanca City</b> như sau:</div>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:10px;">
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;width:180px;vertical-align:top;">Số tiền vay vốn</td>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>Tối đa 70% giá trị căn nhà</li>
+                        <li>Tối đa 100% giá trị căn nhà nếu thế chấp bằng BĐS khác</li>
+                        <li>Giải ngân khi khách hàng chứng minh đủ 15% vốn tự có.</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;">Thời gian vay vốn</td>
+                <td style="border:1px solid #333;padding:6px 8px;">Tối đa 360 tháng</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;vertical-align:top;">Chính sách ưu đãi<br><span style="font-size:0.95em;font-weight:normal;">(tham khảo trong khi chờ chính sách chính thức)</span></td>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <table style="width:100%;border-collapse:collapse;font-size:1em;">
+                        <tr style="background:#eaf6ef;font-weight:bold;text-align:center;">
+                            <td style="border:1px solid #333;padding:4px 6px;">Kỳ hạn vay</td>
+                            <td style="border:1px solid #333;padding:4px 6px;">Nhà ở</td>
+                            <td style="border:1px solid #333;padding:4px 6px;">Shophouse/Căn hộ dịch vụ</td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td style="border:1px solid #333;padding:4px 6px;">Cố định 12 tháng</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,0%/năm</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,5%/năm</td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td style="border:1px solid #333;padding:4px 6px;">Cố định 18 tháng</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,5%/năm</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,8%/năm</td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td style="border:1px solid #333;padding:4px 6px;">Cố định 24 tháng</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,5%/năm</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">6,8%/năm</td>
+                        </tr>
+                        <tr style="text-align:center;">
+                            <td style="border:1px solid #333;padding:4px 6px;">Cố định 36 tháng</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">7,4%/năm</td>
+                            <td style="border:1px solid #333;padding:4px 6px;color:#d40000;font-weight:bold;">7,4%/năm</td>
+                        </tr>
+                    </table>
+                    <div style="margin-top:4px;font-size:0.97em;">
+                        Lãi suất ưu đãi: LSTK 12M (+) Biên độ 3,5%/năm<br>
+                        <span style="font-size:0.95em;">(*) Mức lãi suất cho vay sẽ được thông báo theo từng tháng</span>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;">Hỗ trợ lãi suất và ân hạn nợ gốc</td>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <span style="color:#d40000;font-weight:bold;">Ân hạn nợ gốc và hỗ trợ lãi suất tối đa 36 tháng</span> theo chính sách Chủ Đầu tư
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;">Phí trả nợ trước hạn</td>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <div>Từ năm thứ 1 đến năm thứ 3: <b>Miễn phí nếu chọn chương trình hỗ trợ lãi suất.</b></div>
+                    <div>Từ năm thứ 4 đến năm thứ 5: <b>0,5% số tiền trả nợ trước hạn.</b></div>
+                    <div>Từ năm 6: Miễn phí</div>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;font-weight:bold;vertical-align:top;">Thông tin liên hệ</td>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <div style="font-weight:bold;">Ngân hàng TMCP Ngoại thương Việt Nam – CN Thủ Thiêm</div>
+                    <div>55-56 Song Hành, P. An Phú, TP. Thủ Đức, TP. HCM</div>
+                    <table style="width:100%;border-collapse:collapse;margin-top:6px;">
+                        <tr style="background:#f8f9fa;">
+                            <td style="border:1px solid #333;padding:4px 6px;font-weight:bold;width:120px;">Chức vụ</td>
+                            <td style="border:1px solid #333;padding:4px 6px;font-weight:bold;width:120px;">Tên cán bộ</td>
+                            <td style="border:1px solid #333;padding:4px 6px;font-weight:bold;width:120px;">Số điện thoại</td>
+                        </tr>
+                        <tr>
+                            <td style="border:1px solid #333;padding:4px 6px;"><span id="pdfChucVu"></span></td>
+                            <td style="border:1px solid #333;padding:4px 6px;"><span id="pdfTenCanBo"></span></td>
+                            <td style="border:1px solid #333;padding:4px 6px;"><span id="pdfSoDienThoai"></span></td>
+                        </tr>
+                    </table>
+                </td>
+            </tr>
+        </table>
+        <div style="page-break-before:always;"></div>
+        <div style="font-weight:bold;font-size:1.15em;color:#228B22;margin:18px 0 8px 0;text-align:center;">HƯỚNG DẪN HỒ SƠ VAY</div>
+        <table style="width:100%;border-collapse:collapse;margin-bottom:10px;">
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;background:#eaf6ef;font-weight:bold;">HỒ SƠ PHÁP LÝ</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>CMND/CCCD</li>
+                        <li>Xác nhận thường trú/ VneID thường trú</li>
+                        <li>Đăng ký kết hôn/ Xác nhận hôn nhân</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;background:#eaf6ef;font-weight:bold;">HỒ SƠ MỤC ĐÍCH VAY / TÀI SẢN BẢO ĐẢM</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>Hợp đồng mua bán căn hộ/ GCN nhà thế chấp</li>
+                    </ul>
+                </td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;background:#eaf6ef;font-weight:bold;">HỒ SƠ THU NHẬP</td>
+            </tr>
+            <tr>
+                <td style="border:1px solid #333;padding:6px 8px;">
+                    <div style="margin-bottom:4px;"><b>a. Từ lương:</b></div>
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>Hợp đồng lao động</li>
+                        <li>Sao kê tài khoản lương 06 tháng gần nhất</li>
+                    </ul>
+                    <div style="margin:8px 0 4px 0;"><b>b. Từ cho thuê nhà, thuê xe:</b></div>
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>Giấy chứng nhận chủ quyền nhà/xe cho thuê</li>
+                        <li>Hợp đồng cho thuê nhà/thuê xe</li>
+                        <li>Sao kê tài khoản nhận tiền cho thuê 06 tháng gần nhất</li>
+                    </ul>
+                    <div style="margin:8px 0 4px 0;"><b>c. Từ góp vốn doanh nghiệp:</b></div>
+                    <ul style="margin:0 0 0 18px;padding:0;">
+                        <li>Giấy đăng ký kinh doanh</li>
+                        <li>Báo cáo tài chính 2 năm gần nhất</li>
+                        <li>Tờ khai VAT năm gần nhất</li>
+                        <li>Sao kê tài khoản doanh nghiệp 12 tháng gần nhất</li>
+                    </ul>
+                    <div style="margin:8px 0 4px 0;"><b>d. Thu nhập hợp pháp khác (nếu có)*</b></div>
+                    <div style="font-size:0.97em;">(*) Liên hệ trực tiếp chuyên viên khách hàng để được tư vấn cụ thể</div>
+                </td>
+            </tr>
+        </table>
+        <div style="font-weight:bold;color:#228B22;text-align:center;margin-top:12px;">VIETCOMBANK THỦ THIÊM<br>55-56 Song Hành, P. An Phú, Thủ Đức, TP.HCM</div>
+    </div>
 </div>
 <script>
 function updatePreview() {
