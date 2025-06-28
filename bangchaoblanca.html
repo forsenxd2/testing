@@ -93,8 +93,8 @@ function showPreview(chucVu, tenCanBo, soDienThoai) {
         var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
         var qrCode = new QRCode(qrCodeContainer, {
             text: zaloLink,
-            width: 64,
-            height: 64,
+            width: 72,
+            height: 72,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
@@ -125,8 +125,8 @@ function generateQRCodeBase64(phoneNumber) {
         var zaloLink = `https://zalo.me/${phoneNumber.replace(/\s/g, '')}`;
         var qrCode = new QRCode(tempContainer, {
             text: zaloLink,
-            width: 64,
-            height: 64,
+            width: 72,
+            height: 72,
             colorDark: "#000000",
             colorLight: "#ffffff",
             correctLevel: QRCode.CorrectLevel.H
