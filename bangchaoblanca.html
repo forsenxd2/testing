@@ -135,6 +135,38 @@ function generateAndDownloadDocx() {
     var soDienThoai = document.getElementById('soDienThoai').value;
 
     showPreview(chucVu, tenCanBo, soDienThoai);
+
+    fetch('pdf/bangchao.docx')
+        .then(response => {
+            if (!response.ok) throw new Error('Không tìm thấy file template!');
+            return response.arrayBuffer();
+        })
+        .then(arrayBuffer => {
+            var zip = new window.PizZip(arrayBuffer);
+            var doc = new window.docxtemplater(zip, { paragraphLoop: true, linebreaks: true });
+            doc.setData({
+                chuc_vu: chucVu,
+                ten_can_bo: tenCanBo,
+                so_dien_thoai: soDienThoai
+            });
+            try {
+                doc.render();
+            } catch (error) {
+                alert('Lỗi khi điền dữ liệu vào file: ' + error.message);
+                return;
+            }
+            var out = doc.getZip().generate({ type: 'blob' });
+            var a = document.createElement('a');
+            a.href = URL.createObjectURL(out);
+            a.download = 'bang_chao_blanca.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(a.href);
+        })
+        .catch(error => {
+            alert('Lỗi khi tạo file: ' + error.message);
+        });
 }
 </script>
 </body>
