@@ -36,15 +36,15 @@
     <form id="chaoForm" class="step-container">
         <div class="mb-3">
             <label class="form-label">Chức vụ</label>
-            <input type="text" class="form-control" id="chucVu" required>
+            <input type="text" class="form-control" id="chucVu" required oninput="updatePreview()">
         </div>
         <div class="mb-3">
             <label class="form-label">Tên cán bộ</label>
-            <input type="text" class="form-control" id="tenCanBo" required>
+            <input type="text" class="form-control" id="tenCanBo" required oninput="updatePreview()">
         </div>
         <div class="mb-3">
             <label class="form-label">Số điện thoại (Zalo)</label>
-            <input type="text" class="form-control" id="soDienThoai" required>
+            <input type="text" class="form-control" id="soDienThoai" required oninput="updatePreview()">
         </div>
         <button type="button" class="btn btn-primary" onclick="generateAndDownloadDocx()">Tải file bảng chào (DOCX)</button>
     </form>
@@ -56,10 +56,29 @@
     </div>
 </div>
 <script>
+function updatePreview() {
+    var chucVu = document.getElementById('chucVu').value.trim();
+    var tenCanBo = document.getElementById('tenCanBo').value.trim();
+    var soDienThoai = document.getElementById('soDienThoai').value.trim();
+    
+    // Chỉ hiển thị preview khi có ít nhất một trường được nhập
+    if (chucVu || tenCanBo || soDienThoai) {
+        showPreview(chucVu, tenCanBo, soDienThoai);
+    } else {
+        // Ẩn preview nếu tất cả trường đều trống
+        document.getElementById('previewArea').style.display = 'none';
+    }
+}
+
 function showPreview(chucVu, tenCanBo, soDienThoai) {
     var previewContent = document.getElementById('previewContent');
     var previewArea = document.getElementById('previewArea');
     var qrCodeContainer = document.getElementById('qrCodeContainer');
+    
+    // Kiểm tra và xử lý các giá trị undefined hoặc rỗng
+    chucVu = chucVu || 'Chưa nhập';
+    tenCanBo = tenCanBo || 'Chưa nhập';
+    soDienThoai = soDienThoai || 'Chưa nhập';
     
     var previewText = `BẢNG CHÀO BLANCA CITY\n\nChức vụ: ${chucVu}\nTên cán bộ: ${tenCanBo}\nSố điện thoại (Zalo): ${soDienThoai}\n`;
     
@@ -69,9 +88,9 @@ function showPreview(chucVu, tenCanBo, soDienThoai) {
     // Xóa QR code cũ nếu có
     qrCodeContainer.innerHTML = '';
     
-    // Tạo QR code Zalo với link
-    var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
-    if (soDienThoai) {
+    // Tạo QR code Zalo với link - chỉ tạo khi có số điện thoại hợp lệ
+    if (soDienThoai && soDienThoai !== 'Chưa nhập' && soDienThoai.trim() !== '') {
+        var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
         var qrCode = new QRCode(qrCodeContainer, {
             text: zaloLink,
             width: 128,
@@ -90,6 +109,13 @@ function showPreview(chucVu, tenCanBo, soDienThoai) {
 
 function generateQRCodeBase64(phoneNumber) {
     return new Promise((resolve) => {
+        // Kiểm tra phoneNumber
+        if (!phoneNumber || phoneNumber.trim() === '') {
+            console.log('Phone number is empty, returning placeholder');
+            resolve('[QR_CODE_PLACEHOLDER]');
+            return;
+        }
+        
         // Tạo QR code tạm thời để lấy base64
         var tempContainer = document.createElement('div');
         tempContainer.style.position = 'absolute';
@@ -124,9 +150,15 @@ function generateQRCodeBase64(phoneNumber) {
 }
 
 function generateAndDownloadDocx() {
-    var chucVu = document.getElementById('chucVu').value;
-    var tenCanBo = document.getElementById('tenCanBo').value;
-    var soDienThoai = document.getElementById('soDienThoai').value;
+    var chucVu = document.getElementById('chucVu').value.trim();
+    var tenCanBo = document.getElementById('tenCanBo').value.trim();
+    var soDienThoai = document.getElementById('soDienThoai').value.trim();
+
+    // Kiểm tra các trường bắt buộc
+    if (!chucVu || !tenCanBo || !soDienThoai) {
+        alert('Vui lòng điền đầy đủ thông tin trước khi tạo file!');
+        return;
+    }
 
     showPreview(chucVu, tenCanBo, soDienThoai);
 
