@@ -46,8 +46,7 @@
             <label class="form-label">Số điện thoại (Zalo)</label>
             <input type="text" class="form-control" id="soDienThoai" required>
         </div>
-        <button type="button" class="btn btn-success mt-2" onclick="generatePDF()">Tải file bảng chào (PDF)</button>
-        <a id="downloadLink" class="btn btn-success mt-3" style="display:none">Tải file đã điền</a>
+        <button type="button" class="btn btn-primary" onclick="generateAndDownloadDocx()">Tải file bảng chào (DOCX)</button>
     </form>
     
     <div id="previewArea" class="preview-area">
@@ -57,45 +56,6 @@
     </div>
 </div>
 <script>
-function generatePDF() {
-    var chucVu = document.getElementById('chucVu').value;
-    var tenCanBo = document.getElementById('tenCanBo').value;
-    var soDienThoai = document.getElementById('soDienThoai').value;
-    var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
-
-    // Tạo QR code base64
-    var tempDiv = document.createElement('div');
-    document.body.appendChild(tempDiv);
-    var qr = new QRCode(tempDiv, { text: zaloLink, width: 128, height: 128 });
-    setTimeout(function() {
-        var img = tempDiv.querySelector('img');
-        var qrBase64 = img.src;
-
-        var docDefinition = {
-            content: [
-                { text: 'BẢNG CHÀO BLANCA CITY', style: 'header' },
-                `Chức vụ: ${chucVu}`,
-                `Tên cán bộ: ${tenCanBo}`,
-                `Số điện thoại (Zalo): ${soDienThoai}`,
-                '',
-                'QR Code Zalo:',
-                { image: qrBase64, width: 100, alignment: 'left' },
-                '',
-                'Trân trọng,',
-                tenCanBo,
-                chucVu
-            ],
-            styles: {
-                header: { fontSize: 18, bold: true, alignment: 'center', margin: [0, 0, 0, 10] }
-            },
-            defaultStyle: { font: 'Roboto' }
-        };
-
-        pdfMake.createPdf(docDefinition).download('bang_chao_blanca.pdf');
-        document.body.removeChild(tempDiv);
-    }, 500);
-}
-
 function showPreview(chucVu, tenCanBo, soDienThoai) {
     var previewContent = document.getElementById('previewContent');
     var previewArea = document.getElementById('previewArea');
@@ -167,6 +127,14 @@ function generateQRCodeBase64(phoneNumber) {
             }
         }, 200);
     });
+}
+
+function generateAndDownloadDocx() {
+    var chucVu = document.getElementById('chucVu').value;
+    var tenCanBo = document.getElementById('tenCanBo').value;
+    var soDienThoai = document.getElementById('soDienThoai').value;
+
+    showPreview(chucVu, tenCanBo, soDienThoai);
 }
 </script>
 </body>
