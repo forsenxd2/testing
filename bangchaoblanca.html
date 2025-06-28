@@ -61,14 +61,7 @@ function showPreview(chucVu, tenCanBo, soDienThoai) {
     var previewArea = document.getElementById('previewArea');
     var qrCodeContainer = document.getElementById('qrCodeContainer');
     
-    var previewText = `BẢNG CHÀO BLANCA CITY
-
-Chức vụ: ${chucVu}
-Tên cán bộ: ${tenCanBo}
-Số điện thoại (Zalo): ${soDienThoai}
-
-[Đây là preview nội dung sẽ được điền vào file DOCX. 
-File thực tế sẽ có định dạng và layout đầy đủ như template gốc.]`;
+    var previewText = `BẢNG CHÀO BLANCA CITY\n\nChức vụ: ${chucVu}\nTên cán bộ: ${tenCanBo}\nSố điện thoại (Zalo): ${soDienThoai}\n`;
     
     previewContent.textContent = previewText;
     previewArea.style.display = 'block';
@@ -78,20 +71,21 @@ File thực tế sẽ có định dạng và layout đầy đủ như template g
     
     // Tạo QR code Zalo với link
     var zaloLink = `https://zalo.me/${soDienThoai.replace(/\s/g, '')}`;
-    var qrCode = new QRCode(qrCodeContainer, {
-        text: zaloLink,
-        width: 128,
-        height: 128,
-        colorDark: "#000000",
-        colorLight: "#ffffff",
-        correctLevel: QRCode.CorrectLevel.H
-    });
-    
-    // Thêm label cho QR code
-    var qrLabel = document.createElement('p');
-    qrLabel.className = 'mt-2 text-muted';
-    qrLabel.textContent = 'QR Code Zalo - Quét để liên hệ';
-    qrCodeContainer.appendChild(qrLabel);
+    if (soDienThoai) {
+        var qrCode = new QRCode(qrCodeContainer, {
+            text: zaloLink,
+            width: 128,
+            height: 128,
+            colorDark: "#000000",
+            colorLight: "#ffffff",
+            correctLevel: QRCode.CorrectLevel.H
+        });
+        // Thêm label cho QR code
+        var qrLabel = document.createElement('p');
+        qrLabel.className = 'mt-2 text-muted';
+        qrLabel.textContent = 'QR Code Zalo - Quét để liên hệ';
+        qrCodeContainer.appendChild(qrLabel);
+    }
 }
 
 function generateQRCodeBase64(phoneNumber) {
