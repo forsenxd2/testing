@@ -32,11 +32,6 @@
             <input type="text" class="form-control" id="soDienThoai" required>
         </div>
         <div class="mb-3">
-            <label class="form-label">File mẫu bảng chào (.docx)</label>
-            <input type="file" class="form-control" id="docxTemplate" accept=".doc,.docx">
-            <div class="form-text">Nếu không chọn, sẽ dùng file mẫu mặc định.</div>
-        </div>
-        <div class="mb-3">
             <label class="form-label">Xem trước mã QR Zalo</label>
             <div id="qrPreview" class="qr-preview"></div>
         </div>
@@ -59,8 +54,6 @@ function generateDocx() {
     var chucVu = document.getElementById('chucVu').value;
     var tenCanBo = document.getElementById('tenCanBo').value;
     var soDienThoai = document.getElementById('soDienThoai').value;
-    var fileInput = document.getElementById('docxTemplate');
-    var file = fileInput.files[0];
     var qrDiv = document.createElement('div');
     new QRCode(qrDiv, { text: 'https://zalo.me/' + soDienThoai, width: 180, height: 180 });
     setTimeout(function() {
@@ -83,13 +76,7 @@ function generateDocx() {
             link.style.display = 'inline-block';
             link.textContent = 'Tải file đã điền';
         }
-        if(file) {
-            var reader = new FileReader();
-            reader.onload = function(e) { processDoc(e.target.result); };
-            reader.readAsArrayBuffer(file);
-        } else {
-            fetch('pdf/bangchao.doc').then(r=>r.arrayBuffer()).then(processDoc);
-        }
+        fetch('pdf/bangchao.doc').then(r=>r.arrayBuffer()).then(processDoc);
     }, 300);
 }
 </script>
