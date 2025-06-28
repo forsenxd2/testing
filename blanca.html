@@ -497,6 +497,27 @@
         e.stopImmediatePropagation();
         return false;
     });
+    const graceOptions = [0, 12, 18, 24, 36];
+    function updateGracePeriodOptions() {
+        const fixedTerm = parseInt(document.getElementById('fixedTerm').value, 10);
+        const graceSelect = document.getElementById('gracePeriod');
+        const currentValue = parseInt(graceSelect.value, 10);
+        graceSelect.innerHTML = '';
+        graceOptions.forEach(val => {
+            if (val <= fixedTerm) {
+                let label = val === 0 ? '0 tháng (không ân hạn)' : (val + (val === 18 ? ' tháng (1.5 năm)' : (val === 12 ? ' tháng (1 năm)' : (val === 24 ? ' tháng (2 năm)' : (val === 36 ? ' tháng (3 năm)' : ' tháng'))));
+                graceSelect.innerHTML += `<option value="${val}">${label}</option>`;
+            }
+        });
+        // Nếu giá trị hiện tại không hợp lệ, chọn giá trị lớn nhất hợp lệ
+        if (currentValue > fixedTerm) {
+            graceSelect.value = fixedTerm;
+        } else {
+            graceSelect.value = currentValue;
+        }
+    }
+    document.getElementById('fixedTerm').addEventListener('change', updateGracePeriodOptions);
+    window.addEventListener('DOMContentLoaded', updateGracePeriodOptions);
     </script>
 </body>
 </html> 
