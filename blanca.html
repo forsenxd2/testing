@@ -345,14 +345,16 @@
         const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
         const term = parseInt(document.getElementById('loanTerm').value);
         const graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-        const interestRate = parseFloat(document.getElementById('interestRate').value);
+        const fixedRate = parseFloat(document.getElementById('fixedRate').value);
+        const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
         const today = new Date();
         const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
         const titleRow = ['LỊCH TRẢ NỢ DỰ ÁN BLANCA CITY'];
         const summary = [
             ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
             ['THỜI GIAN VAY', term ? term : ''],
-            ['LÃI SUẤT', interestRate ? interestRate.toFixed(2) + '%' : ''],
+            ['LÃI SUẤT CỐ ĐỊNH', fixedRate ? fixedRate.toFixed(2) + '%' : ''],
+            ['LÃI SUẤT THẢ NỔI', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
             ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
             ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ['Thời gian ân hạn gốc', graceMonths > 0 ? graceMonths + ' tháng' : '0 tháng']
@@ -418,13 +420,15 @@
         const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
         const term = parseInt(document.getElementById('loanTerm').value);
         const graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-        const interestRate = parseFloat(document.getElementById('interestRate').value);
+        const fixedRate = parseFloat(document.getElementById('fixedRate').value);
+        const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
         const today = new Date();
         const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
         const summary = [
             ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
             ['THỜI GIAN VAY', term ? term : ''],
-            ['LÃI SUẤT', interestRate ? interestRate.toFixed(2) + '%' : ''],
+            ['LÃI SUẤT CỐ ĐỊNH', fixedRate ? fixedRate.toFixed(2) + '%' : ''],
+            ['LÃI SUẤT THẢ NỔI', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
             ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
             ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ['Thời gian ân hạn gốc', graceMonths > 0 ? graceMonths + ' tháng' : '0 tháng']
