@@ -171,7 +171,8 @@
                 </div>
                 <div class="mb-3">
                     <label for="loanTerm" class="form-label">Thời hạn vay (tháng, tối đa 360)</label>
-                    <input type="number" class="form-control" id="loanTerm" required min="1" max="360">
+                    <input type="number" class="form-control" id="loanTerm" required min="1" max="360" oninput="checkLoanTermWarning()">
+                    <div id="loanTermWarning" class="text-danger mt-1" style="display:none;font-size:0.95em"></div>
                 </div>
                 <div class="mb-3">
                     <label for="gracePeriod" class="form-label">Thời gian ân hạn gốc (tháng, tối đa 36)</label>
@@ -524,6 +525,28 @@
     }
     document.getElementById('fixedTerm').addEventListener('change', updateGracePeriodOptions);
     window.addEventListener('DOMContentLoaded', updateGracePeriodOptions);
+    function checkLoanTermWarning() {
+        const loanTerm = parseInt(document.getElementById('loanTerm').value, 10);
+        const fixedTerm = parseInt(document.getElementById('fixedTerm').value, 10);
+        const warning = document.getElementById('loanTermWarning');
+        const btns = [
+            document.querySelector('button.btn-primary[onclick="calculateSchedule()"]'),
+            document.querySelector('button.btn-danger[onclick="downloadPDF()"]'),
+            document.querySelector('button.btn-success[onclick="downloadExcel()"]')
+        ];
+        if (!isNaN(loanTerm) && !isNaN(fixedTerm) && loanTerm < fixedTerm) {
+            warning.textContent = 'Thời hạn vay phải lớn hơn hoặc bằng kỳ hạn cố định.';
+            warning.style.display = '';
+            btns.forEach(btn => btn && (btn.disabled = true));
+        } else {
+            warning.textContent = '';
+            warning.style.display = 'none';
+            btns.forEach(btn => btn && (btn.disabled = false));
+        }
+    }
+    document.getElementById('loanTerm').addEventListener('input', checkLoanTermWarning);
+    document.getElementById('fixedTerm').addEventListener('change', checkLoanTermWarning);
+    window.addEventListener('DOMContentLoaded', checkLoanTermWarning);
     </script>
 </body>
 </html> 
