@@ -160,6 +160,14 @@
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
+                    <div class="d-flex gap-2">
+                        <button type="button" class="btn btn-danger" onclick="downloadPDF()">
+                            <i class="bi bi-file-earmark-pdf"></i> Tải file PDF
+                        </button>
+                        <button type="button" class="btn btn-success" onclick="downloadExcel()">
+                            <i class="bi bi-download"></i> Tải file Excel
+                        </button>
+                    </div>
                 </div>
             </form>
         </div>
@@ -188,6 +196,9 @@
     </div>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/xlsx@0.18.5/dist/xlsx.full.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/pdfmake.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdfmake/0.2.7/vfs_fonts.js"></script>
     <script>
     function formatNumber(number) {
         return number.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
@@ -278,6 +289,159 @@
         }
         document.getElementById('scheduleTable').style.display = 'block';
     }
+    function downloadExcel() {
+        const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
+        const term = parseInt(document.getElementById('loanTerm').value);
+        const graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+        const interestRate = parseFloat(document.getElementById('interestRate').value);
+        const today = new Date();
+        const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
+        const titleRow = ['LỊCH TRẢ NỢ DỰ ÁN BLANCA CITY'];
+        const summary = [
+            ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
+            ['THỜI GIAN VAY', term ? term : ''],
+            ['LÃI SUẤT', interestRate ? interestRate.toFixed(2) + '%' : ''],
+            ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
+            ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
+            ['Thời gian ân hạn gốc', graceMonths > 0 ? graceMonths + ' tháng' : '0 tháng']
+        ];
+        const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
+        const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
+        const rows = document.querySelectorAll('#scheduleTable tbody tr');
+        const scheduleData = [headers];
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            const rowData = Array.from(cells).map(cell => cell.textContent.trim());
+            scheduleData.push(rowData);
+        });
+        let ws_data = [];
+        ws_data.push(titleRow);
+        ws_data.push([]);
+        summary.forEach(row => ws_data.push(row));
+        ws_data.push([]);
+        scheduleData.forEach(row => ws_data.push(row));
+        const ws = XLSX.utils.aoa_to_sheet(ws_data);
+        ws['!merges'] = ws['!merges'] || [];
+        ws['!merges'].push({s: {r:0, c:0}, e: {r:0, c:headers.length-1}});
+        ws['A1'].s = { font: { bold: true, sz: 16 }, alignment: { horizontal: 'center', vertical: 'center', wrapText: true } };
+        for (let i = 2; i < 2 + summary.length; i++) {
+            const cellA = ws[`A${i+1}`];
+            const cellB = ws[`B${i+1}`];
+            if (cellA) cellA.s = { font: { bold: true }, alignment: { horizontal: 'left', wrapText: true } };
+            if (cellB) cellB.s = { alignment: { horizontal: 'left', wrapText: true } };
+        }
+        const headerRowIdx = 2 + summary.length + 2;
+        for (let c = 0; c < headers.length; c++) {
+            const col = String.fromCharCode(65 + c);
+            const cell = ws[`${col}${headerRowIdx+1}`];
+            if (cell) cell.s = { font: { bold: true }, alignment: { horizontal: 'center', wrapText: true } };
+        }
+        for (let r = headerRowIdx + 1; r < ws_data.length; r++) {
+            for (let c = 0; c < headers.length; c++) {
+                const col = String.fromCharCode(65 + c);
+                const cell = ws[`${col}${r+1}`];
+                if (cell) {
+                    if (c === 0 || c === 1) {
+                        cell.s = { alignment: { horizontal: 'center', wrapText: true } };
+                    } else {
+                        cell.s = { alignment: { horizontal: 'right', wrapText: true } };
+                    }
+                }
+            }
+        }
+        ws['!cols'] = headers.map((h, idx) => {
+            if (idx === 0) return { wch: 5 };
+            if (idx === 1) return { wch: 13 };
+            if (h.includes('Dư nợ')) return { wch: 18 };
+            if (h.includes('Gốc')) return { wch: 15 };
+            if (h.includes('Lãi')) return { wch: 15 };
+            if (h.includes('Tổng')) return { wch: 22 };
+            return { wch: 12 };
+        });
+        const wb = XLSX.utils.book_new();
+        XLSX.utils.book_append_sheet(wb, ws, 'LichTraNoBlanca');
+        XLSX.writeFile(wb, 'lich_tra_no_blanca.xlsx');
+    }
+    function downloadPDF() {
+        const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
+        const term = parseInt(document.getElementById('loanTerm').value);
+        const graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+        const interestRate = parseFloat(document.getElementById('interestRate').value);
+        const today = new Date();
+        const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
+        const summary = [
+            ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
+            ['THỜI GIAN VAY', term ? term : ''],
+            ['LÃI SUẤT', interestRate ? interestRate.toFixed(2) + '%' : ''],
+            ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
+            ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
+            ['Thời gian ân hạn gốc', graceMonths > 0 ? graceMonths + ' tháng' : '0 tháng']
+        ];
+        const headerCells = document.querySelectorAll('#scheduleTable thead tr th');
+        const headers = Array.from(headerCells).map(cell => cell.textContent.trim());
+        const rows = document.querySelectorAll('#scheduleTable tbody tr');
+        const data = [];
+        rows.forEach(row => {
+            const cells = row.querySelectorAll('td');
+            const rowData = Array.from(cells).map(cell => cell.textContent.trim());
+            data.push(rowData);
+        });
+        const tableBody = [headers];
+        data.forEach(row => tableBody.push(row));
+        const docDefinition = {
+            pageOrientation: 'landscape',
+            content: [
+                { text: 'LỊCH TRẢ NỢ DỰ ÁN BLANCA CITY', style: 'header', margin: [0,0,0,10] },
+                {
+                    style: 'summaryTable',
+                    table: {
+                        widths: ['auto', '*'],
+                        body: summary
+                    },
+                    layout: 'noBorders',
+                    margin: [0,0,0,10]
+                },
+                {
+                    style: 'mainTable',
+                    table: {
+                        headerRows: 1,
+                        body: tableBody
+                    },
+                    layout: {
+                        fillColor: function (rowIndex, node, columnIndex) {
+                            return rowIndex === 0 ? '#228B22' : null;
+                        },
+                        hLineColor: function(i, node) { return '#888'; },
+                        vLineColor: function(i, node) { return '#888'; },
+                        hLineWidth: function(i, node) { return 0.7; },
+                        vLineWidth: function(i, node) { return 0.7; }
+                    }
+                }
+            ],
+            styles: {
+                header: { fontSize: 18, bold: true, alignment: 'center', color: '#228B22' },
+                summaryTable: { fontSize: 12, margin: [0,0,0,10] },
+                mainTable: { fontSize: 11 }
+            },
+            defaultStyle: {
+                font: 'Roboto'
+            }
+        };
+        pdfMake.createPdf(docDefinition).download('lich_tra_no_blanca.pdf');
+    }
+    // Đảm bảo luôn cập nhật bảng trước khi tải file
+    document.querySelector('button.btn-danger[onclick="downloadPDF()"]')?.addEventListener('click', function(e) {
+        calculateSchedule();
+        setTimeout(downloadPDF, 0);
+        e.stopImmediatePropagation();
+        return false;
+    });
+    document.querySelector('button.btn-success[onclick="downloadExcel()"]')?.addEventListener('click', function(e) {
+        calculateSchedule();
+        setTimeout(downloadExcel, 0);
+        e.stopImmediatePropagation();
+        return false;
+    });
     </script>
 </body>
 </html> 
