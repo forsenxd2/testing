@@ -372,40 +372,8 @@ function exportBangChaoPDF() {
         filename: 'bang_chao_blanca.pdf',
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
-    }).from(element).outputPdf('blob').then(async function(blob) {
+    }).from(element).save().then(() => {
         element.style.display = 'none';
-        // Đọc ảnh watermark thành base64
-        const getBase64FromImageUrl = url => new Promise((resolve, reject) => {
-            var img = new window.Image();
-            img.crossOrigin = 'Anonymous';
-            img.onload = function() {
-                var canvas = document.createElement('canvas');
-                canvas.width = img.width;
-                canvas.height = img.height;
-                var ctx = canvas.getContext('2d');
-                ctx.drawImage(img, 0, 0);
-                resolve(canvas.toDataURL('image/png'));
-            };
-            img.onerror = reject;
-            img.src = url;
-        });
-        const watermarkBase64 = await getBase64FromImageUrl('images/back.png');
-        // Đọc blob PDF thành ArrayBuffer
-        const reader = new FileReader();
-        reader.onload = function(e) {
-            const uint8Array = new Uint8Array(e.target.result);
-            const pdfDoc = window.jspdf.jsPDF ? new window.jspdf.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' }) : new window.jsPDF({ unit: 'mm', format: 'a4', orientation: 'portrait' });
-            pdfDoc.loadPDF(uint8Array).then(function() {
-                const pageCount = pdfDoc.getNumberOfPages();
-                for (let i = 1; i <= pageCount; i++) {
-                    pdfDoc.setPage(i);
-                    // Chèn watermark căn giữa, chiếm khoảng 80% chiều rộng trang, opacity 0.13
-                    pdfDoc.addImage(watermarkBase64, 'PNG', 15, 40, 180, 180, '', 'NONE', 0.13);
-                }
-                pdfDoc.save('bang_chao_blanca.pdf');
-            });
-        };
-        reader.readAsArrayBuffer(blob);
     });
 }
 </script>
