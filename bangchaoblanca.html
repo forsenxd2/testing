@@ -13,6 +13,19 @@
         body { background: #f8f9fa; }
         .container { max-width: 600px; margin-top: 40px; }
         .qr-preview { margin-top: 10px; }
+        .preview-area { 
+            margin-top: 20px; 
+            padding: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 5px; 
+            background: white;
+            display: none;
+        }
+        .preview-content {
+            font-family: 'Times New Roman', serif;
+            line-height: 1.6;
+            white-space: pre-wrap;
+        }
     </style>
 </head>
 <body>
@@ -31,12 +44,17 @@
             <label class="form-label">Số điện thoại (Zalo)</label>
             <input type="text" class="form-control" id="soDienThoai" required>
         </div>
-        <button type="button" class="btn btn-primary" onclick="generateDocx()">Tạo file bảng chào (DOCX)</button>
+        <button type="button" class="btn btn-primary" onclick="generateAndDownloadDocx()">Tải file bảng chào (DOCX)</button>
         <a id="downloadLink" class="btn btn-success mt-3" style="display:none">Tải file đã điền</a>
     </form>
+    
+    <div id="previewArea" class="preview-area">
+        <h5>Preview nội dung:</h5>
+        <div id="previewContent" class="preview-content"></div>
+    </div>
 </div>
 <script>
-function generateDocx() {
+function generateAndDownloadDocx() {
     var chucVu = document.getElementById('chucVu').value;
     var tenCanBo = document.getElementById('tenCanBo').value;
     var soDienThoai = document.getElementById('soDienThoai').value;
@@ -45,6 +63,9 @@ function generateDocx() {
         alert('Vui lòng điền đầy đủ thông tin!');
         return;
     }
+    
+    // Hiển thị preview ngay lập tức
+    showPreview(chucVu, tenCanBo, soDienThoai);
     
     console.log('Bắt đầu tải file DOCX...');
     
@@ -59,14 +80,14 @@ function generateDocx() {
         })
         .then(arrayBuffer => {
             console.log('File loaded, size:', arrayBuffer.byteLength, 'bytes');
-            return processDoc(arrayBuffer);
+            return processAndDownloadDoc(arrayBuffer);
         })
         .catch(error => {
             console.error('Lỗi khi tải file:', error);
             alert('Lỗi khi tải file template: ' + error.message);
         });
     
-    function processDoc(arrayBuffer) {
+    function processAndDownloadDoc(arrayBuffer) {
         try {
             console.log('Tạo PizZip object...');
             var zip = new window.PizZip(arrayBuffer);
@@ -94,18 +115,40 @@ function generateDocx() {
             var out = doc.getZip().generate({ type: 'blob' });
             console.log('Output generated, size:', out.size, 'bytes');
             
-            var link = document.getElementById('downloadLink');
-            link.href = URL.createObjectURL(out);
-            link.download = 'bang_chao_blanca.docx';
-            link.style.display = 'inline-block';
-            link.textContent = 'Tải file đã điền';
-            console.log('Download link ready');
+            // Tải file ngay lập tức
+            var url = URL.createObjectURL(out);
+            var a = document.createElement('a');
+            a.href = url;
+            a.download = 'bang_chao_blanca.docx';
+            document.body.appendChild(a);
+            a.click();
+            document.body.removeChild(a);
+            URL.revokeObjectURL(url);
+            
+            console.log('File downloaded successfully');
             
         } catch (error) {
             console.error('Lỗi chi tiết:', error);
             alert('Lỗi khi xử lý file: ' + error.message);
         }
     }
+}
+
+function showPreview(chucVu, tenCanBo, soDienThoai) {
+    var previewContent = document.getElementById('previewContent');
+    var previewArea = document.getElementById('previewArea');
+    
+    var previewText = `BẢNG CHÀO BLANCA CITY
+
+Chức vụ: ${chucVu}
+Tên cán bộ: ${tenCanBo}
+Số điện thoại (Zalo): ${soDienThoai}
+
+[Đây là preview nội dung sẽ được điền vào file DOCX. 
+File thực tế sẽ có định dạng và layout đầy đủ như template gốc.]`;
+    
+    previewContent.textContent = previewText;
+    previewArea.style.display = 'block';
 }
 </script>
 </body>
