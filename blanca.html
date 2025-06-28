@@ -1,0 +1,315 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dự án Blanca City</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        .step-container {
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background-color: rgba(255, 255, 255, 0.95);
+        }
+        .step-header {
+            background-color: #f8f9fa;
+            padding: 10px;
+            border-radius: 5px;
+            margin-bottom: 15px;
+        }
+        .hidden {
+            display: none;
+        }
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        .menu-btn {
+            box-shadow: 0 4px 16px rgba(34,139,34,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: bold;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+        }
+        .menu-btn:hover, .menu-btn:focus {
+            box-shadow: 0 8px 24px rgba(34,139,34,0.18), 0 2px 8px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.03);
+            background: #e6f4ea !important;
+        }
+        .project-highlight {
+            background: linear-gradient(135deg, #228B22, #32CD32);
+            color: white;
+            padding: 30px;
+            border-radius: 15px;
+            margin-bottom: 30px;
+            text-align: center;
+        }
+        .feature-card {
+            border: 2px solid #228B22;
+            border-radius: 10px;
+            padding: 20px;
+            margin-bottom: 20px;
+            background: white;
+            transition: transform 0.3s ease;
+        }
+        .feature-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(34,139,34,0.2);
+        }
+        .feature-icon {
+            font-size: 2.5rem;
+            color: #228B22;
+            margin-bottom: 15px;
+        }
+        .price-highlight {
+            background: #fff3cd;
+            border: 2px solid #ffc107;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+        .loan-info {
+            background: #e8f4ff;
+            border: 2px solid #0d6efd;
+            border-radius: 10px;
+            padding: 20px;
+            margin: 20px 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="d-flex flex-column align-items-start mb-3 gap-2">
+            <div class="d-flex justify-content-between w-100">
+                <div class="d-flex flex-column gap-2">
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='projects.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='laisuat.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        CÁC GÓI LÃI SUẤT CHO VAY KHCN HIỆN HÀNH
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='hosovay.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='bodieukien.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        BỘ ĐIỀU KIỆN SẢN PHẨM NHÀ DỰ ÁN
+                    </button>
+                </div>
+                <div class="d-flex flex-column align-items-end">
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #228B22; color: white; min-width: 260px; border: none;"
+                        onclick="window.location.href='blanca.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DỰ ÁN BLANCA CITY
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <div class="project-highlight">
+            <h1 class="mb-3">🏢 DỰ ÁN BLANCA CITY</h1>
+            <p class="lead mb-0">Khu đô thị cao cấp - Nơi cuộc sống thăng hoa</p>
+        </div>
+
+        <!-- Thông tin tổng quan -->
+        <div class="step-container">
+            <div class="step-header">
+                <h3>📋 Thông tin tổng quan dự án</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>🏗️ Thông tin chủ đầu tư</h5>
+                    <ul>
+                        <li><strong>Chủ đầu tư:</strong> Tập đoàn Bất động sản ABC</li>
+                        <li><strong>Địa chỉ:</strong> Khu vực Thủ Thiêm, TP.HCM</li>
+                        <li><strong>Quy mô:</strong> 50 ha</li>
+                        <li><strong>Trạng thái:</strong> Đang thi công</li>
+                    </ul>
+                </div>
+                <div class="col-md-6">
+                    <h5>📍 Vị trí đắc địa</h5>
+                    <ul>
+                        <li>Gần trung tâm TP.HCM</li>
+                        <li>Tiếp giáp với các tuyến đường chính</li>
+                        <li>Gần các tiện ích công cộng</li>
+                        <li>View sông Sài Gòn tuyệt đẹp</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <!-- Tiện ích dự án -->
+        <div class="step-container">
+            <div class="step-header">
+                <h3>🌟 Tiện ích nổi bật</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🏊‍♂️</div>
+                        <h5>Hồ bơi cao cấp</h5>
+                        <p>Hồ bơi vô cực với view toàn cảnh thành phố</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🏋️‍♂️</div>
+                        <h5>Phòng gym hiện đại</h5>
+                        <p>Trang thiết bị gym cao cấp, phòng yoga riêng biệt</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🌳</div>
+                        <h5>Công viên xanh</h5>
+                        <p>Không gian xanh rộng lớn, vườn treo độc đáo</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🛒</div>
+                        <h5>Trung tâm thương mại</h5>
+                        <p>TTTM cao cấp với đầy đủ tiện ích</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🏫</div>
+                        <h5>Trường học quốc tế</h5>
+                        <p>Trường học quốc tế chất lượng cao</p>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="feature-card text-center">
+                        <div class="feature-icon">🚗</div>
+                        <h5>Bãi đỗ xe thông minh</h5>
+                        <p>Hệ thống đỗ xe tự động, bảo mật cao</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin giá và thanh toán -->
+        <div class="step-container">
+            <div class="step-header">
+                <h3>💰 Thông tin giá và thanh toán</h3>
+            </div>
+            <div class="price-highlight">
+                <h4 class="text-center mb-3">💎 Giá từ: 45 - 65 triệu/m²</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>🏠 Các loại căn hộ:</h5>
+                        <ul>
+                            <li>Studio: 35-45m²</li>
+                            <li>1 phòng ngủ: 55-65m²</li>
+                            <li>2 phòng ngủ: 75-85m²</li>
+                            <li>3 phòng ngủ: 95-120m²</li>
+                            <li>Penthouse: 150-200m²</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>📅 Tiến độ thanh toán:</h5>
+                        <ul>
+                            <li>Đặt cọc: 5% giá trị</li>
+                            <li>Ký HĐMB: 30%</li>
+                            <li>Xây thô: 25%</li>
+                            <li>Hoàn thiện: 25%</li>
+                            <li>Bàn giao: 15%</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Thông tin vay vốn -->
+        <div class="step-container">
+            <div class="step-header">
+                <h3>🏦 Thông tin vay vốn VCB</h3>
+            </div>
+            <div class="loan-info">
+                <h4 class="text-center mb-3">💳 Điều kiện vay ưu đãi</h4>
+                <div class="row">
+                    <div class="col-md-6">
+                        <h5>✅ Điều kiện vay:</h5>
+                        <ul>
+                            <li>Tỉ lệ cho vay: Lên đến 70% giá trị căn hộ</li>
+                            <li>Thời hạn vay: Tối đa 25 năm</li>
+                            <li>Lãi suất ưu đãi: Từ 5.5% - 8%/năm</li>
+                            <li>Ân hạn gốc: Tối đa 5 năm</li>
+                        </ul>
+                    </div>
+                    <div class="col-md-6">
+                        <h5>📋 Hồ sơ cần thiết:</h5>
+                        <ul>
+                            <li>CMND/CCCD</li>
+                            <li>Sổ hộ khẩu</li>
+                            <li>Giấy tờ thu nhập</li>
+                            <li>Hợp đồng mua bán</li>
+                            <li>Giấy tờ tài sản đảm bảo</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="text-center mt-4">
+                    <button type="button" class="btn btn-primary btn-lg me-3" onclick="window.location.href='index.html'">
+                        🧮 Tính toán khoản vay
+                    </button>
+                    <button type="button" class="btn btn-success btn-lg" onclick="window.location.href='schedule.html'">
+                        📊 Xem lịch trả nợ
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Liên hệ tư vấn -->
+        <div class="step-container">
+            <div class="step-header">
+                <h3>📞 Liên hệ tư vấn</h3>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>👨‍💼 Chuyên viên tư vấn:</h5>
+                    <p><strong>Nguyễn Văn A</strong></p>
+                    <p>📱 Hotline: 0909.123.456</p>
+                    <p>📧 Email: nguyenvana@vcb.com.vn</p>
+                </div>
+                <div class="col-md-6">
+                    <h5>🏢 Văn phòng giao dịch:</h5>
+                    <p><strong>VCB Chi nhánh Thủ Thiêm</strong></p>
+                    <p>📍 Địa chỉ: 123 Đường ABC, Quận 2, TP.HCM</p>
+                    <p>🕒 Giờ làm việc: 8:00 - 17:00 (T2-T6)</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Nút quay lại -->
+        <div class="text-center mt-4 mb-4">
+            <button type="button" class="btn btn-secondary btn-lg" onclick="window.location.href='index.html'">
+                ← Quay lại trang chủ
+            </button>
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+</body>
+</html> 
