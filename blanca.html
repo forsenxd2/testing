@@ -132,6 +132,30 @@
             </div>
             <form id="loanForm">
                 <div class="mb-3">
+                    <label class="form-label">Loại hình vay</label>
+                    <div>
+                        <label class="me-3"><input type="radio" name="loanType" value="house" checked> Nhà ở</label>
+                        <label><input type="radio" name="loanType" value="shophouse"> Shophouse/Căn hộ dịch vụ</label>
+                    </div>
+                </div>
+                <div class="mb-3">
+                    <label for="fixedTerm" class="form-label">Kỳ hạn cố định</label>
+                    <select class="form-select" id="fixedTerm">
+                        <option value="12">Cố định 12 tháng</option>
+                        <option value="18">Cố định 18 tháng</option>
+                        <option value="24">Cố định 24 tháng</option>
+                        <option value="36">Cố định 36 tháng</option>
+                    </select>
+                </div>
+                <div class="mb-3">
+                    <label for="fixedRate" class="form-label">Lãi suất cố định (%/năm)</label>
+                    <input type="number" class="form-control" id="fixedRate" readonly>
+                </div>
+                <div class="mb-3">
+                    <label for="afterFixedRate" class="form-label">Lãi suất thả nổi sau ưu đãi (%/năm)</label>
+                    <input type="number" class="form-control" id="afterFixedRate" min="0" step="0.1" value="9.0">
+                </div>
+                <div class="mb-3">
                     <label for="loanAmount_million" class="form-label">Số tiền vay (VND)</label>
                     <div class="input-million-group">
                         <input type="text" id="loanAmount_million" maxlength="8" size="4" autocomplete="off" class="input-million">
@@ -140,8 +164,8 @@
                     <span id="loanAmount_display" class="ms-2 text-success"></span>
                 </div>
                 <div class="mb-3">
-                    <label for="loanTerm" class="form-label">Thời hạn vay (tháng)</label>
-                    <input type="number" class="form-control" id="loanTerm" required min="1">
+                    <label for="loanTerm" class="form-label">Thời hạn vay (tháng, tối đa 360)</label>
+                    <input type="number" class="form-control" id="loanTerm" required min="1" max="360">
                 </div>
                 <div class="mb-3">
                     <label for="gracePeriod" class="form-label">Thời gian ân hạn gốc (tháng, tối đa 60)</label>
@@ -153,10 +177,6 @@
                         <option value="48">48 tháng (4 năm)</option>
                         <option value="60">60 tháng (5 năm)</option>
                     </select>
-                </div>
-                <div class="mb-3">
-                    <label for="interestRate" class="form-label">Lãi suất (%/năm)</label>
-                    <input type="number" class="form-control" id="interestRate" min="0" step="0.1" value="7.5">
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
@@ -237,12 +257,28 @@
         display.textContent = '';
     }
     setupMillionInput('loanAmount_million', 'loanAmount_display');
+    // Lãi suất cố định theo bảng
+    const FIXED_RATES = {
+        house: { '12': 6.0, '18': 6.5, '24': 6.5, '36': 7.4 },
+        shophouse: { '12': 6.5, '18': 6.8, '24': 6.8, '36': 7.4 }
+    };
+    function updateFixedRate() {
+        const type = document.querySelector('input[name="loanType"]:checked').value;
+        const term = document.getElementById('fixedTerm').value;
+        document.getElementById('fixedRate').value = FIXED_RATES[type][term];
+    }
+    document.querySelectorAll('input[name="loanType"]').forEach(r => r.addEventListener('change', updateFixedRate));
+    document.getElementById('fixedTerm').addEventListener('change', updateFixedRate);
+    window.addEventListener('DOMContentLoaded', updateFixedRate);
     function calculateSchedule() {
         const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
         const term = parseInt(document.getElementById('loanTerm').value);
         const graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-        const interestRate = parseFloat(document.getElementById('interestRate').value);
-        const monthlyRate = interestRate / 12 / 100;
+        const fixedMonths = parseInt(document.getElementById('fixedTerm').value);
+        const fixedRate = parseFloat(document.getElementById('fixedRate').value);
+        const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+        const monthlyFixedRate = fixedRate / 12 / 100;
+        const monthlyAfterRate = afterFixedRate / 12 / 100;
         let openingPrincipal = loanAmount;
         const scheduleBody = document.getElementById('scheduleBody');
         scheduleBody.innerHTML = '';
@@ -251,23 +287,34 @@
             let monthlyPrincipal = 0;
             let interest = 0;
             let total = 0;
-            let currentRateYear = interestRate;
+            let currentRateYear = fixedRate;
             // Blanca City: 3 năm đầu nếu có ân hạn thì không trả cả gốc lẫn lãi
             if (i <= 36 && graceMonths >= i) {
-                // Không trả gì cả
                 monthlyPrincipal = 0;
                 interest = 0;
                 total = 0;
+                currentRateYear = fixedRate;
             } else if (i <= graceMonths) {
-                // Nếu ân hạn > 36 tháng, các tháng ân hạn còn lại chỉ ân hạn gốc, vẫn phải trả lãi
                 monthlyPrincipal = 0;
-                interest = openingPrincipal * monthlyRate;
+                // Lãi suất cố định hay thả nổi?
+                if (i <= fixedMonths) {
+                    interest = openingPrincipal * monthlyFixedRate;
+                    currentRateYear = fixedRate;
+                } else {
+                    interest = openingPrincipal * monthlyAfterRate;
+                    currentRateYear = afterFixedRate;
+                }
                 total = interest;
             } else {
-                // Hết ân hạn, trả gốc đều
                 monthlyPrincipal = loanAmount / (term - graceMonths);
                 if (monthlyPrincipal > openingPrincipal) monthlyPrincipal = openingPrincipal;
-                interest = openingPrincipal * monthlyRate;
+                if (i <= fixedMonths) {
+                    interest = openingPrincipal * monthlyFixedRate;
+                    currentRateYear = fixedRate;
+                } else {
+                    interest = openingPrincipal * monthlyAfterRate;
+                    currentRateYear = afterFixedRate;
+                }
                 total = monthlyPrincipal + interest;
             }
             let closingPrincipal = openingPrincipal - monthlyPrincipal;
