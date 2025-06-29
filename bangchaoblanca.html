@@ -29,6 +29,31 @@
             line-height: 1.6;
             white-space: pre-wrap;
         }
+        /* Tối ưu cho xuất PDF đồng nhất PC & điện thoại */
+        #pdfPreview,
+        #pdfPreview * {
+            font-family: 'Times New Roman', Times, serif !important;
+            font-size: 16px !important;
+            line-height: 1.35 !important;
+            box-sizing: border-box !important;
+        }
+        #pdfPreview table {
+            width: 100% !important;
+            table-layout: fixed !important;
+            border-collapse: collapse !important;
+            font-size: 16px !important;
+        }
+        #pdfPreview th, #pdfPreview td {
+            padding: 8px !important;
+            border: 1px solid #333 !important;
+            font-size: 16px !important;
+            line-height: 1.35 !important;
+            word-break: break-word !important;
+        }
+        #pdfPreview ul, #pdfPreview li {
+            font-size: 16px !important;
+            line-height: 1.35 !important;
+        }
     </style>
 </head>
 <body>
@@ -382,7 +407,7 @@ function exportBangChaoPDF() {
     html2pdf().set({
         margin: 15,
         filename: 'bang_chao_blanca.pdf',
-        html2canvas: { scale: 2 },
+        html2canvas: { scale: 3 }, // tăng scale cho nét và đồng nhất
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }).from(element).save().then(() => {
         // Trả lại style cũ
