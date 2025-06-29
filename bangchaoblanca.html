@@ -398,16 +398,22 @@ function exportBangChaoPDF() {
     var oldMargin = element.style.margin;
     var oldPaddingRight = element.style.paddingRight;
     // Đặt width nhỏ hơn khổ A4, căn giữa, bỏ padding
-    element.style.width = '680px';
-    element.style.maxWidth = '680px';
-    element.style.minWidth = '680px';
+    element.style.width = '640px';
+    element.style.maxWidth = '640px';
+    element.style.minWidth = '640px';
     element.style.margin = 'auto';
     element.style.paddingRight = '0';
     element.style.display = 'block';
+    // Đảm bảo các bảng con không vượt quá 100%
+    var tables = element.querySelectorAll('table');
+    tables.forEach(function(tbl) {
+        tbl.style.width = '100%';
+        tbl.style.tableLayout = 'fixed';
+    });
     html2pdf().set({
-        margin: 15,
+        margin: 10,
         filename: 'bang_chao_blanca.pdf',
-        html2canvas: { scale: 3 }, // tăng scale cho nét và đồng nhất
+        html2canvas: { scale: 3 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }).from(element).save().then(() => {
         // Trả lại style cũ
