@@ -75,7 +75,7 @@
                 <img src="images/blanca.png" alt="Blanca City" style="height:88px;">
             </div>
             <div style="font-weight:bold;text-align:center;font-size:1.13em;margin-bottom:2px;">CHƯƠNG TRÌNH CHO VAY ƯU ĐÃI DỰ ÁN BLANCA CITY CỦA SUNGROUP</div>
-            <div style="margin-bottom:2px;text-align:center;">Ngân hàng Thương mại cổ phần Ngoại Thương Việt Nam – Chi nhánh Thủ Thiêm hân hạnh là Chi nhánh <span style="color:#d40000;font-weight:bold;">ĐẦU MỐI</span> dự án Blanca City.</div>
+            <div style="margin-bottom:2px;text-align:left;">Ngân hàng Thương mại cổ phần Ngoại Thương Việt Nam – Chi nhánh Thủ Thiêm hân hạnh là Chi nhánh <span style="color:#d40000;font-weight:bold;">ĐẦU MỐI</span> dự án Blanca City.</div>
             <div style="margin-bottom:2px;">Chúng tôi gửi tới Quý khách hàng về chương trình lãi suất để hỗ trợ khách hàng vay vốn đối với <b>dự án Blanca City</b> như sau:</div>
         </div>
     </div>
@@ -366,6 +366,14 @@ function fillPdfPreview() {
 function exportBangChaoPDF() {
     fillPdfPreview();
     var element = document.getElementById('pdfPreview');
+    // Lưu lại width cũ
+    var oldWidth = element.style.width;
+    var oldMaxWidth = element.style.maxWidth;
+    var oldMinWidth = element.style.minWidth;
+    // Ép width lớn để xuất PDF đẹp
+    element.style.width = '900px';
+    element.style.maxWidth = '900px';
+    element.style.minWidth = '900px';
     element.style.display = 'block';
     html2pdf().set({
         margin: 15,
@@ -373,6 +381,10 @@ function exportBangChaoPDF() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }).from(element).save().then(() => {
+        // Trả lại width cũ
+        element.style.width = oldWidth;
+        element.style.maxWidth = oldMaxWidth;
+        element.style.minWidth = oldMinWidth;
         element.style.display = 'none';
     });
 }
