@@ -366,14 +366,18 @@ function fillPdfPreview() {
 function exportBangChaoPDF() {
     fillPdfPreview();
     var element = document.getElementById('pdfPreview');
-    // Lưu lại width cũ
+    // Lưu lại style cũ
     var oldWidth = element.style.width;
     var oldMaxWidth = element.style.maxWidth;
     var oldMinWidth = element.style.minWidth;
-    // Ép width lớn để xuất PDF đẹp
-    element.style.width = '900px';
-    element.style.maxWidth = '900px';
-    element.style.minWidth = '900px';
+    var oldMargin = element.style.margin;
+    var oldPaddingRight = element.style.paddingRight;
+    // Đặt width vừa khổ A4, bỏ margin/padding
+    element.style.width = '794px';
+    element.style.maxWidth = '794px';
+    element.style.minWidth = '794px';
+    element.style.margin = '0';
+    element.style.paddingRight = '0';
     element.style.display = 'block';
     html2pdf().set({
         margin: 15,
@@ -381,10 +385,12 @@ function exportBangChaoPDF() {
         html2canvas: { scale: 2 },
         jsPDF: { unit: 'mm', format: 'a4', orientation: 'portrait' }
     }).from(element).save().then(() => {
-        // Trả lại width cũ
+        // Trả lại style cũ
         element.style.width = oldWidth;
         element.style.maxWidth = oldMaxWidth;
         element.style.minWidth = oldMinWidth;
+        element.style.margin = oldMargin;
+        element.style.paddingRight = oldPaddingRight;
         element.style.display = 'none';
     });
 }
