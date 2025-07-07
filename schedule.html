@@ -260,18 +260,25 @@
                     </div>
                     <span id="loanAmount_display" class="ms-2 text-success"></span>
                 </div>
+                <div class="mb-3">
+                    <label class="form-label fw-bold" style="font-size:1.08rem; color:#228B22;">Mục đích vay</label>
+                    <div id="loanPurposeGroup">
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_bds" value="bds" checked>
+                            <label class="form-check-label" for="purpose_bds">Mua BĐS ở TP.HCM/Hà Nội</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_other" value="other">
+                            <label class="form-check-label" for="purpose_other">Mục đích khác</label>
+                        </div>
+                    </div>
+                </div>
                 <div id="fixedPackageHighlight" class="mb-3 p-3 border border-primary rounded" style="background-color: #fffacd;">
                     <label for="fixedPackage" class="form-label fw-bold" style="font-size:1.15rem; color:#0d6efd;">
                         <i class="bi bi-star-fill"></i> Chọn gói cố định lãi suất
                     </label>
                     <select class="form-select" id="fixedPackage">
-                        <option value="12">Cố định 12 tháng (6%/năm)</option>
-                        <option value="18">Cố định 18 tháng (6.3%/năm)</option>
-                        <option value="24">Cố định 24 tháng (6.5%/năm)</option>
-                        <option value="consumption">Vay tiêu dùng cố định 24 tháng (6.8%/năm)</option>
-                        <option value="36">Cố định 36 tháng (8%/năm)</option>
-                        <option value="young_1">Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)</option>
-                        <option value="young_2">Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - năm 1, LSTK 12T + 2% - năm 2&3, ân hạn gốc tối đa 5 năm)</option>
+                        <!-- Options sẽ được cập nhật động bằng JS -->
                     </select>
                     <div id="gracePeriodGroup" class="mt-3">
                         <label for="gracePeriod" class="form-label">Chọn thời gian ân hạn gốc (tháng)</label>
@@ -286,13 +293,16 @@
                     </div>
                     <div id="graceError" class="text-danger mt-2" style="display:none;">Thời hạn vay phải lớn hơn hoặc bằng thời gian ân hạn gốc!</div>
                 </div>
+                <div class="mb-3" id="afterFixedRateGroup">
+                    <label for="afterFixedRate" class="form-label" id="afterFixedRateLabel">Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)</label>
+                    <div class="input-group">
+                        <input type="number" class="form-control" id="afterFixedRate" min="0" step="0.01" value="5.5">
+                        <span class="input-group-text" id="afterFixedRateNote">+ 3,5%/năm = lãi suất sau ưu đãi</span>
+                    </div>
+                </div>
                 <div class="mb-3">
                     <label for="loanTerm" class="form-label">Thời hạn vay (tháng)</label>
                     <input type="number" class="form-control" id="loanTerm" required min="1">
-                </div>
-                <div class="mb-3">
-                    <label for="afterFixedRate" class="form-label">Lãi suất sau thời gian ưu đãi tạm tính (%/năm)</label>
-                    <input type="number" class="form-control" id="afterFixedRate" min="0" step="0.1" value="9.0">
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
@@ -432,9 +442,14 @@
             const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage').value;
-            const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            let afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+
+            // Nếu là 4 gói phổ thông thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
+            if (["12","18","24","36"].includes(fixedPackage)) {
+                afterFixedRate = afterFixedRate + 3.5;
+            }
 
             // Kiểm tra số tiền vay không được vượt quá giá trị tài sản
             if (assetValue > 0 && loanAmount > 0 && loanAmount > assetValue) {
@@ -738,6 +753,22 @@
         gracePeriodSelect.addEventListener('change', checkPackageTerm);
         loanTermInput.addEventListener('input', checkPackageTerm);
 
+        function updateAfterFixedRateLabel() {
+            const fixedPackage = document.getElementById('fixedPackage').value;
+            const afterFixedRateLabel = document.getElementById('afterFixedRateLabel');
+            const afterFixedRateNote = document.getElementById('afterFixedRateNote');
+            // 4 gói phổ thông: 12, 18, 24, 36
+            if (["12","18","24","36"].includes(fixedPackage)) {
+                afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
+                afterFixedRateNote.textContent = '+ 3,5%/năm = lãi suất sau ưu đãi';
+            } else {
+                afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
+                afterFixedRateNote.textContent = '';
+            }
+        }
+        document.getElementById('fixedPackage').addEventListener('change', updateAfterFixedRateLabel);
+        document.addEventListener('DOMContentLoaded', updateAfterFixedRateLabel);
+
         function downloadExcel() {
             // 1. Lấy thông tin khoản vay
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
@@ -929,6 +960,50 @@
             e.stopImmediatePropagation();
             return false;
         });
+
+        // Lãi suất cố định cho từng mục đích
+        const fixedPackages = {
+            bds: [
+                { value: '12', label: 'Cố định 12 tháng (6,0%/năm)', rate: 6.0, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6,3%/năm)', rate: 6.3, months: 18 },
+                { value: '24', label: 'Cố định 24 tháng (6,5%/năm)', rate: 6.5, months: 24 },
+                { value: '36', label: 'Cố định 36 tháng (8,0%/năm)', rate: 8.0, months: 36 },
+            ],
+            other: [
+                { value: '12', label: 'Cố định 12 tháng (6,3%/năm)', rate: 6.3, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6,8%/năm)', rate: 6.8, months: 18 },
+                { value: '24', label: 'Cố định 24 tháng (7,0%/năm)', rate: 7.0, months: 24 },
+                { value: '36', label: 'Cố định 36 tháng (8,3%/năm)', rate: 8.3, months: 36 },
+            ]
+        };
+        // Các gói đặc biệt giữ nguyên
+        const specialPackages = [
+            { value: 'consumption', label: 'Vay tiêu dùng cố định 24 tháng (6.8%/năm)' },
+            { value: 'young_1', label: 'Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)' },
+            { value: 'young_2', label: 'Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - năm 1, LSTK 12T + 2% - năm 2&3, ân hạn gốc tối đa 5 năm)' }
+        ];
+        function renderFixedPackageOptions() {
+            const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+            const select = document.getElementById('fixedPackage');
+            select.innerHTML = '';
+            // Thêm 4 gói cố định theo mục đích
+            fixedPackages[purpose].forEach(pkg => {
+                const opt = document.createElement('option');
+                opt.value = pkg.value;
+                opt.textContent = pkg.label;
+                select.appendChild(opt);
+            });
+            // Thêm các gói đặc biệt
+            specialPackages.forEach(pkg => {
+                const opt = document.createElement('option');
+                opt.value = pkg.value;
+                opt.textContent = pkg.label;
+                select.appendChild(opt);
+            });
+        }
+        // Gọi khi load và khi đổi mục đích
+        document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
+        document.getElementById('loanPurposeGroup').addEventListener('change', renderFixedPackageOptions);
     </script>
 </body>
 </html> 
