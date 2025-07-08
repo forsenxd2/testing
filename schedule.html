@@ -881,6 +881,7 @@
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
             // Tóm tắt
+            // Lấy lãi suất ưu đãi chuẩn xác
             let fixedRateDisplay = '';
             if (["12","18","24","36"].includes(fixedPackage.value)) {
                 // Lấy đúng rate từ object
