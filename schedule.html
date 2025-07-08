@@ -776,7 +776,7 @@
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage');
             const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
-            const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            const afterFixedRateRaw = parseFloat(document.getElementById('afterFixedRate').value);
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
             let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
@@ -791,7 +791,7 @@
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
                 ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? 'Năm 1: 5,2%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value === 'consumption' ? '24 tháng (6.8%)' : (fixedPackage.value + ' tháng')))],
-                ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
+                ['Lãi suất thả nổi', (["12","18","24","36"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
@@ -874,7 +874,7 @@
             const term = parseInt(document.getElementById('loanTerm').value);
             const fixedPackage = document.getElementById('fixedPackage');
             const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
-            const afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
+            const afterFixedRateRaw = parseFloat(document.getElementById('afterFixedRate').value);
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
             let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
@@ -886,7 +886,7 @@
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
                 ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? 'Năm 1: 5,2%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value === 'consumption' ? '24 tháng (6.8%)' : (fixedPackage.value + ' tháng')))],
-                ['Lãi suất thả nổi', afterFixedRate ? afterFixedRate.toFixed(2) + '%' : ''],
+                ['Lãi suất thả nổi', (["12","18","24","36"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
