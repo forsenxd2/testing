@@ -778,11 +778,24 @@
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
             // 0. Thêm dòng tiêu đề lớn
             const titleRow = ['BẢNG LÃI SUẤT TẠM TÍNH'];
+            // Lấy đúng lãi suất ưu đãi
+            let fixedRateDisplay = '';
+            const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+            if (["12","18","24","36"].includes(fixedPackage.value)) {
+                const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage.value);
+                fixedRateDisplay = pkg ? pkg.rate.toFixed(2) + '%' : '';
+            } else if (fixedPackage.value === 'consumption') {
+                fixedRateDisplay = '6.80%';
+            } else if (fixedPackage.value === 'young_1') {
+                fixedRateDisplay = '5.50%';
+            } else if (fixedPackage.value === 'young_2') {
+                fixedRateDisplay = '5.20% (năm 1)';
+            }
             // 2. Tạo dữ liệu phần tóm tắt
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
-                ['LÃI SUẤT ƯU ĐÃI', fixedPackageText.match(/\d+(\.\d+)?%/) ? fixedPackageText.match(/\d+(\.\d+)?%/)[0] : ''],
+                ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
                 ['Thời gian ưu đãi', fixedPackage.value === 'young_2' ? 'Năm 1: 5,2%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value === 'young_1' ? '36 tháng (5.5%)' : (fixedPackage.value === 'consumption' ? '24 tháng (6.8%)' : (fixedPackage.value + ' tháng')))],
                 ['Lãi suất thả nổi', (["12","18","24","36"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
