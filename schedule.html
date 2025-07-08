@@ -1014,6 +1014,7 @@
                 opt.textContent = pkg.label;
                 select.appendChild(opt);
             });
+            updateAfterFixedRateLabel();
         }
         // Gọi khi load và khi đổi mục đích
         document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
