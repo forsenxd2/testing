@@ -468,21 +468,14 @@
                 let fixedMonths = 12;
                 let secondFixedMonths = 0;
 
-                if (fixedPackage === '12') {
-                    fixedRate = 6.0;
-                    fixedMonths = 12;
-                } else if (fixedPackage === '18') {
-                    fixedRate = 6.3;
-                    fixedMonths = 18;
-                } else if (fixedPackage === '24') {
-                    fixedRate = 6.5;
-                    fixedMonths = 24;
+                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+                const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage);
+                if (["12","18","24","36"].includes(fixedPackage) && pkg) {
+                    fixedRate = pkg.rate;
+                    fixedMonths = pkg.months;
                 } else if (fixedPackage === 'consumption') {
                     fixedRate = 6.8;
                     fixedMonths = 24;
-                } else if (fixedPackage === '36') {
-                    fixedRate = 8.0;
-                    fixedMonths = 36;
                 } else if (fixedPackage === 'young_1') {
                     fixedRate = 5.5;
                     fixedMonths = 36;
