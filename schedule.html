@@ -307,12 +307,12 @@
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
                     <div class="d-flex gap-2">
-                        <button type="button" class="btn btn-danger" onclick="downloadPDF()">
+                        <button type="button" class="btn btn-danger">
                             <i class="bi bi-file-earmark-pdf"></i> Tải file PDF
                         </button>
-                        <button type="button" class="btn btn-success" onclick="downloadExcel()">
+                        <button type="button" class="btn btn-success">
                             <i class="bi bi-download"></i> Tải file Excel
-                    </button>
+                        </button>
                     </div>
                 </div>
             </form>
@@ -955,13 +955,13 @@
         }
 
         // Đảm bảo luôn cập nhật bảng trước khi tải file
-        document.querySelector('button.btn-danger[onclick="downloadPDF()"]')?.addEventListener('click', function(e) {
+        document.querySelector('button.btn-danger')?.addEventListener('click', function(e) {
             calculateSchedule();
             setTimeout(downloadPDF, 0);
             e.stopImmediatePropagation();
             return false;
         });
-        document.querySelector('button.btn-success[onclick="downloadExcel()"]')?.addEventListener('click', function(e) {
+        document.querySelector('button.btn-success')?.addEventListener('click', function(e) {
             calculateSchedule();
             setTimeout(downloadExcel, 0);
             e.stopImmediatePropagation();
