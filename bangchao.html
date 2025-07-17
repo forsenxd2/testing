@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bảng chào</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <style>
+        body {
+            background-color: #f8f9fa;
+            min-height: 100vh;
+        }
+        .container {
+            position: relative;
+            z-index: 1;
+        }
+        .menu-btn {
+            box-shadow: 0 4px 16px rgba(34,139,34,0.12), 0 1.5px 4px rgba(0,0,0,0.08);
+            transition: box-shadow 0.2s, transform 0.2s, background 0.2s;
+            cursor: pointer;
+            font-size: 1.08rem;
+            font-weight: bold;
+            padding: 0.7rem 1.2rem;
+            border-radius: 10px;
+        }
+        .menu-btn:hover, .menu-btn:focus {
+            box-shadow: 0 8px 24px rgba(34,139,34,0.18), 0 2px 8px rgba(0,0,0,0.12);
+            transform: translateY(-2px) scale(1.03);
+            background: #e6f4ea !important;
+        }
+        .menu-responsive {
+            display: flex;
+            flex-direction: row;
+            justify-content: space-between;
+            width: 100%;
+        }
+        .menu-group {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .menu-blanca {
+            display: flex;
+            flex-direction: column;
+            align-items: end;
+        }
+        @media (max-width: 767.98px) {
+            .menu-responsive {
+                flex-direction: column;
+                gap: 10px;
+            }
+            .menu-group, .menu-blanca {
+                align-items: stretch !important;
+                width: 100%;
+            }
+            .menu-blanca {
+                margin-top: 10px;
+                align-items: stretch !important;
+            }
+            .menu-btn {
+                min-width: unset !important;
+                width: 100%;
+                font-size: 1.08rem;
+            }
+        }
+        .image-container {
+            background-color: rgba(255, 255, 255, 0.95);
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            margin-top: 20px;
+            text-align: center;
+        }
+        .bangchao-image {
+            max-width: 100%;
+            height: auto;
+            border-radius: 8px;
+            box-shadow: 0 4px 16px rgba(0,0,0,0.1);
+        }
+    </style>
+</head>
+<body>
+    <div class="container mt-4">
+        <div class="d-flex flex-column align-items-start mb-3 gap-2">
+            <div class="menu-responsive w-100">
+                <div class="menu-group">
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='projects.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DANH MỤC CÁC DỰ ÁN LIÊN KẾT VỚI VCB THỦ THIÊM
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='laisuat.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        CÁC GÓI LÃI SUẤT CHO VAY KHCN HIỆN HÀNH
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='hosovay.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DANH MỤC HỒ SƠ VAY VỐN KHÁCH HÀNG CUNG CẤP
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='bodieukien.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        BỘ ĐIỀU KIỆN SẢN PHẨM NHÀ DỰ ÁN
+                    </button>
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #ffe066; color: #228B22; min-width: 260px; border: none;"
+                        onclick="window.location.href='bangchao.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        BẢNG CHÀO
+                    </button>
+                </div>
+                <div class="menu-blanca">
+                    <button type="button" class="btn btn-sm fw-bold menu-btn"
+                        style="background-color: #228B22; color: white; min-width: 260px; border: none;"
+                        onclick="window.location.href='blanca.html'">
+                        <img src="images/mouse.png" style="width: 24px; height: 24px; margin-right: 10px; vertical-align: middle;">
+                        DỰ ÁN BLANCA CITY
+                    </button>
+                </div>
+            </div>
+        </div>
+        
+        <h1 class="text-center mb-4">Bảng chào</h1>
+        
+        <div class="image-container">
+            <img src="images/bangchao.jpg" alt="Bảng chào" class="bangchao-image">
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html> 
