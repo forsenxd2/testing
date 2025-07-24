@@ -521,8 +521,10 @@
             if (loanAmount > 0 && term > 0) {
                 const monthlyRate = interestRate / 12 / 100;
                 const monthlyPayment = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, term) / (Math.pow(1 + monthlyRate, term) - 1);
-                const monthlyPrincipal = loanAmount / term;
-                const monthlyInterest = monthlyPayment - monthlyPrincipal;
+                
+                // Tính gốc và lãi tháng đầu tiên
+                const monthlyInterest = loanAmount * monthlyRate; // Lãi tháng đầu = Số dư gốc * lãi suất tháng
+                const monthlyPrincipal = monthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
 
                 // Tính khoản vay khác
                 let otherLoanMonthly = 0;
