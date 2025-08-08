@@ -575,29 +575,6 @@
             return emi;
         }
 
-        // Hàm kiểm tra kết quả tính toán
-        function validateCalculation(principal, rate, term, expectedEMI) {
-            const calculatedEMI = calculateEMI(principal, rate, term);
-            const difference = Math.abs(calculatedEMI - expectedEMI);
-            const percentageError = (difference / expectedEMI) * 100;
-            
-            console.log('Validation Results:');
-            console.log('Principal:', principal);
-            console.log('Rate:', rate + '%');
-            console.log('Term:', term + ' months');
-            console.log('Calculated EMI:', calculatedEMI);
-            console.log('Expected EMI:', expectedEMI);
-            console.log('Difference:', difference);
-            console.log('Percentage Error:', percentageError.toFixed(4) + '%');
-            
-            return {
-                calculated: calculatedEMI,
-                expected: expectedEMI,
-                difference: difference,
-                percentageError: percentageError
-            };
-        }
-
         // Tính toán khoản vay
         function calculateLoan() {
             const loanAmount = getMillionValue(loanAmount_million);
