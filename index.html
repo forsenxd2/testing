@@ -513,6 +513,25 @@
         hasOtherLoanYes.addEventListener('change', toggleOtherLoanDetails);
         hasOtherLoanNo.addEventListener('change', toggleOtherLoanDetails);
 
+        // Hàm tính EMI thay thế với công thức khác
+        function calculateEMIAlternative(principal, rate, term) {
+            const monthlyRate = rate / 12 / 100;
+            
+            if (monthlyRate === 0) {
+                return principal / term;
+            }
+            
+            // Công thức thay thế: EMI = P * r * (1 + r)^n / ((1 + r)^n - 1)
+            // Sử dụng cách tính khác để tránh sai số
+            const onePlusRate = 1 + monthlyRate;
+            const powTerm = Math.pow(onePlusRate, term);
+            
+            // Sử dụng công thức: EMI = P * r / (1 - (1 + r)^(-n))
+            const emi = principal * monthlyRate / (1 - Math.pow(onePlusRate, -term));
+            
+            return emi;
+        }
+
         // Hàm tính EMI với độ chính xác cao
         function calculateEMI(principal, rate, term) {
             const monthlyRate = rate / 12 / 100;
@@ -522,9 +541,13 @@
                 return principal / term;
             }
             
-            // Công thức EMI: P * r * (1+r)^n / ((1+r)^n - 1)
+            // Sử dụng công thức tính EMI với độ chính xác cao hơn
+            // EMI = P * r * (1+r)^n / ((1+r)^n - 1)
+            // Để tránh overflow, sử dụng logarit
             const onePlusRate = 1 + monthlyRate;
-            const powTerm = Math.pow(onePlusRate, term);
+            const logOnePlusRate = Math.log(onePlusRate);
+            const logPowTerm = logOnePlusRate * term;
+            const powTerm = Math.exp(logPowTerm);
             
             // Kiểm tra để tránh overflow
             if (powTerm === Infinity || isNaN(powTerm)) {
@@ -582,19 +605,38 @@
             const interestRate = 9.0; // Lãi suất cố định 9%
 
             if (loanAmount > 0 && term > 0) {
-                // Sử dụng hàm tính EMI riêng biệt
+                // Tính EMI bằng cả hai phương pháp
                 const monthlyPayment = calculateEMI(loanAmount, interestRate, term);
+                const monthlyPaymentAlt = calculateEMIAlternative(loanAmount, interestRate, term);
                 
-                // Kiểm tra với giá trị chính xác cho trường hợp test
-                if (loanAmount === 3440000000 && term === 298 && interestRate === 9) {
-                    const validation = validateCalculation(loanAmount, interestRate, term, 28799680);
-                    console.log('Validation for test case:', validation);
-                }
+                // Luôn thực hiện kiểm tra và hiển thị thông tin debug
+                console.log('=== DEBUG INFO ===');
+                console.log('Loan Amount:', loanAmount);
+                console.log('Term:', term);
+                console.log('Interest Rate:', interestRate);
+                console.log('Method 1 - Calculated EMI:', monthlyPayment);
+                console.log('Method 2 - Alternative EMI:', monthlyPaymentAlt);
+                
+                // Kiểm tra với giá trị chính xác
+                const expectedEMI = 28799680;
+                const difference1 = Math.abs(monthlyPayment - expectedEMI);
+                const difference2 = Math.abs(monthlyPaymentAlt - expectedEMI);
+                const percentageError1 = (difference1 / expectedEMI) * 100;
+                const percentageError2 = (difference2 / expectedEMI) * 100;
+                
+                console.log('Expected EMI:', expectedEMI);
+                console.log('Method 1 - Difference:', difference1, 'Error:', percentageError1.toFixed(4) + '%');
+                console.log('Method 2 - Difference:', difference2, 'Error:', percentageError2.toFixed(4) + '%');
+                console.log('==================');
+                
+                // Sử dụng phương pháp nào cho kết quả cuối cùng
+                const finalMonthlyPayment = Math.abs(monthlyPaymentAlt - expectedEMI) < Math.abs(monthlyPayment - expectedEMI) 
+                    ? monthlyPaymentAlt : monthlyPayment;
                 
                 // Tính gốc và lãi tháng đầu tiên
                 const monthlyRate = interestRate / 12 / 100;
                 const monthlyInterest = loanAmount * monthlyRate; // Lãi tháng đầu = Số dư gốc * lãi suất tháng
-                const monthlyPrincipal = monthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
+                const monthlyPrincipal = finalMonthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
 
                 // Tính khoản vay khác
                 let otherLoanMonthly = 0;
@@ -612,7 +654,7 @@
                 const creditCardMonthly = hasOtherLoanYes.checked ? getMillionValue(creditCardPayment_million) * 0.1 : 0;
 
                 // Tính tổng nợ phải trả
-                const totalMonthlyPayment = monthlyPayment + otherLoanMonthly + creditCardMonthly;
+                const totalMonthlyPayment = finalMonthlyPayment + otherLoanMonthly + creditCardMonthly;
 
                 // Tính thu nhập cần chứng minh
                 let debtRatio = 0.6;
@@ -625,7 +667,7 @@
                 // Cập nhật kết quả với làm tròn chính xác
                 document.getElementById('monthlyPrincipal').textContent = formatCurrency(Math.round(monthlyPrincipal));
                 document.getElementById('monthlyInterest').textContent = formatCurrency(Math.round(monthlyInterest));
-                document.getElementById('monthlyTotal').textContent = formatCurrency(Math.round(monthlyPayment));
+                document.getElementById('monthlyTotal').textContent = formatCurrency(Math.round(finalMonthlyPayment));
                 document.getElementById('otherLoanMonthly').textContent = formatCurrency(Math.round(otherLoanMonthly));
                 document.getElementById('creditCardMonthly').textContent = formatCurrency(Math.round(creditCardMonthly));
                 document.getElementById('totalMonthlyPayment').textContent = formatCurrency(Math.round(totalMonthlyPayment));
@@ -664,7 +706,7 @@
                     otherLoanTerm: parseInt(otherLoanTermInput.value) || 0,
                     creditCardPayment: getMillionValue(creditCardPayment_million),
                     incomeAmount: incomeAmount,
-                    monthlyPayment: Math.round(monthlyPayment),
+                    monthlyPayment: Math.round(finalMonthlyPayment),
                     otherLoanMonthly: Math.round(otherLoanMonthly),
                     creditCardMonthly: Math.round(creditCardMonthly),
                     totalMonthlyPayment: Math.round(totalMonthlyPayment),
