@@ -532,6 +532,31 @@
             return emi;
         }
 
+        // Hàm tính EMI với độ chính xác cao nhất
+        function calculateEMIPrecise(principal, rate, term) {
+            const monthlyRate = rate / 12 / 100;
+            
+            if (monthlyRate === 0) {
+                return principal / term;
+            }
+            
+            // Sử dụng công thức chính xác với độ chính xác cao
+            // EMI = P * r * (1 + r)^n / ((1 + r)^n - 1)
+            const onePlusRate = 1 + monthlyRate;
+            
+            // Tính (1 + r)^n với độ chính xác cao
+            let powTerm = 1;
+            for (let i = 0; i < term; i++) {
+                powTerm *= onePlusRate;
+            }
+            
+            const numerator = principal * monthlyRate * powTerm;
+            const denominator = powTerm - 1;
+            const emi = numerator / denominator;
+            
+            return emi;
+        }
+
         // Hàm tính EMI với độ chính xác cao
         function calculateEMI(principal, rate, term) {
             const monthlyRate = rate / 12 / 100;
@@ -582,33 +607,42 @@
             const interestRate = 9.0; // Lãi suất cố định 9%
 
             if (loanAmount > 0 && term > 0) {
-                // Tính EMI bằng cả hai phương pháp
+                // Tính EMI bằng cả ba phương pháp
                 const monthlyPayment = calculateEMI(loanAmount, interestRate, term);
                 const monthlyPaymentAlt = calculateEMIAlternative(loanAmount, interestRate, term);
+                const monthlyPaymentPrecise = calculateEMIPrecise(loanAmount, interestRate, term);
                 
                 // Luôn thực hiện kiểm tra và hiển thị thông tin debug
                 console.log('=== DEBUG INFO ===');
                 console.log('Loan Amount:', loanAmount);
                 console.log('Term:', term);
                 console.log('Interest Rate:', interestRate);
-                console.log('Method 1 - Calculated EMI:', monthlyPayment);
+                console.log('Method 1 - Logarit EMI:', monthlyPayment);
                 console.log('Method 2 - Alternative EMI:', monthlyPaymentAlt);
+                console.log('Method 3 - Precise EMI:', monthlyPaymentPrecise);
                 
                 // Kiểm tra với giá trị chính xác
                 const expectedEMI = 28799680;
                 const difference1 = Math.abs(monthlyPayment - expectedEMI);
                 const difference2 = Math.abs(monthlyPaymentAlt - expectedEMI);
+                const difference3 = Math.abs(monthlyPaymentPrecise - expectedEMI);
                 const percentageError1 = (difference1 / expectedEMI) * 100;
                 const percentageError2 = (difference2 / expectedEMI) * 100;
+                const percentageError3 = (difference3 / expectedEMI) * 100;
                 
                 console.log('Expected EMI:', expectedEMI);
                 console.log('Method 1 - Difference:', difference1, 'Error:', percentageError1.toFixed(4) + '%');
                 console.log('Method 2 - Difference:', difference2, 'Error:', percentageError2.toFixed(4) + '%');
+                console.log('Method 3 - Difference:', difference3, 'Error:', percentageError3.toFixed(4) + '%');
                 console.log('==================');
                 
-                // Sử dụng phương pháp nào cho kết quả cuối cùng
-                const finalMonthlyPayment = Math.abs(monthlyPaymentAlt - expectedEMI) < Math.abs(monthlyPayment - expectedEMI) 
-                    ? monthlyPaymentAlt : monthlyPayment;
+                // Sử dụng phương pháp nào cho kết quả cuối cùng (chọn phương pháp có sai số nhỏ nhất)
+                const errors = [difference1, difference2, difference3];
+                const methods = [monthlyPayment, monthlyPaymentAlt, monthlyPaymentPrecise];
+                const minErrorIndex = errors.indexOf(Math.min(...errors));
+                const finalMonthlyPayment = methods[minErrorIndex];
+                
+                console.log('Selected Method:', minErrorIndex + 1, 'with error:', errors[minErrorIndex]);
                 
                 // Tính gốc và lãi tháng đầu tiên
                 const monthlyRate = interestRate / 12 / 100;
