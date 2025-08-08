@@ -521,13 +521,14 @@
             if (loanAmount > 0 && term > 0) {
                 const monthlyRate = interestRate / 12 / 100;
                 
-                // Tính toán chính xác hơn với Math.pow
+                // Tính toán chính xác hơn với độ chính xác cao
                 const powTerm = Math.pow(1 + monthlyRate, term);
-                const monthlyPayment = loanAmount * monthlyRate * powTerm / (powTerm - 1);
+                const denominator = powTerm - 1;
+                const monthlyPayment = parseFloat((loanAmount * monthlyRate * powTerm / denominator).toFixed(2));
                 
                 // Tính gốc và lãi tháng đầu tiên
-                const monthlyInterest = loanAmount * monthlyRate; // Lãi tháng đầu = Số dư gốc * lãi suất tháng
-                const monthlyPrincipal = monthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
+                const monthlyInterest = parseFloat((loanAmount * monthlyRate).toFixed(2)); // Lãi tháng đầu = Số dư gốc * lãi suất tháng
+                const monthlyPrincipal = parseFloat((monthlyPayment - monthlyInterest).toFixed(2)); // Gốc tháng đầu = Tổng trả - Lãi
 
                 // Tính khoản vay khác
                 let otherLoanMonthly = 0;
@@ -540,7 +541,8 @@
                         const otherMonthlyRate = otherRate / 12 / 100;
                         // Tính số tiền trả hàng tháng dựa trên số tiền vay và thời hạn còn lại
                         const otherPowTerm = Math.pow(1 + otherMonthlyRate, otherTerm);
-                        otherLoanMonthly = otherAmount * otherMonthlyRate * otherPowTerm / (otherPowTerm - 1);
+                        const otherDenominator = otherPowTerm - 1;
+                        otherLoanMonthly = parseFloat((otherAmount * otherMonthlyRate * otherPowTerm / otherDenominator).toFixed(2));
                     }
                 }
 
