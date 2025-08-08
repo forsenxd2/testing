@@ -532,6 +532,45 @@
             return emi;
         }
 
+        // Hàm kiểm tra từng bước tính toán EMI
+        function debugEMICalculation(principal, rate, term) {
+            console.log('=== DETAILED EMI CALCULATION ===');
+            console.log('Principal:', principal);
+            console.log('Annual Rate:', rate + '%');
+            console.log('Term:', term + ' months');
+            
+            const monthlyRate = rate / 12 / 100;
+            console.log('Monthly Rate:', monthlyRate);
+            
+            const onePlusRate = 1 + monthlyRate;
+            console.log('1 + Monthly Rate:', onePlusRate);
+            
+            const powTerm = Math.pow(onePlusRate, term);
+            console.log('(1 + r)^n:', powTerm);
+            
+            const numerator = principal * monthlyRate * powTerm;
+            console.log('Numerator (P * r * (1+r)^n):', numerator);
+            
+            const denominator = powTerm - 1;
+            console.log('Denominator ((1+r)^n - 1):', denominator);
+            
+            const emi = numerator / denominator;
+            console.log('EMI = Numerator / Denominator:', emi);
+            
+            // Kiểm tra với giá trị mong đợi
+            const expectedEMI = 28799680;
+            const difference = Math.abs(emi - expectedEMI);
+            const percentageError = (difference / expectedEMI) * 100;
+            
+            console.log('Expected EMI:', expectedEMI);
+            console.log('Calculated EMI:', emi);
+            console.log('Difference:', difference);
+            console.log('Percentage Error:', percentageError.toFixed(4) + '%');
+            console.log('=====================================');
+            
+            return emi;
+        }
+
         // Hàm tính EMI với độ chính xác cao nhất
         function calculateEMIPrecise(principal, rate, term) {
             const monthlyRate = rate / 12 / 100;
@@ -607,6 +646,9 @@
             const interestRate = 9.0; // Lãi suất cố định 9%
 
             if (loanAmount > 0 && term > 0) {
+                // Gọi hàm debug để xem chi tiết từng bước
+                debugEMICalculation(loanAmount, interestRate, term);
+                
                 // Tính EMI bằng cả ba phương pháp
                 const monthlyPayment = calculateEMI(loanAmount, interestRate, term);
                 const monthlyPaymentAlt = calculateEMIAlternative(loanAmount, interestRate, term);
