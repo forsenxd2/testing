@@ -513,6 +513,16 @@
         hasOtherLoanYes.addEventListener('change', toggleOtherLoanDetails);
         hasOtherLoanNo.addEventListener('change', toggleOtherLoanDetails);
 
+        // Hàm tính EMI với độ chính xác cao
+        function calculateEMI(principal, rate, term) {
+            const monthlyRate = rate / 12 / 100;
+            const onePlusRate = 1 + monthlyRate;
+            const powTerm = Math.pow(onePlusRate, term);
+            const numerator = principal * monthlyRate * powTerm;
+            const denominator = powTerm - 1;
+            return numerator / denominator;
+        }
+
         // Tính toán khoản vay
         function calculateLoan() {
             const loanAmount = getMillionValue(loanAmount_million);
@@ -520,25 +530,12 @@
             const interestRate = 9.0; // Lãi suất cố định 9%
 
             if (loanAmount > 0 && term > 0) {
-                const monthlyRate = interestRate / 12 / 100;
-                
-                // Cấu hình Decimal.js với độ chính xác cao
-                Decimal.set({ precision: 20, rounding: 4 });
-                
-                // Tính toán chính xác hơn với Decimal.js
-                const rate = new Decimal(monthlyRate);
-                const principal = new Decimal(loanAmount);
-                const months = new Decimal(term);
-                
-                // Công thức EMI: P * r * (1+r)^n / ((1+r)^n - 1)
-                const onePlusRate = new Decimal(1).plus(rate);
-                const powTerm = onePlusRate.pow(months);
-                const numerator = principal.mul(rate).mul(powTerm);
-                const denominator = powTerm.minus(1);
-                const monthlyPayment = numerator.div(denominator).toNumber();
+                // Sử dụng hàm tính EMI riêng biệt
+                const monthlyPayment = calculateEMI(loanAmount, interestRate, term);
                 
                 // Tính gốc và lãi tháng đầu tiên
-                const monthlyInterest = principal.mul(rate).toNumber(); // Lãi tháng đầu = Số dư gốc * lãi suất tháng
+                const monthlyRate = interestRate / 12 / 100;
+                const monthlyInterest = loanAmount * monthlyRate; // Lãi tháng đầu = Số dư gốc * lãi suất tháng
                 const monthlyPrincipal = monthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
 
                 // Tính khoản vay khác
@@ -549,17 +546,7 @@
                     const otherTerm = parseInt(otherLoanTermInput.value) || 0;
                     
                     if (otherAmount > 0 && otherRate > 0 && otherTerm > 0) {
-                        const otherMonthlyRate = otherRate / 12 / 100;
-                        // Tính số tiền trả hàng tháng dựa trên số tiền vay và thời hạn còn lại
-                        const otherRateDecimal = new Decimal(otherMonthlyRate);
-                        const otherPrincipal = new Decimal(otherAmount);
-                        const otherMonths = new Decimal(otherTerm);
-                        
-                        const otherOnePlusRate = new Decimal(1).plus(otherRateDecimal);
-                        const otherPowTerm = otherOnePlusRate.pow(otherMonths);
-                        const otherNumerator = otherPrincipal.mul(otherRateDecimal).mul(otherPowTerm);
-                        const otherDenominator = otherPowTerm.minus(1);
-                        otherLoanMonthly = otherNumerator.div(otherDenominator).toNumber();
+                        otherLoanMonthly = calculateEMI(otherAmount, otherRate, otherTerm);
                     }
                 }
 
