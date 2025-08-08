@@ -516,11 +516,63 @@
         // Hàm tính EMI với độ chính xác cao
         function calculateEMI(principal, rate, term) {
             const monthlyRate = rate / 12 / 100;
+            
+            // Kiểm tra nếu lãi suất = 0
+            if (monthlyRate === 0) {
+                return principal / term;
+            }
+            
+            // Công thức EMI: P * r * (1+r)^n / ((1+r)^n - 1)
             const onePlusRate = 1 + monthlyRate;
             const powTerm = Math.pow(onePlusRate, term);
+            
+            // Kiểm tra để tránh overflow
+            if (powTerm === Infinity || isNaN(powTerm)) {
+                console.error('Overflow in EMI calculation');
+                return 0;
+            }
+            
             const numerator = principal * monthlyRate * powTerm;
             const denominator = powTerm - 1;
-            return numerator / denominator;
+            
+            // Kiểm tra denominator
+            if (denominator === 0) {
+                console.error('Denominator is zero');
+                return 0;
+            }
+            
+            const emi = numerator / denominator;
+            
+            // Kiểm tra kết quả
+            if (isNaN(emi) || emi === Infinity) {
+                console.error('Invalid EMI result');
+                return 0;
+            }
+            
+            return emi;
+        }
+
+        // Hàm kiểm tra kết quả tính toán
+        function validateCalculation(principal, rate, term, expectedEMI) {
+            const calculatedEMI = calculateEMI(principal, rate, term);
+            const difference = Math.abs(calculatedEMI - expectedEMI);
+            const percentageError = (difference / expectedEMI) * 100;
+            
+            console.log('Validation Results:');
+            console.log('Principal:', principal);
+            console.log('Rate:', rate + '%');
+            console.log('Term:', term + ' months');
+            console.log('Calculated EMI:', calculatedEMI);
+            console.log('Expected EMI:', expectedEMI);
+            console.log('Difference:', difference);
+            console.log('Percentage Error:', percentageError.toFixed(4) + '%');
+            
+            return {
+                calculated: calculatedEMI,
+                expected: expectedEMI,
+                difference: difference,
+                percentageError: percentageError
+            };
         }
 
         // Tính toán khoản vay
@@ -532,6 +584,12 @@
             if (loanAmount > 0 && term > 0) {
                 // Sử dụng hàm tính EMI riêng biệt
                 const monthlyPayment = calculateEMI(loanAmount, interestRate, term);
+                
+                // Kiểm tra với giá trị chính xác cho trường hợp test
+                if (loanAmount === 3440000000 && term === 298 && interestRate === 9) {
+                    const validation = validateCalculation(loanAmount, interestRate, term, 28799680);
+                    console.log('Validation for test case:', validation);
+                }
                 
                 // Tính gốc và lãi tháng đầu tiên
                 const monthlyRate = interestRate / 12 / 100;
