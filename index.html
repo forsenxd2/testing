@@ -522,13 +522,23 @@
             if (loanAmount > 0 && term > 0) {
                 const monthlyRate = interestRate / 12 / 100;
                 
+                // Cấu hình Decimal.js với độ chính xác cao
+                Decimal.set({ precision: 20, rounding: 4 });
+                
                 // Tính toán chính xác hơn với Decimal.js
-                const powTerm = new Decimal(1 + monthlyRate).pow(term);
+                const rate = new Decimal(monthlyRate);
+                const principal = new Decimal(loanAmount);
+                const months = new Decimal(term);
+                
+                // Công thức EMI: P * r * (1+r)^n / ((1+r)^n - 1)
+                const onePlusRate = new Decimal(1).plus(rate);
+                const powTerm = onePlusRate.pow(months);
+                const numerator = principal.mul(rate).mul(powTerm);
                 const denominator = powTerm.minus(1);
-                const monthlyPayment = new Decimal(loanAmount).mul(monthlyRate).mul(powTerm).div(denominator).toNumber();
+                const monthlyPayment = numerator.div(denominator).toNumber();
                 
                 // Tính gốc và lãi tháng đầu tiên
-                const monthlyInterest = new Decimal(loanAmount).mul(monthlyRate).toNumber(); // Lãi tháng đầu = Số dư gốc * lãi suất tháng
+                const monthlyInterest = principal.mul(rate).toNumber(); // Lãi tháng đầu = Số dư gốc * lãi suất tháng
                 const monthlyPrincipal = monthlyPayment - monthlyInterest; // Gốc tháng đầu = Tổng trả - Lãi
 
                 // Tính khoản vay khác
@@ -541,9 +551,15 @@
                     if (otherAmount > 0 && otherRate > 0 && otherTerm > 0) {
                         const otherMonthlyRate = otherRate / 12 / 100;
                         // Tính số tiền trả hàng tháng dựa trên số tiền vay và thời hạn còn lại
-                        const otherPowTerm = new Decimal(1 + otherMonthlyRate).pow(otherTerm);
+                        const otherRateDecimal = new Decimal(otherMonthlyRate);
+                        const otherPrincipal = new Decimal(otherAmount);
+                        const otherMonths = new Decimal(otherTerm);
+                        
+                        const otherOnePlusRate = new Decimal(1).plus(otherRateDecimal);
+                        const otherPowTerm = otherOnePlusRate.pow(otherMonths);
+                        const otherNumerator = otherPrincipal.mul(otherRateDecimal).mul(otherPowTerm);
                         const otherDenominator = otherPowTerm.minus(1);
-                        otherLoanMonthly = new Decimal(otherAmount).mul(otherMonthlyRate).mul(otherPowTerm).div(otherDenominator).toNumber();
+                        otherLoanMonthly = otherNumerator.div(otherDenominator).toNumber();
                     }
                 }
 
