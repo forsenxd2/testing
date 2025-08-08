@@ -520,7 +520,10 @@
 
             if (loanAmount > 0 && term > 0) {
                 const monthlyRate = interestRate / 12 / 100;
-                const monthlyPayment = loanAmount * monthlyRate * Math.pow(1 + monthlyRate, term) / (Math.pow(1 + monthlyRate, term) - 1);
+                
+                // Tính toán chính xác hơn với Math.pow
+                const powTerm = Math.pow(1 + monthlyRate, term);
+                const monthlyPayment = loanAmount * monthlyRate * powTerm / (powTerm - 1);
                 
                 // Tính gốc và lãi tháng đầu tiên
                 const monthlyInterest = loanAmount * monthlyRate; // Lãi tháng đầu = Số dư gốc * lãi suất tháng
@@ -536,7 +539,8 @@
                     if (otherAmount > 0 && otherRate > 0 && otherTerm > 0) {
                         const otherMonthlyRate = otherRate / 12 / 100;
                         // Tính số tiền trả hàng tháng dựa trên số tiền vay và thời hạn còn lại
-                        otherLoanMonthly = otherAmount * otherMonthlyRate * Math.pow(1 + otherMonthlyRate, otherTerm) / (Math.pow(1 + otherMonthlyRate, otherTerm) - 1);
+                        const otherPowTerm = Math.pow(1 + otherMonthlyRate, otherTerm);
+                        otherLoanMonthly = otherAmount * otherMonthlyRate * otherPowTerm / (otherPowTerm - 1);
                     }
                 }
 
@@ -554,7 +558,7 @@
                 }
                 const requiredIncome = totalMonthlyPayment / debtRatio;
 
-                // Cập nhật kết quả
+                // Cập nhật kết quả với làm tròn chính xác
                 document.getElementById('monthlyPrincipal').textContent = formatCurrency(Math.round(monthlyPrincipal));
                 document.getElementById('monthlyInterest').textContent = formatCurrency(Math.round(monthlyInterest));
                 document.getElementById('monthlyTotal').textContent = formatCurrency(Math.round(monthlyPayment));
