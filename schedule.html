@@ -462,8 +462,7 @@
                 let fixedMonths = 12;
                 let secondFixedMonths = 0;
 
-                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage);
+                const pkg = fixedPackages.find(p => p.value === fixedPackage);
                 if (["6","12","18"].includes(fixedPackage) && pkg) {
                     if (fixedPackage === '18') {
                         // Gói 18 tháng có 2 giai đoạn lãi suất khác nhau
@@ -780,12 +779,11 @@
             const titleRow = ['BẢNG LÃI SUẤT TẠM TÍNH'];
             // Lấy đúng lãi suất ưu đãi
             let fixedRateDisplay = '';
-            const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
             if (["6","12","18"].includes(fixedPackage.value)) {
                 if (fixedPackage.value === '18') {
                     fixedRateDisplay = '6.0% (6T đầu) + 7.3% (12T tiếp)';
                 } else {
-                    const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage.value);
+                    const pkg = fixedPackages.find(p => p.value === fixedPackage.value);
                     fixedRateDisplay = pkg ? pkg.rate.toFixed(2) + '%' : '';
                 }
             } else if (fixedPackage.value === 'young') {
@@ -894,8 +892,7 @@
                     fixedRateDisplay = '6.0% (6T đầu) + 7.3% (12T tiếp)';
                 } else {
                     // Lấy đúng rate từ object
-                    const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                    const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage.value);
+                    const pkg = fixedPackages.find(p => p.value === fixedPackage.value);
                     fixedRateDisplay = pkg ? pkg.rate.toFixed(2) + '%' : '';
                 }
             } else if (fixedPackage.value === 'young') {
@@ -981,29 +978,21 @@
             return false;
         });
 
-        // Lãi suất cố định cho từng mục đích
-        const fixedPackages = {
-            bds: [
-                { value: '6', label: 'Cố định 6 tháng (5,9%/năm)', rate: 5.9, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (6,5%/năm)', rate: 6.5, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6,0% 6T đầu + 7,3% 12T tiếp, TB: 6,8%/năm)', rate: 6.8, months: 18 },
-            ],
-            other: [
-                { value: '6', label: 'Cố định 6 tháng (5,9%/năm)', rate: 5.9, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (6,5%/năm)', rate: 6.5, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6,0% 6T đầu + 7,3% 12T tiếp, TB: 6,8%/năm)', rate: 6.8, months: 18 },
-            ]
-        };
+        // Lãi suất cố định cho tất cả mục đích vay
+        const fixedPackages = [
+            { value: '6', label: 'Cố định 6 tháng (5,9%/năm)', rate: 5.9, months: 6 },
+            { value: '12', label: 'Cố định 12 tháng (6,5%/năm)', rate: 6.5, months: 12 },
+            { value: '18', label: 'Cố định 18 tháng (6,0% 6T đầu + 7,3% 12T tiếp, TB: 6,8%/năm)', rate: 6.8, months: 18 },
+        ];
         // Gói người trẻ (dưới 35 tuổi vay mua nhà)
         const specialPackages = [
             { value: 'young', label: 'Gói người trẻ dưới 35 tuổi vay mua nhà (5.8% năm 1, LSTK 12T + 2% năm 2&3)' }
         ];
         function renderFixedPackageOptions() {
-            const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
             const select = document.getElementById('fixedPackage');
             select.innerHTML = '';
-            // Thêm 4 gói cố định theo mục đích
-            fixedPackages[purpose].forEach(pkg => {
+            // Thêm 3 gói cố định
+            fixedPackages.forEach(pkg => {
                 const opt = document.createElement('option');
                 opt.value = pkg.value;
                 opt.textContent = pkg.label;
@@ -1018,9 +1007,8 @@
             });
             updateAfterFixedRateLabel();
         }
-        // Gọi khi load và khi đổi mục đích
+        // Gọi khi load trang
         document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
-        document.getElementById('loanPurposeGroup').addEventListener('change', renderFixedPackageOptions);
     </script>
 </body>
 </html> 
