@@ -753,6 +753,9 @@
             if (["6","12","18"].includes(fixedPackage)) {
                 afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
                 afterFixedRateNote.textContent = '+ 3,5%/năm = lãi suất sau ưu đãi';
+            } else if (fixedPackage === 'young') {
+                afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
+                afterFixedRateNote.textContent = '+ 3,0%/năm = lãi suất sau ưu đãi';
             } else {
                 afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
                 afterFixedRateNote.textContent = '';
@@ -795,7 +798,7 @@
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
                 ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 5,8%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value === '18' ? '6 tháng đầu: 6,0%; 12 tháng tiếp: 7,3%' : (fixedPackage.value + ' tháng'))],
-                ['Lãi suất thả nổi', (["6","12","18"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Lãi suất thả nổi', ((["6","12","18"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5) : (fixedPackage.value === 'young' ? (afterFixedRateRaw + 3.0) : afterFixedRateRaw)).toFixed(2)) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
@@ -903,7 +906,7 @@
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
                 ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 5,8%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value === '18' ? '6 tháng đầu: 6,0%; 12 tháng tiếp: 7,3%' : (fixedPackage.value + ' tháng'))],
-                ['Lãi suất thả nổi', (["6","12","18"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Lãi suất thả nổi', ((["6","12","18"].includes(fixedPackage.value) ? (afterFixedRateRaw + 3.5) : (fixedPackage.value === 'young' ? (afterFixedRateRaw + 3.0) : afterFixedRateRaw)).toFixed(2)) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
