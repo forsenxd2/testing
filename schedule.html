@@ -499,7 +499,9 @@
                 for (let i = 1; i <= term; i++) {
                     // Xác định lãi suất áp dụng cho kỳ hiện tại
                     let currentRate, currentRateYear;
-                    if (secondFixedRate !== null) {
+                    // Với gói 18T có 2 mức cố định (secondFixedRate != null)
+                    // hoặc gói người trẻ có giai đoạn năm 2&3 (secondMonthlyRate != null)
+                    if (secondFixedRate !== null || (fixedPackage === 'young' && secondMonthlyRate !== null)) {
                         if (i <= fixedMonths) {
                             currentRate = monthlyRate;
                             currentRateYear = fixedRate;
@@ -507,12 +509,13 @@
                             if (fixedPackage === '18') {
                                 currentRate = secondFixedRate / 12 / 100;
                                 currentRateYear = secondFixedRate;
-                            } else {
+                            } else { // young: năm 2 & 3 = LSTK 12T + 2%
                                 currentRate = secondMonthlyRate;
-                                currentRateYear = (fixedPackage === 'young') ? (afterFixedRate + 2) : secondFixedRate;
+                                currentRateYear = afterFixedRate + 2;
                             }
                         } else {
                             currentRate = afterMonthlyRate;
+                            // Sau ưu đãi: gói người trẻ = LSTK 12T + 3%
                             currentRateYear = (fixedPackage === 'young') ? (afterFixedRate + 3) : afterFixedRate;
                         }
                     } else {
@@ -521,6 +524,7 @@
                             currentRateYear = fixedRate;
                         } else {
                             currentRate = afterMonthlyRate;
+                            // Nhánh này áp dụng cho các gói 6/12 không có giai đoạn thứ 2
                             currentRateYear = afterFixedRate;
                         }
                     }
