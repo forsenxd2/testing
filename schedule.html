@@ -104,8 +104,24 @@
         }
         /* Dropdown fixes: prevent clipping and ensure native menu */
         .container, .step-container { overflow: visible; }
-        #fixedPackage { position: relative; z-index: 10000; -webkit-appearance: menulist; appearance: auto; }
-        #gracePeriod { position: relative; z-index: 9990; -webkit-appearance: menulist; appearance: auto; }
+        #fixedPackage, #gracePeriod {
+            position: relative;
+            z-index: 10000;
+            -webkit-appearance: menulist;
+            appearance: auto;
+            background-image: none !important;
+            background: white !important;
+        }
+        #fixedPackage::after, #gracePeriod::after,
+        #fixedPackage::before, #gracePeriod::before {
+            display: none !important;
+            content: none !important;
+        }
+        .form-select#fixedPackage,
+        .form-select#gracePeriod {
+            background-image: none !important;
+            padding-right: 1rem !important;
+        }
         @media print {
             body * {
                 visibility: hidden !important;
@@ -1107,14 +1123,32 @@
                 if (select.options.length > 0) select.selectedIndex = 0;
             }
             updateAfterFixedRateLabel();
+            // Force reflow và trigger change event
+            select.dispatchEvent(new Event('change', { bubbles: true }));
             try { checkPackageTerm(); } catch(e) {}
             // đảm bảo reflow sau khi render để dropdown có dữ liệu trên mobile
-            setTimeout(() => { try { checkPackageTerm(); } catch(e) {} }, 0);
+            setTimeout(function() {
+                try { 
+                    checkPackageTerm();
+                    select.selectedIndex = Math.max(0, select.selectedIndex);
+                } catch(e) {}
+            }, 50);
         }
         // Gọi khi load và khi đổi mục đích
-        document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
-        document.getElementById('loanPurposeGroup').addEventListener('change', renderFixedPackageOptions);
-        document.getElementById('houseValueBucketGroup').addEventListener('change', renderFixedPackageOptions);
+        function initDropdown() {
+            renderFixedPackageOptions();
+        }
+        if (document.readyState === 'loading') {
+            document.addEventListener('DOMContentLoaded', initDropdown);
+        } else {
+            initDropdown();
+        }
+        document.getElementById('loanPurposeGroup').addEventListener('change', function(e) {
+            setTimeout(renderFixedPackageOptions, 10);
+        });
+        document.getElementById('houseValueBucketGroup').addEventListener('change', function(e) {
+            setTimeout(renderFixedPackageOptions, 10);
+        });
     </script>
 </body>
 </html> 
