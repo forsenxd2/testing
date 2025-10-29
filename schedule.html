@@ -494,7 +494,8 @@
                 let secondFixedMonths = 0;
 
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                const bucket = document.querySelector('input[name=\"houseBucket\"]:checked')?.value || 'low';
+                var bucketEl1 = document.querySelector('input[name=\"houseBucket\"]:checked');
+                const bucket = bucketEl1 ? bucketEl1.value : 'low';
                 const fixedPackageValue = fixedPackage;
 
                 // Gói đặc biệt: người trẻ
@@ -823,7 +824,8 @@
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
                 let pkg = null;
                 if (purpose === 'bds') {
-                    const bucket = document.querySelector('input[name=\"houseBucket\"]:checked')?.value || 'low';
+                    var bucketEl2 = document.querySelector('input[name=\"houseBucket\"]:checked');
+                    const bucket = bucketEl2 ? bucketEl2.value : 'low';
                     pkg = (fixedPackages.bds[bucket] || []).find(p => p.value === fixedPackage.value);
                 } else if (purpose === 'land') {
                     pkg = fixedPackages.land.find(p => p.value === fixedPackage.value);
@@ -939,7 +941,8 @@
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
                 let pkg = null;
                 if (purpose === 'bds') {
-                    const bucket = document.querySelector('input[name=\"houseBucket\"]:checked')?.value || 'low';
+                    var bucketEl3 = document.querySelector('input[name=\"houseBucket\"]:checked');
+                    const bucket = bucketEl3 ? bucketEl3.value : 'low';
                     pkg = (fixedPackages.bds[bucket] || []).find(p => p.value === fixedPackage.value);
                 } else if (purpose === 'land') {
                     pkg = fixedPackages.land.find(p => p.value === fixedPackage.value);
@@ -1059,7 +1062,8 @@
         function renderFixedPackageOptions() {
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
             const select = document.getElementById('fixedPackage');
-            const bucket = document.querySelector('input[name="houseBucket"]:checked')?.value || 'low';
+            var bucketEl = document.querySelector('input[name="houseBucket"]:checked');
+            const bucket = bucketEl ? bucketEl.value : 'low';
             const houseBucketGroup = document.getElementById('houseValueBucketGroup');
             select.innerHTML = '';
 
