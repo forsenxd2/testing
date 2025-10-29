@@ -102,6 +102,10 @@
             display: flex;
             align-items: center;
         }
+        /* Dropdown fixes: prevent clipping and ensure native menu */
+        .container, .step-container { overflow: visible; }
+        #fixedPackage { position: relative; z-index: 10000; -webkit-appearance: menulist; appearance: auto; }
+        #gracePeriod { position: relative; z-index: 9990; -webkit-appearance: menulist; appearance: auto; }
         @media print {
             body * {
                 visibility: hidden !important;
