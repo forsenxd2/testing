@@ -1091,8 +1091,21 @@
                 });
                 if (select.options.length > 0) select.selectedIndex = 0;
             }
+            // Fallback: nếu vì lý do nào đó vẫn chưa có option, nạp mặc định BĐS ≤5 tỷ
+            if (select.options.length === 0) {
+                houseBucketGroup.style.display = '';
+                (fixedPackages.bds['low'] || []).forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = pkg.label;
+                    select.appendChild(opt);
+                });
+                if (select.options.length > 0) select.selectedIndex = 0;
+            }
             updateAfterFixedRateLabel();
             try { checkPackageTerm(); } catch(e) {}
+            // đảm bảo reflow sau khi render để dropdown có dữ liệu trên mobile
+            setTimeout(() => { try { checkPackageTerm(); } catch(e) {} }, 0);
         }
         // Gọi khi load và khi đổi mục đích
         document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
