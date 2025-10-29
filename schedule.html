@@ -1067,6 +1067,7 @@
                     opt.textContent = pkg.label;
                     select.appendChild(opt);
                 });
+                if (select.options.length > 0) select.selectedIndex = 0;
             } else if (purpose === 'land') {
                 houseBucketGroup.style.display = 'none';
                 fixedPackages.land.forEach(pkg => {
@@ -1075,6 +1076,7 @@
                     opt.textContent = pkg.label;
                     select.appendChild(opt);
                 });
+                if (select.options.length > 0) select.selectedIndex = 0;
             } else if (purpose === 'young') {
                 houseBucketGroup.style.display = 'none';
                 youngPackages.forEach(pkg => {
@@ -1083,8 +1085,10 @@
                     opt.textContent = pkg.label;
                     select.appendChild(opt);
                 });
+                if (select.options.length > 0) select.selectedIndex = 0;
             }
             updateAfterFixedRateLabel();
+            try { checkPackageTerm(); } catch(e) {}
         }
         // Gọi khi load và khi đổi mục đích
         document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
