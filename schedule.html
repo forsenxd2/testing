@@ -274,9 +274,24 @@
                             <label class="form-check-label" for="purpose_bds">Mua BĐS ở TP.HCM/Hà Nội</label>
                         </div>
                         <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_land" value="land">
+                            <label class="form-check-label" for="purpose_land">Mua đất ở</label>
+                        </div>
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_other" value="other">
                             <label class="form-check-label" for="purpose_other">Mục đích khác</label>
                         </div>
+                    </div>
+                </div>
+                <div class="mb-3" id="houseValueBucketGroup">
+                    <label class="form-label fw-bold" style="font-size:1.08rem; color:#228B22;">Giá trị nhà ở</label>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="houseBucket" id="bucket_low" value="low" checked>
+                        <label class="form-check-label" for="bucket_low">≤ 5 tỷ</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" name="houseBucket" id="bucket_high" value="high">
+                        <label class="form-check-label" for="bucket_high">> 5 tỷ</label>
                     </div>
                 </div>
                 <div id="fixedPackageHighlight" class="mb-3 p-3 border border-primary rounded" style="background-color: #fffacd;">
@@ -452,8 +467,8 @@
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
 
-            // Nếu là 4 gói phổ thông thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
-            if (["12","18","24","36"].includes(fixedPackage)) {
+            // Nếu là gói phổ thông (6/12/18/24/36) thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
+            if (["6","12","18","24","36"].includes(fixedPackage)) {
                 afterFixedRate = afterFixedRate + 3.5;
             }
 
@@ -475,32 +490,51 @@
                 let secondFixedMonths = 0;
 
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage);
-                if (["12","18","24","36"].includes(fixedPackage) && pkg) {
-                    fixedRate = pkg.rate;
-                    fixedMonths = pkg.months;
-                } else if (fixedPackage === 'consumption') {
+                const bucket = document.querySelector('input[name=\"houseBucket\"]:checked')?.value || 'low';
+                const fixedPackageValue = fixedPackage;
+
+                // Gói đặc biệt
+                if (fixedPackageValue === 'consumption') {
                     fixedRate = 6.8;
                     fixedMonths = 24;
-                } else if (fixedPackage === 'young_1') {
-                    fixedRate = 5.5;
+                } else if (fixedPackageValue === 'young_1') {
+                    fixedRate = 5.8; // cập nhật theo ảnh
                     fixedMonths = 36;
-                } else if (fixedPackage === 'young_2') {
-                    fixedRate = 5.2;
-                    secondFixedRate = null; // Không dùng số cố định nữa
+                } else if (fixedPackageValue === 'young_2') {
+                    fixedRate = 5.8; // năm 1
                     fixedMonths = 12; // Năm 1
-                    secondFixedMonths = 24; // Năm 2 & 3
+                    secondFixedRate = null; // Năm 2&3 dùng thả nổi = LSTK + 2%
+                    secondFixedMonths = 24;
+                } else {
+                    // Gói cố định theo mục đích
+                    let list = [];
+                    if (purpose === 'bds') {
+                        list = fixedPackages.bds[bucket] || [];
+                    } else if (purpose === 'land') {
+                        list = fixedPackages.land;
+                    } else {
+                        list = fixedPackages.other;
+                    }
+                    const pkg = list.find(p => p.value === fixedPackageValue);
+                    if (pkg) {
+                        fixedRate = pkg.rate;
+                        fixedMonths = pkg.months;
+                        if (pkg.secondRate && pkg.secondMonths) {
+                            secondFixedRate = pkg.secondRate;
+                            secondFixedMonths = pkg.secondMonths;
+                        }
+                    }
                 }
 
                 const monthlyRate = fixedRate / 12 / 100;
                 let secondMonthlyRate = null;
-                if (fixedPackage === 'young_2') {
+                if (fixedPackageValue === 'young_2') {
                     // LSTK 12T + 2% cho năm 2 & 3
                     secondMonthlyRate = (afterFixedRate + 2) / 12 / 100;
                 } else if (secondFixedRate) {
                     secondMonthlyRate = secondFixedRate / 12 / 100;
                 }
-                const afterMonthlyRate = (fixedPackage === 'young_2') ? (afterFixedRate + 3) / 12 / 100 : afterFixedRate / 12 / 100;
+                const afterMonthlyRate = (fixedPackageValue === 'young_2') ? (afterFixedRate + 3) / 12 / 100 : afterFixedRate / 12 / 100;
                 
                 let remainingPrincipal = loanAmount;
                 const scheduleBody = document.getElementById('scheduleBody');
@@ -517,10 +551,10 @@
                             currentRateYear = fixedRate;
                         } else if (i <= fixedMonths + secondFixedMonths) {
                             currentRate = secondMonthlyRate;
-                            currentRateYear = (fixedPackage === 'young_2') ? (afterFixedRate + 2) : secondFixedRate;
+                            currentRateYear = (fixedPackageValue === 'young_2') ? (afterFixedRate + 2) : secondFixedRate;
                         } else {
                             currentRate = afterMonthlyRate;
-                            currentRateYear = (fixedPackage === 'young_2') ? (afterFixedRate + 3) : afterFixedRate;
+                            currentRateYear = (fixedPackageValue === 'young_2') ? (afterFixedRate + 3) : afterFixedRate;
                         }
                     } else {
                         if (i <= fixedMonths) {
@@ -787,15 +821,25 @@
             // Lấy đúng lãi suất ưu đãi
             let fixedRateDisplay = '';
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-            if (["12","18","24","36"].includes(fixedPackage.value)) {
-                const pkg = fixedPackages[purpose].find(p => p.value === fixedPackage.value);
-                fixedRateDisplay = pkg ? pkg.rate.toFixed(2) + '%' : '';
+            if (["6","12","18","24","36"].includes(fixedPackage.value)) {
+                // Lấy đúng rate theo mục đích & bucket nếu có
+                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+                let pkg = null;
+                if (purpose === 'bds') {
+                    const bucket = document.querySelector('input[name=\"houseBucket\"]:checked')?.value || 'low';
+                    pkg = (fixedPackages.bds[bucket] || []).find(p => p.value === fixedPackage.value);
+                } else if (purpose === 'land') {
+                    pkg = fixedPackages.land.find(p => p.value === fixedPackage.value);
+                } else {
+                    pkg = fixedPackages.other.find(p => p.value === fixedPackage.value);
+                }
+                fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
             } else if (fixedPackage.value === 'consumption') {
                 fixedRateDisplay = '6.80%';
             } else if (fixedPackage.value === 'young_1') {
-                fixedRateDisplay = '5.50%';
+                fixedRateDisplay = '5.80%';
             } else if (fixedPackage.value === 'young_2') {
-                fixedRateDisplay = '5.20% (năm 1)';
+                fixedRateDisplay = '5.80% (năm 1)';
             }
             // 2. Tạo dữ liệu phần tóm tắt
             const summary = [
@@ -987,38 +1031,72 @@
             return false;
         });
 
-        // Lãi suất cố định cho từng mục đích
-        const fixedPackages = {
-            bds: [
-                { value: '12', label: 'Cố định 12 tháng (6,0%/năm)', rate: 6.0, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6,3%/năm)', rate: 6.3, months: 18 },
-                { value: '24', label: 'Cố định 24 tháng (6,5%/năm)', rate: 6.5, months: 24 },
-                { value: '36', label: 'Cố định 36 tháng (8,0%/năm)', rate: 8.0, months: 36 },
+        // Lãi suất cố định theo ảnh: nhà ở (≤5 tỷ vs >5 tỷ), đất ở
+        const fixedPackagesBds = {
+            low: [
+                { value: '6',  label: 'Cố định 6 tháng (6,70%/năm)',  rate: 6.7, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (7,20%/năm)', rate: 7.2, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6m: 6,70% + 12m: 7,70%)', rate: 6.7, months: 6, secondRate: 7.7, secondMonths: 12 },
             ],
-            other: [
-                { value: '12', label: 'Cố định 12 tháng (6,3%/năm)', rate: 6.3, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6,8%/năm)', rate: 6.8, months: 18 },
-                { value: '24', label: 'Cố định 24 tháng (7,0%/năm)', rate: 7.0, months: 24 },
-                { value: '36', label: 'Cố định 36 tháng (8,3%/năm)', rate: 8.3, months: 36 },
+            high: [
+                { value: '6',  label: 'Cố định 6 tháng (6,50%/năm)',  rate: 6.5, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (7,00%/năm)', rate: 7.0, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6m: 6,50% + 12m: 7,50%)', rate: 6.5, months: 6, secondRate: 7.5, secondMonths: 12 },
             ]
         };
-        // Các gói đặc biệt giữ nguyên
+        const fixedPackages = {
+            bds: fixedPackagesBds,
+            land: [
+                { value: '6',  label: 'Cố định 6 tháng (7,00%/năm)',  rate: 7.0, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (7,50%/năm)', rate: 7.5, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6m: 7,00% + 12m: 8,00%)', rate: 7.0, months: 6, secondRate: 8.0, secondMonths: 12 },
+            ],
+            other: [
+                { value: '12', label: 'Cố định 12 tháng (6,30%/năm)', rate: 6.3, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (6,80%/năm)', rate: 6.8, months: 18 },
+                { value: '24', label: 'Cố định 24 tháng (7,00%/năm)', rate: 7.0, months: 24 },
+                { value: '36', label: 'Cố định 36 tháng (8,30%/năm)', rate: 8.3, months: 36 },
+            ]
+        };
+        // Các gói đặc biệt
         const specialPackages = [
             { value: 'consumption', label: 'Vay tiêu dùng cố định 24 tháng (6.8%/năm)' },
-            { value: 'young_1', label: 'Gói ưu đãi đặc biệt cho người trẻ 1 (5.5% - 36 tháng, ân hạn gốc tối đa 5 năm)' },
-            { value: 'young_2', label: 'Gói ưu đãi đặc biệt cho người trẻ 2 (5.2% - năm 1, LSTK 12T + 2% - năm 2&3, ân hạn gốc tối đa 5 năm)' }
+            { value: 'young_1', label: 'Gói ưu đãi đặc biệt cho người trẻ 1 (5.8% - 36 tháng, ân hạn gốc tối đa 5 năm)' },
+            { value: 'young_2', label: 'Gói ưu đãi đặc biệt cho người trẻ 2 (5.8% - năm 1, LSTK 12T + 2% - năm 2&3, ân hạn gốc tối đa 5 năm)' }
         ];
         function renderFixedPackageOptions() {
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
             const select = document.getElementById('fixedPackage');
+            const bucket = document.querySelector('input[name="houseBucket"]:checked')?.value || 'low';
+            const houseBucketGroup = document.getElementById('houseValueBucketGroup');
             select.innerHTML = '';
-            // Thêm 4 gói cố định theo mục đích
-            fixedPackages[purpose].forEach(pkg => {
-                const opt = document.createElement('option');
-                opt.value = pkg.value;
-                opt.textContent = pkg.label;
-                select.appendChild(opt);
-            });
+
+            if (purpose === 'bds') {
+                houseBucketGroup.style.display = '';
+                (fixedPackages.bds[bucket] || []).forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = pkg.label;
+                    select.appendChild(opt);
+                });
+            } else if (purpose === 'land') {
+                houseBucketGroup.style.display = 'none';
+                fixedPackages.land.forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = pkg.label;
+                    select.appendChild(opt);
+                });
+            } else {
+                houseBucketGroup.style.display = 'none';
+                fixedPackages.other.forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = pkg.label;
+                    select.appendChild(opt);
+                });
+            }
+
             // Thêm các gói đặc biệt
             specialPackages.forEach(pkg => {
                 const opt = document.createElement('option');
@@ -1031,6 +1109,7 @@
         // Gọi khi load và khi đổi mục đích
         document.addEventListener('DOMContentLoaded', renderFixedPackageOptions);
         document.getElementById('loanPurposeGroup').addEventListener('change', renderFixedPackageOptions);
+        document.getElementById('houseValueBucketGroup').addEventListener('change', renderFixedPackageOptions);
     </script>
 </body>
 </html> 

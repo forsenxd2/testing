@@ -566,6 +566,26 @@
             console.log('Calculated EMI:', emi);
             console.log('Difference:', difference);
             console.log('Percentage Error:', percentageError.toFixed(4) + '%');
+            
+            // Tính ngược từ Expected EMI để kiểm tra
+            console.log('=== REVERSE CALCULATION ===');
+            console.log('If Expected EMI is correct, then:');
+            console.log('Expected EMI:', expectedEMI);
+            console.log('Monthly Rate:', monthlyRate);
+            console.log('Principal:', principal);
+            
+            // Tính ngược: P = EMI * ((1+r)^n - 1) / (r * (1+r)^n)
+            const reversePrincipal = expectedEMI * denominator / (monthlyRate * powTerm);
+            console.log('Reverse calculated Principal:', reversePrincipal);
+            console.log('Original Principal:', principal);
+            console.log('Principal Difference:', Math.abs(reversePrincipal - principal));
+            
+            // Hoặc tính ngược lãi suất
+            const reverseRate = (expectedEMI * denominator) / (principal * powTerm) * 12 * 100;
+            console.log('Reverse calculated Annual Rate:', reverseRate + '%');
+            console.log('Original Rate:', rate + '%');
+            console.log('Rate Difference:', Math.abs(reverseRate - rate));
+            
             console.log('=====================================');
             
             return emi;
