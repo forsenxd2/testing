@@ -290,12 +290,8 @@
                     <label class="form-label fw-bold" style="font-size:1.08rem; color:#228B22;">Mục đích vay</label>
                     <div id="loanPurposeGroup">
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_bds" value="bds" checked>
-                            <label class="form-check-label" for="purpose_bds">Mua BĐS ở TP.HCM/Hà Nội</label>
-                        </div>
-                        <div class="form-check form-check-inline">
-                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_land" value="land">
-                            <label class="form-check-label" for="purpose_land">Mua đất ở</label>
+                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_general" value="general" checked>
+                            <label class="form-check-label" for="purpose_general">Mua nhà dự án/nhà ở/đất ở</label>
                         </div>
                         <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_young" value="young">
@@ -303,17 +299,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="mb-3" id="houseValueBucketGroup">
-                    <label class="form-label fw-bold" style="font-size:1.08rem; color:#228B22;">Giá trị nhà ở</label>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="houseBucket" id="bucket_low" value="low" checked>
-                        <label class="form-check-label" for="bucket_low">≤ 5 tỷ</label>
-                    </div>
-                    <div class="form-check form-check-inline">
-                        <input class="form-check-input" type="radio" name="houseBucket" id="bucket_high" value="high">
-                        <label class="form-check-label" for="bucket_high">> 5 tỷ</label>
-                    </div>
-                </div>
+                <div class="mb-3" id="houseValueBucketGroup" style="display:none;"></div>
                 <div id="fixedPackageHighlight" class="mb-3 p-3 border border-primary rounded" style="background-color: #fffacd;">
                     <label for="fixedPackage" class="form-label fw-bold" style="font-size:1.15rem; color:#0d6efd;">
                         <i class="bi bi-star-fill"></i> Chọn gói cố định lãi suất
@@ -487,9 +473,9 @@
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
 
-            // Nếu là gói phổ thông (6/12/18/24/36) thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
+            // Nếu là gói phổ thông (6/12/18) thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
             // Gói người trẻ sẽ xử lý riêng ở dưới
-            if (["6","12","18","24","36"].includes(fixedPackage)) {
+            if (["6","12","18"].includes(fixedPackage)) {
                 afterFixedRate = afterFixedRate + 3.5;
             }
 
@@ -511,8 +497,6 @@
                 let secondFixedMonths = 0;
 
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                var bucketEl1 = document.querySelector('input[name=\"houseBucket\"]:checked');
-                const bucket = bucketEl1 ? bucketEl1.value : 'low';
                 const fixedPackageValue = fixedPackage;
 
                 // Gói đặc biệt: người trẻ
@@ -524,12 +508,7 @@
                     secondFixedMonths = 24;
                 } else {
                     // Gói cố định theo mục đích
-                    let list = [];
-                    if (purpose === 'bds') {
-                        list = fixedPackages.bds[bucket] || [];
-                    } else if (purpose === 'land') {
-                        list = fixedPackages.land;
-                    }
+                    let list = (purpose === 'general') ? fixedPackages.general : [];
                     const pkg = list.find(p => p.value === fixedPackageValue);
                     if (pkg) {
                         fixedRate = pkg.rate;
@@ -804,10 +783,10 @@
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRateLabel = document.getElementById('afterFixedRateLabel');
             const afterFixedRateNote = document.getElementById('afterFixedRateNote');
-            // Gói phổ thông: 6, 12, 18, 24, 36 và gói người trẻ
-            if (["6","12","18","24","36","young"].includes(fixedPackage)) {
+            // Gói phổ thông: 6, 12, 18 và gói người trẻ
+            if (["6","12","18","young"].includes(fixedPackage)) {
                 afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
-                afterFixedRateNote.textContent = '+ 3,5%/năm = lãi suất sau ưu đãi';
+                afterFixedRateNote.textContent = (fixedPackage === 'young') ? '+ 3,0%/năm = lãi suất sau ưu đãi' : '+ 3,5%/năm = lãi suất sau ưu đãi';
             } else {
                 afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
                 afterFixedRateNote.textContent = '';
@@ -835,19 +814,9 @@
             // Lấy đúng lãi suất ưu đãi
             let fixedRateDisplay = '';
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-            if (["6","12","18","24","36"].includes(fixedPackage.value)) {
-                // Lấy đúng rate theo mục đích & bucket nếu có
-                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                let pkg = null;
-                if (purpose === 'bds') {
-                    var bucketEl2 = document.querySelector('input[name=\"houseBucket\"]:checked');
-                    const bucket = bucketEl2 ? bucketEl2.value : 'low';
-                    pkg = (fixedPackages.bds[bucket] || []).find(p => p.value === fixedPackage.value);
-                } else if (purpose === 'land') {
-                    pkg = fixedPackages.land.find(p => p.value === fixedPackage.value);
-                } else {
-                    pkg = null;
-                }
+            if (["6","12","18"].includes(fixedPackage.value)) {
+                // Lấy đúng rate theo gói chung
+                let pkg = (purpose === 'general') ? (fixedPackages.general || []).find(p => p.value === fixedPackage.value) : null;
                 fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
             } else if (fixedPackage.value === 'young') {
                 fixedRateDisplay = '6.10% (năm 1)';
@@ -950,17 +919,10 @@
             // Tóm tắt
             // Lấy lãi suất ưu đãi chuẩn xác
             let fixedRateDisplay = '';
-            if (["6","12","18","24","36"].includes(fixedPackage.value)) {
+            if (["6","12","18"].includes(fixedPackage.value)) {
                 // Lấy đúng rate từ object
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                let pkg = null;
-                if (purpose === 'bds') {
-                    var bucketEl3 = document.querySelector('input[name=\"houseBucket\"]:checked');
-                    const bucket = bucketEl3 ? bucketEl3.value : 'low';
-                    pkg = (fixedPackages.bds[bucket] || []).find(p => p.value === fixedPackage.value);
-                } else if (purpose === 'land') {
-                    pkg = fixedPackages.land.find(p => p.value === fixedPackage.value);
-                }
+                let pkg = (purpose === 'general') ? (fixedPackages.general || []).find(p => p.value === fixedPackage.value) : null;
                 fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
             } else if (fixedPackage.value === 'young') {
                 fixedRateDisplay = '6.10% (năm 1)';
@@ -1045,28 +1007,13 @@
             return false;
         });
 
-        // Lãi suất cố định theo bảng chào mới: nhà ở (≤5 tỷ vs >5 tỷ), đất ở
-        // Sàn: 6m=6.5%, 12m=7.0%, 18m=6.5%+7.5%
-        // Nhà ≤5 tỷ: sàn + 0.2% → 6m=6.7%, 12m=7.2%, 18m=6.7%+7.7%
-        // Đất ở: sàn + 0.5% → 6m=7.0%, 12m=7.5%, 18m=7.0%+8.0%
-        const fixedPackagesBds = {
-            low: [
-                { value: '6',  label: 'Cố định 6 tháng (6,70%/năm)',  rate: 6.7, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (7,20%/năm)', rate: 7.2, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6m: 6,70% + 12m: 7,70%)', rate: 6.7, months: 6, secondRate: 7.7, secondMonths: 12 },
-            ],
-            high: [
+        // Lãi suất cố định theo bảng chào mới: gói chung Mua nhà/đất ở
+        // Sàn: 6m=6.5%, 12m=7.0%, 18m=6.5% + 7.5%
+        const fixedPackages = {
+            general: [
                 { value: '6',  label: 'Cố định 6 tháng (6,50%/năm)',  rate: 6.5, months: 6 },
                 { value: '12', label: 'Cố định 12 tháng (7,00%/năm)', rate: 7.0, months: 12 },
                 { value: '18', label: 'Cố định 18 tháng (6m: 6,50% + 12m: 7,50%)', rate: 6.5, months: 6, secondRate: 7.5, secondMonths: 12 },
-            ]
-        };
-        const fixedPackages = {
-            bds: fixedPackagesBds,
-            land: [
-                { value: '6',  label: 'Cố định 6 tháng (7,00%/năm)',  rate: 7.0, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (7,50%/năm)', rate: 7.5, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6m: 7,00% + 12m: 8,00%)', rate: 7.0, months: 6, secondRate: 8.0, secondMonths: 12 },
             ],
         };
         const youngPackages = [
@@ -1076,23 +1023,12 @@
         function renderFixedPackageOptions() {
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
             const select = document.getElementById('fixedPackage');
-            var bucketEl = document.querySelector('input[name="houseBucket"]:checked');
-            const bucket = bucketEl ? bucketEl.value : 'low';
             const houseBucketGroup = document.getElementById('houseValueBucketGroup');
             select.innerHTML = '';
 
-            if (purpose === 'bds') {
-                houseBucketGroup.style.display = '';
-                (fixedPackages.bds[bucket] || []).forEach(pkg => {
-                    const opt = document.createElement('option');
-                    opt.value = pkg.value;
-                    opt.textContent = pkg.label;
-                    select.appendChild(opt);
-                });
-                if (select.options.length > 0) select.selectedIndex = 0;
-            } else if (purpose === 'land') {
+            if (purpose === 'general') {
                 houseBucketGroup.style.display = 'none';
-                fixedPackages.land.forEach(pkg => {
+                (fixedPackages.general || []).forEach(pkg => {
                     const opt = document.createElement('option');
                     opt.value = pkg.value;
                     opt.textContent = pkg.label;
@@ -1109,10 +1045,10 @@
                 });
                 if (select.options.length > 0) select.selectedIndex = 0;
             }
-            // Fallback: nếu vì lý do nào đó vẫn chưa có option, nạp mặc định BĐS ≤5 tỷ
+            // Fallback: nếu vì lý do nào đó vẫn chưa có option, nạp mặc định gói chung
             if (select.options.length === 0) {
-                houseBucketGroup.style.display = '';
-                (fixedPackages.bds['low'] || []).forEach(pkg => {
+                houseBucketGroup.style.display = 'none';
+                (fixedPackages.general || []).forEach(pkg => {
                     const opt = document.createElement('option');
                     opt.value = pkg.value;
                     opt.textContent = pkg.label;
@@ -1144,9 +1080,7 @@
         document.getElementById('loanPurposeGroup').addEventListener('change', function(e) {
             setTimeout(renderFixedPackageOptions, 10);
         });
-        document.getElementById('houseValueBucketGroup').addEventListener('change', function(e) {
-            setTimeout(renderFixedPackageOptions, 10);
-        });
+        // Nhóm bucket đã loại bỏ
     </script>
 </body>
 </html> 
