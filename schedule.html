@@ -517,8 +517,8 @@
 
                 // Gói đặc biệt: người trẻ
                 if (fixedPackageValue === 'young') {
-                    // Năm 1 cố định 5.8%, năm 2-3 = LSTK 12T + 2%, sau ưu đãi = LSTK 12T + 3.5%
-                    fixedRate = 5.8;
+                    // Năm 1 cố định 6.1%, năm 2-3 = LSTK 12T + 2%, sau ưu đãi = LSTK 12T + 3.0%
+                    fixedRate = 6.1;
                     fixedMonths = 12; // năm 1
                     secondFixedRate = afterFixedRate + 2; // năm 2-3
                     secondFixedMonths = 24;
@@ -549,8 +549,8 @@
                 } else if (secondFixedRate) {
                     secondMonthlyRate = secondFixedRate / 12 / 100;
                 }
-                // Sau thời gian ưu đãi của young: LSTK 12T + 3.5%
-                const afterMonthlyRate = (fixedPackageValue === 'young') ? (afterFixedRate + 3.5) / 12 / 100 : afterFixedRate / 12 / 100;
+                // Sau thời gian ưu đãi của young: LSTK 12T + 3.0%
+                const afterMonthlyRate = (fixedPackageValue === 'young') ? (afterFixedRate + 3.0) / 12 / 100 : afterFixedRate / 12 / 100;
                 
                 let remainingPrincipal = loanAmount;
                 const scheduleBody = document.getElementById('scheduleBody');
@@ -570,7 +570,7 @@
                             currentRateYear = (fixedPackageValue === 'young') ? (afterFixedRate + 2) : secondFixedRate;
                         } else {
                             currentRate = afterMonthlyRate;
-                            currentRateYear = (fixedPackageValue === 'young') ? (afterFixedRate + 3.5) : afterFixedRate;
+                            currentRateYear = (fixedPackageValue === 'young') ? (afterFixedRate + 3.0) : afterFixedRate;
                         }
                     } else {
                         if (i <= fixedMonths) {
@@ -850,15 +850,15 @@
                 }
                 fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
             } else if (fixedPackage.value === 'young') {
-                fixedRateDisplay = '5.80% (năm 1)';
+                fixedRateDisplay = '6.10% (năm 1)';
             }
             // 2. Tạo dữ liệu phần tóm tắt
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
-                ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 5,8%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value + ' tháng')],
-                ['Lãi suất thả nổi', ((["6","12","18","24","36","young"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 6,1%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value + ' tháng')],
+                ['Lãi suất thả nổi', ((fixedPackage.value === 'young') ? (afterFixedRateRaw + 3.0).toFixed(2) : ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2))) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
@@ -963,14 +963,14 @@
                 }
                 fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
             } else if (fixedPackage.value === 'young') {
-                fixedRateDisplay = '5.80% (năm 1)';
+                fixedRateDisplay = '6.10% (năm 1)';
             }
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
-                ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 5,8%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value + ' tháng')],
-                ['Lãi suất thả nổi', ((["6","12","18","24","36","young"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Thời gian ưu đãi', fixedPackage.value === 'young' ? 'Năm 1: 6,1%/năm; Năm 2&3: LSTK 12T + 2%/năm' : (fixedPackage.value + ' tháng')],
+                ['Lãi suất thả nổi', ((fixedPackage.value === 'young') ? (afterFixedRateRaw + 3.0).toFixed(2) : ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 3.5).toFixed(2) : afterFixedRateRaw.toFixed(2))) + '%'],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
@@ -1045,7 +1045,10 @@
             return false;
         });
 
-        // Lãi suất cố định theo ảnh: nhà ở (≤5 tỷ vs >5 tỷ), đất ở
+        // Lãi suất cố định theo bảng chào mới: nhà ở (≤5 tỷ vs >5 tỷ), đất ở
+        // Sàn: 6m=6.5%, 12m=7.0%, 18m=6.5%+7.5%
+        // Nhà ≤5 tỷ: sàn + 0.2% → 6m=6.7%, 12m=7.2%, 18m=6.7%+7.7%
+        // Đất ở: sàn + 0.5% → 6m=7.0%, 12m=7.5%, 18m=7.0%+8.0%
         const fixedPackagesBds = {
             low: [
                 { value: '6',  label: 'Cố định 6 tháng (6,70%/năm)',  rate: 6.7, months: 6 },
@@ -1067,7 +1070,7 @@
             ],
         };
         const youngPackages = [
-            { value: 'young', label: 'Gói người trẻ (Năm 1: 5,8%; Năm 2-3: LSTK 12T + 2%)', rate: 5.8, months: 12, secondRate: null, secondMonths: 24 }
+            { value: 'young', label: 'Gói người trẻ (Năm 1: 6,1%; Năm 2-3: LSTK 12T + 2%)', rate: 6.1, months: 12, secondRate: null, secondMonths: 24 }
         ];
         // Không còn gói tiêu dùng; gói người trẻ tách riêng
         function renderFixedPackageOptions() {
