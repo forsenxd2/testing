@@ -473,9 +473,9 @@
             // Lấy thời gian ân hạn cho tất cả các gói
             let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
 
-            // Nếu là gói phổ thông (12/18/24/36) thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
+            // Nếu là gói phổ thông (6/12/18/24) thì lãi suất sau ưu đãi = LSTK 12T + 3,5%
             // Gói người trẻ sẽ xử lý riêng ở dưới
-            if (["12","18","24","36"].includes(fixedPackage)) {
+            if (["6","12","18","24"].includes(fixedPackage)) {
                 afterFixedRate = afterFixedRate + 3.5;
             }
 
@@ -783,8 +783,8 @@
             const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRateLabel = document.getElementById('afterFixedRateLabel');
             const afterFixedRateNote = document.getElementById('afterFixedRateNote');
-            // Gói phổ thông: 12, 18, 24, 36 và gói người trẻ
-            if (["12","18","24","36","young"].includes(fixedPackage)) {
+            // Gói phổ thông: 6, 12, 18, 24 và gói người trẻ
+            if (["6","12","18","24","young"].includes(fixedPackage)) {
                 afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
                 afterFixedRateNote.textContent = (fixedPackage === 'young') ? '+ 3,0%/năm = lãi suất sau ưu đãi' : '+ 3,5%/năm = lãi suất sau ưu đãi';
             } else {
