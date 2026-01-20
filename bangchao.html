@@ -105,6 +105,11 @@
             <h3 class="mb-4">Nhập thông tin</h3>
             <form id="infoForm">
                 <div class="mb-3">
+                    <label for="title" class="form-label">Danh xưng</label>
+                    <input type="text" class="form-control" id="title" placeholder="Mr, Mrs, Ms, ..." value="Mr" required>
+                    <small class="form-text text-muted">Nhập danh xưng (Mr, Mrs, Ms, v.v.)</small>
+                </div>
+                <div class="mb-3">
                     <label for="canBo" class="form-label">Cán bộ</label>
                     <input type="text" class="form-control" id="canBo" placeholder="Nhập tên cán bộ" required>
                 </div>
@@ -214,7 +219,7 @@
         }
 
         // Vẽ thông tin liên hệ lên ảnh
-        async function drawContactInfoOnImage(canBo, soDT, email) {
+        async function drawContactInfoOnImage(title, canBo, soDT, email) {
             if (!baseImage) {
                 await loadBaseImage();
             }
@@ -229,8 +234,8 @@
             ctx.drawImage(baseImage, 0, 0);
 
             // Tính toán vị trí và kích thước font dựa trên kích thước ảnh
-            // Giả sử phần văn bản trên căn lề trái khoảng 5-8% chiều rộng ảnh
-            const textX = baseImage.width * 0.05; // 5% từ lề trái, tương tự phần văn bản trên
+            // Điều chỉnh textX để căn lề với bảng trên (tăng từ 5% lên 7-8%)
+            const textX = baseImage.width * 0.075; // 7.5% từ lề trái để thẳng với bảng trên
             const startY = baseImage.height * 0.85; // 85% từ trên xuống (gần cuối ảnh)
             
             // Tính font size dựa trên chiều rộng ảnh (tỷ lệ với ảnh gốc)
@@ -251,8 +256,9 @@
             ctx.font = `${textFontSize}px Arial, sans-serif`;
             const lineHeight = textFontSize * 1.5;
 
-            // Vẽ thông tin cán bộ và số điện thoại
-            ctx.fillText(`Mr. ${canBo} – Tel: ${soDT}`, textX, startY + lineHeight);
+            // Vẽ thông tin cán bộ và số điện thoại (dùng title từ input)
+            const titleText = title.trim() ? `${title.trim()}. ` : '';
+            ctx.fillText(`${titleText}${canBo} – Tel: ${soDT}`, textX, startY + lineHeight);
 
             // Vẽ email
             ctx.fillText(`Email: ${email}`, textX, startY + lineHeight * 2);
@@ -264,11 +270,12 @@
         document.getElementById('infoForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
+            const title = document.getElementById('title').value.trim();
             const canBo = document.getElementById('canBo').value.trim();
             const soDT = document.getElementById('soDT').value.trim();
             const email = document.getElementById('email').value.trim();
 
-            if (!canBo || !soDT || !email) {
+            if (!title || !canBo || !soDT || !email) {
                 alert('Vui lòng điền đầy đủ thông tin');
                 return;
             }
@@ -289,7 +296,7 @@
 
                 // Vẽ thông tin liên hệ lên ảnh
                 console.log('Bắt đầu vẽ thông tin lên ảnh...');
-                const canvas = await drawContactInfoOnImage(canBo, soDT, email);
+                const canvas = await drawContactInfoOnImage(title, canBo, soDT, email);
 
                 console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
@@ -313,13 +320,13 @@
                         }
                         console.log('Data URL length:', dataUrl.length);
                         
-                        const link = document.createElement('a');
+            const link = document.createElement('a');
                         link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
                         link.href = dataUrl;
                         link.style.display = 'none';
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
 
                         // Hiển thị preview (đưa về vị trí bình thường)
                         previewContainer.style.position = 'relative';
@@ -347,16 +354,16 @@
                         } else {
                             console.log('Blob size:', blob.size, 'bytes');
                             const url = URL.createObjectURL(blob);
-                            const link = document.createElement('a');
+            const link = document.createElement('a');
                             link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
                             link.href = url;
                             link.style.display = 'none';
-                            document.body.appendChild(link);
-                            link.click();
+            document.body.appendChild(link);
+            link.click();
                             
                             // Đợi một chút trước khi cleanup
                             setTimeout(() => {
-                                document.body.removeChild(link);
+            document.body.removeChild(link);
                                 URL.revokeObjectURL(url);
                             }, 100);
 
