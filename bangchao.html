@@ -217,7 +217,7 @@
             
             // Tìm và thay thế các pattern có thể có trong DOCX
             // Pattern 1: "Mr. [Tên] – Tel: [SĐT]"
-            newContent = newContent.replace(/Mr\.\s*[^–<]*–\s*Tel:\s*[0-9.\s]*/gi, `Mr. ${canBo} – Tel: ${soDT}`);
+            newContent = newContent.replace(/Mr\.\s*[^–<]*–\s*Tel:\s*[0-9.\s]*/gi, ` ${canBo} – Tel: ${soDT}`);
             
             // Pattern 2: Tìm "Tel:" hoặc "Điện thoại:" và thay thế
             newContent = newContent.replace(/(Tel|Điện thoại):\s*[0-9.\s]*/gi, `$1: ${soDT}`);
@@ -297,36 +297,90 @@
                 previewDiv.innerHTML = filledContent;
 
                 // Đợi một chút để render xong
-                await new Promise(resolve => setTimeout(resolve, 500));
+                await new Promise(resolve => setTimeout(resolve, 1000));
 
                 // Convert sang PNG
+                console.log('Bắt đầu convert sang PNG...');
                 const canvas = await html2canvas(previewDiv, {
                     backgroundColor: '#ffffff',
-                    scale: 2,
-                    logging: false,
+                    scale: 1.5,
+                    logging: true,
                     useCORS: true,
-                    allowTaint: true
+                    allowTaint: false,
+                    width: previewDiv.scrollWidth,
+                    height: previewDiv.scrollHeight
                 });
 
-                // Tải file PNG - sử dụng toDataURL thay vì toBlob để tránh lỗi
-                try {
-                    const dataUrl = canvas.toDataURL('image/png');
-                    const link = document.createElement('a');
-                    link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
-                    link.href = dataUrl;
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
-                    // Hiển thị preview
-                    previewContainer.style.display = 'block';
-                    generateBtn.disabled = false;
-                    loading.style.display = 'none';
+                // Kiểm tra canvas có hợp lệ không
+                if (!canvas || canvas.width === 0 || canvas.height === 0) {
+                    throw new Error('Canvas không hợp lệ hoặc có kích thước 0');
+                }
+
+                // Hàm helper để tải bằng data URL
+                const downloadAsDataURL = (canvas, canBo) => {
+                    try {
+                        const dataUrl = canvas.toDataURL('image/png', 0.95);
+                        if (!dataUrl || dataUrl === 'data:,') {
+                            throw new Error('Không thể tạo data URL từ canvas');
+                        }
+                        console.log('Data URL length:', dataUrl.length);
+                        
+                        const link = document.createElement('a');
+                        link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
+                        link.href = dataUrl;
+                        link.style.display = 'none';
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
+
+                        // Hiển thị preview
+                        previewContainer.style.display = 'block';
+                        generateBtn.disabled = false;
+                        loading.style.display = 'none';
+                    } catch (error) {
+                        console.error('Lỗi khi tạo download link:', error);
+                        alert('Lỗi khi tải file: ' + error.message);
+                        generateBtn.disabled = false;
+                        loading.style.display = 'none';
+                    }
+                };
+
+                // Tải file PNG - thử dùng blob trước, nếu lỗi thì dùng data URL
+                try {
+                    // Thử dùng blob trước
+                    canvas.toBlob(function(blob) {
+                        if (!blob || blob.size === 0) {
+                            console.warn('Blob không hợp lệ, thử dùng data URL...');
+                            // Fallback: dùng data URL
+                            downloadAsDataURL(canvas, canBo);
+                        } else {
+                            console.log('Blob size:', blob.size, 'bytes');
+                            const url = URL.createObjectURL(blob);
+                            const link = document.createElement('a');
+                            link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
+                            link.href = url;
+                            link.style.display = 'none';
+                            document.body.appendChild(link);
+                            link.click();
+                            
+                            // Đợi một chút trước khi cleanup
+                            setTimeout(() => {
+                                document.body.removeChild(link);
+                                URL.revokeObjectURL(url);
+                            }, 100);
+
+                            // Hiển thị preview
+                            previewContainer.style.display = 'block';
+                            generateBtn.disabled = false;
+                            loading.style.display = 'none';
+                        }
+                    }, 'image/png', 0.95);
                 } catch (error) {
-                    console.error('Lỗi khi tạo download link:', error);
-                    alert('Lỗi khi tải file: ' + error.message);
-                    generateBtn.disabled = false;
-                    loading.style.display = 'none';
+                    console.error('Lỗi khi tạo blob:', error);
+                    // Fallback: dùng data URL
+                    downloadAsDataURL(canvas, canBo);
                 }
 
             } catch (error) {
