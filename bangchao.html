@@ -106,8 +106,7 @@
             <form id="infoForm">
                 <div class="mb-3">
                     <label for="ten" class="form-label">Tên</label>
-                    <input type="text" class="form-control" id="ten" placeholder="Mr. A hoặc A (tùy ý)">
-                    <small class="form-text text-muted">Có thể điền "Mr. A" hoặc chỉ "A" tùy ý</small>
+                    <input type="text" class="form-control" id="ten" placeholder="Nhập tên">
                 </div>
                 <div class="mb-3">
                     <label for="soDT" class="form-label">Số điện thoại</label>
@@ -144,6 +143,7 @@
         // Load ảnh base khi trang load
         async function loadBaseImage() {
             return new Promise((resolve, reject) => {
+                // Thử load file jpg trước (vì có vẻ file png không tồn tại)
                 const img = new Image();
                 img.crossOrigin = 'anonymous';
                 img.onload = () => {
@@ -151,7 +151,7 @@
                     resolve(img);
                 };
                 img.onerror = () => {
-                    // Thử load file jpg nếu png không có
+                    // Thử load file png nếu jpg không có
                     const img2 = new Image();
                     img2.crossOrigin = 'anonymous';
                     img2.onload = () => {
@@ -161,9 +161,9 @@
                     img2.onerror = () => {
                         reject(new Error('Không thể load file ảnh bangchao'));
                     };
-                    img2.src = 'images/bangchao.jpg';
+                    img2.src = 'images/bangchao.png';
                 };
-                img.src = 'images/bangchao.png';
+                img.src = 'images/bangchao.jpg';
             });
         }
 
@@ -329,8 +329,8 @@
 
                 const finalCanvas = canvas;
 
-                // Hàm helper để tải bằng data URL
-                const downloadAsDataURL = (canvas, canBo) => {
+                // Hàm helper để tải file
+                const downloadFile = (canvas) => {
                     try {
                         const dataUrl = canvas.toDataURL('image/png', 0.95);
                         if (!dataUrl || dataUrl === 'data:,') {
@@ -338,13 +338,13 @@
                         }
                         console.log('Data URL length:', dataUrl.length);
                         
-            const link = document.createElement('a');
-                        link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
+                        const link = document.createElement('a');
+                        link.download = 'bangchao.png';
                         link.href = dataUrl;
                         link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
-            document.body.removeChild(link);
+                        document.body.appendChild(link);
+                        link.click();
+                        document.body.removeChild(link);
 
                         // Hiển thị preview (đưa về vị trí bình thường)
                         previewContainer.style.position = 'relative';
@@ -368,20 +368,20 @@
                         if (!blob || blob.size === 0) {
                             console.warn('Blob không hợp lệ, thử dùng data URL...');
                             // Fallback: dùng data URL
-                            downloadAsDataURL(finalCanvas, canBo);
+                            downloadFile(finalCanvas);
                         } else {
                             console.log('Blob size:', blob.size, 'bytes');
                             const url = URL.createObjectURL(blob);
-            const link = document.createElement('a');
-                            link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
+                            const link = document.createElement('a');
+                            link.download = 'bangchao.png';
                             link.href = url;
                             link.style.display = 'none';
-            document.body.appendChild(link);
-            link.click();
+                            document.body.appendChild(link);
+                            link.click();
                             
                             // Đợi một chút trước khi cleanup
                             setTimeout(() => {
-            document.body.removeChild(link);
+                                document.body.removeChild(link);
                                 URL.revokeObjectURL(url);
                             }, 100);
 
@@ -397,7 +397,7 @@
                 } catch (error) {
                     console.error('Lỗi khi tạo blob:', error);
                     // Fallback: dùng data URL
-                    downloadAsDataURL(finalCanvas, canBo);
+                    downloadFile(finalCanvas);
                 }
 
             } catch (error) {
