@@ -105,25 +105,22 @@
             <h3 class="mb-4">Nhập thông tin</h3>
             <form id="infoForm">
                 <div class="mb-3">
-                    <label for="title" class="form-label">Danh xưng</label>
-                    <input type="text" class="form-control" id="title" placeholder="Mr, Mrs, Ms, ..." value="Mr" required>
-                    <small class="form-text text-muted">Nhập danh xưng (Mr, Mrs, Ms, v.v.)</small>
-                </div>
-                <div class="mb-3">
-                    <label for="canBo" class="form-label">Cán bộ</label>
-                    <input type="text" class="form-control" id="canBo" placeholder="Nhập tên cán bộ" required>
+                    <label for="ten" class="form-label">Tên</label>
+                    <input type="text" class="form-control" id="ten" placeholder="Mr. A hoặc A (tùy ý)">
+                    <small class="form-text text-muted">Có thể điền "Mr. A" hoặc chỉ "A" tùy ý</small>
                 </div>
                 <div class="mb-3">
                     <label for="soDT" class="form-label">Số điện thoại</label>
-                    <input type="tel" class="form-control" id="soDT" placeholder="Nhập số điện thoại" required>
+                    <input type="text" class="form-control" id="soDT" placeholder="Nhập số điện thoại">
                 </div>
                 <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
-                    <input type="email" class="form-control" id="email" placeholder="Nhập email" required>
+                    <input type="text" class="form-control" id="email" placeholder="Nhập email">
                 </div>
                 <button type="submit" class="generate-btn" id="generateBtn">
                     <i class="bi bi-file-earmark-image"></i> Tạo và tải file PNG
                 </button>
+                <small class="form-text text-muted d-block mt-2">Lưu ý: Nếu để trống tất cả, sẽ tải file ảnh gốc</small>
             </form>
         </div>
         
@@ -219,7 +216,7 @@
         }
 
         // Vẽ thông tin liên hệ lên ảnh
-        async function drawContactInfoOnImage(title, canBo, soDT, email) {
+        async function drawContactInfoOnImage(ten, soDT, email) {
             if (!baseImage) {
                 await loadBaseImage();
             }
@@ -232,6 +229,16 @@
 
             // Vẽ ảnh gốc lên canvas
             ctx.drawImage(baseImage, 0, 0);
+
+            // Kiểm tra xem có thông tin nào cần vẽ không
+            const hasTen = ten && ten.trim();
+            const hasSoDT = soDT && soDT.trim();
+            const hasEmail = email && email.trim();
+
+            // Nếu không có thông tin nào, chỉ trả về ảnh gốc
+            if (!hasTen && !hasSoDT && !hasEmail) {
+                return canvas;
+            }
 
             // Tính toán vị trí và kích thước font dựa trên kích thước ảnh
             // Điều chỉnh textX để căn lề với bảng trên (tăng từ 5% lên 7-8%)
@@ -249,19 +256,36 @@
             ctx.textAlign = 'left';
             ctx.textBaseline = 'top';
 
-            // Vẽ tiêu đề "Thông tin liên hệ:"
+            // Vẽ tiêu đề "Thông tin liên hệ:" chỉ khi có ít nhất một thông tin
             ctx.fillText('Thông tin liên hệ:', textX, startY);
 
             // Cấu hình font cho nội dung
             ctx.font = `${textFontSize}px Arial, sans-serif`;
             const lineHeight = textFontSize * 1.5;
 
-            // Vẽ thông tin cán bộ và số điện thoại (dùng title từ input)
-            const titleText = title.trim() ? `${title.trim()}. ` : '';
-            ctx.fillText(`${titleText}${canBo} – Tel: ${soDT}`, textX, startY + lineHeight);
+            let currentY = startY + lineHeight;
 
-            // Vẽ email
-            ctx.fillText(`Email: ${email}`, textX, startY + lineHeight * 2);
+            // Vẽ tên và số điện thoại nếu có
+            if (hasTen || hasSoDT) {
+                let lineText = '';
+                if (hasTen) {
+                    lineText = ten.trim();
+                }
+                if (hasSoDT) {
+                    if (lineText) {
+                        lineText += ` – Tel: ${soDT.trim()}`;
+                    } else {
+                        lineText = `Tel: ${soDT.trim()}`;
+                    }
+                }
+                ctx.fillText(lineText, textX, currentY);
+                currentY += lineHeight;
+            }
+
+            // Vẽ email nếu có
+            if (hasEmail) {
+                ctx.fillText(`Email: ${email.trim()}`, textX, currentY);
+            }
 
             return canvas;
         }
@@ -270,15 +294,9 @@
         document.getElementById('infoForm').addEventListener('submit', async function(e) {
             e.preventDefault();
             
-            const title = document.getElementById('title').value.trim();
-            const canBo = document.getElementById('canBo').value.trim();
+            const ten = document.getElementById('ten').value.trim();
             const soDT = document.getElementById('soDT').value.trim();
             const email = document.getElementById('email').value.trim();
-
-            if (!title || !canBo || !soDT || !email) {
-                alert('Vui lòng điền đầy đủ thông tin');
-                return;
-            }
 
             const generateBtn = document.getElementById('generateBtn');
             const loading = document.getElementById('loading');
@@ -294,9 +312,9 @@
                     await loadBaseImage();
                 }
 
-                // Vẽ thông tin liên hệ lên ảnh
+                // Vẽ thông tin liên hệ lên ảnh (có thể để trống tất cả)
                 console.log('Bắt đầu vẽ thông tin lên ảnh...');
-                const canvas = await drawContactInfoOnImage(title, canBo, soDT, email);
+                const canvas = await drawContactInfoOnImage(ten, soDT, email);
 
                 console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
