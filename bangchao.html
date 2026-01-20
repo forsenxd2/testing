@@ -215,7 +215,22 @@
             }
         }
 
-        // Vẽ thông tin liên hệ lên ảnh
+        // Hiển thị preview ảnh gốc
+        async function showPreviewImage() {
+            try {
+                if (!baseImage) {
+                    await loadBaseImage();
+                }
+                const previewDiv = document.getElementById('documentPreview');
+                const previewContainer = document.getElementById('previewContainer');
+                previewDiv.innerHTML = `<img src="${baseImage.src}" alt="Preview" style="max-width: 100%; height: auto;">`;
+                previewContainer.style.display = 'block';
+            } catch (error) {
+                console.error('Lỗi khi hiển thị preview:', error);
+            }
+        }
+
+        // Vẽ thông tin liên hệ và QR code lên ảnh
         async function drawContactInfoOnImage(ten, soDT, email) {
             if (!baseImage) {
                 await loadBaseImage();
@@ -285,6 +300,36 @@
             // Vẽ email nếu có
             if (hasEmail) {
                 ctx.fillText(`Email: ${email.trim()}`, textX, currentY);
+                currentY += lineHeight;
+            }
+
+            // Vẽ QR code Zalo nếu có số điện thoại
+            if (hasSoDT) {
+                try {
+                    const qrCodeDataUrl = await generateZaloQR(soDT);
+                    const qrImage = new Image();
+                    await new Promise((resolve, reject) => {
+                        qrImage.onload = resolve;
+                        qrImage.onerror = reject;
+                        qrImage.src = qrCodeDataUrl;
+                    });
+
+                    // Vị trí QR code: bên phải thông tin liên hệ, căn với dòng đầu tiên
+                    const qrSize = Math.min(150, baseImage.width * 0.08); // Kích thước QR code
+                    const qrX = baseImage.width * 0.6; // 60% từ lề trái (bên phải thông tin)
+                    const qrY = startY + lineHeight; // Cùng hàng với thông tin đầu tiên
+
+                    // Vẽ QR code
+                    ctx.drawImage(qrImage, qrX, qrY, qrSize, qrSize);
+
+                    // Vẽ text "Zalo" dưới QR code
+                    ctx.font = `${textFontSize * 0.75}px Arial, sans-serif`;
+                    ctx.textAlign = 'center';
+                    ctx.fillText('Zalo', qrX + qrSize / 2, qrY + qrSize + 8);
+                } catch (error) {
+                    console.error('Lỗi khi vẽ QR code:', error);
+                    // Tiếp tục không có QR code nếu lỗi
+                }
             }
 
             return canvas;
@@ -312,13 +357,13 @@
                     await loadBaseImage();
                 }
 
-                // Vẽ thông tin liên hệ lên ảnh (có thể để trống tất cả)
+                // Vẽ thông tin liên hệ và QR code lên ảnh (có thể để trống tất cả)
                 console.log('Bắt đầu vẽ thông tin lên ảnh...');
                 const canvas = await drawContactInfoOnImage(ten, soDT, email);
 
                 console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
-                // Hiển thị preview
+                // Hiển thị preview với ảnh đã vẽ
                 const previewDiv = document.getElementById('documentPreview');
                 previewDiv.innerHTML = `<img src="${canvas.toDataURL('image/png')}" alt="Preview" style="max-width: 100%; height: auto;">`;
                 previewContainer.style.display = 'block';
@@ -408,8 +453,11 @@
             }
         });
 
-        // Load ảnh base khi trang load
-        window.addEventListener('load', loadBaseImage);
+        // Load ảnh base và hiển thị preview khi trang load
+        window.addEventListener('load', async function() {
+            await loadBaseImage();
+            await showPreviewImage();
+        });
     </script>
 </body>
 </html> 
