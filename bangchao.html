@@ -217,7 +217,7 @@
             
             // Tìm và thay thế các pattern có thể có trong DOCX
             // Pattern 1: "Mr. [Tên] – Tel: [SĐT]"
-            newContent = newContent.replace(/Mr\.\s*[^–<]*–\s*Tel:\s*[0-9.\s]*/gi, ` ${canBo} – Tel: ${soDT}`);
+            newContent = newContent.replace(/Mr\.\s*[^–<]*–\s*Tel:\s*[0-9.\s]*/gi, `image.png ${canBo} – Tel: ${soDT}`);
             
             // Pattern 2: Tìm "Tel:" hoặc "Điện thoại:" và thay thế
             newContent = newContent.replace(/(Tel|Điện thoại):\s*[0-9.\s]*/gi, `$1: ${soDT}`);
@@ -294,28 +294,70 @@
 
                 // Tạo container để render document
                 const previewDiv = document.getElementById('documentPreview');
+                
+                // Đảm bảo previewDiv hiển thị và có kích thước
                 previewDiv.innerHTML = filledContent;
+                previewDiv.style.display = 'block';
+                previewDiv.style.visibility = 'visible';
+                previewDiv.style.position = 'relative';
+                previewDiv.style.width = 'auto';
+                previewDiv.style.minWidth = '800px'; // Đặt min width để đảm bảo có kích thước
+                
+                // Hiển thị preview container để đảm bảo element được render
+                // Nhưng đặt ngoài viewport để không ảnh hưởng UI
+                previewContainer.style.display = 'block';
+                previewContainer.style.visibility = 'visible';
+                previewContainer.style.position = 'fixed';
+                previewContainer.style.left = '-10000px';
+                previewContainer.style.top = '0';
+                previewContainer.style.zIndex = '-1';
 
                 // Đợi một chút để render xong
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                await new Promise(resolve => setTimeout(resolve, 1500));
+
+                // Kiểm tra kích thước của previewDiv
+                const rect = previewDiv.getBoundingClientRect();
+                console.log('PreviewDiv size:', rect.width, 'x', rect.height);
+                
+                if (rect.width === 0 || rect.height === 0) {
+                    // Nếu không có kích thước, đặt kích thước mặc định
+                    previewDiv.style.width = '800px';
+                    previewDiv.style.height = 'auto';
+                    await new Promise(resolve => setTimeout(resolve, 500));
+                }
 
                 // Convert sang PNG
                 console.log('Bắt đầu convert sang PNG...');
                 const canvas = await html2canvas(previewDiv, {
                     backgroundColor: '#ffffff',
                     scale: 1.5,
-                    logging: true,
+                    logging: false,
                     useCORS: true,
                     allowTaint: false,
-                    width: previewDiv.scrollWidth,
-                    height: previewDiv.scrollHeight
+                    windowWidth: Math.max(previewDiv.scrollWidth || 800, 800),
+                    windowHeight: Math.max(previewDiv.scrollHeight || 600, 600)
                 });
 
                 console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
                 // Kiểm tra canvas có hợp lệ không
+                let finalCanvas = canvas;
                 if (!canvas || canvas.width === 0 || canvas.height === 0) {
-                    throw new Error('Canvas không hợp lệ hoặc có kích thước 0');
+                    // Thử lại với options khác
+                    console.log('Thử lại với options khác...');
+                    const canvas2 = await html2canvas(previewDiv, {
+                        backgroundColor: '#ffffff',
+                        scale: 1,
+                        logging: false,
+                        useCORS: true,
+                        allowTaint: true
+                    });
+                    
+                    if (!canvas2 || canvas2.width === 0 || canvas2.height === 0) {
+                        throw new Error('Canvas không hợp lệ hoặc có kích thước 0. PreviewDiv size: ' + rect.width + 'x' + rect.height);
+                    }
+                    
+                    finalCanvas = canvas2;
                 }
 
                 // Hàm helper để tải bằng data URL
@@ -335,7 +377,10 @@
                         link.click();
                         document.body.removeChild(link);
 
-                        // Hiển thị preview
+                        // Hiển thị preview (đưa về vị trí bình thường)
+                        previewContainer.style.position = 'relative';
+                        previewContainer.style.left = 'auto';
+                        previewContainer.style.top = 'auto';
                         previewContainer.style.display = 'block';
                         generateBtn.disabled = false;
                         loading.style.display = 'none';
@@ -350,11 +395,11 @@
                 // Tải file PNG - thử dùng blob trước, nếu lỗi thì dùng data URL
                 try {
                     // Thử dùng blob trước
-                    canvas.toBlob(function(blob) {
+                    finalCanvas.toBlob(function(blob) {
                         if (!blob || blob.size === 0) {
                             console.warn('Blob không hợp lệ, thử dùng data URL...');
                             // Fallback: dùng data URL
-                            downloadAsDataURL(canvas, canBo);
+                            downloadAsDataURL(finalCanvas, canBo);
                         } else {
                             console.log('Blob size:', blob.size, 'bytes');
                             const url = URL.createObjectURL(blob);
@@ -371,7 +416,10 @@
                                 URL.revokeObjectURL(url);
                             }, 100);
 
-                            // Hiển thị preview
+                            // Hiển thị preview (đưa về vị trí bình thường)
+                            previewContainer.style.position = 'relative';
+                            previewContainer.style.left = 'auto';
+                            previewContainer.style.top = 'auto';
                             previewContainer.style.display = 'block';
                             generateBtn.disabled = false;
                             loading.style.display = 'none';
@@ -380,7 +428,7 @@
                 } catch (error) {
                     console.error('Lỗi khi tạo blob:', error);
                     // Fallback: dùng data URL
-                    downloadAsDataURL(canvas, canBo);
+                    downloadAsDataURL(finalCanvas, canBo);
                 }
 
             } catch (error) {
