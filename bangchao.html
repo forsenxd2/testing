@@ -289,151 +289,15 @@
                     await loadDocx();
                 }
 
-                // Tạo QR code
-                const qrCodeDataUrl = await generateZaloQR(soDT);
-
                 // Điền thông tin vào document
                 let filledContent = fillDocumentContent(canBo, soDT, email);
 
-                // Tạo container để render document với QR code
+                // Tạo container để render document
                 const previewDiv = document.getElementById('documentPreview');
                 previewDiv.innerHTML = filledContent;
 
-                // Tìm phần chứa thông tin liên hệ (tìm phần có chứa email vì thường ở cuối)
-                const allParagraphs = previewDiv.querySelectorAll('p, div, td');
-                let emailElement = null;
-                let contactSection = null;
-
-                // Tìm element chứa email
-                for (let el of allParagraphs) {
-                    const text = (el.textContent || '').toLowerCase();
-                    if (text.includes(email.toLowerCase())) {
-                        emailElement = el;
-                        contactSection = el.parentElement;
-                        break;
-                    }
-                }
-
-                // Nếu không tìm thấy email, tìm phần có chứa số điện thoại
-                if (!emailElement) {
-                    for (let el of allParagraphs) {
-                        const text = (el.textContent || '').toLowerCase();
-                        if (text.includes(soDT.replace(/[^0-9]/g, '')) || text.includes('tel:')) {
-                            emailElement = el;
-                            contactSection = el.parentElement;
-                            break;
-                        }
-                    }
-                }
-
-                // Tạo wrapper cho thông tin liên hệ và QR code
-                const contactWrapper = document.createElement('div');
-                contactWrapper.style.cssText = 'display: flex; align-items: flex-start; gap: 20px; margin-top: 15px;';
-
-                // Tạo phần thông tin liên hệ
-                const contactInfo = document.createElement('div');
-                contactInfo.style.cssText = 'flex: 1;';
-                
-                if (emailElement && contactSection) {
-                    // Tìm tất cả các element liên quan đến thông tin liên hệ
-                    const contactElements = [];
-                    let foundStart = false;
-                    
-                    // Tìm từ đầu contactSection đến emailElement
-                    for (let child of contactSection.children) {
-                        const text = (child.textContent || '').toLowerCase();
-                        if (text.includes('thông tin liên hệ') || text.includes('mr.') || 
-                            text.includes(canBo.toLowerCase())) {
-                            foundStart = true;
-                        }
-                        if (foundStart || child === emailElement || child.contains(emailElement)) {
-                            contactElements.push(child.cloneNode(true));
-                            if (child === emailElement || child.contains(emailElement)) {
-                                break;
-                            }
-                        }
-                    }
-                    
-                    if (contactElements.length > 0) {
-                        contactElements.forEach(el => contactInfo.appendChild(el));
-                    } else {
-                        // Nếu không tìm thấy, lấy phần chứa email và các phần liên quan
-                        const parent = emailElement.parentElement;
-                        if (parent) {
-                            const siblings = Array.from(parent.children);
-                            const emailIndex = siblings.indexOf(emailElement);
-                            // Lấy 3 phần tử trước email (thường là: tiêu đề, tên, số đt)
-                            for (let i = Math.max(0, emailIndex - 2); i <= emailIndex; i++) {
-                                contactInfo.appendChild(siblings[i].cloneNode(true));
-                            }
-                        } else {
-                            contactInfo.innerHTML = `
-                                <p><strong>Thông tin liên hệ:</strong></p>
-                                <p>Mr. ${canBo} – Tel: ${soDT}</p>
-                                <p>Email: ${email}</p>
-                            `;
-                        }
-                    }
-                } else {
-                    // Tạo mới nếu không tìm thấy
-                    contactInfo.innerHTML = `
-                        <p><strong>Thông tin liên hệ:</strong></p>
-                        <p>Mr. ${canBo} – Tel: ${soDT}</p>
-                        <p>Email: ${email}</p>
-                    `;
-                }
-
-                contactWrapper.appendChild(contactInfo);
-
-                // Tạo QR code container
-                const qrContainer = document.createElement('div');
-                qrContainer.style.cssText = 'flex-shrink: 0; text-align: center;';
-                
-                // Tạo image element và đợi load xong
-                const qrImage = document.createElement('img');
-                qrImage.alt = 'QR Code Zalo';
-                qrImage.style.cssText = 'width: 150px; height: 150px; display: block;';
-                
-                // Đợi QR code image load xong
-                await new Promise((resolve, reject) => {
-                    qrImage.onload = resolve;
-                    qrImage.onerror = () => {
-                        console.warn('Không thể load QR code, tiếp tục không có QR code');
-                        resolve(); // Vẫn tiếp tục dù không có QR code
-                    };
-                    qrImage.src = qrCodeDataUrl;
-                    // Timeout sau 5 giây
-                    setTimeout(() => {
-                        if (!qrImage.complete) {
-                            console.warn('QR code load timeout');
-                            resolve();
-                        }
-                    }, 5000);
-                });
-                
-                qrContainer.appendChild(qrImage);
-                const qrLabel = document.createElement('p');
-                qrLabel.style.cssText = 'margin-top: 10px; font-size: 12px; margin: 10px 0 0 0;';
-                qrLabel.textContent = 'Zalo';
-                qrContainer.appendChild(qrLabel);
-                
-                contactWrapper.appendChild(qrContainer);
-
-                // Chèn wrapper vào document
-                if (emailElement && contactSection) {
-                    // Chèn sau phần email
-                    if (emailElement.nextSibling) {
-                        contactSection.insertBefore(contactWrapper, emailElement.nextSibling);
-                    } else {
-                        contactSection.appendChild(contactWrapper);
-                    }
-                } else {
-                    // Thêm vào cuối document
-                    previewDiv.appendChild(contactWrapper);
-                }
-
-                // Đợi một chút để render xong (bao gồm cả QR code)
-                await new Promise(resolve => setTimeout(resolve, 1000));
+                // Đợi một chút để render xong
+                await new Promise(resolve => setTimeout(resolve, 500));
 
                 // Convert sang PNG
                 const canvas = await html2canvas(previewDiv, {
@@ -444,41 +308,26 @@
                     allowTaint: true
                 });
 
-                // Tải file PNG
-                canvas.toBlob(function(blob) {
-                    if (!blob) {
-                        console.error('Không thể tạo blob từ canvas');
-                        alert('Không thể tạo file PNG. Vui lòng thử lại.');
-                        generateBtn.disabled = false;
-                        loading.style.display = 'none';
-                        return;
-                    }
-                    
-                    try {
-                        const url = URL.createObjectURL(blob);
-                        const link = document.createElement('a');
-                        link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
-                        link.href = url;
-                        document.body.appendChild(link);
-                        link.click();
-                        document.body.removeChild(link);
-                        
-                        // Revoke URL sau một chút để đảm bảo download đã bắt đầu
-                        setTimeout(() => {
-                            URL.revokeObjectURL(url);
-                        }, 100);
+                // Tải file PNG - sử dụng toDataURL thay vì toBlob để tránh lỗi
+                try {
+                    const dataUrl = canvas.toDataURL('image/png');
+                    const link = document.createElement('a');
+                    link.download = `bangchao_${canBo.replace(/\s+/g, '_')}.png`;
+                    link.href = dataUrl;
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
 
-                        // Hiển thị preview
-                        previewContainer.style.display = 'block';
-                        generateBtn.disabled = false;
-                        loading.style.display = 'none';
-                    } catch (error) {
-                        console.error('Lỗi khi tạo download link:', error);
-                        alert('Lỗi khi tải file: ' + error.message);
-                        generateBtn.disabled = false;
-                        loading.style.display = 'none';
-                    }
-                }, 'image/png');
+                    // Hiển thị preview
+                    previewContainer.style.display = 'block';
+                    generateBtn.disabled = false;
+                    loading.style.display = 'none';
+                } catch (error) {
+                    console.error('Lỗi khi tạo download link:', error);
+                    alert('Lỗi khi tải file: ' + error.message);
+                    generateBtn.disabled = false;
+                    loading.style.display = 'none';
+                }
 
             } catch (error) {
                 console.error('Lỗi:', error);
