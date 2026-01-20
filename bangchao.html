@@ -113,6 +113,14 @@
                     <input type="text" class="form-control" id="soDT" placeholder="Nhập số điện thoại">
                 </div>
                 <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="createQR" checked>
+                        <label class="form-check-label" for="createQR">
+                            Tạo QR code Zalo
+                        </label>
+                    </div>
+                </div>
+                <div class="mb-3">
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" id="email" placeholder="Nhập email">
                 </div>
@@ -231,7 +239,7 @@
         }
 
         // Vẽ thông tin liên hệ và QR code lên ảnh
-        async function drawContactInfoOnImage(ten, soDT, email) {
+        async function drawContactInfoOnImage(ten, soDT, email, createQR) {
             if (!baseImage) {
                 await loadBaseImage();
             }
@@ -256,9 +264,13 @@
             }
 
             // Tính toán vị trí và kích thước font dựa trên kích thước ảnh
-            // Điều chỉnh textX để căn lề với bảng trên (tăng từ 5% lên 7-8%)
+            // Căn lề trái để thẳng với bảng trên (ước tính bảng bắt đầu từ khoảng 7-8% từ lề trái)
             const textX = baseImage.width * 0.075; // 7.5% từ lề trái để thẳng với bảng trên
             const startY = baseImage.height * 0.85; // 85% từ trên xuống (gần cuối ảnh)
+            
+            // Tính toán vị trí QR code: căn bên phải, nằm song song với thông tin liên hệ
+            const qrSize = Math.min(150 * 1.4, baseImage.width * 0.11); // To gấp 1.4 lần (từ 150 lên 210)
+            const qrX = baseImage.width - qrSize - (baseImage.width * 0.075); // Căn bên phải, cách lề phải bằng khoảng cách lề trái
             
             // Tính font size dựa trên chiều rộng ảnh (tỷ lệ với ảnh gốc)
             const baseFontSize = Math.max(14, baseImage.width / 50); // Font size tỷ lệ với ảnh
@@ -303,8 +315,8 @@
                 currentY += lineHeight;
             }
 
-            // Vẽ QR code Zalo nếu có số điện thoại
-            if (hasSoDT) {
+            // Vẽ QR code Zalo nếu có số điện thoại và checkbox được tick
+            if (hasSoDT && createQR) {
                 try {
                     const qrCodeDataUrl = await generateZaloQR(soDT);
                     const qrImage = new Image();
@@ -314,18 +326,11 @@
                         qrImage.src = qrCodeDataUrl;
                     });
 
-                    // Vị trí QR code: bên phải thông tin liên hệ, căn với dòng đầu tiên
-                    const qrSize = Math.min(150, baseImage.width * 0.08); // Kích thước QR code
-                    const qrX = baseImage.width * 0.6; // 60% từ lề trái (bên phải thông tin)
+                    // Vị trí QR code: căn bên phải, nằm song song với thông tin liên hệ (cùng startY)
                     const qrY = startY + lineHeight; // Cùng hàng với thông tin đầu tiên
 
-                    // Vẽ QR code
+                    // Vẽ QR code (bỏ chữ Zalo)
                     ctx.drawImage(qrImage, qrX, qrY, qrSize, qrSize);
-
-                    // Vẽ text "Zalo" dưới QR code
-                    ctx.font = `${textFontSize * 0.75}px Arial, sans-serif`;
-                    ctx.textAlign = 'center';
-                    ctx.fillText('Zalo', qrX + qrSize / 2, qrY + qrSize + 8);
                 } catch (error) {
                     console.error('Lỗi khi vẽ QR code:', error);
                     // Tiếp tục không có QR code nếu lỗi
@@ -342,6 +347,7 @@
             const ten = document.getElementById('ten').value.trim();
             const soDT = document.getElementById('soDT').value.trim();
             const email = document.getElementById('email').value.trim();
+            const createQR = document.getElementById('createQR').checked;
 
             const generateBtn = document.getElementById('generateBtn');
             const loading = document.getElementById('loading');
@@ -359,7 +365,7 @@
 
                 // Vẽ thông tin liên hệ và QR code lên ảnh (có thể để trống tất cả)
                 console.log('Bắt đầu vẽ thông tin lên ảnh...');
-                const canvas = await drawContactInfoOnImage(ten, soDT, email);
+                const canvas = await drawContactInfoOnImage(ten, soDT, email, createQR);
 
                 console.log('Canvas đã được tạo:', canvas.width, 'x', canvas.height);
 
