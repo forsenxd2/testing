@@ -333,7 +333,7 @@
             if (hasAddress) {
                 const addressText = address.trim();
                 // Tìm vị trí "street" để chia dòng
-                const streetIndex = addressText.toLowerCase().indexOf('street');
+                const streetIndex = addressText.toLowerCase().indexOf('street,');
                 if (streetIndex !== -1) {
                     // Lấy phần trước và sau "street"
                     const part1 = addressText.substring(0, streetIndex + 6); // Bao gồm cả "street"
@@ -370,7 +370,7 @@
                     // Tính toán vị trí QR code: căn dưới để phần dưới cùng của QR code thẳng với phần dưới cùng của thông tin liên hệ
                     // currentY là vị trí dưới cùng của thông tin liên hệ
                     // qrY + qrSize = currentY => qrY = currentY - qrSize
-                    const qrY = currentY - qrSize; // Căn dưới để thẳng với phần dưới cùng của thông tin liên hệ
+                    const qrY = currentY - qrSize-12; // Căn dưới để thẳng với phần dưới cùng của thông tin liên hệ
 
                     console.log('Drawing QR code at:', qrX, qrY, 'size:', qrSize);
 
