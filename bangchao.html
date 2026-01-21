@@ -127,7 +127,7 @@
                     <label for="email" class="form-label">Email</label>
                     <input type="text" class="form-control" id="email" placeholder="Nhập email">
                 </div>
-                <div class="mb-3">
+                <div class="mb-3" style="display: none;">
                     <label for="address" class="form-label">Địa chỉ</label>
                     <input type="text" class="form-control" id="address" placeholder="Nhập địa chỉ" value="55-56 Song Hanh street, Binh Trung ward, Ho Chi Minh City">
                 </div>
@@ -281,7 +281,7 @@
             // Tính toán vị trí QR code: căn bên phải, to gấp 1.8 lần
             const baseQRSize = Math.min(150, baseImage.width * 0.08); // Kích thước cơ bản
             const qrSize = baseQRSize * 1.8; // To gấp 1.8 lần
-            const qrX = baseImage.width - qrSize - (baseImage.width * 0.075); // Căn bên phải, cách lề phải bằng khoảng cách lề trái
+            const qrX = baseImage.width - qrSize - (baseImage.width * 0.072); // Căn bên phải, cách lề phải bằng khoảng cách lề trái
             
             // Log để debug
             console.log('QR Code size:', qrSize, 'Base size:', baseQRSize, 'Image width:', baseImage.width);
@@ -329,10 +329,30 @@
                 currentY += lineHeight;
             }
 
-            // Vẽ địa chỉ nếu có
+            // Vẽ địa chỉ nếu có - chia thành 2 dòng sau "street"
             if (hasAddress) {
-                ctx.fillText(`Address: ${address.trim()}`, textX, currentY);
-                currentY += lineHeight;
+                const addressText = address.trim();
+                // Tìm vị trí "street" để chia dòng
+                const streetIndex = addressText.toLowerCase().indexOf('street');
+                if (streetIndex !== -1) {
+                    // Lấy phần trước và sau "street"
+                    const part1 = addressText.substring(0, streetIndex + 6); // Bao gồm cả "street"
+                    const part2 = addressText.substring(streetIndex + 6).trim(); // Phần còn lại
+                    
+                    // Vẽ dòng đầu: "Address: 55-56 Song Hanh street,"
+                    ctx.fillText(`Address: ${part1}`, textX, currentY);
+                    currentY += lineHeight;
+                    
+                    // Vẽ dòng thứ hai: "Binh Trung ward, Ho Chi Minh City"
+                    if (part2) {
+                        ctx.fillText(part2, textX, currentY);
+                        currentY += lineHeight;
+                    }
+                } else {
+                    // Nếu không tìm thấy "street", vẽ bình thường
+                    ctx.fillText(`Address: ${addressText}`, textX, currentY);
+                    currentY += lineHeight;
+                }
             }
 
             // Vẽ QR code Zalo nếu có số điện thoại và checkbox được tick
