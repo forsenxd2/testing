@@ -1007,14 +1007,11 @@
             return false;
         });
 
-        // Lãi suất cố định theo bảng chào mới: gói chung Mua nhà/đất ở
-        // 6m=7.6%, 12m=9.9%, 18m=7.9% + 8.6%, 24m=8.6% — tạm chỉ hiển thị gói 12 tháng
+        // Lãi suất cố định — gói vay mua nhà: chỉ 6 tháng và 12 tháng
         const fixedPackages = {
             general: [
-                { value: '6',  label: 'Cố định 6 tháng (7,60%/năm)',  rate: 7.6, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (9,90%/năm)', rate: 9.9, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (6m: 7,90% + 12m: 8,60%)', rate: 7.9, months: 6, secondRate: 8.6, secondMonths: 12 },
-                { value: '24', label: 'Cố định 24 tháng (8,60%/năm)', rate: 8.6, months: 24 },
+                { value: '6',  label: 'Cố định 6 tháng (9,60%/năm)',  rate: 9.6, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (10,50%/năm)', rate: 10.5, months: 12 },
             ],
         };
         const youngPackages = [
@@ -1029,9 +1026,7 @@
 
             if (purpose === 'general') {
                 houseBucketGroup.style.display = 'none';
-                // Tạm chỉ hiển thị gói 12 tháng (ẩn 6, 18, 24 tháng)
                 (fixedPackages.general || []).forEach(pkg => {
-                    if (pkg.value !== '12') return;
                     const opt = document.createElement('option');
                     opt.value = pkg.value;
                     opt.textContent = pkg.label;
@@ -1052,7 +1047,6 @@
             if (select.options.length === 0) {
                 houseBucketGroup.style.display = 'none';
                 (fixedPackages.general || []).forEach(pkg => {
-                    if (pkg.value !== '12') return;
                     const opt = document.createElement('option');
                     opt.value = pkg.value;
                     opt.textContent = pkg.label;
