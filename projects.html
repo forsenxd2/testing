@@ -50,12 +50,6 @@
             margin-bottom: 14px;
             box-shadow: 0 1px 3px rgba(0,0,0,0.06);
         }
-        .project-card .phu-luc {
-            font-size: 0.85rem;
-            font-weight: 700;
-            color: #1a5c1a;
-            letter-spacing: 0.02em;
-        }
         .project-card .nhom {
             font-size: 0.8rem;
             color: #4a7c4a;
@@ -294,7 +288,7 @@
             phuLuc: 'PHỤ LỤC 06',
             nhom: 'NHÓM CDT SUNGROUP',
             investor: 'Sun Group',
-            projects: 'Sun Cát Bà, Tòa Nhà H3, Sun Costa, Sun Blanca City, Bắc Giang, Sun Centro Town Hà Long, Sun Floria Hạ Long, Sun Hà Nam, Sun Flor a Nam, v.v.',
+            projects: 'Sun Cát Bà, Tòa Nhà H3, Sun Costa, Sun Blanca City, Bắc Giang, Sun Centro Town Hà Long, Sun Floria Hạ Long, Sun Hà Nam, Sun Flora Nam, v.v.',
             packages: [
                 {
                     title: 'Gói lãi suất',
@@ -422,7 +416,6 @@
         const k = keyword.trim();
         return (
             '<article class="project-card" data-id="' + escapeHtml(item.id) + '">' +
-            '<div class="phu-luc">' + highlightText(item.phuLuc, k) + '</div>' +
             '<div class="nhom">' + highlightText(item.nhom, k) + '</div>' +
             '<div class="label-row"><strong>Chủ đầu tư (CDT):</strong> ' + highlightText(item.investor, k) + '</div>' +
             '<div class="label-row"><strong>Dự án:</strong> ' + highlightText(item.projects, k) + '</div>' +
