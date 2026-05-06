@@ -179,24 +179,12 @@
             </div>
             <form id="loanForm">
                 <div class="mb-3">
-                    <label class="form-label">Loại hình vay</label>
-                    <div>
-                        <label class="me-3"><input type="radio" name="loanType" value="house" checked> Nhà ở</label>
-                        <label><input type="radio" name="loanType" value="shophouse"> Shophouse/Căn hộ dịch vụ</label>
-                    </div>
-                </div>
-                <div class="mb-3">
-                    <label for="fixedTerm" class="form-label">Kỳ hạn cố định</label>
-                    <select class="form-select" id="fixedTerm">
-                        <option value="12">Cố định 12 tháng</option>
-                        <option value="18">Cố định 18 tháng</option>
-                        <option value="24">Cố định 24 tháng</option>
-                        <option value="36">Cố định 36 tháng</option>
-                    </select>
+                    <label for="fixedTerm" class="form-label">Kỳ hạn cố định (tháng)</label>
+                    <input type="number" class="form-control" id="fixedTerm" required min="1" value="12">
                 </div>
                 <div class="mb-3">
                     <label for="fixedRate" class="form-label">Lãi suất cố định (%/năm)</label>
-                    <input type="number" class="form-control" id="fixedRate" readonly>
+                    <input type="number" class="form-control" id="fixedRate" min="0" step="0.1" value="6.0">
                 </div>
                 <div class="mb-3">
                     <label for="afterFixedRate" class="form-label">Lãi suất thả nổi sau ưu đãi (%/năm)</label>
@@ -216,14 +204,8 @@
                     <div id="loanTermWarning" class="text-danger mt-1" style="display:none;font-size:0.95em"></div>
                 </div>
                 <div class="mb-3">
-                    <label for="gracePeriod" class="form-label">Thời gian ân hạn gốc (tháng, tối đa 36)</label>
-                    <select class="form-select" id="gracePeriod">
-                        <option value="0">0 tháng (không ân hạn)</option>
-                        <option value="12">12 tháng (1 năm)</option>
-                        <option value="18">18 tháng (1.5 năm)</option>
-                        <option value="24">24 tháng (2 năm)</option>
-                        <option value="36">36 tháng (3 năm)</option>
-                    </select>
+                    <label for="gracePeriod" class="form-label">Thời gian ân hạn gốc (tháng)</label>
+                    <input type="number" class="form-control" id="gracePeriod" min="0" value="0">
                 </div>
                 <div class="d-flex justify-content-between align-items-center">
                     <button type="button" class="btn btn-primary" onclick="calculateSchedule()">Xem lịch trả nợ</button>
@@ -303,19 +285,6 @@
         display.textContent = '';
     }
     setupMillionInput('loanAmount_million', 'loanAmount_display');
-    // Lãi suất cố định theo bảng
-    const FIXED_RATES = {
-        house: { '12': 6.0, '18': 6.5, '24': 6.5, '36': 8.6 },
-        shophouse: { '12': 6.5, '18': 6.8, '24': 6.8, '36': 7.4 }
-    };
-    function updateFixedRate() {
-        const type = document.querySelector('input[name="loanType"]:checked').value;
-        const term = document.getElementById('fixedTerm').value;
-        document.getElementById('fixedRate').value = FIXED_RATES[type][term];
-    }
-    document.querySelectorAll('input[name="loanType"]').forEach(r => r.addEventListener('change', updateFixedRate));
-    document.getElementById('fixedTerm').addEventListener('change', updateFixedRate);
-    window.addEventListener('DOMContentLoaded', updateFixedRate);
     function calculateSchedule() {
         const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
         const term = parseInt(document.getElementById('loanTerm').value);
@@ -334,23 +303,11 @@
             let interest = 0;
             let total = 0;
             let currentRateYear = fixedRate;
-            // Blanca City: 3 năm đầu nếu có ân hạn thì không trả cả gốc lẫn lãi
-            if (i <= 36 && graceMonths >= i) {
+            if (i <= graceMonths) {
                 monthlyPrincipal = 0;
                 interest = 0;
                 total = 0;
                 currentRateYear = fixedRate;
-            } else if (i <= graceMonths) {
-                monthlyPrincipal = 0;
-                // Lãi suất cố định hay thả nổi?
-                if (i <= fixedMonths) {
-                    interest = openingPrincipal * monthlyFixedRate;
-                    currentRateYear = fixedRate;
-                } else {
-                    interest = openingPrincipal * monthlyAfterRate;
-                    currentRateYear = afterFixedRate;
-                }
-                total = interest;
             } else {
                 monthlyPrincipal = loanAmount / (term - graceMonths);
                 if (monthlyPrincipal > openingPrincipal) monthlyPrincipal = openingPrincipal;
@@ -539,36 +496,10 @@
         e.stopImmediatePropagation();
         return false;
     });
-    const graceOptions = [0, 12, 18, 24, 36];
-    function updateGracePeriodOptions() {
-        const fixedTerm = parseInt(document.getElementById('fixedTerm').value, 10);
-        const graceSelect = document.getElementById('gracePeriod');
-        const currentValue = parseInt(graceSelect.value, 10);
-        graceSelect.innerHTML = '';
-        graceOptions.forEach(val => {
-            if (val <= fixedTerm) {
-                let label = '';
-                if (val === 0) label = '0 tháng (không ân hạn)';
-                else if (val === 12) label = '12 tháng (1 năm)';
-                else if (val === 18) label = '18 tháng (1.5 năm)';
-                else if (val === 24) label = '24 tháng (2 năm)';
-                else if (val === 36) label = '36 tháng (3 năm)';
-                else label = val + ' tháng';
-                graceSelect.innerHTML += `<option value="${val}">${label}</option>`;
-            }
-        });
-        // Nếu giá trị hiện tại không hợp lệ, chọn giá trị lớn nhất hợp lệ
-        if (currentValue > fixedTerm) {
-            graceSelect.value = fixedTerm;
-        } else {
-            graceSelect.value = currentValue;
-        }
-    }
-    document.getElementById('fixedTerm').addEventListener('change', updateGracePeriodOptions);
-    window.addEventListener('DOMContentLoaded', updateGracePeriodOptions);
     function checkLoanTermWarning() {
         const loanTerm = parseInt(document.getElementById('loanTerm').value, 10);
         const fixedTerm = parseInt(document.getElementById('fixedTerm').value, 10);
+        const gracePeriod = parseInt(document.getElementById('gracePeriod').value, 10);
         const warning = document.getElementById('loanTermWarning');
         const btns = [
             document.querySelector('button.btn-primary[onclick="calculateSchedule()"]'),
@@ -579,6 +510,10 @@
             warning.textContent = 'Thời hạn vay phải lớn hơn hoặc bằng kỳ hạn cố định.';
             warning.style.display = '';
             btns.forEach(btn => btn && (btn.disabled = true));
+        } else if (!isNaN(loanTerm) && !isNaN(gracePeriod) && gracePeriod >= loanTerm) {
+            warning.textContent = 'Thời gian ân hạn phải nhỏ hơn thời hạn vay.';
+            warning.style.display = '';
+            btns.forEach(btn => btn && (btn.disabled = true));
         } else {
             warning.textContent = '';
             warning.style.display = 'none';
@@ -587,6 +522,7 @@
     }
     document.getElementById('loanTerm').addEventListener('input', checkLoanTermWarning);
     document.getElementById('fixedTerm').addEventListener('change', checkLoanTermWarning);
+    document.getElementById('gracePeriod').addEventListener('input', checkLoanTermWarning);
     window.addEventListener('DOMContentLoaded', checkLoanTermWarning);
     </script>
 </body>
