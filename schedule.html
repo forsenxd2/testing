@@ -990,15 +990,17 @@
             return false;
         });
 
-        // Lãi suất cố định — gói vay mua nhà: chỉ 6 tháng và 12 tháng
+        // Lãi suất cố định — gói vay mua nhà: 6 tháng và 12 tháng
         const fixedPackages = {
             general: [
-                { value: '6',  label: 'Cố định 6 tháng (9,60%/năm)',  rate: 9.6, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (10,50%/năm)', rate: 10.5, months: 12 },
+                { value: '6',  label: 'Cố định 6 tháng (9,90%/năm)',  rate: 9.9, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (11,30%/năm)', rate: 11.3, months: 12 },
             ],
         };
         const consumerPackages = [
-            { value: '12', label: 'Cố định 12 tháng (9,50%/năm)', rate: 9.5, months: 12 }
+            { value: '6',  label: 'Cố định 6 tháng (9,20%/năm)',  rate: 9.2, months: 6 },
+            { value: '12', label: 'Cố định 12 tháng (9,50%/năm)', rate: 9.5, months: 12 },
+            { value: '18', label: 'Cố định 18 tháng (9,90%/năm)', rate: 9.9, months: 18 }
         ];
         // Nhánh purpose=consumer dùng cho gói vay tiêu dùng
         function renderFixedPackageOptions() {
