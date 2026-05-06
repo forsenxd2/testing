@@ -303,20 +303,24 @@
             let interest = 0;
             let total = 0;
             let currentRateYear = fixedRate;
+            let currentRateDisplay = `${fixedRate.toFixed(2)}%`;
             if (i <= graceMonths) {
                 monthlyPrincipal = 0;
                 interest = 0;
                 total = 0;
                 currentRateYear = fixedRate;
+                currentRateDisplay = '-';
             } else {
                 monthlyPrincipal = loanAmount / (term - graceMonths);
                 if (monthlyPrincipal > openingPrincipal) monthlyPrincipal = openingPrincipal;
                 if (i <= fixedMonths) {
                     interest = openingPrincipal * monthlyFixedRate;
                     currentRateYear = fixedRate;
+                    currentRateDisplay = `${fixedRate.toFixed(2)}%`;
                 } else {
                     interest = openingPrincipal * monthlyAfterRate;
                     currentRateYear = afterFixedRate;
+                    currentRateDisplay = `${afterFixedRate.toFixed(2)}%`;
                 }
                 total = monthlyPrincipal + interest;
             }
@@ -330,7 +334,7 @@
                 <td>${formatCurrency(Math.round(openingPrincipal))}</td>
                 <td>${formatCurrency(Math.round(monthlyPrincipal))}</td>
                 <td>${formatCurrency(Math.round(closingPrincipal))}</td>
-                <td>${currentRateYear.toFixed(2)}%</td>
+                <td>${currentRateDisplay}</td>
                 <td>${formatCurrency(Math.round(interest))}</td>
                 <td>${formatCurrency(Math.round(total))}</td>
             `;
