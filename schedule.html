@@ -287,6 +287,30 @@
                     <span id="loanAmount_display" class="ms-2 text-success"></span>
                 </div>
                 <div class="mb-3">
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="manualInputToggle">
+                        <label class="form-check-label fw-bold" for="manualInputToggle" style="font-size:1.08rem; color:#228B22;">Tự nhập</label>
+                    </div>
+                </div>
+                <div class="mb-3" id="manualInputGroup" style="display:none;">
+                    <div class="p-3 border border-success rounded" style="background-color: #e6f4ea;">
+                        <div class="mb-3">
+                            <label for="manualFixedRate" class="form-label fw-bold">Lãi suất cố định (%/năm)</label>
+                            <input type="number" class="form-control" id="manualFixedRate" min="0" step="0.01" value="9.9">
+                        </div>
+                        <div class="mb-3">
+                            <label for="manualFixedMonths" class="form-label fw-bold">Thời gian cố định lãi suất (tháng)</label>
+                            <input type="number" class="form-control" id="manualFixedMonths" min="1" value="12">
+                        </div>
+                        <div class="mb-3 mb-0">
+                            <label for="manualGraceMonths" class="form-label fw-bold">Thời gian ân hạn gốc (tháng)</label>
+                            <input type="number" class="form-control" id="manualGraceMonths" min="0" value="0">
+                        </div>
+                        <div id="manualGraceError" class="text-danger mt-2" style="display:none;">Thời hạn vay phải lớn hơn hoặc bằng thời gian ân hạn gốc!</div>
+                        <div id="manualFixedError" class="text-danger mt-2" style="display:none;">Thời hạn vay phải lớn hơn hoặc bằng thời gian cố định lãi suất!</div>
+                    </div>
+                </div>
+                <div class="mb-3" id="loanPurposeSection">
                     <label class="form-label fw-bold" style="font-size:1.08rem; color:#228B22;">Mục đích vay</label>
                     <div id="loanPurposeGroup">
                         <div class="form-check form-check-inline">
@@ -463,19 +487,41 @@
             return d;
         }
 
+        function isManualInput() {
+            return document.getElementById('manualInputToggle').checked;
+        }
+
+        function toggleManualInput() {
+            const manual = isManualInput();
+            document.getElementById('manualInputGroup').style.display = manual ? '' : 'none';
+            document.getElementById('loanPurposeSection').style.display = manual ? 'none' : '';
+            document.getElementById('fixedPackageHighlight').style.display = manual ? 'none' : '';
+            if (manual) {
+                updateAfterFixedRateLabel();
+            } else {
+                renderFixedPackageOptions();
+            }
+            checkPackageTerm();
+        }
+
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
             const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             const term = parseInt(document.getElementById('loanTerm').value);
+            const manual = isManualInput();
             const fixedPackage = document.getElementById('fixedPackage').value;
             let afterFixedRate = parseFloat(document.getElementById('afterFixedRate').value);
-            // Lấy thời gian ân hạn cho tất cả các gói
-            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+            let graceMonths;
 
-            // Nếu là gói phổ thông (6/12/18/24) thì lãi suất sau ưu đãi = LSTK 12T + 4%
-            if (["6","12","18","24"].includes(fixedPackage)) {
-                afterFixedRate = afterFixedRate + 4;
+            if (manual) {
+                graceMonths = parseInt(document.getElementById('manualGraceMonths').value, 10) || 0;
+            } else {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+                // Nếu là gói phổ thông (6/12/18/24) thì lãi suất sau ưu đãi = LSTK 12T + 4%
+                if (["6","12","18","24"].includes(fixedPackage)) {
+                    afterFixedRate = afterFixedRate + 4;
+                }
             }
 
             // Kiểm tra số tiền vay không được vượt quá giá trị tài sản
@@ -489,24 +535,29 @@
             }
 
             if (loanAmount > 0 && term > 0) {
-                // Tính lãi suất cố định và thời gian ân hạn dựa trên gói đã chọn
+                // Tính lãi suất cố định và thời gian ân hạn dựa trên gói đã chọn hoặc tự nhập
                 let fixedRate = 6.0;
                 let secondFixedRate = null;
                 let fixedMonths = 12;
                 let secondFixedMonths = 0;
 
-                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                const fixedPackageValue = fixedPackage;
+                if (manual) {
+                    fixedRate = parseFloat(document.getElementById('manualFixedRate').value) || 0;
+                    fixedMonths = parseInt(document.getElementById('manualFixedMonths').value, 10) || 0;
+                } else {
+                    const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+                    const fixedPackageValue = fixedPackage;
 
-                // Gói cố định theo mục đích
-                let list = (purpose === 'general') ? fixedPackages.general : consumerPackages;
-                const pkg = list.find(p => p.value === fixedPackageValue);
-                if (pkg) {
-                    fixedRate = pkg.rate;
-                    fixedMonths = pkg.months;
-                    if (pkg.secondRate && pkg.secondMonths) {
-                        secondFixedRate = pkg.secondRate;
-                        secondFixedMonths = pkg.secondMonths;
+                    // Gói cố định theo mục đích
+                    let list = (purpose === 'general') ? fixedPackages.general : consumerPackages;
+                    const pkg = list.find(p => p.value === fixedPackageValue);
+                    if (pkg) {
+                        fixedRate = pkg.rate;
+                        fixedMonths = pkg.months;
+                        if (pkg.secondRate && pkg.secondMonths) {
+                            secondFixedRate = pkg.secondRate;
+                            secondFixedMonths = pkg.secondMonths;
+                        }
                     }
                 }
 
@@ -717,14 +768,43 @@
         }
 
         function checkPackageTerm() {
-            const fixedPackage = fixedPackageSelect.value;
             const term = parseInt(loanTermInput.value) || 0;
             let valid = true;
             let errorMsg = '';
-            
+
+            if (isManualInput()) {
+                graceError.style.display = 'none';
+                packageError.textContent = '';
+                packageError.style.display = 'none';
+
+                const manualGraceError = document.getElementById('manualGraceError');
+                const manualFixedError = document.getElementById('manualFixedError');
+                manualGraceError.style.display = 'none';
+                manualFixedError.style.display = 'none';
+
+                if (!loanTermInput.value || term === 0) {
+                    return true;
+                }
+
+                const graceMonths = parseInt(document.getElementById('manualGraceMonths').value, 10) || 0;
+                const fixedMonths = parseInt(document.getElementById('manualFixedMonths').value, 10) || 0;
+
+                if (graceMonths > 0 && term < graceMonths) {
+                    manualGraceError.style.display = '';
+                    valid = false;
+                }
+                if (fixedMonths > 0 && term < fixedMonths) {
+                    manualFixedError.style.display = '';
+                    valid = false;
+                }
+                return valid;
+            }
+
+            const fixedPackage = fixedPackageSelect.value;
+
             // Hiển thị tùy chọn ân hạn cho tất cả các gói
             gracePeriodGroup.style.display = '';
-            
+
             // Nếu thời hạn vay chưa nhập hoặc = 0 thì không báo lỗi gì cả
             if (!loanTermInput.value || term === 0) {
                 graceError.style.display = 'none';
@@ -732,24 +812,23 @@
                 packageError.style.display = 'none';
                 return true;
             }
-            
+
             // Kiểm tra ân hạn cho tất cả các gói
             const graceMonths = parseInt(gracePeriodSelect.value, 10);
-                if (term > 0 && graceMonths > 0 && term < graceMonths) {
-                    graceError.style.display = '';
-                    valid = false;
-                } else {
-                    graceError.style.display = 'none';
-                }
-            
+            if (term > 0 && graceMonths > 0 && term < graceMonths) {
+                graceError.style.display = '';
+                valid = false;
+            } else {
+                graceError.style.display = 'none';
+            }
+
             // Kiểm tra thời hạn vay với số tháng của gói
-                let minMonths = parseInt(fixedPackage);
-            // Không còn gói tiêu dùng
-                if (!isNaN(minMonths) && term > 0 && term < minMonths) {
-                    errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
-                    valid = false;
-                }
-            
+            let minMonths = parseInt(fixedPackage);
+            if (!isNaN(minMonths) && term > 0 && term < minMonths) {
+                errorMsg = `Thời hạn vay phải lớn hơn hoặc bằng số tháng của gói (${minMonths} tháng)!`;
+                valid = false;
+            }
+
             // Hiện hoặc ẩn lỗi cho gói thường
             if (errorMsg) {
                 packageError.textContent = errorMsg;
@@ -764,11 +843,20 @@
         fixedPackageSelect.addEventListener('change', checkPackageTerm);
         gracePeriodSelect.addEventListener('change', checkPackageTerm);
         loanTermInput.addEventListener('input', checkPackageTerm);
+        document.getElementById('manualInputToggle').addEventListener('change', toggleManualInput);
+        ['manualFixedRate', 'manualFixedMonths', 'manualGraceMonths'].forEach(id => {
+            document.getElementById(id).addEventListener('input', checkPackageTerm);
+        });
 
         function updateAfterFixedRateLabel() {
-            const fixedPackage = document.getElementById('fixedPackage').value;
             const afterFixedRateLabel = document.getElementById('afterFixedRateLabel');
             const afterFixedRateNote = document.getElementById('afterFixedRateNote');
+            if (isManualInput()) {
+                afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
+                afterFixedRateNote.textContent = '';
+                return;
+            }
+            const fixedPackage = document.getElementById('fixedPackage').value;
             // Gói phổ thông: 6, 12, 18, 24
             if (["6","12","18","24"].includes(fixedPackage)) {
                 afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
@@ -786,32 +874,43 @@
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
             const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             const term = parseInt(document.getElementById('loanTerm').value);
+            const manual = isManualInput();
             const fixedPackage = document.getElementById('fixedPackage');
-            const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
             const afterFixedRateRaw = parseFloat(document.getElementById('afterFixedRate').value);
-            // Lấy thời gian ân hạn cho tất cả các gói
-            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-            let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+            let graceMonths, graceText, fixedRateDisplay, fixedMonthsText, floatingRate;
+            if (manual) {
+                graceMonths = parseInt(document.getElementById('manualGraceMonths').value, 10) || 0;
+                const manualFixedRate = parseFloat(document.getElementById('manualFixedRate').value) || 0;
+                const manualFixedMonths = parseInt(document.getElementById('manualFixedMonths').value, 10) || 0;
+                graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+                fixedRateDisplay = manualFixedRate.toFixed(2) + '%';
+                fixedMonthsText = manualFixedMonths + ' tháng';
+                floatingRate = afterFixedRateRaw.toFixed(2) + '%';
+            } else {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+                graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+                fixedRateDisplay = '';
+                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+                if (["6","12","18","24"].includes(fixedPackage.value)) {
+                    const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
+                    const pkg = packageList.find(p => p.value === fixedPackage.value);
+                    fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
+                }
+                fixedMonthsText = fixedPackage.value + ' tháng';
+                floatingRate = ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%';
+            }
             // Ngày trả nợ đầu tiên
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
             // 0. Thêm dòng tiêu đề lớn
             const titleRow = ['BẢNG LÃI SUẤT TẠM TÍNH'];
-            // Lấy đúng lãi suất ưu đãi
-            let fixedRateDisplay = '';
-            const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-            if (["6","12","18","24"].includes(fixedPackage.value)) {
-                const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
-                const pkg = packageList.find(p => p.value === fixedPackage.value);
-                fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
-            }
             // 2. Tạo dữ liệu phần tóm tắt
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
-                ['Thời gian ưu đãi', (fixedPackage.value + ' tháng')],
-                ['Lãi suất thả nổi', ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Thời gian ưu đãi', fixedMonthsText],
+                ['Lãi suất thả nổi', floatingRate],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
@@ -892,30 +991,39 @@
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
             const loanAmount = parseFormattedNumber(document.getElementById('loanAmount_million').value) * 1000000;
             const term = parseInt(document.getElementById('loanTerm').value);
+            const manual = isManualInput();
             const fixedPackage = document.getElementById('fixedPackage');
-            const fixedPackageText = fixedPackage.options[fixedPackage.selectedIndex].text;
             const afterFixedRateRaw = parseFloat(document.getElementById('afterFixedRate').value);
-            // Lấy thời gian ân hạn cho tất cả các gói
-            let graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-            let graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+            let graceMonths, graceText, fixedRateDisplay, fixedMonthsText, floatingRate;
+            if (manual) {
+                graceMonths = parseInt(document.getElementById('manualGraceMonths').value, 10) || 0;
+                const manualFixedRate = parseFloat(document.getElementById('manualFixedRate').value) || 0;
+                const manualFixedMonths = parseInt(document.getElementById('manualFixedMonths').value, 10) || 0;
+                graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+                fixedRateDisplay = manualFixedRate.toFixed(2) + '%';
+                fixedMonthsText = manualFixedMonths + ' tháng';
+                floatingRate = afterFixedRateRaw.toFixed(2) + '%';
+            } else {
+                graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
+                graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
+                fixedRateDisplay = '';
+                if (["6","12","18","24"].includes(fixedPackage.value)) {
+                    const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
+                    const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
+                    const pkg = packageList.find(p => p.value === fixedPackage.value);
+                    fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
+                }
+                fixedMonthsText = fixedPackage.value + ' tháng';
+                floatingRate = ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%';
+            }
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
-            // Tóm tắt
-            // Lấy lãi suất ưu đãi chuẩn xác
-            let fixedRateDisplay = '';
-            if (["6","12","18","24"].includes(fixedPackage.value)) {
-                // Lấy đúng rate từ object
-                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
-                const pkg = packageList.find(p => p.value === fixedPackage.value);
-                fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
-            }
             const summary = [
                 ['SỐ TIỀN VAY', loanAmount ? formatNumber(loanAmount) : ''],
                 ['THỜI GIAN VAY', term ? term : ''],
                 ['LÃI SUẤT ƯU ĐÃI', fixedRateDisplay],
-                ['Thời gian ưu đãi', (fixedPackage.value + ' tháng')],
-                ['Lãi suất thả nổi', ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%'],
+                ['Thời gian ưu đãi', fixedMonthsText],
+                ['Lãi suất thả nổi', floatingRate],
                 ['Ngày giải ngân dự kiến', today.toLocaleDateString('vi-VN')],
                 ['Ngày trả nợ đầu tiên', firstPayment.toLocaleDateString('vi-VN')],
             ];
