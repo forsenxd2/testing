@@ -317,7 +317,7 @@
                 <h5>Chi tiết khoản vay:</h5>
                 <div style="border: 2px solid #228B22; border-radius: 8px; padding: 10px; margin-bottom: 15px;">
                     <p>Gốc hàng tháng: <span id="monthlyPrincipal">0 VND</span></p>
-                    <p>Lãi hàng tháng (tạm tính theo lãi suất thả nổi 9%): <span id="monthlyInterest">0 VND</span></p>
+                    <p>Lãi hàng tháng (tạm tính theo lãi suất thả nổi 11.9%): <span id="monthlyInterest">0 VND</span></p>
                     <p>Tổng gốc, lãi phải trả hàng tháng tại VCB: <span id="monthlyTotal">0 VND</span></p>
                 </div>
                 <p>Khoản vay khác hàng tháng: <span id="otherLoanMonthly">0 VND</span></p>
@@ -663,7 +663,7 @@
         function calculateLoan() {
             const loanAmount = getMillionValue(loanAmount_million);
             const term = parseInt(loanTermInput.value) || 0;
-            const interestRate = 9.0; // Lãi suất cố định 9%
+            const interestRate = 11.9; // Lãi suất thả nổi tạm tính 11.9%
 
             if (loanAmount > 0 && term > 0) {
                 // Gọi hàm debug để xem chi tiết từng bước
