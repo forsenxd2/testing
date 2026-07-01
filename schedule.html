@@ -1098,17 +1098,18 @@
             return false;
         });
 
-        // Lãi suất cố định — gói vay mua nhà: 6 tháng và 12 tháng
+        // Lãi suất cố định theo bảng chào lãi suất KHCN
         const fixedPackages = {
             general: [
-                { value: '6',  label: 'Cố định 6 tháng (11,20%/năm)',  rate: 11.2, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (11,20%/năm)', rate: 11.2, months: 12 },
+                { value: '6',  label: 'Cố định 6 tháng (9,90%/năm)',  rate: 9.9, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (10,90%/năm)', rate: 10.9, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (12,50%/năm)', rate: 12.5, months: 18 },
             ],
         };
         const consumerPackages = [
-            { value: '6',  label: 'Cố định 6 tháng (9,50%/năm)',  rate: 9.5, months: 6 },
+            { value: '6',  label: 'Cố định 6 tháng (9,20%/năm)',  rate: 9.2, months: 6 },
             { value: '12', label: 'Cố định 12 tháng (9,50%/năm)', rate: 9.5, months: 12 },
-            { value: '18', label: 'Cố định 18 tháng (9,50%/năm)', rate: 9.5, months: 18 }
+            { value: '18', label: 'Cố định 18 tháng (9,90%/năm)', rate: 9.9, months: 18 }
         ];
         // Nhánh purpose=consumer dùng cho gói vay tiêu dùng
         function renderFixedPackageOptions() {
