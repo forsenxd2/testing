@@ -504,6 +504,28 @@
             checkPackageTerm();
         }
 
+        function getLoanPurpose() {
+            return document.querySelector('input[name="loanPurpose"]:checked')?.value || 'general';
+        }
+
+        function isStandardFixedPackage(fixedPackageValue) {
+            return ["6", "12", "18", "24"].includes(fixedPackageValue);
+        }
+
+        // Lãi sau ưu đãi: BĐS = LSTK 24T + 3,3%; tiêu dùng = LSTK 12T + 4%
+        function getFloatingRateFromSavings(savingsRate, purpose, fixedPackageValue) {
+            if (!isStandardFixedPackage(fixedPackageValue)) {
+                return savingsRate;
+            }
+            if (purpose === 'general') {
+                return savingsRate + 3.3;
+            }
+            if (purpose === 'consumer') {
+                return savingsRate + 4;
+            }
+            return savingsRate;
+        }
+
         // Hàm tính lịch trả nợ
         function calculateSchedule() {
             const assetValue = parseFormattedNumber(document.getElementById('assetValue_million').value) * 1000000;
@@ -518,10 +540,8 @@
                 graceMonths = parseInt(document.getElementById('manualGraceMonths').value, 10) || 0;
             } else {
                 graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
-                // Nếu là gói phổ thông (6/12/18/24) thì lãi suất sau ưu đãi = LSTK 12T + 4%
-                if (["6","12","18","24"].includes(fixedPackage)) {
-                    afterFixedRate = afterFixedRate + 4;
-                }
+                const purpose = getLoanPurpose();
+                afterFixedRate = getFloatingRateFromSavings(afterFixedRate, purpose, fixedPackage);
             }
 
             // Kiểm tra số tiền vay không được vượt quá giá trị tài sản
@@ -857,10 +877,15 @@
                 return;
             }
             const fixedPackage = document.getElementById('fixedPackage').value;
-            // Gói phổ thông: 6, 12, 18, 24
-            if (["6","12","18","24"].includes(fixedPackage)) {
-                afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
-                afterFixedRateNote.textContent = '+ 4%/năm = lãi suất sau ưu đãi';
+            const purpose = getLoanPurpose();
+            if (isStandardFixedPackage(fixedPackage)) {
+                if (purpose === 'general') {
+                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
+                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi';
+                } else {
+                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
+                    afterFixedRateNote.textContent = '+ 4%/năm = lãi suất sau ưu đãi';
+                }
             } else {
                 afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
                 afterFixedRateNote.textContent = '';
@@ -897,7 +922,7 @@
                     fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
                 }
                 fixedMonthsText = fixedPackage.value + ' tháng';
-                floatingRate = ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%';
+                floatingRate = getFloatingRateFromSavings(afterFixedRateRaw, purpose, fixedPackage.value).toFixed(2) + '%';
             }
             // Ngày trả nợ đầu tiên
             const today = new Date();
@@ -1014,7 +1039,7 @@
                     fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
                 }
                 fixedMonthsText = fixedPackage.value + ' tháng';
-                floatingRate = ((["6","12","18","24","36"].includes(fixedPackage.value)) ? (afterFixedRateRaw + 4).toFixed(2) : afterFixedRateRaw.toFixed(2)) + '%';
+                floatingRate = getFloatingRateFromSavings(afterFixedRateRaw, purpose, fixedPackage.value).toFixed(2) + '%';
             }
             const today = new Date();
             const firstPayment = new Date(today.getFullYear(), today.getMonth() + 1, 5);
