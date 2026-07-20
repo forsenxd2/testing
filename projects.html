@@ -158,13 +158,13 @@
             </div>
 
             <h1 class="main-title">Tra cứu chủ đầu tư / dự án &amp; gói lãi suất</h1>
-            <p class="subtitle">Nhập tên chủ đầu tư hoặc từ khóa trong tên dự án để lọc danh sách theo phụ lục.</p>
+            <p class="subtitle">Nhập tên chủ đầu tư hoặc từ khóa trong tên dự án để lọc danh sách theo phụ lục (cập nhật theo bảng phụ lục LS hiện hành).</p>
 
             <div class="search-wrap no-print">
                 <label for="searchInput" class="form-label visually-hidden">Tìm kiếm</label>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-success"></i></span>
-                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Ví dụ: Ecopark, Nam Long, Green Skyline…" autocomplete="off">
+                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Ví dụ: Ecopark, Nam Long, Sun Blanca, Xuân Cầu…" autocomplete="off">
                 </div>
             </div>
 
@@ -190,18 +190,42 @@
         {
             id: 'pl01',
             phuLuc: 'PHỤ LỤC 01',
-            nhom: 'NHÓM CDT PHÚ MỸ HƯNG',
+            nhom: 'NHÓM CĐT PHÚ MỸ HƯNG',
             investor: 'Phú Mỹ Hưng',
-            projects: 'Các shophouse tại khu Phú Mỹ Hưng và các dự án thuộc nhóm Phú Mỹ Hưng',
+            projects: 'Nhà ở, shophouse tại các dự án thuộc nhóm Phú Mỹ Hưng; DA Harmonie (ưu đãi 30 tháng). DA VCB cấp tín dụng (tại thời điểm ban hành): Hồng Hạc - Bắc Ninh',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Ưu đãi lãi suất 24 tháng — DA VCB cấp tín dụng cho CĐT',
                     sections: [
                         {
-                            subtitle: 'Cố định 24 tháng',
+                            subtitle: null,
                             lines: [
                                 '6 tháng đầu: 9,2%/năm',
                                 '18 tháng tiếp theo: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 24 tháng — Dự án khác',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '6 tháng đầu: 9,7%/năm',
+                                '18 tháng tiếp theo: 10,9%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 30 tháng (riêng DA Harmonie, không quá thời gian HTLS của CĐT)',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '6 tháng đầu: 9,7%/năm',
+                                'Thời gian còn lại: 10,9%/năm'
                             ]
                         }
                     ]
@@ -211,18 +235,30 @@
         {
             id: 'pl02',
             phuLuc: 'PHỤ LỤC 02',
-            nhom: 'NHÓM CDT TBS LAND',
+            nhom: 'NHÓM CĐT TBS LAND',
             investor: 'TBS Land',
             projects: 'DA Green Skyline',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Ưu đãi lãi suất 18 tháng',
                     sections: [
                         {
-                            subtitle: 'Cố định 18 tháng / 24 tháng',
+                            subtitle: null,
                             lines: [
-                                '6 tháng đầu: 9,2%/năm',
-                                'Thời gian còn lại: 10,8%/năm'
+                                '6 tháng đầu: 9,5%/năm',
+                                'Thời gian còn lại: 11%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 24 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '6 tháng đầu: 9,5%/năm',
+                                'Thời gian còn lại: 11,2%/năm'
                             ]
                         }
                     ]
@@ -232,20 +268,68 @@
         {
             id: 'pl03',
             phuLuc: 'PHỤ LỤC 03',
-            nhom: 'NHÓM CDT CAPITAL',
-            investor: 'Capital',
-            projects: 'Lumini Hà Nội, Sycamore, The Senique, The Fuiton, CDT Capital (các dự án thuộc nhóm)',
+            nhom: 'NHÓM CĐT CAPITALAND',
+            investor: 'Capitaland',
+            projects: 'Lumi Hà Nội, Sycamore, The Senique, The Fullton và các dự án thuộc nhóm Capitaland. DA VCB cấp tín dụng (tại thời điểm ban hành): Lumi Hà Nội, Sycamore, The Senique',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Cố định LS 12 tháng',
                     sections: [
-                        { subtitle: 'Cố định 12 tháng', lines: ['10%/năm'] },
-                        { subtitle: 'Cố định 18 tháng', lines: ['10,5%/năm'] },
                         {
-                            subtitle: 'Cố định 24 tháng',
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng: 10%/năm',
+                                'Dự án khác: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 18 tháng — Lựa chọn 1',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng: 10,5%/năm',
+                                'Dự án khác: 11%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 18 tháng — Lựa chọn 2',
+                    sections: [
+                        {
+                            subtitle: 'DA VCB cấp tín dụng',
                             lines: [
                                 '6 tháng đầu: 9,5%/năm',
-                                '12 tháng tiếp theo: 11%/năm (hoặc + 18 tháng tiếp theo: 11%/năm tùy gói)'
+                                '12 tháng tiếp theo: 11%/năm'
+                            ]
+                        },
+                        {
+                            subtitle: 'Dự án khác',
+                            lines: [
+                                '6 tháng đầu: 10%/năm',
+                                '12 tháng tiếp theo: 11,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 24 tháng',
+                    sections: [
+                        {
+                            subtitle: 'DA VCB cấp tín dụng',
+                            lines: [
+                                '6 tháng đầu: 9,5%/năm',
+                                '18 tháng tiếp theo: 11%/năm'
+                            ]
+                        },
+                        {
+                            subtitle: 'Dự án khác',
+                            lines: [
+                                '6 tháng đầu: 10%/năm',
+                                '18 tháng tiếp theo: 11,5%/năm'
                             ]
                         }
                     ]
@@ -255,14 +339,20 @@
         {
             id: 'pl04',
             phuLuc: 'PHỤ LỤC 04',
-            nhom: 'NHÓM CDT ECOPARK',
+            nhom: 'NHÓM CĐT ECOPARK',
             investor: 'Ecopark',
-            projects: 'Eco Retreat Long An, Ecopark Vinh, Haus Da Lat, v.v.',
+            projects: 'Eco Retreat Long An, Ecopark Vinh, Haus Đà Lạt',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Cố định LS 24 tháng',
                     sections: [
-                        { subtitle: 'Cố định 24 tháng', lines: ['10%/năm'] }
+                        {
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng cho CĐT: 10%/năm',
+                                'Dự án khác: 10,5%/năm'
+                            ]
+                        }
                     ]
                 }
             ]
@@ -270,26 +360,56 @@
         {
             id: 'pl05',
             phuLuc: 'PHỤ LỤC 05',
-            nhom: 'NHÓM CDT GAMUDA LAND',
+            nhom: 'NHÓM CĐT GAMUDA LAND',
             investor: 'Gamuda Land',
             projects: 'Celadon City, Artisan Park, The Meadow, Spring Ville, Elysian, Eaton Park 1',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Cố định LS 12 tháng',
                     sections: [
-                        { subtitle: 'Cố định 12 tháng', lines: ['10%/năm'] },
                         {
-                            subtitle: 'Cố định 18 tháng',
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng: 10%/năm',
+                                'Dự án khác: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 18 tháng',
+                    sections: [
+                        {
+                            subtitle: 'DA VCB cấp tín dụng',
                             lines: [
                                 '6 tháng đầu: 9,5%/năm',
                                 '12 tháng tiếp theo: 10,5%/năm'
                             ]
                         },
                         {
-                            subtitle: 'Cố định 24 tháng',
+                            subtitle: 'Dự án khác',
+                            lines: [
+                                '6 tháng đầu: 10%/năm',
+                                '12 tháng tiếp theo: 11%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 24 tháng',
+                    sections: [
+                        {
+                            subtitle: 'DA VCB cấp tín dụng',
                             lines: [
                                 '6 tháng đầu: 9,5%/năm',
                                 '18 tháng tiếp theo: 10,5%/năm'
+                            ]
+                        },
+                        {
+                            subtitle: 'Dự án khác',
+                            lines: [
+                                '6 tháng đầu: 10%/năm',
+                                '18 tháng tiếp theo: 11%/năm'
                             ]
                         }
                     ]
@@ -299,17 +419,35 @@
         {
             id: 'pl06',
             phuLuc: 'PHỤ LỤC 06',
-            nhom: 'NHÓM CDT SUNGROUP',
+            nhom: 'NHÓM CĐT SUN GROUP',
             investor: 'Sun Group',
-            projects: 'Sun Cát Bà, Tòa Nhà H3, Sun Costa, Sun Blanca City, Bắc Giang, Sun Centro Town Hà Long, Sun Floria Hạ Long, Sun Hà Nam, Sun Flora Nam, v.v.',
+            projects: 'Sun Cát Bà, Sun Cát Bà - Tòa Nhà HH3, Sun Costa, Khu đô thị Thời đại và đổi mới sáng tạo, Sun Blanca City, Bắc Châu Giang, Sun Centro Town Hạ Long, Sun Flora Hà Nam, Sun Solar, Sun Phú Quốc, Sun Cora Tower, Sun Spana Tower, Sun Nha Trang (Charmora), Sun Symphony 5. DA VCB cấp tín dụng (tại thời điểm ban hành): Sun Blanca City - Vũng Tàu, Sun Charmora - Nha Trang. Chỉ áp dụng với khoản vay được CĐT hỗ trợ lãi suất',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: '06 tháng đầu',
                     sections: [
                         {
                             subtitle: null,
                             lines: [
-                                '06 tháng đầu: 9,9%/năm (áp dụng cho cả Nhà ở và BDS Thương mại)'
+                                'Nhà ở: 9,9%/năm',
+                                'BĐS Thương mại: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Thời gian còn lại (không quá 30 tháng)',
+                    sections: [
+                        {
+                            subtitle: 'Nhà ở',
+                            lines: [
+                                'Bằng sàn LS cho vay VND KHCN mua/xây/sửa BĐS tiêu dùng hiện hành trừ (-) 0,5%/năm (hiện tại: 11,4%/năm)'
+                            ]
+                        },
+                        {
+                            subtitle: 'BĐS Thương mại',
+                            lines: [
+                                'Bằng sàn LS cho vay VND KHCN mua/xây/sửa BĐS tiêu dùng hiện hành cộng (+) 0,5%/năm (hiện tại: 12,4%/năm)'
                             ]
                         }
                     ]
@@ -319,15 +457,71 @@
         {
             id: 'pl07',
             phuLuc: 'PHỤ LỤC 07',
-            nhom: 'NHÓM CDT TASECO',
+            nhom: 'NHÓM CĐT TASECO',
             investor: 'Taseco',
-            projects: 'Các dự án BDS do Công ty cổ phần đầu tư Bất động sản Taseco làm Chủ đầu tư',
+            projects: 'Các dự án BĐS do nhóm CĐT Taseco làm Chủ đầu tư (phân khúc căn hộ/nhà ở)',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Cố định lãi suất 6 tháng',
                     sections: [
-                        { subtitle: 'Gói Cố định lãi suất 6 tháng', lines: ['10,0%/năm'] },
-                        { subtitle: 'Gói Cố định lãi suất 12 tháng', lines: ['10,2%/năm'] }
+                        {
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng: 10,0%/năm',
+                                'Dự án khác: 10,2%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định lãi suất 12 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                'DA VCB cấp tín dụng: 10,3%/năm',
+                                'Dự án khác: 10,6%/năm'
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'pl08',
+            phuLuc: 'PHỤ LỤC 08',
+            nhom: 'NHÓM CĐT FLAMINGO',
+            investor: 'Flamingo',
+            projects: 'Khu du lịch nghỉ dưỡng quốc tế 5 sao Hồ Núi Cốc (phân khúc căn hộ/nhà ở)',
+            packages: [
+                {
+                    title: 'Cố định lãi suất 12 tháng',
+                    sections: [
+                        { subtitle: null, lines: ['11,7%/năm'] }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 24 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '12 tháng đầu: 11,7%/năm',
+                                '12 tháng tiếp theo: Bằng sàn LS cho vay theo SP kinh doanh BĐS trung dài hạn từng thời kỳ trừ (-) 0,7%'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 30 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '06 tháng đầu: 11,7%/năm',
+                                '24 tháng tiếp theo: Bằng sàn LS cho vay theo SP kinh doanh BĐS trung dài hạn từng thời kỳ trừ (-) 0,7%'
+                            ]
+                        }
                     ]
                 }
             ]
@@ -335,9 +529,9 @@
         {
             id: 'pl09',
             phuLuc: 'PHỤ LỤC 09',
-            nhom: 'NHÓM CDT NAM LONG',
+            nhom: 'NHÓM CĐT NAM LONG',
             investor: 'Nam Long',
-            projects: 'DA An Zen, các dự án thuộc nhóm Nam Long',
+            projects: 'DA An Zen và các dự án thuộc nhóm Nam Long (nhà ở / shophouse / căn hộ dịch vụ)',
             packages: [
                 {
                     title: 'Gói lãi suất — Nhà ở',
@@ -345,20 +539,20 @@
                         {
                             subtitle: null,
                             lines: [
-                                '12M đầu tiên: 9,9%/năm',
-                                'Thời gian còn lại (không quá 24M): 11%/năm (hiện hành)'
+                                '12 tháng đầu: 10,7%/năm',
+                                'Thời gian còn lại (không quá 24 tháng): Bằng sàn LS VND KHCN mua/xây/sửa BĐS tiêu dùng hiện hành (hiện tại: 11,9%/năm). Kỳ điều chỉnh: 3 tháng/lần'
                             ]
                         }
                     ]
                 },
                 {
-                    title: 'Gói lãi suất — BDS Thương mại',
+                    title: 'Gói lãi suất — BĐS Thương mại',
                     sections: [
                         {
                             subtitle: null,
                             lines: [
-                                '12M đầu tiên: 9,9%/năm',
-                                'Thời gian còn lại: 11,6%/năm (hiện hành) + quy định 0,5%/năm'
+                                '12 tháng đầu: 10,7%/năm',
+                                'Thời gian còn lại (không quá 24 tháng): Bằng sàn LS VND KHCN mua/xây/sửa BĐS tiêu dùng hiện hành cộng (+) 1,3%/năm (hiện tại: 13,2%/năm). Kỳ điều chỉnh: 3 tháng/lần'
                             ]
                         }
                     ]
@@ -366,16 +560,136 @@
             ]
         },
         {
-            id: 'pl11',
-            phuLuc: 'PHỤ LỤC 11',
-            nhom: 'NHÓM CDT KHANG ĐIỀN',
-            investor: 'Khang Điền',
-            projects: 'Bình Trưng Đông - Bình Trưng Mới, Gladia by The Waters (Đoàn Nguyên)',
+            id: 'pl10',
+            phuLuc: 'PHỤ LỤC 10',
+            nhom: 'NHÓM CĐT THE MANOR CENTRAL PARK',
+            investor: 'The Manor Central Park',
+            projects: 'Phân khu 19 thuộc Dự án Khu đô thị Nam đường vành đai 3 (phường Đại Kim, quận Hoàng Mai / xã Thanh Liệt, huyện Thanh Trì, Hà Nội)',
             packages: [
                 {
-                    title: 'Gói lãi suất',
+                    title: 'Cố định lãi suất 12 tháng',
                     sections: [
-                        { subtitle: 'Gói Cố định lãi suất 12 tháng', lines: ['10,2%/năm'] }
+                        { subtitle: null, lines: ['10,9%/năm'] }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'pl11',
+            phuLuc: 'PHỤ LỤC 11',
+            nhom: 'NHÓM CĐT KHANG ĐIỀN',
+            investor: 'Khang Điền',
+            projects: 'Bình Trưng Đông - Bình Trưng Mới; Bình Trưng Đông - Đoàn Nguyên (Gladia by The Waters)',
+            packages: [
+                {
+                    title: 'Cố định lãi suất 12 tháng',
+                    sections: [
+                        { subtitle: null, lines: ['10,9%/năm'] }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'pl12',
+            phuLuc: 'PHỤ LỤC 12',
+            nhom: 'NHÓM CĐT CIPUTRA',
+            investor: 'Ciputra',
+            projects: 'Khu nhà ở thấp tầng tại lô I.C41 thuộc dự án Khu đô thị Nam Thăng Long giai đoạn II (Khu Ciputra)',
+            packages: [
+                {
+                    title: 'Cố định lãi suất 12 tháng',
+                    sections: [
+                        { subtitle: null, lines: ['10,0%/năm'] }
+                    ]
+                },
+                {
+                    title: 'Cố định lãi suất 18 tháng',
+                    sections: [
+                        { subtitle: null, lines: ['10,2%/năm'] }
+                    ]
+                },
+                {
+                    title: 'Cố định lãi suất 24 tháng',
+                    sections: [
+                        { subtitle: null, lines: ['11,8%/năm'] }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'pl13',
+            phuLuc: 'PHỤ LỤC 13',
+            nhom: 'NHÓM CĐT XUÂN CẦU HOLDINGS',
+            investor: 'Xuân Cầu Holdings',
+            projects: 'Xuân Cầu Alluvia; Tropical Garden. Ân hạn nợ gốc tối đa 36 tháng (chỉ áp dụng HĐCV có thời hạn vay > 36 tháng)',
+            packages: [
+                {
+                    title: 'Cố định LS 12 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                'DA Xuân Cầu Alluvia: 9,5%/năm',
+                                'DA Tropical Garden: 10,3%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 24 tháng — Xuân Cầu Alluvia',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '12 tháng đầu: cố định 9,3%/năm',
+                                '12 tháng tiếp theo: LSTK VND 24M trả lãi cuối kỳ KHCN + 3,3%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 24 tháng — Tropical Garden',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '12 tháng đầu: cố định 10,1%/năm',
+                                '12 tháng tiếp theo: LSTK VND 24M trả lãi cuối kỳ KHCN + 4,1%/năm'
+                            ]
+                        }
+                    ]
+                }
+            ]
+        },
+        {
+            id: 'pl14',
+            phuLuc: 'PHỤ LỤC 14',
+            nhom: 'NHÓM CĐT VIỆT NHÂN',
+            investor: 'Việt Nhân',
+            projects: 'Centa Riverside Từ Sơn; Nhà ở Việt Nhân số 2; Việt Nhân 3, 4',
+            packages: [
+                {
+                    title: 'Cố định LS 24 tháng — DA VCB cấp tín dụng cho CĐT',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '12 tháng đầu: 10,9%/năm',
+                                '12 tháng tiếp theo: 12%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định LS 24 tháng — Dự án khác',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '12 tháng đầu: 11,3%/năm',
+                                '12 tháng tiếp theo: 12,2%/năm'
+                            ]
+                        }
                     ]
                 }
             ]
@@ -429,8 +743,8 @@
         const k = keyword.trim();
         return (
             '<article class="project-card" data-id="' + escapeHtml(item.id) + '">' +
-            '<div class="nhom">' + highlightText(item.nhom, k) + '</div>' +
-            '<div class="label-row"><strong>Chủ đầu tư (CDT):</strong> ' + highlightText(item.investor, k) + '</div>' +
+            '<div class="nhom">' + highlightText(item.phuLuc + ' · ' + item.nhom, k) + '</div>' +
+            '<div class="label-row"><strong>Chủ đầu tư (CĐT):</strong> ' + highlightText(item.investor, k) + '</div>' +
             '<div class="label-row"><strong>Dự án:</strong> ' + highlightText(item.projects, k) + '</div>' +
             renderPackages(item, k) +
             '</article>'
