@@ -84,6 +84,48 @@
             body { background: #fff8dc !important; }
             .pdf-export { box-shadow: none !important; margin: 0 !important; }
         }
+        .section-title {
+            color: #1f6f1f;
+            font-weight: 700;
+            margin-top: 24px;
+            margin-bottom: 12px;
+        }
+        .offer-list {
+            color: #2f2f2f;
+            margin-bottom: 0;
+            padding-left: 20px;
+        }
+        .offer-list li {
+            margin-bottom: 6px;
+        }
+        .search-box {
+            margin-top: 14px;
+            margin-bottom: 12px;
+        }
+        .project-count {
+            color: #555;
+            font-size: 0.95rem;
+            margin-bottom: 8px;
+        }
+        .table-wrap {
+            max-height: 520px;
+            overflow: auto;
+            border: 1px solid #d8d8b0;
+            border-radius: 8px;
+            background: #fff;
+        }
+        .project-table {
+            margin-bottom: 0;
+            font-size: 0.92rem;
+            color: #2f2f2f;
+        }
+        .project-table thead th {
+            position: sticky;
+            top: 0;
+            background: #eaf5e7;
+            color: #1f6f1f;
+            z-index: 1;
+        }
     </style>
 </head>
 <body>
@@ -104,6 +146,29 @@
                 <div class="text-center">
                     <img src="images/bangchao.png" alt="Bảng chào lãi suất tiền vay cho khách hàng cá nhân" class="img-fluid" style="max-width: 100%; height: auto; border-radius: 8px;">
                 </div>
+
+                <h2 class="section-title">Thông tin cơ bản về ưu đãi</h2>
+                <ul id="offerSummary" class="offer-list"></ul>
+
+                <h2 class="section-title">Danh sách dự án từ Phụ lục 03</h2>
+                <div class="search-box">
+                    <input id="projectSearch" type="text" class="form-control" placeholder="Tìm theo tên dự án, chủ đầu tư, tên thương mại hoặc địa bàn...">
+                </div>
+                <div id="projectCount" class="project-count"></div>
+                <div class="table-wrap">
+                    <table class="table table-sm table-striped table-hover project-table">
+                        <thead>
+                            <tr>
+                                <th style="min-width: 70px;">STT</th>
+                                <th style="min-width: 260px;">Chủ đầu tư</th>
+                                <th style="min-width: 320px;">Tên dự án</th>
+                                <th style="min-width: 260px;">Tên thương mại</th>
+                                <th style="min-width: 160px;">Xã/Phường</th>
+                            </tr>
+                        </thead>
+                        <tbody id="projectRows"></tbody>
+                    </table>
+                </div>
             </div>
 
             <!-- Nút download -->
@@ -114,5 +179,83 @@
             </div>
         </div>
     </div>
+    <script src="ancu2027-data.js"></script>
+    <script>
+        function normalizeText(value) {
+            return (value || "")
+                .replace(/\s+/g, " ")
+                .replace(/^\s+|\s+$/g, "")
+                .replace(/Mói/g, "Mới")
+                .replace(/sàn/g, "sản")
+                .replace(/TháP\./g, "Tháp")
+                .replace(/\bp\.\s*/gi, "P. ")
+                .replace(/\bxã\s*/gi, "Xã ");
+        }
+
+        function getOfferSummary(rawSummary) {
+            const defaults = [
+                "Sản phẩm: Cho vay khách hàng cá nhân mua Nhà ở tại Dự án bất động sản (Nhà Mới An Cư).",
+                "Mã sản phẩm: 82660_KHCN.",
+                "Mã lãi suất: Trung hạn 20024, Dài hạn 30038.",
+                "Danh mục dự án áp dụng theo Phụ lục 03 ban hành kèm văn bản."
+            ];
+            const input = Array.isArray(rawSummary) ? rawSummary : [];
+            const merged = input.length ? input : defaults;
+            return merged.map(normalizeText);
+        }
+
+        function getProjects(rawProjects) {
+            if (!Array.isArray(rawProjects)) return [];
+            return rawProjects.map((item) => ({
+                stt: item?.stt ?? "",
+                investor: normalizeText(item?.investor),
+                project: normalizeText(item?.project),
+                trade_name: normalizeText(item?.trade_name),
+                location: normalizeText(item?.location)
+            })).filter((row) => row.project);
+        }
+
+        function renderOfferSummary(items) {
+            const container = document.getElementById("offerSummary");
+            container.innerHTML = items.map((text) => `<li>${text}</li>`).join("");
+        }
+
+        function renderProjectRows(rows) {
+            const tbody = document.getElementById("projectRows");
+            tbody.innerHTML = rows.map((row) => `
+                <tr>
+                    <td>${row.stt}</td>
+                    <td>${row.investor}</td>
+                    <td>${row.project}</td>
+                    <td>${row.trade_name}</td>
+                    <td>${row.location}</td>
+                </tr>
+            `).join("");
+            document.getElementById("projectCount").textContent = `Hiển thị ${rows.length} dự án`;
+        }
+
+        (function initAnCu2027() {
+            const data = window.ANCU2027_DATA || {};
+            const offers = getOfferSummary(data.summary);
+            const allProjects = getProjects(data.projects);
+
+            renderOfferSummary(offers);
+            renderProjectRows(allProjects);
+
+            const searchInput = document.getElementById("projectSearch");
+            searchInput.addEventListener("input", () => {
+                const keyword = normalizeText(searchInput.value).toLowerCase();
+                if (!keyword) {
+                    renderProjectRows(allProjects);
+                    return;
+                }
+                const filtered = allProjects.filter((row) => {
+                    const blob = `${row.stt} ${row.investor} ${row.project} ${row.trade_name} ${row.location}`.toLowerCase();
+                    return blob.includes(keyword);
+                });
+                renderProjectRows(filtered);
+            });
+        })();
+    </script>
 </body>
 </html> 
