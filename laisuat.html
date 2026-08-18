@@ -208,12 +208,23 @@
     <script>
         function normalizeText(value) {
             const fixes = [
-                ["Còng ty", "Công ty"], ["Cồ phần", "Cổ phần"], ["Cồ phẩn", "Cổ phần"],
+                ["Còng ty", "Công ty"], ["Cóng ty", "Công ty"], ["Cồng ty", "Công ty"],
+                ["Câng ty", "Công ty"], ["Cồ phần", "Cổ phần"], ["Cồ phẩn", "Cổ phần"],
                 ["Cổ phẩn", "Cổ phần"], ["Cổ phằn", "Cổ phần"], ["Cổ phân", "Cổ phần"],
-                ["CỔ phần", "Cổ phần"], ["CỔ phẩn", "Cổ phần"], ["Cô phần", "Cổ phần"],
-                ["Đẳu tư", "Đầu tư"], ["Đẩu tư", "Đầu tư"], ["Đâu tư", "Đầu tư"],
+                ["Cố phần", "Cổ phần"], ["CỔ phần", "Cổ phần"], ["CỔ phẩn", "Cổ phần"],
+                ["Cô phần", "Cổ phần"],
+                ["Đẳu tư", "Đầu tư"], ["Đẩu tư", "Đầu tư"], ["Đâu tư", "Đầu tư"], ["Đàu tư", "Đầu tư"],
+                ["Đằu tư", "Đầu tư"], ["phát ưiến", "phát triển"], ["Phát ưiến", "Phát triển"],
+                ["Phát ữiến", "Phát triển"], ["Phát triền", "Phát triển"], ["Phát triẻn", "Phát triển"],
+                ["Phảt triển", "Phát triển"], ["phảt triển", "phát triển"],
                 ["bất động sán", "bất động sản"], ["bất động sàn", "bất động sản"],
-                ["Nhà Mói", "Nhà Mới"], ["Thú Đức", "Thủ Đức"], ["Định Còng", "Định Công"]
+                ["Bất động sàn", "Bất động sản"], ["Bất dộng", "Bất động"],
+                ["Tồng công", "Tổng công"], ["Tồng Công", "Tổng Công"], ["Tông công", "Tổng công"],
+                ["Nhà Mói", "Nhà Mới"], ["Thú Đức", "Thủ Đức"], ["Thũ Thiêm", "Thủ Thiêm"],
+                ["Định Còng", "Định Công"], ["nghiệP.", "nghiệp"], ["Công nghiệP.", "Công nghiệp"],
+                ["Tập đoản", "Tập đoàn"], ["Bão Việt", "Bảo Việt"], ["Thủ Đò", "Thủ Đô"],
+                ["Bển Thành", "Bến Thành"],                 ["cùa ", "của "], ["Công trinh", "Công trình"],
+                ["nhà ỡ", "nhà ở"], ["tồ hợp", "tổ hợp"]
             ];
             let text = (value || "").replace(/\s+/g, " ").trim();
             fixes.forEach(([from, to]) => {

@@ -1,0 +1,12 @@
+project: Khu chung cư Meưopolitan CT36 (Dream Home)
+investor: Tổng còng ty Đầu tư phát ưiển nhà và đô thị (HUD)
+investor: Cồng ty Cổ phàn Hóa dầu Quân đội (MIPEC)
+investor: Tổng công ty Đằu tư phát ưiển Nhà và Đô thị Bộ Quốc phòng
+investor: Tông Công ty Đầu tư và Phàt triền nhà Hà Nội
+project: Chung cư Thú Thiêtn Sky
+project: Khu nhà ỡ thương mại Phú Hồng Thịnh V
+investor: Công ty Cổ phần Ngoại thương và Phảt triền Đầu tư TP.HCM (FIDECO)
+trade_name: Khu nhà ỡ thương mại Chánh Phú Hòa
+trade_name: Khu nhà ỡ thương mại Phú Vinh
+investor: Tồng công ty Đầu tư phảt triền nhà và đô thị (HUD)
+investor: An Gia GrouP. (Công ty Cổ phần Đầu tư và Phảt triền Bất dộng sản An Gia)
