@@ -13,9 +13,12 @@
             color: #228B22;
         }
         .container {
-            max-width: 800px;
-            margin-top: 40px;
+            max-width: 1400px;
+            width: 100%;
+            margin-top: 32px;
             margin-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
         }
         .content-box {
             background-color: #fff8dc;
@@ -74,9 +77,9 @@
         .pdf-export {
             background: #fff8dc;
             color: #228B22;
-            padding: 32px 32px 32px 32px;
+            padding: 28px;
             border-radius: 12px;
-            max-width: 900px;
+            max-width: 100%;
             margin: 0 auto;
             box-shadow: 0 2px 8px rgba(0,0,0,0.08);
         }
@@ -108,7 +111,7 @@
             margin-bottom: 8px;
         }
         .table-wrap {
-            max-height: 520px;
+            max-height: 640px;
             overflow: auto;
             border: 1px solid #d8d8b0;
             border-radius: 8px;
@@ -116,8 +119,10 @@
         }
         .project-table {
             margin-bottom: 0;
-            font-size: 0.92rem;
+            font-size: 0.9rem;
             color: #2f2f2f;
+            width: 100%;
+            table-layout: auto;
         }
         .project-table thead th {
             position: sticky;
@@ -125,6 +130,26 @@
             background: #eaf5e7;
             color: #1f6f1f;
             z-index: 1;
+            padding: 10px 12px;
+            white-space: nowrap;
+            vertical-align: middle;
+        }
+        .project-table td {
+            padding: 8px 12px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .pdf-export {
+                padding: 16px;
+            }
+            .project-table {
+                font-size: 0.82rem;
+            }
         }
     </style>
 </head>
@@ -159,11 +184,11 @@
                     <table class="table table-sm table-striped table-hover project-table">
                         <thead>
                             <tr>
-                                <th style="min-width: 70px;">STT</th>
-                                <th style="min-width: 260px;">Chủ đầu tư</th>
-                                <th style="min-width: 320px;">Tên dự án</th>
-                                <th style="min-width: 260px;">Tên thương mại</th>
-                                <th style="min-width: 160px;">Xã/Phường</th>
+                                <th style="width: 64px;">STT</th>
+                                <th style="min-width: 280px;">Chủ đầu tư</th>
+                                <th style="min-width: 360px;">Tên dự án</th>
+                                <th style="min-width: 280px;">Tên thương mại</th>
+                                <th style="min-width: 140px;">Xã/Phường</th>
                             </tr>
                         </thead>
                         <tbody id="projectRows"></tbody>
@@ -182,14 +207,22 @@
     <script src="ancu2027-data.js"></script>
     <script>
         function normalizeText(value) {
-            return (value || "")
-                .replace(/\s+/g, " ")
-                .replace(/^\s+|\s+$/g, "")
-                .replace(/Mói/g, "Mới")
-                .replace(/sàn/g, "sản")
-                .replace(/TháP\./g, "Tháp")
+            const fixes = [
+                ["Còng ty", "Công ty"], ["Cồ phần", "Cổ phần"], ["Cồ phẩn", "Cổ phần"],
+                ["Cổ phẩn", "Cổ phần"], ["Cổ phằn", "Cổ phần"], ["Cổ phân", "Cổ phần"],
+                ["CỔ phần", "Cổ phần"], ["CỔ phẩn", "Cổ phần"], ["Cô phần", "Cổ phần"],
+                ["Đẳu tư", "Đầu tư"], ["Đẩu tư", "Đầu tư"], ["Đâu tư", "Đầu tư"],
+                ["bất động sán", "bất động sản"], ["bất động sàn", "bất động sản"],
+                ["Nhà Mói", "Nhà Mới"], ["Thú Đức", "Thủ Đức"], ["Định Còng", "Định Công"]
+            ];
+            let text = (value || "").replace(/\s+/g, " ").trim();
+            fixes.forEach(([from, to]) => {
+                text = text.split(from).join(to);
+            });
+            return text
                 .replace(/\bp\.\s*/gi, "P. ")
-                .replace(/\bxã\s*/gi, "Xã ");
+                .replace(/\bxa\s+/gi, "Xã ")
+                .replace(/\bxã\s+/gi, "Xã ");
         }
 
         function getOfferSummary(rawSummary) {
