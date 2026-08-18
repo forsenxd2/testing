@@ -98,8 +98,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 12,
       "investor": "Tập đoàn Geleximco",
-      "project": "Khu đô thị Geleximco Lê Trọng Tấn",
-      "trade_name": "Khu đô thị Geleximco Lê Trọng Tấn",
+      "project": "khu đô thị Geleximco Lê Trọng Tấn",
+      "trade_name": "khu đô thị Geleximco Lê Trọng Tấn",
       "location": "P. Dương Nội"
     },
     {
@@ -114,16 +114,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 14,
       "investor": "Công ty Cổ phần Đầu tư Đô thị An Hưng",
-      "project": "Khu đô thị An Hưng",
-      "trade_name": "Khu đô thị An Hưng",
+      "project": "khu đô thị An Hưng",
+      "trade_name": "khu đô thị An Hưng",
       "location": "P. Dương Nội"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 15,
       "investor": "Công ty Cổ phần Phát triển Đô thị Quốc tế Việt Nam (VIDC)",
-      "project": "Khu đô thị Park City Hà Nội",
-      "trade_name": "Khu đô thị Park City Hà Nội",
+      "project": "khu đô thị Park City Hà Nội",
+      "trade_name": "khu đô thị Park City Hà Nội",
       "location": "P. Dương Nội"
     },
     {
@@ -132,7 +132,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Thái Sơn",
       "project": "Khu chung cư Vinhomes Smart City",
       "trade_name": "Vinhomes Smart City",
-      "location": "P. Đại Mồ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -148,7 +148,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư Hải Phát",
       "project": "Khu chung cư Roman Plaza",
       "trade_name": "Roman Plaza",
-      "location": "P. Đại Mồ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -156,21 +156,21 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Thương mại và Đầu tư Thủ đô",
       "project": "Khu chung cư EcoLife Capitol",
       "trade_name": "EcoLife Capitol",
-      "location": "P. Đại Mồ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 20,
       "investor": "Công ty Cổ phần Đầu tư - Xây dựng Hà Nội",
-      "project": "Khu đô thi Trung Văn",
-      "trade_name": "Khu đó thị mới Trung Văn",
+      "project": "khu đô thị Trung Văn",
+      "trade_name": "khu đô thị mới Trung Văn",
       "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 21,
       "investor": "Tổng công ty Viglacera",
-      "project": "Khu đô thị Khu chức năng đô thị Tây Mỗ",
+      "project": "khu đô thị Khu chức năng đô thị Tây Mỗ",
       "trade_name": "Viglacera Tây Mỗ",
       "location": "P. Đại Mỗ"
     },
@@ -180,7 +180,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Xây dựng và Thương mại Bắc Hà",
       "project": "Khu chung cư C14",
       "trade_name": "Chung cư c 14 Bộ Công An",
-      "location": "P. Đại Mồ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -188,13 +188,13 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư - Xây dựng Tây Hà",
       "project": "Khu chung cư Tây Hà Tower",
       "trade_name": "Tây Hà Tower",
-      "location": "P. Đại MỖ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 24,
       "investor": "Công ty Cổ phần Vinhomes",
-      "project": "Khu đô thị Vinhomes Green Villas",
+      "project": "khu đô thị Vinhomes Green Villas",
       "trade_name": "Vinhomes Green Villas",
       "location": "P. Đại Mỗ"
     },
@@ -204,7 +204,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư Thiết kế và Xây dựng Việt Nam",
       "project": "Khu chung cư xây dựng nhà ở để bán cho CBCS Viện Khoa học hình sự - Bộ Công An",
       "trade_name": "Star Tower 283 Khương Trung",
-      "location": "P. Đại MỒ"
+      "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -218,16 +218,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 27,
       "investor": "Tổng công ty Viglacera",
-      "project": "Khu đô thị Đại Mỗ",
-      "trade_name": "Khu đô thị Đại Mô",
+      "project": "khu đô thị Đại Mỗ",
+      "trade_name": "khu đô thị Đại Mỗ",
       "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 28,
       "investor": "Tập đoàn Bitexco",
-      "project": "Khu đô thị The Manor Central Park",
-      "trade_name": "Khu đô thị The Manor Central Park",
+      "project": "khu đô thị The Manor Central Park",
+      "trade_name": "khu đô thị The Manor Central Park",
       "location": "P. Định Công"
     },
     {
@@ -243,31 +243,31 @@ window.ANCU2027_DATA = {
       "stt": 30,
       "investor": "CTCP Xây dựng số 2 - Vinaconex 2",
       "project": "Khu chung cư Golden Silk Kim Văn - Kim Lũ",
-      "trade_name": "Khu đô thị Kim Văn - Kim Lũ ( Golden Silk)",
+      "trade_name": "khu đô thị Kim Văn - Kim Lũ ( Golden Silk)",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 31,
       "investor": "Tổng Công ty Đầu Tư Phát Triển nhà và Đô Thị Hud",
-      "project": "Khu đô thị Định Công",
-      "trade_name": "Khu đô thị mới Định Công",
+      "project": "khu đô thị Định Công",
+      "trade_name": "khu đô thị mới Định Công",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 32,
       "investor": "Tập đoàn phát triển nhà và Đô thị Việt Nam (Hud)",
-      "project": "Khu đô thị Tây Nam Hồ Linh Đàm",
-      "trade_name": "Khu đô thị Tây Nam Hồ Linh Đàm",
+      "project": "khu đô thị Tây Nam Hồ Linh Đàm",
+      "trade_name": "khu đô thị Tây Nam Hồ Linh Đàm",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 33,
       "investor": "CTCP Đầu tư Xây dựng số 2 Hà Nội ( Hacinco)",
-      "project": "Khu đô thị Đại Kim - Hacinco",
-      "trade_name": "Khu đô thị mới Đại Kim",
+      "project": "khu đô thị Đại Kim - Hacinco",
+      "trade_name": "khu đô thị mới Đại Kim",
       "location": "P. Định Công"
     },
     {
@@ -282,23 +282,23 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 35,
       "investor": "Tổng Cty Đầu Tư Phát Triển nhà và Đô Thị Hud",
-      "project": "Khu đô thị Bắc Linh Đàm - Bắc Linh Đàm mờ rộng",
-      "trade_name": "Khu đô thị BẮc Linh Đàm - Bắc Linh Đàm mở rộng",
+      "project": "khu đô thị Bắc Linh Đàm - Bắc Linh Đàm mở rộng",
+      "trade_name": "khu đô thị Bắc Linh Đàm - Bắc Linh Đàm mở rộng",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 36,
       "investor": "Tổng công ty Đầu tư phát triển nhà và đô thị (HUD)",
-      "project": "Khu đô thị Đại Kim - Định Công",
-      "trade_name": "Khu đô thị mới Đại Kim - Định Công",
+      "project": "khu đô thị Đại Kim - Định Công",
+      "trade_name": "khu đô thị mới Đại Kim - Định Công",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 37,
       "investor": "CTCP Xây dựng số 2 Vinaconex",
-      "project": "Khu đô thị Kim Văn - Kim Lũ",
+      "project": "khu đô thị Kim Văn - Kim Lũ",
       "trade_name": "Golden Silk Kim Văn Kim Lũ",
       "location": "P. Định Công"
     },
@@ -306,15 +306,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 38,
       "investor": "Tổng Công ty Đầu Tư Phát Triền nhà và Đô thị Hud",
-      "project": "Khu đô thị Linh Đàm",
-      "trade_name": "Khu đò thi Linh Đàm",
+      "project": "khu đô thị Linh Đàm",
+      "trade_name": "khu đô thị Linh Đàm",
       "location": "P. Định Công"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 39,
       "investor": "Công ty CP Đầu tư và Xây dựng HUD 1",
-      "project": "Khu đô thị Sky Central",
+      "project": "khu đô thị Sky Central",
       "trade_name": "Sky Central",
       "location": "P. Định Công"
     },
@@ -330,7 +330,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 41,
       "investor": "Công ty Cổ phần Tư vấn Đầu tư và Đầu tư Việt Nam",
-      "project": "Khu chung cư Vinhomes Mettopolis",
+      "project": "Khu chung cư Vinhomes Metropolis",
       "trade_name": "Vinhomes Metropolis",
       "location": "P. Giảng Võ"
     },
@@ -340,7 +340,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng số 1 Hà Nội",
       "project": "Khu chung cư 57 Láng Hạ",
       "trade_name": "Thành Công Tower",
-      "location": "P. Giáng Võ"
+      "location": "P. Giảng Võ"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -354,7 +354,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 44,
       "investor": "Công ty TSQ Việt Nam",
-      "project": "Khu chung cư Tòa tháP. Thiên niên ký",
+      "project": "Khu chung cư Tòa tháp Thiên niên kỷ",
       "trade_name": "Hatay Millennium",
       "location": "P. Hà Đông"
     },
@@ -362,8 +362,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 45,
       "investor": "Công ty TNHH TSQ Việt Nam",
-      "project": "Khu dô thị Mỗ Lao",
-      "trade_name": "Làng Việt kiều Chầu Âu",
+      "project": "khu đô thị Mỗ Lao",
+      "trade_name": "Làng Việt kiều Châu Âu",
       "location": "P. Hà Đông"
     },
     {
@@ -386,8 +386,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 48,
       "investor": "Công ty CP Thương mại và Đầu tư Toàn cầu GTC",
-      "project": "Khu đô thị TSQ Galaxy",
-      "trade_name": "Khu đò thị Ngân Hà Vạn Phúc",
+      "project": "khu đô thị TSQ Galaxy",
+      "trade_name": "khu đô thị Ngân Hà Vạn Phúc",
       "location": "P. Hà Đông"
     },
     {
@@ -419,7 +419,7 @@ window.ANCU2027_DATA = {
       "stt": 52,
       "investor": "Côngty CPBIC Việt Nam",
       "project": "Khu chung cư Tòa nhà Rainbow Văn Quán",
-      "trade_name": "Tòa nhà Rainbow Văn Quàn",
+      "trade_name": "Tòa nhà Rainbow Văn Quán",
       "location": "P. Hà Đông"
     },
     {
@@ -434,7 +434,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 54,
       "investor": "Công ty TNHH Hyundai RNC Hà Tây",
-      "project": "Khu đô thị Khu Hyundai Hillstate",
+      "project": "khu đô thị Khu Hyundai Hillstate",
       "trade_name": "Hyundai Hillsmall",
       "location": "P. Hà Đông"
     },
@@ -458,8 +458,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 57,
       "investor": "Tổng công ty Đầu tư Xây dựng và Xuất nhập khẩu Việt Nam (Constrexim Holdings)",
-      "project": "Khu đô thị Khu nhà ở Bắc Há",
-      "trade_name": "Khu nhà ờ Bắc Hà",
+      "project": "khu đô thị Khu nhà ở Bắc Há",
+      "trade_name": "Khu nhà ở Bắc Hà",
       "location": "P. Hà Đông"
     },
     {
@@ -515,7 +515,7 @@ window.ANCU2027_DATA = {
       "stt": 64,
       "investor": "UBND Thành phố",
       "project": "Khu đấu giá Khu đấu giá 2,6 Ha",
-      "trade_name": "Khu đấu già Khu đấu giá 2,6 Ha",
+      "trade_name": "Khu đấu giá Khu đấu giá 2,6 Ha",
       "location": "P. Hà Đông"
     },
     {
@@ -530,7 +530,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 66,
       "investor": "Tập đoàn Sun Group",
-      "project": "Khu chung cư Sungrand City Ancora 3 Lưcmg Yên",
+      "project": "Khu chung cư Sungrand City Ancora 3 Lương Yên",
       "trade_name": "Sun Grand City Ancora",
       "location": "P. Hai Bà Trưng"
     },
@@ -538,7 +538,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 67,
       "investor": "Công ty Cổ phần Vincom",
-      "project": "Khu chung cư Khu HH1 Vincom 114 Mai Hăc Đế",
+      "project": "Khu chung cư Khu HH1 Vincom 114 Mai Hắc Đế",
       "trade_name": "Vincom Center Bà Triệu",
       "location": "P. Hai Bà Trưng"
     },
@@ -554,7 +554,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 69,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng và Phát triển Nhà số 7 Hà Nội (Handico 7)",
-      "project": "Khu chung cư HDI Tower 55 Lê Đại Hãnh",
+      "project": "Khu chung cư HDI Tower 55 Lê Đại Hành",
       "trade_name": "HDI Tower",
       "location": "P. Hai Bà Trưng"
     },
@@ -562,15 +562,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 70,
       "investor": "Tổng công ty Đầu tư phát triển nhà và đô thị (HUD)",
-      "project": "Khu đô thị PháP. Vân - Tứ Hiệp",
-      "trade_name": "Khu đô thị PháP. Vân - Tứ Hiệp",
+      "project": "khu đô thị Pháp Vân - Tứ Hiệp",
+      "trade_name": "khu đô thị Pháp Vân - Tứ Hiệp",
       "location": "P. Hoàng Liệt"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 71,
       "investor": "Gamuda Land",
-      "project": "Khu đô thị Gamuda Gardens",
+      "project": "khu đô thị Gamuda Gardens",
       "trade_name": "Gamuda Gardens",
       "location": "P. Hoàng Mai"
     },
@@ -578,8 +578,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 72,
       "investor": "CTCP Đầu tư Văn Phú",
-      "project": "Khu đô thị Văn Phú",
-      "trade_name": "Khu đô thị Văn Phú",
+      "project": "khu đô thị Văn Phú",
+      "trade_name": "khu đô thị Văn Phú",
       "location": "P. Kiên Hưng"
     },
     {
@@ -618,7 +618,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 77,
       "investor": "Công ty Cổ phần Cơ điện và Xây dựng Việt Nam",
-      "project": "Khu nhà ờ cao tầng và văn phòng 102 Trường Chinh",
+      "project": "Khu nhà ở cao tầng và văn phòng 102 Trường Chinh",
       "trade_name": "MECO Complex",
       "location": "P. Kim Liên"
     },
@@ -636,7 +636,7 @@ window.ANCU2027_DATA = {
       "investor": "Vinhomes",
       "project": "Khu chung cư Royal City",
       "trade_name": "Royal City",
-      "location": "P. Khương Đinh"
+      "location": "P. Khương Đình"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -644,7 +644,7 @@ window.ANCU2027_DATA = {
       "investor": "CT TNHH Thống Nhất - Bắc Việt",
       "project": "Khu chung cư Thống Nhất Complex",
       "trade_name": "Thống Nhất Complex",
-      "location": "P. Khương Đinh"
+      "location": "P. Khương Đình"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -652,7 +652,7 @@ window.ANCU2027_DATA = {
       "investor": "CTCP Thương mại Hưng Việt",
       "project": "Khu chung cư Golden Land Building",
       "trade_name": "Golden Land",
-      "location": "P. Khương Đinh"
+      "location": "P. Khương Đình"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -706,8 +706,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 88,
       "investor": "Công ty TNHH Berjaya - Handico 12",
-      "project": "Khu đô thị Hà Nội Garden City",
-      "trade_name": "Khu đô thị Hà Nội Garden City",
+      "project": "khu đô thị Hà Nội Garden City",
+      "trade_name": "khu đô thị Hà Nội Garden City",
       "location": "P. Long Biên"
     },
     {
@@ -738,8 +738,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 92,
       "investor": "Công ty CP Đầu tư Văn Phú - Invest",
-      "project": "Khu chung cư Grandeur Palace Giảng Vỗ",
-      "trade_name": "Khu chung cư Grandeur Palace Giảng Vỗ",
+      "project": "Khu chung cư Grandeur Palace Giảng Võ",
+      "trade_name": "Khu chung cư Grandeur Palace Giảng Võ",
       "location": "P. Giảng Võ"
     },
     {
@@ -753,9 +753,9 @@ window.ANCU2027_DATA = {
     {
       "region": "Khu vực Hà Nội",
       "stt": 94,
-      "investor": "Công ty TNHH Phát triển Khu đô thị Nam Thăng Long",
-      "project": "Khu đô thị Ciputra - Nam Thăng Long",
-      "trade_name": "Khu đô thị Ciputra (Khu dô thị Nam Thăng Long)",
+      "investor": "Công ty TNHH Phát triển khu đô thị Nam Thăng Long",
+      "project": "khu đô thị Ciputra - Nam Thăng Long",
+      "trade_name": "khu đô thị Ciputra (khu đô thị Nam Thăng Long)",
       "location": "P. Phú Thượng"
     },
     {
@@ -769,8 +769,8 @@ window.ANCU2027_DATA = {
     {
       "region": "Khu vực Hà Nội",
       "stt": 96,
-      "investor": "UBND Quận Tây Hồ(trước sáP. nhập)",
-      "project": "Khu đấu già Khu Biệt thự Vườn Đào",
+      "investor": "UBND Quận Tây Hồ(trước sáp nhập)",
+      "project": "Khu đấu giá Khu Biệt thự Vườn Đào",
       "trade_name": "Biệt thự Vườn Đào",
       "location": "P. Phú Thượng"
     },
@@ -778,7 +778,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 97,
       "investor": "Vinhomes",
-      "project": "Khu đô thị Vinhomes Riverside",
+      "project": "khu đô thị Vinhomes Riverside",
       "trade_name": "Vinhomes Riverside",
       "location": "P. Phúc Lợi"
     },
@@ -786,7 +786,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 98,
       "investor": "Vinhomes",
-      "project": "Khu đô thị Vinhomes The Harmony",
+      "project": "khu đô thị Vinhomes The Harmony",
       "trade_name": "Vinhomes The Harmony",
       "location": "P. Phúc Lợi"
     },
@@ -818,8 +818,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 102,
       "investor": "Tổng công ty Đầu tư phát triển nhà và đô thị (HUD)",
-      "project": "Khu đô thi Hud - Sơn Tây",
-      "trade_name": "Khu đô thị Hud - Sơn Tây",
+      "project": "khu đô thị Hud - Sơn Tây",
+      "trade_name": "khu đô thị Hud - Sơn Tây",
       "location": "P. Sơn Tây"
     },
     {
@@ -875,7 +875,7 @@ window.ANCU2027_DATA = {
       "stt": 109,
       "investor": "Tập đoàn SSG (SSG Group)",
       "project": "Khu chung cư Mỹ Đình Pearl",
-      "trade_name": "Mỹ Đinh Pearl",
+      "trade_name": "Mỹ Đình Pearl",
       "location": "P. Từ Liêm"
     },
     {
@@ -898,7 +898,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 112,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Mỹ Đình",
-      "project": "Khu chung cư Mỹ Đinh Plaza 2",
+      "project": "Khu chung cư Mỹ Đình Plaza 2",
       "trade_name": "Mỹ Đình Plaza 2",
       "location": "P. Từ Liêm"
     },
@@ -906,7 +906,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 113,
       "investor": "Công ty Cổ phần Đầu tư Mai Linh",
-      "project": "Khu chung cư The Maưix One",
+      "project": "Khu chung cư The Matrix One",
       "trade_name": "The Matrix One",
       "location": "P. Từ Liêm"
     },
@@ -930,15 +930,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 116,
       "investor": "Tổng công ty Đầu tư phát triển Nhà và Đô thị Bộ Quốc phòng",
-      "project": "Khu đõ thị Mỷ Đinh",
-      "trade_name": "Khu đô thị Mỹ Đình",
+      "project": "khu đô thị Mỹ Đình",
+      "trade_name": "khu đô thị Mỹ Đình",
       "location": "P. Từ Liêm"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 117,
       "investor": "Tập đoàn Vingroup",
-      "project": "Khu đô thị Vinhomes Green Bay",
+      "project": "khu đô thị Vinhomes Green Bay",
       "trade_name": "Vinhomes Green Bay",
       "location": "P. Từ Liêm"
     },
@@ -962,8 +962,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 120,
       "investor": "Tổng công ty Đầu tư phát triển Nhà và Đô thị Bộ Quốc phòng",
-      "project": "Khu đô thị Mỹ Đình I",
-      "trade_name": "Khu đô thị Mỹ Đinh I",
+      "project": "khu đô thị Mỹ Đình I",
+      "trade_name": "khu đô thị Mỹ Đình I",
       "location": "P. Từ Liêm"
     },
     {
@@ -971,22 +971,22 @@ window.ANCU2027_DATA = {
       "stt": 121,
       "investor": "HUD3",
       "project": "Khu chung cư Tòa nhà HUD3 Nguyễn Đức Cảnh",
-      "trade_name": "HUD3 Nguyễn Đức Cành",
+      "trade_name": "HUD3 Nguyễn Đức Cảnh",
       "location": "P. Tương Mai"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 122,
       "investor": "Hòa Phát",
-      "project": "Khu chung cư Tòa nhà chung cư 70 Nguyễn Đức Cánh",
-      "trade_name": "70 Nguyễn Đức Cành",
+      "project": "Khu chung cư Tòa nhà chung cư 70 Nguyễn Đức Cảnh",
+      "trade_name": "70 Nguyễn Đức Cảnh",
       "location": "P. Tương Mai"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 123,
       "investor": "Generalexim",
-      "project": "Khu chung cư Tòa nhà văn phòng kết hợp dịch vụ thương mại và căn hộ đề bán, số 130 Nguyễn Đức Cành",
+      "project": "Khu chung cư Tòa nhà văn phòng kết hợp dịch vụ thương mại và căn hộ đề bán, số 130 Nguyễn Đức Cảnh",
       "trade_name": "130 Nguyễn Đức Cảnh",
       "location": "P. Tương Mai"
     },
@@ -994,16 +994,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 124,
       "investor": "Tổng Công ty Đầu tư Phát triển Nhà Hà Nội (HANDICO)",
-      "project": "Khu đô thị Đền Lừ 1",
-      "trade_name": "Khu đô thị Đền Lừ I",
+      "project": "khu đô thị Đền Lừ 1",
+      "trade_name": "khu đô thị Đền Lừ I",
       "location": "P. Tương Mai"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 125,
       "investor": "Tổng Công ty Đầu tư Phát triển Nhà Hà Nội (HANDICO)",
-      "project": "Khu đô thị Đền Lừ 3",
-      "trade_name": "Khu đô thị Đền Lừ 111",
+      "project": "khu đô thị Đền Lừ 3",
+      "trade_name": "khu đô thị Đền Lừ 111",
       "location": "P. Tương Mai"
     },
     {
@@ -1011,14 +1011,14 @@ window.ANCU2027_DATA = {
       "stt": 126,
       "investor": "Công ty TNHH BĐS và Xây dựng Việt Hưng",
       "project": "Khu chung cư Eco Green City",
-      "trade_name": "Eco Green City 286 Nguyền Xiển",
+      "trade_name": "Eco Green City 286 Nguyễn Xiển",
       "location": "P. Thanh Liệt"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 127,
       "investor": "UBND huyện Thanh Trì/Ban QLDA địa phương (thường là đơn vị tổ chức)",
-      "project": "Khu đấu giá Khu đâu giá quyền sử dụng đất",
+      "project": "Khu đấu giá Khu đấu giá quyền sử dụng đất",
       "trade_name": "Khu đấu giả QSDĐ Thanh Liệt",
       "location": "P. Thanh Liệt"
     },
@@ -1034,8 +1034,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 129,
       "investor": "Công ty Cổ phần Đầu tư Đô thị và Khu công nghiệp Sông Đà 7",
-      "project": "Khu chung cư khu nhà ờ 90 Nguyễn Tuân",
-      "trade_name": "Khu nhà ờ 90 Nguyễn Tuân",
+      "project": "Khu chung cư khu nhà ở 90 Nguyễn Tuân",
+      "trade_name": "Khu nhà ở 90 Nguyễn Tuân",
       "location": "P. Thanh Xuân"
     },
     {
@@ -1043,7 +1043,7 @@ window.ANCU2027_DATA = {
       "stt": 130,
       "investor": "Tổng công ty cổ phần Vinaconex",
       "project": "Khu chung cư Trung Hòa - Nhân Chính",
-      "trade_name": "Khu đô thị mới Trung Hòa - Nhân Chính",
+      "trade_name": "khu đô thị mới Trung Hòa - Nhân Chính",
       "location": "P. Thanh Xuân"
     },
     {
@@ -1162,16 +1162,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 145,
       "investor": "Tổng Công ty Đầu tư Phát triển Nhà và Đô thị (HUD)",
-      "project": "Khu đô thị Văn Quàn - Yên Phúc",
-      "trade_name": "Khu đô thị Văn Quản - Yên Phúc",
+      "project": "khu đô thị Văn Quán - Yên Phúc",
+      "trade_name": "khu đô thị Văn Quản - Yên Phúc",
       "location": "P. Hà Đông"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 146,
       "investor": "Công ty Cổ phần Tập đoàn Khai Sơn",
-      "project": "Khu đô thị Khai Sơn City Long Biên",
-      "trade_name": "Khu đô thị Khai Sơn City Long Biên",
+      "project": "khu đô thị Khai Sơn City Long Biên",
+      "trade_name": "khu đô thị Khai Sơn City Long Biên",
       "location": "P. Việt Hưng"
     },
     {
@@ -1194,7 +1194,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 149,
       "investor": "CTCP Đầu tư và Xây dựng HUD3",
-      "project": "Khu chung cư HUD3 60 Nguyễn Đức Cánh",
+      "project": "Khu chung cư HUD3 60 Nguyễn Đức Cảnh",
       "trade_name": "HUD3 Nguyễn Đức Cảnh",
       "location": "P. Vĩnh Tuy"
     },
@@ -1218,9 +1218,9 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 152,
       "investor": "Công ty TNHH Phát triển THT thuộc Tập đoàn Daewoo E&c (Hàn Quốc)",
-      "project": "Khu đô thị Tây Hồ Tây",
+      "project": "khu đô thị Tây Hồ Tây",
       "trade_name": "Starlake",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1228,7 +1228,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty TNHH Bất động sản Tây Hồ View",
       "project": "Khu chung cư Kosmo Tây Hồ",
       "trade_name": "Kosmo Tây Hồ",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1236,7 +1236,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Đầu tư và Thương mại Thủ Đô",
       "project": "Khu chung cư Ecolife Tây Hồ",
       "trade_name": "Ecolife Tây Hồ",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1244,7 +1244,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty Cổ phần Xây dựng và Thương mại Bắc Hà",
       "project": "Khu chung cư 6Th Element",
       "trade_name": "6Th Element",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1252,7 +1252,7 @@ window.ANCU2027_DATA = {
       "investor": "Công ty CP Đầu tư Xây dựng & Phát triển Nhà số 7 Hà Nội (Handico 7)",
       "project": "Khu chung cư HDI Tây Hồ Residence",
       "trade_name": "Tây Hồ Residence",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1260,14 +1260,14 @@ window.ANCU2027_DATA = {
       "investor": "Tập đoàn Tân Hoàng Minh",
       "project": "Khu chung cư Eldorado Tân Hoàng Minh",
       "trade_name": "D'. El Dorado",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 158,
       "investor": "Tổng Công ty Viglacera",
-      "project": "Khu đô thị Xuân Phương Viglacera",
-      "trade_name": "Khu đô thị Xuân Phương Viglacera",
+      "project": "khu đô thị Xuân Phương Viglacera",
+      "trade_name": "khu đô thị Xuân Phương Viglacera",
       "location": "P. Xuân Phương"
     },
     {
@@ -1314,8 +1314,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 164,
       "investor": "Công ty CP đầu tư xây dựng dân dụng Hà Nội",
-      "project": "Khu đô thị Yên Hòa",
-      "trade_name": "Khu đô thị Yên Hòa",
+      "project": "khu đô thị Yên Hòa",
+      "trade_name": "khu đô thị Yên Hòa",
       "location": "P. Yên Hòa"
     },
     {
@@ -1323,7 +1323,7 @@ window.ANCU2027_DATA = {
       "stt": 165,
       "investor": "Tổng công ty đầu tư và phát triển nhả Hà Nội",
       "project": "Khu chung cư Central Point",
-      "trade_name": "Cenưal Point",
+      "trade_name": "Central Point",
       "location": "P. Yên Hòa"
     },
     {
@@ -1354,16 +1354,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 169,
       "investor": "UBND thành phố Hà Nội",
-      "project": "Khu đô thị Khu biệt thự 5.2 ha Yên Hòa",
-      "trade_name": "Khu đõ thị Khu biệt thự 5,2 ha Yên Hòa",
+      "project": "khu đô thị Khu biệt thự 5.2 ha Yên Hòa",
+      "trade_name": "khu đô thị Khu biệt thự 5,2 ha Yên Hòa",
       "location": "P. Yên Hòa"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 170,
       "investor": "Công ty Cổ phần Tập đoàn Nam Cường Hà Nội",
-      "project": "Khu đô thị Dương Nội",
-      "trade_name": "Khu đò thị Dương Nội",
+      "project": "khu đô thị Dương Nội",
+      "trade_name": "khu đô thị Dương Nội",
       "location": "P. Yên Nghĩa"
     },
     {
@@ -1380,21 +1380,21 @@ window.ANCU2027_DATA = {
       "investor": "Công ty TNHH Gamuda Land Việt Nam",
       "project": "Khu chung cư The One Residence",
       "trade_name": "The One Residence",
-      "location": "P. Yen Sở"
+      "location": "P. Yên Sở"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 173,
       "investor": "Công ty Cổ phần Đầu tư TCO Việt Nam",
-      "project": "Khu đô thị Vinhomes Thăng Long",
+      "project": "khu đô thị Vinhomes Thăng Long",
       "trade_name": "Vinhomes Thăng Long",
-      "location": "Xâ An Khánh"
+      "location": "Xã An Khánh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 174,
       "investor": "Công ty Cổ phần Vinhomes",
-      "project": "Khu đô thị Vinhomes Ocean Park",
+      "project": "khu đô thị Vinhomes Ocean Park",
       "trade_name": "Vinhomes Ocean Park",
       "location": "Xã Gia Lâm"
     },
@@ -1403,7 +1403,7 @@ window.ANCU2027_DATA = {
       "stt": 175,
       "investor": "UBND huyện Gia Lâm",
       "project": "Khu đấu giá Khu đấu giá 3 Iha Trâu Quỳ",
-      "trade_name": "Khu đẩu giá 31 ha Trâu Ọùy",
+      "trade_name": "Khu đấu giá 31 ha Trâu Ọùy",
       "location": "Xã Gia Lâm"
     },
     {
@@ -1418,7 +1418,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 177,
       "investor": "Tổng Công ty Cơ khí Xây dựng (COMA)",
-      "project": "Khu chung cư khu nhà ớ cao cấP. Skylight 125D Minh Khai",
+      "project": "Khu chung cư khu nhà ở cao cấp Skylight 125D Minh Khai",
       "trade_name": "Skylight",
       "location": "P. Bạch Mai"
     },
@@ -1427,7 +1427,7 @@ window.ANCU2027_DATA = {
       "stt": 178,
       "investor": "Công ty Cổ phần Phát triển Đô thị Từ Liêm (Lideco)",
       "project": "Khu chung cư Dịch Vọng",
-      "trade_name": "Khu đô thị mới Dịch Vọng",
+      "trade_name": "khu đô thị mới Dịch Vọng",
       "location": "P. Cầu Giấy"
     },
     {
@@ -1466,7 +1466,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 183,
       "investor": "Công ty Cổ phần Thương mại Ngôi Nhà Mới",
-      "project": "Khu đô thị Louis City Đại Mỗ",
+      "project": "khu đô thị Louis City Đại Mỗ",
       "trade_name": "Louis City Đại Mỗ",
       "location": "P. Đại Mỗ"
     },
@@ -1474,15 +1474,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 184,
       "investor": "Công ty CP Xây dựng số 3",
-      "project": "Khu dô thị Khu nhà ở Trung Văn",
-      "trade_name": "Khu nhà ớ Trung Văn",
+      "project": "khu đô thị Khu nhà ở Trung Văn",
+      "trade_name": "Khu nhà ở Trung Văn",
       "location": "P. Đại Mỗ"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 185,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Hạ tầng và Giao thông (Intracom)",
-      "project": "Khu chung cư Khu nhà ờ liền kề Inưacom 1",
+      "project": "Khu chung cư Khu nhà ở liền kề Intracom 1",
       "trade_name": "Intracom 1",
       "location": "P. Đại Mỗ"
     },
@@ -1506,15 +1506,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 188,
       "investor": "Công ty Cổ phần Sông Đà - Thăng Long",
-      "project": "Khu đô thị Văn Khê",
-      "trade_name": "Khu đô thị Văn Khè",
+      "project": "khu đô thị Văn Khê",
+      "trade_name": "khu đô thị Văn Khè",
       "location": "P. Hà Đông"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 189,
       "investor": "Công ty Cổ phần Him Lam",
-      "project": "Khu đó thi Khu nhà ở Him Lam Vạn Phúc",
+      "project": "khu đô thị Khu nhà ở Him Lam Vạn Phúc",
       "trade_name": "Him Lam Vạn Phúc",
       "location": "P. Hà Đông"
     },
@@ -1522,8 +1522,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 190,
       "investor": "Xí nghiệp Xây dựng Tư nhân số 1 Lai Châu (Tập đoàn Mường Thanh)",
-      "project": "Khu đô thi Xã La",
-      "trade_name": "Khu đô thị Xã La",
+      "project": "khu đô thị Xã La",
+      "trade_name": "khu đô thị Xã La",
       "location": "P. Hà Đông"
     },
     {
@@ -1538,7 +1538,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 192,
       "investor": "Tập đoàn Vạn Phúc (Vạn Phúc Group)",
-      "project": "Khu đô thị Vạn Phúc",
+      "project": "khu đô thị Vạn Phúc",
       "trade_name": "Vạn Phúc City",
       "location": "P. Hà Đông"
     },
@@ -1562,7 +1562,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 195,
       "investor": "Công ty Cổ phần Đầu tư Hãi Phát",
-      "project": "Khu đô thị Làng nghề dệt lụa Vạn Phúc",
+      "project": "khu đô thị Làng nghề dệt lụa Vạn Phúc",
       "trade_name": "Shophouse 24 Vạn Phúc",
       "location": "P. Hà Đông"
     },
@@ -1626,15 +1626,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 203,
       "investor": "(đà xác định trước)",
-      "project": "Khu đô thị OSAKA COMPLEX",
-      "trade_name": "Khu đô thị OSAKA COMPLEX",
+      "project": "khu đô thị OSAKA COMPLEX",
+      "trade_name": "khu đô thị OSAKA COMPLEX",
       "location": "P. Hoàng Liệt"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 204,
       "investor": "GP Invest",
-      "project": "Khu đô thị Khu hỗn hợp Nam Đô Complex",
+      "project": "khu đô thị Khu hỗn hợp Nam Đô Complex",
       "trade_name": "Nam ĐÔ Complex",
       "location": "P. Hoàng Mai"
     },
@@ -1652,7 +1652,7 @@ window.ANCU2027_DATA = {
       "investor": "CTCP Đầụ tư thiết kế và Xây dựng Việt nam (VIDEC) và CTCP SXKD Xuất nhập khẩu Prosimex",
       "project": "Khu chung cư Riverside Garden",
       "trade_name": "Riverside Garden",
-      "location": "P. Khương Đinh"
+      "location": "P. Khương Đình"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -1722,7 +1722,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 215,
       "investor": "Công ty TNHH Bất động sản Thạch Bàn Lakeside",
-      "project": "Khu đô thị Thạch Bàn lakeside",
+      "project": "khu đô thị Thạch Bàn lakeside",
       "trade_name": "Elegant Park Thạch Bàn",
       "location": "P. Long Biên"
     },
@@ -1747,7 +1747,7 @@ window.ANCU2027_DATA = {
       "stt": 218,
       "investor": "",
       "project": "Khu đấu giá Khu đất đấu giá XI",
-      "trade_name": "Khu đắt đấu giá XI",
+      "trade_name": "Khu đất đấu giá XI",
       "location": "P. Long Biên"
     },
     {
@@ -1778,16 +1778,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 222,
       "investor": "Tổng Công ty Đầu tư và Phát triển nhà Hà Nội",
-      "project": "Khu đô thị RESCO cổ Nhuẻ - Xuân Đinh",
-      "trade_name": "Khu đô thị mới Handiresco cồ Nhuế - Xuân Đinh",
+      "project": "khu đô thị RESCO Cổ Nhuế - Xuân Đỉnh",
+      "trade_name": "khu đô thị mới Handiresco Cổ Nhuế - Xuân Đỉnh",
       "location": "P. Nghĩa Đô"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 223,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng số 1 Hà Nội",
-      "project": "Khu đô thị Nghĩa Đô - Dịch Vọng",
-      "trade_name": "Khu đô thị Nghĩa Đô - Dịch Vọng",
+      "project": "khu đô thị Nghĩa Đô - Dịch Vọng",
+      "trade_name": "khu đô thị Nghĩa Đô - Dịch Vọng",
       "location": "P. Nghĩa Đô"
     },
     {
@@ -1826,7 +1826,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 228,
       "investor": "Công ty Cổ phần Thương mại - Quảng cáo - Xây dựng - Địa ốc Việt Hân",
-      "project": "Khu nhà ờ, Văn phòng, dịch vụ tại 136 Hồ Tùng Mậu",
+      "project": "Khu nhà ở, Văn phòng, dịch vụ tại 136 Hồ Tùng Mậu",
       "trade_name": "Goldmark City",
       "location": "P. Phú Diễn"
     },
@@ -1834,22 +1834,22 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 229,
       "investor": "Công ty CP Đầu tư và Xây dựng Quốc tế VIGEBA, Tập đoàn Geleximco và Bảo Việt.",
-      "project": "Khu đô thị thành phố Giao Lưu",
+      "project": "khu đô thị thành phố Giao Lưu",
       "trade_name": "Green Stars",
       "location": "P. Phú Diễn"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 230,
-      "investor": "Công ty Cổ phần Đầu tư Bất động sản Toàn Cầu (GP.Invcst)",
+      "investor": "Công ty Cổ phần Đầu tư Bất động sản Toàn Cầu (GpInvcst)",
       "project": "Khu chung cư The Nine",
       "trade_name": "The Nine",
-      "location": "P. Phủ Diễn"
+      "location": "P. Phú Diễn"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 231,
-      "investor": "Công ty Cổ phần Đầu tư Xây dựng Hạ tầng và Giao thông (Inưacom Group)",
+      "investor": "Công ty Cổ phần Đầu tư Xây dựng Hạ tầng và Giao thông (Intracom Group)",
       "project": "Khu chung cư Intracom 2 Tower",
       "trade_name": "Tòa nhà Intracom 2",
       "location": "P. Phú Diễn"
@@ -1865,7 +1865,7 @@ window.ANCU2027_DATA = {
     {
       "region": "Khu vực Hà Nội",
       "stt": 233,
-      "investor": "Công ty Cổ phần Tập đoàn PCI (Tên cũ: Công ty Cổ phần Xây lắp. Điện 1-PCC1)",
+      "investor": "Công ty Cổ phần Tập đoàn PCI (Tên cũ: Công ty Cổ phần Xây lắp Điện 1-PCC1)",
       "project": "Khu chung cư PCC1 Complex",
       "trade_name": "PCC1 Complex",
       "location": "P. Phú Lương"
@@ -1954,8 +1954,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 244,
       "investor": "Công ty Cổ phần Xây dựng sấ 3 Hà Nội (HANC03)",
-      "project": "Khu đô thị Sài Đồng",
-      "trade_name": "Khu đô thị Sài Đồng",
+      "project": "khu đô thị Sài Đồng",
+      "trade_name": "khu đô thị Sài Đồng",
       "location": "P. Phúc Lợi"
     },
     {
@@ -1978,7 +1978,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 247,
       "investor": "Công ty CP ĐT BĐS Song Lộc",
-      "project": "Dự an xây dựng nhà ớ thấP. tầng để bán tại ô đất TT3 thuộc xây dựng HTKT các ô đất thuộc quy hoạch C14",
+      "project": "Dự án xây dựng nhà ở thấp tầng để bán tại ô đất TT3 thuộc xây dựng HTKT các ô đất thuộc quy hoạch C14",
       "trade_name": "Dự án The Diamond Point (thuộc P. Phúc Đồng cũ)",
       "location": "P. Phúc Lợi"
     },
@@ -1986,7 +1986,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 248,
       "investor": "Hội Kiến trúc sư Việt Nam phối hợp cùng Trung tâm kiến trúc phong cảnh triển khai xây dựng",
-      "project": "Khu đô thị Làng kiến trúc phong cành",
+      "project": "khu đô thị Làng kiến trúc phong cành",
       "trade_name": "Làng kiến trúc phong cánh Võng Thị",
       "location": "P. Tây Hồ"
     },
@@ -2002,8 +2002,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 276,
       "investor": "Công ty Cổ phần Hóa chất Nhựa",
-      "project": "Khu đô thị Bình Minh Garden",
-      "trade_name": "Khu đô thị Bình Minh Garden",
+      "project": "khu đô thị Bình Minh Garden",
+      "trade_name": "khu đô thị Bình Minh Garden",
       "location": "P. Việt Hưng"
     },
     {
@@ -2050,8 +2050,8 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 282,
       "investor": "Công ty CP Đầu tư Xây dựng Phát triển Nhà số 7 Hà Nội (HANDICO 7).",
-      "project": "Khu chung cư khu nhà ờ Vĩnh Hoàng",
-      "trade_name": "Chung cư khu nhà ớ Vĩnh Hoàng",
+      "project": "Khu chung cư khu nhà ở Vĩnh Hoàng",
+      "trade_name": "Chung cư khu nhà ở Vĩnh Hoàng",
       "location": "P. Vĩnh Hưng"
     },
     {
@@ -2066,7 +2066,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 284,
       "investor": "CTCP Đầu tư Đồng Phát",
-      "project": "Khu chung cư Nhà ở hỗn hợp cao tằng Đồng Phát Hoàng Mai - PARK VIEW TOWER",
+      "project": "Khu chung cư Nhà ở hỗn hợp cao tầng Đồng Phát Hoàng Mai - PARK VIEW TOWER",
       "trade_name": "Park View Tower",
       "location": "P. Vĩnh Hưng"
     },
@@ -2106,7 +2106,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 289,
       "investor": "CTCP Kỹ nghệ và Hạ tầng Telin",
-      "project": "Khu đô thị Khu liền kề 622 Minh Khai",
+      "project": "khu đô thị Khu liền kề 622 Minh Khai",
       "trade_name": "Khu liền kề Amber Riverside",
       "location": "P. Vĩnh Tuy"
     },
@@ -2121,10 +2121,10 @@ window.ANCU2027_DATA = {
     {
       "region": "Khu vực Hà Nội",
       "stt": 291,
-      "investor": "Công ty TNHH Phát triển Khu đô thị Nam Thăng Long",
+      "investor": "Công ty TNHH Phát triển khu đô thị Nam Thăng Long",
       "project": "Khu chung cư The Link Ciputra",
       "trade_name": "The Link Ciputra",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -2132,23 +2132,23 @@ window.ANCU2027_DATA = {
       "investor": "",
       "project": "Khu chung cư Toà nhà hỗn hợp vườn Đào",
       "trade_name": "Chung cư Vườn Đào",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 293,
       "investor": "Tổng công ty Xây dựng Hà Nội (Hancorp)",
-      "project": "Khu đô thị Ngoại Giao Đoàn",
-      "trade_name": "Khu đô thị Ngoại Giao Đoàn",
-      "location": "P. Xuân Đinh"
+      "project": "khu đô thị Ngoại Giao Đoàn",
+      "trade_name": "khu đô thị Ngoại Giao Đoàn",
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 294,
       "investor": "Công ty TNHH Phát triển THT",
-      "project": "Khu tái định cư khu nhà ờ thấP. tầng A1TT1",
+      "project": "Khu tái định cư khu nhà ở thấp tầng A1TT1",
       "trade_name": "Embassy Garden",
-      "location": "P. Xuân Đinh"
+      "location": "P. Xuân Đỉnh"
     },
     {
       "region": "Khu vực Hà Nội",
@@ -2162,7 +2162,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 296,
       "investor": "Công ty Cổ phần Tasco",
-      "project": "Khu đô thị Khu nhà ở sinh thải Xuân Phương (Xuân Phương Foresa)",
+      "project": "khu đô thị Khu nhà ở sinh thái Xuân Phương (Xuân Phương Foresa)",
       "trade_name": "Foresa Villa Xuân Phương",
       "location": "P. Xuân Phương"
     },
@@ -2170,7 +2170,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 297,
       "investor": "Công ty Cổ phần Tasco",
-      "project": "Khu đô thị Xuản Phương Residence",
+      "project": "khu đô thị Xuân Phương Residence",
       "trade_name": "Xuân Phương Residence",
       "location": "P. Xuân Phương"
     },
@@ -2178,15 +2178,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 298,
       "investor": "Công ty Cổ phần Đầu tư Hạ tầng và Công trình Kiến trúc Hà Nội",
-      "project": "Khu đô thị Hateco Green City",
-      "trade_name": "Khu đô thị Hateco Green City",
+      "project": "khu đô thị Hateco Green City",
+      "trade_name": "khu đô thị Hateco Green City",
       "location": "P. Xuân Phương"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 299,
       "investor": "Công ty TNHH MTV Đầu tư Phát triển Nhà và Đô thị Thịnh Phát Land",
-      "project": "Khu đô thị Xuân Phương Garden",
+      "project": "khu đô thị Xuân Phương Garden",
       "trade_name": "Xuân Phương Garden",
       "location": "P. Xuân Phương"
     },
@@ -2210,16 +2210,16 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 302,
       "investor": "Công ty Cổ phần Đầu tư Phát triển Đô thị và Khu công nghiệp Sông Đà",
-      "project": "Khu đô thị Nam An Khánh",
-      "trade_name": "Khu đô thị Nam An Khánh",
-      "location": "Xỉ An Khánh"
+      "project": "khu đô thị Nam An Khánh",
+      "trade_name": "khu đô thị Nam An Khánh",
+      "location": "Xã An Khánh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 303,
       "investor": "Công ty TNHH MTV Du lịch Giải ữí Thiên đường Báo Sơn",
-      "project": "Khu đô thị Thiên Đường Bão Sơn",
-      "trade_name": "Khu đô thị Thiên Đường Bào Sơn",
+      "project": "khu đô thị Thiên Đường Bão Sơn",
+      "trade_name": "khu đô thị Thiên Đường Bào Sơn",
       "location": "Xã An Khánh"
     },
     {
@@ -2242,15 +2242,15 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 306,
       "investor": "",
-      "project": "Khu đô thị Khu nhà ở biệt thự Hoa Phượng",
-      "trade_name": "Khu đô thị Khu nhà ở biệt thự Hoa Phượng",
+      "project": "khu đô thị Khu nhà ở biệt thự Hoa Phượng",
+      "trade_name": "khu đô thị Khu nhà ở biệt thự Hoa Phượng",
       "location": "Xã An Khánh"
     },
     {
       "region": "Khu vực Hà Nội",
       "stt": 307,
       "investor": "Công ty cổ phần Đầu tư Xây dựng Hạ tầng và Giao thông (Intracom)",
-      "project": "Khu chung cư đầu tư xây dựng nhà ớ cao tằng kết hợp Văn phòng, lô đất III - B1 - CT, Khu tái định cư",
+      "project": "Khu chung cư đầu tư xây dựng nhà ở cao tầng kết hợp Văn phòng, lô đất III - B1 - CT, Khu tái định cư",
       "trade_name": "Intracom Riverside",
       "location": "Xã Đông Anh"
     },
@@ -2258,7 +2258,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 308,
       "investor": "CTCP Đầu tư T&M Việt Nam; CTCP Đầu tư và Kinh doanh Bất động sản Vland Việt Nam (Vland Việt Nam)",
-      "project": "Khu đắu giá Golden Land TQ5",
+      "project": "Khu đấu giá Golden Land TQ5",
       "trade_name": "Eurowindow twin park; Hà Nội Oriental",
       "location": "Xã Gia Lâm"
     },
@@ -2266,23 +2266,23 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Hà Nội",
       "stt": 309,
       "investor": "Tổng Công ty cả phần Thương mại Xây dựng",
-      "project": "Khu đô thị Hinodc Royal Park (Khu đô thị mới Kim Chung - Di Trạch)",
+      "project": "khu đô thị Hinodc Royal Park (khu đô thị mới Kim Chung - Di Trạch)",
       "trade_name": "Hinode Royal Park",
       "location": "Xã Hoài Đức"
     },
     {
       "region": "Khu vực Tỉnh Hưng Yên",
       "stt": 1,
-      "investor": "Tập đoàn V ingroup",
-      "project": "Khu đô thị Dream City",
+      "investor": "Tập đoàn Vingroup",
+      "project": "khu đô thị Dream City",
       "trade_name": "Vinhomes Oceanpark 2",
       "location": "Xã Nghĩa Trụ"
     },
     {
       "region": "Khu vực Tỉnh Hưng Yên",
       "stt": 2,
-      "investor": "Tập đoàn V ingroup",
-      "project": "Khu đô thị Đại An",
+      "investor": "Tập đoàn Vingroup",
+      "project": "khu đô thị Đại An",
       "trade_name": "Vinhomes Oceanpark 3",
       "location": "Xã Nghĩa Trụ"
     },
@@ -2290,12 +2290,12 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Tỉnh Hưng Yên",
       "stt": 3,
       "investor": "Công ty Cổ phần Tập đoàn Ecopark",
-      "project": "Khu đô thị Ecopark",
-      "trade_name": "Khu đô thị Ecopark",
+      "project": "khu đô thị Ecopark",
+      "trade_name": "khu đô thị Ecopark",
       "location": "Xã Văn Giang"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 1,
       "investor": "Công ty CP Tập đoàn Đất Xanh",
       "project": "Chung cư Phú Gia Hưng",
@@ -2303,7 +2303,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Hội Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 2,
       "investor": "Công ty CP Đầu tư và Phát triển Địa ốc Khang Gia",
       "project": "Chung cư Khang Gia",
@@ -2311,7 +2311,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Hội Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 3,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Chung cư D'Edge Thảo Điển",
@@ -2319,7 +2319,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 4,
       "investor": "Công ty Cổ phần Đức Khải",
       "project": "Chung Cư Đức Khải",
@@ -2327,7 +2327,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 5,
       "investor": "Công ty TNHH Liên doanh Thành Phố Đế Vương",
       "project": "Chung cư Empire City Thủ Thiêm",
@@ -2335,15 +2335,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 6,
-      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TP.HCM (FIDECO)",
+      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TpHCM (FIDECO)",
       "project": "Chung cư Fideco Riverview",
       "trade_name": "Chung cư Fideco Riverview",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 7,
       "investor": "Công ty CP BĐS Sơn Kim",
       "project": "Chung cư Gateway Thao Dien",
@@ -2351,7 +2351,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 8,
       "investor": "Tập đoàn Hoàng Anh Gia Lai (HAGL Land)",
       "project": "Chung cư Hoàng Anh Riverview",
@@ -2359,7 +2359,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 9,
       "investor": "Tập đoàn Novaland",
       "project": "Chung cư Lexington Residence",
@@ -2367,23 +2367,23 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 10,
       "investor": "Masterise Homes",
-      "project": "Chung cư Master! an phú",
-      "trade_name": "Chung cư Master! an phú",
+      "project": "Chung cư Masteri an phú",
+      "trade_name": "Chung cư Masteri an phú",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 11,
-      "investor": "Mastcrise Homes",
-      "project": "Chung Cư Master! Thảo Điền",
-      "trade_name": "Chung Cư Master! Thảo Điền",
+      "investor": "Masterise Homes",
+      "project": "Chung Cư Masteri Thảo Điền",
+      "trade_name": "Chung Cư Masteri Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 12,
       "investor": "Công ty Cổ phần Quốc Lộc Phát",
       "project": "Chung cư Metropole Thủ Thiêm",
@@ -2391,7 +2391,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 13,
       "investor": "Công ty TNHH Xây dựng và Kinh doanh nhà Khởi Thành",
       "project": "Chung cư Paris Hoàng Kim",
@@ -2399,7 +2399,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 14,
       "investor": "Tập đoàn Chiaphua (Hong Kong)",
       "project": "Chung cư Parkland Quận 2",
@@ -2407,15 +2407,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 15,
-      "investor": "Công ty Cổ phần Phát ữiển Nhà G Homes",
+      "investor": "Công ty Cổ phần Phát triển Nhà G Homes",
       "project": "Chung cư Q2 Thảo Điền",
       "trade_name": "Chung cư Q2 Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 16,
       "investor": "Indochina Land",
       "project": "Chung cư River Garden",
@@ -2423,15 +2423,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 17,
-      "investor": "Công ty Cổ phần Phát triển Tài ữợ Địa ốc RC",
+      "investor": "Công ty Cổ phần Phát triển Tài trợ Địa ốc RC",
       "project": "Chung cư River Thủ Thiêm",
       "trade_name": "Chung cư River Thủ Thiêm",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 18,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Chung cư Sadora",
@@ -2439,7 +2439,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 19,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Chung cư Sarica Condominium",
@@ -2447,7 +2447,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 20,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Chung cư Sarimi Sala",
@@ -2455,7 +2455,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 21,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Chung cư Sarina Condominium",
@@ -2463,23 +2463,23 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 22,
       "investor": "Công ty Cổ phần Đầu tư Bất động sản SIC",
-      "project": "Chung cư Thảo Điên Green",
+      "project": "Chung cư Thảo Điền Green",
       "trade_name": "Chung cư Thảo Điền Green",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 23,
       "investor": "Tập đoàn SSG Group",
       "project": "Chung cư Thảo Điền Pearl",
-      "trade_name": "Chung cư Thào Điền Pearl",
+      "trade_name": "Chung cư Thảo Điền Pearl",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 24,
       "investor": "Công ty CP BĐS Sơn Kim",
       "project": "Chung cư The Nassim",
@@ -2487,7 +2487,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 25,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Chung cư The Vista An Phú",
@@ -2495,15 +2495,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 26,
-      "investor": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật TP.HCM (CII)",
+      "investor": "Công ty Cổ phần Đầu tư Hạ tầng Kỹ thuật TpHCM (CII)",
       "project": "Chung cư Thủ Thiêm Lake View",
       "trade_name": "Chung cư Thủ Thiêm Lake View",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 27,
       "investor": "Công ty Cổ phần Đầu tư Thủ Thiêm (Thủ Thiêm Group)",
       "project": "Chung cư Thủ Thiêm Sky",
@@ -2511,15 +2511,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 28,
       "investor": "Tập đoàn GS E&C (GS Engineering & Construction)",
-      "project": "Chung cư Thủ Thiêm Zcit River",
+      "project": "Chung cư Thủ Thiêm Zeit River",
       "trade_name": "Chung cư Thủ Thiêm Zeit River",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 29,
       "investor": "Tập đoàn Novaland",
       "project": "Chung cư Tropic Garden",
@@ -2527,7 +2527,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 30,
       "investor": "Tập đoàn GS E&C (GS Engineering & Construction)",
       "project": "Chung cư Xi Riverview Palace",
@@ -2535,7 +2535,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 31,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Khu dân cư Sari Town",
@@ -2543,47 +2543,47 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 32,
       "investor": "Công ty TNHH MTV An Phú",
-      "project": "Khu biệt thự cao cấP. An Phú",
+      "project": "Khu biệt thự cao cấp An Phú",
       "trade_name": "Khu biệt thự An Phú Superior Villa Compound",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 33,
       "investor": "Công ty Cổ phần Ê Đen",
-      "project": "Khu biệt thự Eden Tháo Điền",
+      "project": "Khu biệt thự Eden Thảo Điền",
       "trade_name": "Khu biệt thụ Eden Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 34,
-      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TP.HCM (FIDECO)",
+      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TpHCM (FIDECO)",
       "project": "Khu Biệt Thự Fideco Thảo Điền",
-      "trade_name": "Khu Biệt Thự Fideco Tháo Điền",
+      "trade_name": "Khu Biệt Thự Fideco Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 35,
       "investor": "Công ty Cổ phần Sapphire",
       "project": "Khu biệt thự Holm Villas Thảo Điền",
-      "trade_name": "Khu biệt thự Holm Villas Tháo Điền",
+      "trade_name": "Khu biệt thự Holm Villas Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 36,
       "investor": "Công ty Công Nghiệp Mới (COTEC)",
-      "project": "Khu biệt thự Kim Sơn Tháo Điền",
-      "trade_name": "Khu biệt thự Kim Sơn Tháo Điền",
+      "project": "Khu biệt thự Kim Sơn Thảo Điền",
+      "trade_name": "Khu biệt thự Kim Sơn Thảo Điền",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 37,
       "investor": "Bamboo Capital Group (BCG)",
       "project": "Khu biệt thự King Crown Villages",
@@ -2591,7 +2591,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 38,
       "investor": "Tập đoàn Trung Thúy (TTG Holding)",
       "project": "Khu biệt thự Lancaster Eden",
@@ -2599,7 +2599,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 39,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng số 8 (CIC8)",
       "project": "Khu Biệt Thự River Mark",
@@ -2607,7 +2607,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 40,
       "investor": "Công ty TNHH MTV Xây dựng và Kinh doanh Nhà Phú Nhuận",
       "project": "Khu biệt thự Rose Villa Saigon",
@@ -2615,7 +2615,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 41,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
       "project": "Khu Biệt Thự Samora Villa Sala",
@@ -2623,7 +2623,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 42,
       "investor": "Tập đoàn Keppel (Singapore)",
       "project": "Khu biệt thự Villa Riviera",
@@ -2631,31 +2631,31 @@ window.ANCU2027_DATA = {
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 43,
       "investor": "Công ty TNHH Lan Anh (Lan Anh Group)",
-      "project": "Khu đô thị Lan Anh Village",
-      "trade_name": "Khu đô thị Lan Anh Village",
+      "project": "khu đô thị Lan Anh Village",
+      "trade_name": "khu đô thị Lan Anh Village",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 44,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Đại Quang Minh",
-      "project": "Khu đô thị Sala Đại Quang Minh",
-      "trade_name": "Khu đô thị Sala Đại Quang Minh",
+      "project": "khu đô thị Sala Đại Quang Minh",
+      "trade_name": "khu đô thị Sala Đại Quang Minh",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 45,
       "investor": "Masterise Homes",
-      "project": "Lutrũere Riverside",
+      "project": "Lumiere Riverside",
       "trade_name": "Lumiere Riverside",
       "location": "P. An Khánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 46,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Akari City",
@@ -2663,7 +2663,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 47,
       "investor": "Công ty TNHH Thương mại Xây dựng Lê Thành",
       "project": "Chung cư Lê Thành",
@@ -2671,7 +2671,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 48,
       "investor": "Công ty Cổ phần Đầu tư và Kinh doanh Nhà Khang Điền",
       "project": "Chung cư The Privia Khang Điền",
@@ -2679,15 +2679,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 49,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng Xuân Mai (Xuan Mai Corp)",
-      "project": "Khu chung cư Bình Trị Đòng B",
+      "project": "Khu chung cư Bình Trị Đông B",
       "trade_name": "Khu chung cư Bình Trị Đông B",
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 50,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu chung cư Da Sà",
@@ -2695,7 +2695,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 51,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu chung cư Ehome 3",
@@ -2703,7 +2703,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 52,
       "investor": "Công ty Cổ phần Tổ chức Nhà Quốc Gia",
       "project": "Khu chung cư Imperial Place",
@@ -2711,15 +2711,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 53,
       "investor": "Công ty TNHH Thương mại Xây dựng Lê Thành",
-      "project": "Khu chung cư Lẻ Thành An Lạc",
+      "project": "Khu chung cư Lê Thành An Lạc",
       "trade_name": "Khu chung cư Lê Thành An Lạc",
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 54,
       "investor": "Hưng Thịnh Corporation",
       "project": "Khu chung cư Moonlight Park View",
@@ -2727,7 +2727,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 55,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu dân cư Lý Chiêu Hoàng",
@@ -2735,7 +2735,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 56,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu dân cư Nam Hùng Vương",
@@ -2743,7 +2743,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 57,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Nam Long",
@@ -2751,7 +2751,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 58,
       "investor": "Công ty Đất Sao Vàng",
       "project": "Khu dân cư Royal House",
@@ -2759,7 +2759,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 59,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu dân cư Tên Lửa",
@@ -2767,7 +2767,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Lạc"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 60,
       "investor": "Công ty TNHH MTV Xây dựng và Kinh doanh Nhà Phú Nhuận",
       "project": "Chung cư Hà Kiều",
@@ -2775,7 +2775,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Nhơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 61,
       "investor": "CT TNHH TM-XD-Kinh doanh nhà Thanh Nhựt và Công ty CP XD và kinh doanh địa ốc Tân Kỳ",
       "project": "Chung cư The Splendor",
@@ -2783,7 +2783,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Nhơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 62,
       "investor": "CT TNHH Đầu tư địa ốc Thành phố",
       "project": "Khu dân cư Cityland Center Hills",
@@ -2791,7 +2791,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Nhơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 63,
       "investor": "CT TNHH Đầu tư địa ốc Thành phố",
       "project": "Khu dân cư Cityland Garden Hills",
@@ -2799,15 +2799,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Nhơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 64,
       "investor": "Masterise Homes",
-      "project": "Chung cư Master! ParkLand",
-      "trade_name": "Chung cư Master! ParkLand",
+      "project": "Chung cư Masteri ParkLand",
+      "trade_name": "Chung cư Masteri ParkLand",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 65,
       "investor": "Tổng công ty Tecco Miền Nam",
       "project": "Chung cư Tecco Home",
@@ -2815,7 +2815,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 66,
       "investor": "Công ty TNHH Quốc Vương",
       "project": "Khu chung cư Quốc Vương",
@@ -2823,47 +2823,47 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 67,
       "investor": "Công ty TNHH Đầu tư - Dịch vụ Địa Óc Đại Nam Hưng",
-      "project": "Khu dãn cư An Phủ",
+      "project": "Khu dân cư An Phú",
       "trade_name": "Khu dân cư An Phú",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 68,
       "investor": "Công ty TNHH Đầu tư và Phát triển Lê Phong (Tập đoàn Lê Phong)",
-      "project": "Khu nhà ở thương mại Lê Phong An Phủ 3",
-      "trade_name": "Khu nhà ớ thương mại Lê Phong An Phú 3",
+      "project": "Khu nhà ở thương mại Lê Phong An Phú 3",
+      "trade_name": "Khu nhà ở thương mại Lê Phong An Phú 3",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 69,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
-      "project": "Khu nhà ớ Thương mại Phú Hồng Đạt",
-      "trade_name": "Khu nhà ở Thương mại Phủ Hồng Đạt",
-      "location": "P. An Phủ"
+      "project": "Khu nhà ở Thương mại Phú Hồng Đạt",
+      "trade_name": "Khu nhà ở Thương mại Phú Hồng Đạt",
+      "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 70,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
-      "project": "Khu nhà ờ Thương mại Phủ Hồng Khang",
+      "project": "Khu nhà ở Thương mại Phú Hồng Khang",
       "trade_name": "Khu nhà ở Thương mại Phú Hồng Khang",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 71,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
-      "project": "Khu nhà ờ thương mại Phú Hồng Thịnh II",
-      "trade_name": "Khu nhà ờ thương mại Phú Hồng Thịnh II",
+      "project": "Khu nhà ở thương mại Phú Hồng Thịnh II",
+      "trade_name": "Khu nhà ở thương mại Phú Hồng Thịnh II",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 72,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh III",
@@ -2871,7 +2871,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 73,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh V",
@@ -2879,7 +2879,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 74,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh VIII",
@@ -2887,15 +2887,15 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 75,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở Thương mại Phú Huy",
-      "trade_name": "Khu nhà ớ Thương mại Phú Huy",
+      "trade_name": "Khu nhà ở Thương mại Phú Huy",
       "location": "P. An Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 76,
       "investor": "Vạn Xuân Group",
       "project": "Chung cư Happy One Premier",
@@ -2903,7 +2903,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 77,
       "investor": "Công ty CP Đầu Tư - Thương Mại - Dịch Vụ Đại Phát",
       "project": "Khu dân cư Bảo Phú Residence",
@@ -2911,7 +2911,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 78,
       "investor": "Công ty Cổ phần Bất động sản Tiến Phước (Tiến Phước Group)",
       "project": "Khu dân cư Senturia Vườn Lài",
@@ -2919,7 +2919,7 @@ window.ANCU2027_DATA = {
       "location": "P. An Phú Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 79,
       "investor": "Công ty Cổ phần Phú Túc Việt",
       "project": "Khu chung cư Cộng Hòa Plaza",
@@ -2927,7 +2927,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bày Hiền"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 80,
       "investor": "Công ty CP Đầu tư Địa ốc Bến Thành Land và Công ty CP Đầu tư Grand Capital",
       "project": "Chung cư The One Sài Gòn",
@@ -2935,7 +2935,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bến Thành"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 81,
       "investor": "Công ty Khiêm Khải",
       "project": "Chung cư Công ty Khiêm Khái",
@@ -2943,7 +2943,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 82,
       "investor": "Công ty Cổ phần Đầu tư Phương Việt (PVlnvest)",
       "project": "Chung cư Phương Việt (tên thương mại: Pegusuite)",
@@ -2951,7 +2951,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 83,
       "investor": "Công ty Cổ phần Địa ốc 8",
       "project": "Khu chung cư Bông Sao",
@@ -2959,15 +2959,15 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 84,
-      "investor": "Liên doanh Công ty cổ phần Giai Việt và HAGL Land (Hoàng Anh Gia Lai Land)",
-      "project": "Khu chung cư Chánh Hưng - Giai Việt",
-      "trade_name": "Khu chung cư Chánh Hưng - Giai Việt",
+      "investor": "Liên doanh Công ty cổ phần Giải Việt và HAGL Land (Hoàng Anh Gia Lai Land)",
+      "project": "Khu chung cư Chánh Hưng - Giải Việt",
+      "trade_name": "Khu chung cư Chánh Hưng - Giải Việt",
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 85,
       "investor": "Công ty Cổ phần Xây dựng Đầu tư và Phát triển Lĩnh Phong - CONIC (Lĩnh Phong CONIC)",
       "project": "Khu chung cư Conic Riverside",
@@ -2975,7 +2975,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 86,
       "investor": "Công ty TNHH 276 Ngọc Long",
       "project": "Khu chung cư Green River quận 8",
@@ -2983,7 +2983,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 87,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Khu chung cư Him Lam Nam Khánh",
@@ -2991,7 +2991,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 88,
       "investor": "Công ty Cổ phần Tư vấn - Thương mại - Dịch vụ Địa ốc Hoàng Quân (Hoàng Quân Group - HQC)",
       "project": "Khu chung cư HQC Plaza",
@@ -2999,15 +2999,15 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 89,
       "investor": "Chủ đầu tư là Công ty cỗ phần Địa ốc Sacom (Samland)",
-      "project": "Khu chung cư Samland Giai Việt",
-      "trade_name": "Khu chung cư Sainland Giai Việt",
+      "project": "Khu chung cư Samland Giải Việt",
+      "trade_name": "Khu chung cư Samland Giải Việt",
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 90,
       "investor": "Công ty TNHH May Song Ngọc",
       "project": "Khu chung cư Tara Residence",
@@ -3015,7 +3015,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 91,
       "investor": "Công ty Cổ phần Đầu tư và Kinh doanh Bất động sản Phương Việt (PVInvest)",
       "project": "Khu chung cư The PegaSuite 2",
@@ -3023,7 +3023,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 92,
       "investor": "Công ty TNHH Đầu tư - Xây dựng - Dịch vụ - Kinh doanh nhà Nam Việt",
       "project": "Khu dân cư The Sun City Ba Tơ",
@@ -3031,7 +3031,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 93,
       "investor": "Công ty CP Đầu tư Xây dựng và Phát triển nhà Hòa Bình",
       "project": "Chung cư Hòa Bình",
@@ -3039,47 +3039,47 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 94,
-      "investor": "Công ty TNHH Phát triển VSIP-SembcorP. Gateway",
+      "investor": "Công ty TNHH Phát triển VSIP-Sembcorp Gateway",
       "project": "Chung cư The Habitat",
       "trade_name": "Chung cư The Habitat",
       "location": "P. Bình Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 95,
-      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TP.HCM (FIDECO)",
+      "investor": "Công ty Cổ phần Ngoại thương và Phát triển Đầu tư TpHCM (FIDECO)",
       "project": "Khu dân cư Areco",
       "trade_name": "Khu dân cư Areco",
       "location": "P. Bình Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 96,
       "investor": "Công ty CP Sản xuất và Thương mại Tổng hợp Cửu Long",
       "project": "Khu nhà ở Cửu Long",
-      "trade_name": "Khu nhà ờ Cửu Long",
+      "trade_name": "Khu nhà ở Cửu Long",
       "location": "P. Bình Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 97,
       "investor": "Công ty Cổ phần Tập đoàn Địa ốc Vạn Xuân (Vạn Xuân Group)",
-      "project": "Nhà nhà ờ Vạn Xuân Đất Việt (Đất Việt Garden)",
+      "project": "Nhà nhà ở Vạn Xuân Đất Việt (Đất Việt Garden)",
       "trade_name": "Nhà nhà ở Vạn Xuân Đất Việt (Đất Việt Garden)",
       "location": "P. Bình Hưng Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 98,
-      "investor": "Công ty TNHH MTV Xày dựng và Kinh doanh Nhà Phú Nhuận",
-      "project": "Chung cư 243A Nguyền Thượng Hiền",
-      "trade_name": "Chung cư Nguyền Văn Đậu/ khu nhà ở cao cấP. Phú Nhuận",
+      "investor": "Công ty TNHH MTV Xây dựng và Kinh doanh Nhà Phú Nhuận",
+      "project": "Chung cư 243A Nguyễn Thượng Hiền",
+      "trade_name": "Chung cư Nguyễn Văn Đậu/ khu nhà ở cao cấp Phú Nhuận",
       "location": "P. Bình Lợi Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 99,
       "investor": "Công ty cổ phần xây dựng và kinh doanh nhà Cửu Long",
       "project": "Chung cư 351/31 Lô A Nơ Trang Long",
@@ -3087,7 +3087,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Lợi Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 100,
       "investor": "Công ty Vật tư Tống hợp và phân bón Hóa Sinh",
       "project": "Chung cư 234 Phan Văn Trị",
@@ -3095,15 +3095,15 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Lợi Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 101,
       "investor": "Công ty TNHH MTV Địa ốc Bình Thạnh",
       "project": "Chung cư 548 Phạm Vân Đồng",
-      "trade_name": "Chung cư cấP. nước",
+      "trade_name": "Chung cư cấp nước",
       "location": "P. Bình Lợi Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 102,
       "investor": "Công ty TNHH Kim Sơn",
       "project": "Khu chung cư Kim Sơn",
@@ -3111,7 +3111,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Lợi Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 103,
       "investor": "Công ty Cổ phần An Phú",
       "project": "Chung cư An Phú",
@@ -3119,7 +3119,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 104,
       "investor": "Công ty Cổ phần Đầu tư Năm Bày Bảy (NBB)",
       "project": "Chung cư Carina Plaza",
@@ -3127,7 +3127,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 105,
       "investor": "Công ty CP Đầu tư và Phát triên Nhà đắt Cotec",
       "project": "Khu chung cư Blue Sapphire Bình Phú",
@@ -3135,7 +3135,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 106,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Khu phức hợp Him Lam - Chợ Lớn",
@@ -3143,7 +3143,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 107,
       "investor": "Công ty TNHH Quản lý Bất động sản Hoàng Phúc",
       "project": "Khu Phức Hợp Richland Western Tower",
@@ -3151,7 +3151,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 108,
       "investor": "Công ty TNHH Thanh Yên",
       "project": "Khu chung cư Thanh yến",
@@ -3159,7 +3159,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Quới"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 109,
       "investor": "Công ty TNHH IDE Việt Nam",
       "project": "Chung cư Green Tower Bình Tân",
@@ -3167,7 +3167,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Tân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 110,
       "investor": "Công ty TNHH Thương mại - Xây dựng Bất động sản 3A",
       "project": "Khu dân cư Dragon Lake View",
@@ -3175,7 +3175,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Tân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 111,
       "investor": "Công ty TNHH Một thành viên Dịch vụ Công ích Quận 5",
       "project": "Khu dân cư Vĩnh Lộc",
@@ -3183,7 +3183,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Tân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 112,
       "investor": "Công ty TNHH MTV Đầu tư DHA",
       "project": "Dự án Căn hộ D-Homme",
@@ -3191,7 +3191,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 113,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư Lucky Palace",
@@ -3199,7 +3199,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 111,
       "investor": "Tổng Công ty Địa ốc Sài Gòn (RESCO)",
       "project": "Chung cư 1050 Chu Văn An",
@@ -3207,7 +3207,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 115,
       "investor": "Công ty Cổ phần Địa ốc Sài Gòn Nam Đô (Saigonres Group)",
       "project": "Chung cư Saigonres",
@@ -3215,7 +3215,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 116,
       "investor": "Công ty CỐ phần Đầu tư và Xây dựng số 8 (CIC8)",
       "project": "Khu chung cư Bắc Bình",
@@ -3223,7 +3223,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 117,
       "investor": "Công ty TNHH MTV Địa ốc Bình Thạnh",
       "project": "Khu chung cư Bắc Đinh Bộ Lĩnh",
@@ -3231,7 +3231,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 118,
       "investor": "Công ty CP Xây dựng - Thương mại Đất Phương Nam",
       "project": "Khu chung cư Đất Phương Nam",
@@ -3239,7 +3239,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 119,
       "investor": "Công ty CP Đầu tư và Phát triển Hồng Hà (Hong Ha D&I)",
       "project": "Khu chung cư The Morning Star",
@@ -3247,7 +3247,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 120,
       "investor": "Công ty CP Đầu tư Xây dựng Thủy Lợi 4",
       "project": "Khu chung cư Thủy lợi 4",
@@ -3255,7 +3255,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 121,
       "investor": "Công ty cổ phần BĐS Phú Vinh",
       "project": "Chung cư Bình Thới",
@@ -3263,7 +3263,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thới"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 122,
       "investor": "Tổng Công ty Thương mại Sài Gòn (SATRA",
       "project": "Khu chung cư Hoa Sen - Lotus Apartment",
@@ -3271,7 +3271,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thới"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 123,
       "investor": "Công ty cổ phần địa ốc 11",
       "project": "Khu chung cư Res 11",
@@ -3279,7 +3279,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thới"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 124,
       "investor": "Công ty Xây dựng Kinh doanh Nhà Quận 11",
       "project": "Khu chung cư Tuệ Tình",
@@ -3287,7 +3287,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Thới"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 125,
       "investor": "Công ty TNHH MTV TM-XD-DV-XNK Vĩnh Phong Thài",
       "project": "Khu chung cư Hoàng Kim Thế Gia",
@@ -3295,7 +3295,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trị Đông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 126,
       "investor": "Công ty CP Địa Ốc 7",
       "project": "Chung cư An Hòa",
@@ -3303,7 +3303,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 127,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Chung cư An Khang",
@@ -3311,23 +3311,23 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 128,
-      "investor": "Công ty Cổ phần Xây dụng số 5 (SC5)",
+      "investor": "Công ty Cổ phần Xây dựng số 5 (SC5)",
       "project": "Chung cư An Lộc",
       "trade_name": "Chung cư An Lộc",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 129,
-      "investor": "Công ty TNHH Đầu tư Thương mại Địa ồc Việt (Vietcomreal)",
+      "investor": "Công ty TNHH Đầu tư Thương mại Địa ốc Việt (Vietcomreal)",
       "project": "Chung cư An Phúc",
       "trade_name": "Chung cư An Phúc",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 130,
       "investor": "Công ty Cổ phần Xây dựng Kinh doanh Địa ốc 3 (RESCO 3)",
       "project": "Chung cư An Thịnh",
@@ -3335,7 +3335,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 131,
       "investor": "Công ty Cổ phần Phát triển Nhà Daewon - Thủ Đức",
       "project": "Chung cư Cantavil",
@@ -3343,7 +3343,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 132,
       "investor": "Công ty Cổ phần Phát triển Nhà Thủ Đức (Thuduc House) liên doanh cùng Tập đoàn Daewon (Hàn Quốc)",
       "project": "Chung cư Cantavil An Phú",
@@ -3351,7 +3351,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 133,
       "investor": "Công ty Cổ phần Xây dựng Kinh doanh Địa ốc III (RESCO 3)",
       "project": "Chung cư Cao Ốc An Thịnh",
@@ -3359,7 +3359,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 134,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Chung cư Cao ốc Thịnh Vượng",
@@ -3367,7 +3367,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 135,
       "investor": "Công ty TNHH Xây dựng và Kinh doanh Nhà Điền Phúc Thành",
       "project": "Chung cư Centana",
@@ -3375,7 +3375,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 136,
       "investor": "Công ty TNHH Kinh doanh Địa ốc Minh Thông",
       "project": "Chung cư D’Lusso Emerald",
@@ -3383,7 +3383,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 137,
       "investor": "Kusto Home (Công ty TNHH Bất động sản Ladona)",
       "project": "Chung Cư Diamond Island",
@@ -3391,7 +3391,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 138,
       "investor": "Liên doanh giữa Keppel Land và Công ty Cổ phần Bất động sản Tiến Phước",
       "project": "Chung cư Estella",
@@ -3399,7 +3399,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 139,
       "investor": "Liên doanh giữa Keppel Land và Công ty cổ phần Bất động sản Tiến Phước",
       "project": "Chung cư Estella Heights",
@@ -3407,7 +3407,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 140,
       "investor": "Công ty Cổ phần Xây dựng - Giao thông - Thương mại Bảo Sơn",
       "project": "Chung cư Homyland",
@@ -3415,7 +3415,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 141,
       "investor": "Công ty TNHH Đầu tư Dịch vụ Kiến Á (INVESKIA)",
       "project": "Chung cư Imperia",
@@ -3423,7 +3423,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 142,
       "investor": "Tập đoàn CapitaLand (Singapore) và Công ty cổ phần Đầu tư và Kinh doanh Nhà Khang Điền.",
       "project": "Chung cư Kris Vuc",
@@ -3431,7 +3431,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 143,
       "investor": "Công ty Cổ phần Đầu tư và Vận tải Biển (Detesco Việt Nam)",
       "project": "Chung cư Lương Đình Của",
@@ -3439,7 +3439,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 144,
       "investor": "Tập đoàn CapitaLand (Singapore) và Công ty cố phân Đầu tư và Kinh doanh Nhà Khang Điền.",
       "project": "Chung cư Parc Spring Apartment",
@@ -3447,7 +3447,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 145,
       "investor": "Công ty Cổ phần Đầu tư Hạ tầng và Đô thị Dầu khí (Peưoland)",
       "project": "Chung cư Petroland",
@@ -3455,7 +3455,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 146,
       "investor": "Công ty TNHH Kinh doanh Địa ốc Minh Thông",
       "project": "Chung cư Precia",
@@ -3463,7 +3463,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 147,
       "investor": "Liên doanh giữa Keppel Land và Công ty Cổ phần Bất động sản Tiến Phước",
       "project": "Chung cư The Estella",
@@ -3471,7 +3471,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 148,
       "investor": "Tập đoàn CapitaLand và Công ty Cổ phần Đầu tư và Kinh doanh Nhà Khang Điền",
       "project": "Chung cư The Krista",
@@ -3479,7 +3479,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 149,
       "investor": "Công ty TNHH Bất động sản Gia Phú",
       "project": "Chung cư The Sun Avenue",
@@ -3487,7 +3487,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 150,
       "investor": "Công ty Cổ phần Đầu tư Thủ Thiêm (Thủ Thiêm Group)",
       "project": "Chung cư Thủ Thiêm Star",
@@ -3495,7 +3495,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 151,
       "investor": "Công ty Cổ phần Đầu tư Thủ Thiêm (Thủ Thiêm Group)",
       "project": "Chung cư Thủ Thiêm Xanh",
@@ -3503,15 +3503,15 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 152,
       "investor": "Công ty Cổ phần Phát triển và Kinh doanh Nhà (HDTC)",
       "project": "Khu dân cư An Phú An Khánh",
-      "trade_name": "Khu dân cư An Phủ An Khánh",
+      "trade_name": "Khu dân cư An Phú An Khánh",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 153,
       "investor": "Công ty TNHH Nam Rạch Chiếc",
       "project": "Khu dân cư Nam Rạch Chiếc",
@@ -3519,7 +3519,7 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 154,
       "investor": "Công ty TNHH Nam Rạch Chiếc",
       "project": "Khu dân cư Palm City",
@@ -3527,31 +3527,31 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 155,
       "investor": "Công ty Cổ phần Đầu tư và Kinh doanh Nhà Khang Điền",
-      "project": "Khu đô thị Gladia Khang Điền",
-      "trade_name": "Khu đô thị Gladia Khang Điền",
+      "project": "khu đô thị Gladia Khang Điền",
+      "trade_name": "khu đô thị Gladia Khang Điền",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 156,
       "investor": "Công ty địa ốc Sài Gòn Resco",
-      "project": "Khu đô thị An Phú - An Khánh",
-      "trade_name": "Khu đô thị An Phú - An Khánh",
+      "project": "khu đô thị An Phú - An Khánh",
+      "trade_name": "khu đô thị An Phú - An Khánh",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 157,
       "investor": "Masterise Homes",
-      "project": "Khu đô thị Global City",
-      "trade_name": "Khu đô thị Global City",
+      "project": "khu đô thị Global City",
+      "trade_name": "khu đô thị Global City",
       "location": "P. Bình Trung"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 158,
       "investor": "Công ty TNHH Xây dựng và Kinh doanh Nhà Điền Phúc Thành",
       "project": "Khu nhà phố Precia Riverside",
@@ -3559,15 +3559,15 @@ window.ANCU2027_DATA = {
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 159,
       "investor": "Công ty Cổ phần Phát triển và Kinh doanh Nhà (HDTC)",
       "project": "Khu phức hợp An Phú New City",
-      "trade_name": "Khu phức hợp An Phủ New City",
+      "trade_name": "Khu phức hợp An Phú New City",
       "location": "P. Bình Trưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 160,
       "investor": "Công ty Cổ phần Kiến Á (Kiến Á Group)",
       "project": "Chung cư Citi Esto",
@@ -3575,7 +3575,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Ui"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 161,
       "investor": "Công ty Cổ phần Kiến Á (Kiến Á Group)",
       "project": "Chung cư Citi Home",
@@ -3583,7 +3583,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 162,
       "investor": "Công ty Cổ phần Kiến Á (Kiến Á Group)",
       "project": "Chung cư Citi Soho",
@@ -3591,7 +3591,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Ui"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 163,
       "investor": "Tập Đoàn CapitaLand hợp tác cùng Công ty TNHH Thương mại Xây dựng Thiên Đức",
       "project": "Chung cư Define",
@@ -3599,7 +3599,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 164,
       "investor": "Tập Đoàn CapitaLand hợp tác cùng Công ty TNHH Thương mại Xây dựng Thiên Đức",
       "project": "Chung cư Feliz en Vista",
@@ -3607,7 +3607,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 165,
       "investor": "Tập đoàn Mapletree",
       "project": "Chung cư One Verandah",
@@ -3615,7 +3615,7 @@ window.ANCU2027_DATA = {
       "location": "P. Càt Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 166,
       "investor": "Công ty Cổ phần Phát triển Nhả Q2",
       "project": "Chung cư Thạnh Mỹ Lợi",
@@ -3623,7 +3623,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 167,
       "investor": "Liên doanh giữa Tập đoàn CapitaLand và Công ty TNHH Xây dựng - Thương mại Thiên Đức",
       "project": "Chung cư The Vista Verde",
@@ -3631,7 +3631,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 168,
       "investor": "Công ty Cổ phần Đầu tư Thủ Thiêm (Thủ Thièm Group)",
       "project": "Chung cư Thủ Thiêm Dragon",
@@ -3639,7 +3639,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 169,
       "investor": "Liên doanh giữa Tập đoàn Maeda (Nhật Bàn) và Công ty TNHH Đầu tư - Xây dựng - Thương mại Thiên Đức (Việt Nam)",
       "project": "Chung cư Waterina Suites",
@@ -3647,7 +3647,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 170,
       "investor": "Công ty Cổ phần Đầu tư và Dịch vụ Thành phố Hồ Chí Minh (Invesco)",
       "project": "Khu dân cư Cát Lái Invesco",
@@ -3655,7 +3655,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 171,
       "investor": "Công ty Cổ phần Kiến Á (Kiến Á Group)",
       "project": "Khu dân cư City Bella",
@@ -3663,7 +3663,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 172,
       "investor": "Công ty Đầu tư Bất động sản Việt Nhân",
       "project": "Khu dân cư Phố Đông Residence",
@@ -3671,7 +3671,7 @@ window.ANCU2027_DATA = {
       "location": "P. Càt Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 173,
       "investor": "Công ty Cổ phần Phát triển Nhà Q2",
       "project": "Khu dân cư Thạnh Mỹ Lợi",
@@ -3679,7 +3679,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 174,
       "investor": "Công ty Cổ phần Đầu tư Thủ Thiêm (Thủ Thiêm Group)",
       "project": "Khu dân cư Villa Thủ Thiêm",
@@ -3687,23 +3687,23 @@ window.ANCU2027_DATA = {
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 175,
       "investor": "Công ty Cổ phần Xây dựng Sài Gòn (SCC)",
-      "project": "Khu đô thị Phố Đông Village",
-      "trade_name": "Khu đô thị Phố Đòng Village",
+      "project": "khu đô thị Phố Đông Village",
+      "trade_name": "khu đô thị Phố Đông Village",
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 176,
       "investor": "Công ty Cổ phần Xây dựng Sài Gòn (SCC)",
-      "project": "Khu đô thị Sol Villas",
-      "trade_name": "Khu đô thị Sol Villas",
+      "project": "khu đô thị Sol Villas",
+      "trade_name": "khu đô thị Sol Villas",
       "location": "P. Cát Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 177,
       "investor": "Tập đoàn Novaland",
       "project": "Khu phức hợp Victoria Village",
@@ -3711,7 +3711,7 @@ window.ANCU2027_DATA = {
       "location": "P. Càt Lái"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 178,
       "investor": "Công ty CP KT XD Phú Nhuận",
       "project": "Cao ốc PN-Techcons",
@@ -3719,7 +3719,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Kiệu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 179,
       "investor": "Tổng công ty TM Sài Gòn (Satra) và Công ty CP Địa Óc Eximland",
       "project": "Chung cư Satra-Eximland",
@@ -3727,7 +3727,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Kiệu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 180,
       "investor": "Công ty CP KT XD Phú Nhuận",
       "project": "Khu chung cư PNTechcons",
@@ -3735,7 +3735,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Kiệu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 181,
       "investor": "Công ty Địa ốc Fico (Fico HOME).",
       "project": "Khu dân cu Rạch Miều",
@@ -3743,7 +3743,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Kiệu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 182,
       "investor": "Công ty Địa ốc Fico (Fico HOME).",
       "project": "Chung cư Thế hệ mới",
@@ -3751,7 +3751,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Ông Lỉnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 183,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Chung cư Zenity",
@@ -3759,7 +3759,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Ông Lãnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 184,
       "investor": "Công ty Cổ phần Chương Dương",
       "project": "Khu chung cư Cental Garden",
@@ -3767,7 +3767,7 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Ông Lãnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 185,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Khu chung cư DI Mension",
@@ -3775,15 +3775,15 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Ông Lãnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 186,
-      "investor": "Công ty CP Tập đoàn Trung Thũy",
+      "investor": "Công ty CP Tập đoàn Trung Thủy",
       "project": "Khu chung cư Lancaster Legacy Nguyễn Trãi",
       "trade_name": "Khu chung cư Lancaster Legacy Nguyễn Trãi",
       "location": "P. Cầu Ông Lãnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 187,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Khu chung cư Zenity Capitaland",
@@ -3791,15 +3791,15 @@ window.ANCU2027_DATA = {
       "location": "P. Cầu Ông Lãnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 188,
-      "investor": "Liên doanh Công ty cổ phần Giai Việt và HAGL Land (Hoàng Anh Gia Lai Land)",
-      "project": "Chung cư Giai Việt",
-      "trade_name": "Chung cư Giai Việt",
+      "investor": "Liên doanh Công ty cổ phần Giải Việt và HAGL Land (Hoàng Anh Gia Lai Land)",
+      "project": "Chung cư Giải Việt",
+      "trade_name": "Chung cư Giải Việt",
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 189,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Chung cư Nam Khảnh",
@@ -3807,7 +3807,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 190,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Khu dân cư Đồng Diều",
@@ -3815,7 +3815,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 191,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng Phúc Khang (Phúc Khang Corporation)",
       "project": "Khu chung cư Diamond Lotus Phúc Khang",
@@ -3823,7 +3823,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 192,
       "investor": "Công ty Cổ phần Đầu tư Năm Bảy Bày (NBB)",
       "project": "Khu chung cư Diamond Riverside",
@@ -3831,7 +3831,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 193,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Khu chung cư Đồng Diều",
@@ -3839,7 +3839,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 194,
       "investor": "Kim Oanh Group",
       "project": "Khu nhà ở thương mại Chánh Phú Hòa",
@@ -3847,7 +3847,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chánh Phú Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 195,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng Cholimex",
       "project": "Khu chung cư Sao Mai",
@@ -3855,23 +3855,23 @@ window.ANCU2027_DATA = {
       "location": "P. Chợ Lớn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 196,
-      "investor": "Công ty Cổ phần Đầu tư & Dịch vụ TP.HCM (Invesco); dự án được đâu tư cùng Công ty TNHH Địa ốc Việt Chi Hưng",
+      "investor": "Công ty Cổ phần Đầu tư & Dịch vụ TpHCM (Invesco); dự án được đâu tư cùng Công ty TNHH Địa ốc Việt Chi Hưng",
       "project": "Khu chung cư Tản Đà Court",
       "trade_name": "Khu chung cư Tản Đà Court",
       "location": "P. Chợ Lớn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 197,
       "investor": "Tập đoàn KITA Group",
       "project": "Chung cư Kiều by KTTA",
       "trade_name": "Chung cư Kiều by KITA",
-      "location": "P. Chợ Quàn"
+      "location": "P. Chợ Quán"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 198,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng số 8 (CIC8)",
       "project": "Khu chung cư Lê Hồng Phong",
@@ -3879,7 +3879,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chợ Quán"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 199,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng số 8 (CIC8)",
       "project": "Khu chung cư Phúc Thịnh",
@@ -3887,7 +3887,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chợ Quán"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 200,
       "investor": "Công ty Cổ phần Phát triển Bất động sản Phát Đạt (PDR)",
       "project": "Khu chung cư The EverRich Infinity",
@@ -3895,7 +3895,7 @@ window.ANCU2027_DATA = {
       "location": "P. Chợ Quán"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 201,
       "investor": "Công ty Hài Long",
       "project": "Chung cư .An Bình",
@@ -3903,7 +3903,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 202,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Garden",
@@ -3911,7 +3911,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 203,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Polaris",
@@ -3919,7 +3919,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 204,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Sala",
@@ -3927,7 +3927,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 205,
       "investor": "Công Ty Cô Phân Charm Group",
       "project": "Chung cư Charm City",
@@ -3935,7 +3935,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 206,
       "investor": "Công Ty Cổ phần Charm Group",
       "project": "Chung cư Charm Plaza",
@@ -3943,7 +3943,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 207,
       "investor": "Phú Đông Group",
       "project": "Chung cư Him Lam Phú Đông",
@@ -3951,7 +3951,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 208,
       "investor": "Công ty Hải Long",
       "project": "Chung cư Hoàng Long",
@@ -3959,15 +3959,15 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 209,
-      "investor": "Công ty CP Tập đoàn Đắt Xanh",
+      "investor": "Công ty CP Tập đoàn Đất Xanh",
       "project": "Chung cư Opal Boulevard",
       "trade_name": "Chung cư Opal Boulevard",
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 210,
       "investor": "Phú Đông Group",
       "project": "Chung cư Phú Đông Premier",
@@ -3975,7 +3975,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 211,
       "investor": "Phú Đông Group",
       "project": "Chung cư Phú Đông Sky Garden",
@@ -3983,7 +3983,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 212,
       "investor": "Công ty CP Địa ốc Sacotn (Samland)",
       "project": "Chung cư Samsora Riverside",
@@ -3991,7 +3991,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 213,
       "investor": "Công ty CPĐTXDHỷĐịa",
       "project": "Chung cư Sen Hồng",
@@ -3999,7 +3999,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 214,
       "investor": "Công ty TNHH STC Bình Dương",
       "project": "Chung cư Stovvn Phúc An 1",
@@ -4007,7 +4007,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 215,
       "investor": "Công ty Hài Long",
       "project": "Chung cư TTTM Sóng Thần",
@@ -4015,15 +4015,15 @@ window.ANCU2027_DATA = {
       "location": "P. Dì An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 216,
       "investor": "Công ty CP ĐT TBS Land",
-      "project": "Khu đô thị Greeen Square",
-      "trade_name": "Khu đô thị Greeen Square",
+      "project": "khu đô thị Greeen Square",
+      "trade_name": "khu đô thị Greeen Square",
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 217,
       "investor": "Tập đoàn Bcons",
       "project": "Khu căn hộ Bcons Garden",
@@ -4031,7 +4031,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 218,
       "investor": "Tổng Công ty' TM XNK Thanh Lễ",
       "project": "Khu dân cư Sóng Thần",
@@ -4039,7 +4039,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 219,
       "investor": "Tổng Công ty' TM XNK Thanh Lễ",
       "project": "Khu dán cư Bình Đường",
@@ -4047,7 +4047,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 220,
       "investor": "Tống Công ty TM XNK Thanh Lễ",
       "project": "Khu dân cư Bình Đường 2",
@@ -4055,7 +4055,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 221,
       "investor": "Tống Công ty TM XNK Thanh Lễ",
       "project": "Khu dân cư Sóng Thần",
@@ -4063,7 +4063,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 222,
       "investor": "Tống Công ty TM XNK Thanh Lễ",
       "project": "Khu dân cư Sóng Thần 1",
@@ -4071,7 +4071,7 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 223,
       "investor": "Tổng Công ty TM XNK Thanh Lễ",
       "project": "Khu dân cư Sóng Thần 2",
@@ -4079,15 +4079,15 @@ window.ANCU2027_DATA = {
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 224,
       "investor": "Công ty TNHH BĐS Phú Hồng Thịnh",
-      "project": "Khu nhà ớ thương mại Phủ Vinh",
+      "project": "Khu nhà ở thương mại Phú Vinh",
       "trade_name": "Khu nhà ở thương mại Phú Vinh",
       "location": "P. Dĩ An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 225,
       "investor": "Indochina Group",
       "project": "Chung cư Kingdom 101",
@@ -4095,7 +4095,7 @@ window.ANCU2027_DATA = {
       "location": "P. Diên Hồng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 226,
       "investor": "Công ty CP Kinh doanh Nhà Nam Hưng Thịnh",
       "project": "Khu chung cư Thiên Nam Apartment",
@@ -4103,7 +4103,7 @@ window.ANCU2027_DATA = {
       "location": "P. Diên Hồng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 227,
       "investor": "Khu chung cư Xi Grand Court",
       "project": "Khu chung cư Xi Grand Court",
@@ -4111,7 +4111,7 @@ window.ANCU2027_DATA = {
       "location": "P. Diên Hồng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 228,
       "investor": "Tập đoàn Bcons",
       "project": "Bcons Greenview",
@@ -4119,7 +4119,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 229,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons - Suối Tiên",
@@ -4127,7 +4127,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 230,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Bee",
@@ -4135,7 +4135,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 231,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons City",
@@ -4143,7 +4143,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 232,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Green View",
@@ -4151,7 +4151,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 233,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons miền Đông",
@@ -4159,7 +4159,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 234,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Bcons Plaza",
@@ -4167,7 +4167,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 235,
       "investor": "Công ty TNHH Dịch vụ và BĐS XD Hoàng Nam",
       "project": "Chung cư Honas Residence",
@@ -4175,7 +4175,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 236,
       "investor": "Công ty TNHH ĐT & XD Nhà HT-Pearl",
       "project": "Chung cư HT-Pearl Apartment",
@@ -4183,7 +4183,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 237,
       "investor": "Công ty TNHH Phúc Đạt Connect 2",
       "project": "Chung cư Phúc Đạt Connect 2",
@@ -4191,7 +4191,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 238,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Quang Phúc Plaza (Bcons Plaza)",
@@ -4199,7 +4199,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 239,
       "investor": "Tập đoàn Bcons",
       "project": "Chung cư Tân Hòa (Building)",
@@ -4207,7 +4207,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 240,
       "investor": "Tập đoàn Bcons",
       "project": "Khu dân cư Bình An",
@@ -4215,7 +4215,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 241,
       "investor": "Công ty TNHH ĐT & PT Lê Phong",
       "project": "Khu dân cư Đông Hòa 1",
@@ -4223,15 +4223,15 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 242,
       "investor": "Kim Oanh Group",
-      "project": "Khu nhà ờ Tân Hòa",
-      "trade_name": "Khu nhà ờ Tân Hòa",
+      "project": "Khu nhà ở Tân Hòa",
+      "trade_name": "Khu nhà ở Tân Hòa",
       "location": "P. Đóng Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 243,
       "investor": "Công ty TNHH Hoàng Hùng",
       "project": "Khu nhà ở thương mại Hoàng Hùng 2",
@@ -4239,15 +4239,15 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 244,
       "investor": "Công ty TNHH BĐS Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh",
-      "trade_name": "Khu nhà ờ thương mại Phú Hồng Thịnh",
+      "trade_name": "Khu nhà ở thương mại Phú Hồng Thịnh",
       "location": "P. Đông Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 245,
       "investor": "Công ty' TNHH MTV Phát triển và Kinh doanh Nhá",
       "project": "Chung cư Đông Hưng 1",
@@ -4255,7 +4255,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 246,
       "investor": "Công ty TNHH Một Thành Viên Đầu tư Phúc Phúc Yên",
       "project": "Chung cư Prosper Plaza",
@@ -4263,7 +4263,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 247,
       "investor": "Công Ty Cổ Phần TECCO Sài Gòn ( STC Corporation)",
       "project": "Chung cư Stown Tham Lương",
@@ -4271,7 +4271,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 248,
       "investor": "Công ty TNHH Thương mại Song Kim và Công ty TNHH Địa ốc Đất Lành",
       "project": "Chung cư Thái An 1",
@@ -4279,15 +4279,15 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 249,
-      "investor": "Công ty TNHH Thương mại Song Kim và Công ty TNHH Địa ốc Đắt Lành",
+      "investor": "Công ty TNHH Thương mại Song Kim và Công ty TNHH Địa ốc Đất Lành",
       "project": "Chung cư Thái An 2",
       "trade_name": "Chung cư Thái An 2",
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 250,
       "investor": "Công ty CP DV - NN & TM Thuận Kiều",
       "project": "Chung cư Topaz Home",
@@ -4295,7 +4295,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 251,
       "investor": "Công ty Cổ phần Phát ừiẻn và Kinh doanh Nhà (HDTC)",
       "project": "Khu dân cư An Sương",
@@ -4303,7 +4303,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đông Hưng Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 252,
       "investor": "Công ty CP ĐT và PT XD (Invesco)",
       "project": "Cao ổc Phú Nhuận",
@@ -4311,7 +4311,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đức Nhuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 253,
       "investor": "Công ty CP ĐT - XD Ricons",
       "project": "Khu chung cư Botanic Towers",
@@ -4319,7 +4319,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đức Nhuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 254,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư Garden Gate Phú Nhuận",
@@ -4327,7 +4327,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đức Nhuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 255,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư Orchard Garden",
@@ -4335,7 +4335,7 @@ window.ANCU2027_DATA = {
       "location": "P. Đức Nhuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 256,
       "investor": "Tổng công ty Đầu tư phát triển nhà và đô thị (HUD)",
       "project": "Chung cư 159",
@@ -4343,7 +4343,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 257,
       "investor": "Công ty Cổ phần Xây dựng số 5 (SC5)",
       "project": "Chung cư 23/49 Đinh Tiên Hoàng",
@@ -4351,7 +4351,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 258,
       "investor": "Tống công ty xây dựng số 1 (CC1)",
       "project": "Khu chung cư Miếu Nối",
@@ -4359,7 +4359,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 259,
       "investor": "Tổng công ty xây dựng Sài Gòn (SGC)",
       "project": "Khu chung cư SGC Nguyên Cứu Vân",
@@ -4367,7 +4367,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 260,
       "investor": "Công ty cổ phần đầu tư xây dựng Thanh Niên",
       "project": "Khu chung cư Thanh Niên",
@@ -4375,7 +4375,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 261,
       "investor": "Công ty cổ phân đẩu tư Van Phúc Gia (khu Bl) và Công ty TNHHMTV Địa ốc Bình Thạnh (khu B2)",
       "project": "Khu chung cư Trường Sa",
@@ -4383,7 +4383,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gia Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 262,
       "investor": "Công ty Cổ phần Xây dựng số 5 (SC5)",
       "project": "Chung cư An Lộc Gò vấp",
@@ -4391,7 +4391,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò vắp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 263,
       "investor": "CT TNHH Đầu tư địa ốc Thành phố",
       "project": "Chung cư Cityland Park Hills",
@@ -4399,7 +4399,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò Vấp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 264,
       "investor": "Công ty TNHH Đầu tư Kinh doanh và Phát triển Dự án Thăng Long",
       "project": "Chung cư Gia Phát",
@@ -4407,7 +4407,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò Vấp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 265,
       "investor": "Tập đoàn Hà Đô và Xí nghiệp Liên hợp Z751.",
       "project": "Chung cư Hà D0Z751",
@@ -4415,7 +4415,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò vầp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 266,
       "investor": "CT TNHH Đầu tư địa ốc Thành phô",
       "project": "Chung cư Park Hill",
@@ -4423,7 +4423,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò Vấp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 267,
       "investor": "CT TNHH Đầu tư địa ốc Thành phố",
       "project": "Khu dân cư Cityland Park Hills",
@@ -4431,7 +4431,7 @@ window.ANCU2027_DATA = {
       "location": "P. Gò Vấp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 268,
       "investor": "Tập đoàn Hà Đô (Công ty cổ phân Tập đoàn Hà Đô)",
       "project": "Chung cư Hà Đô Green View",
@@ -4439,7 +4439,7 @@ window.ANCU2027_DATA = {
       "location": "P. Hạnh Thông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 269,
       "investor": "Công ty Cổ phần Địa ốc Sacom (Samland),",
       "project": "Chung cư Samland Airpot",
@@ -4447,111 +4447,111 @@ window.ANCU2027_DATA = {
       "location": "P. Hạnh Thông"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 270,
       "investor": "Công ty Cổ phần Xây dựng số 5 (SC5)",
       "project": "Chung cư Mỹ An",
       "trade_name": "Chung cư Mỹ An",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 271,
       "investor": "Công ty Cổ phần Xây dựng số 5 (SC5)",
       "project": "Chung Cư Mỹ Long",
       "trade_name": "Chung Cư Mỹ Long",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 272,
       "investor": "Công ty CP Phát triển Hạ tầng và BĐS Thái Bình Dương (PP1)",
       "project": "Chung cư New Town",
       "trade_name": "Chung cư New Town",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 273,
       "investor": "Công ty CP Tập đoàn Đất Xanh",
       "project": "Chung cư Opal Garden",
       "trade_name": "Chung cư Opal Garden",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 274,
       "investor": "Công ty CP Tập đoàn Đất Xanh",
       "project": "Chung cư Sunview Town",
       "trade_name": "Chung cư Sunview Town",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 275,
       "investor": "Công ty Cổ phần Địa ốc Sài Gòn (SA1GONRES)",
       "project": "Chung cư Tam Bình",
       "trade_name": "Chung cư Tam Bình",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 276,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Chung cư TDH Riverview",
       "trade_name": "Chung cư TDH Riverview",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 277,
       "investor": "Tập đoàn TECCO",
       "project": "Chung Cư Tecco Tower Linh Đông",
       "trade_name": "Chung Cư Tecco Tower Linh Đông",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 278,
       "investor": "Kusto Home (Công ty TNHH Bất động sản Ladona)",
       "project": "Chung cư Urban Green",
       "trade_name": "Chung cư Urban Green",
-      "location": "P. HiệP. Bình"
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 279,
       "investor": "Công ty Cổ phần Kinh doanh Địa ốc Him Lam (Him Lam Land)",
-      "project": "Khu dân cư Him Lam Bên Sông HiệP. Bình Chánh",
-      "trade_name": "Khu dân cư Him Lam Bên Sông HiệP. Bình Chánh",
-      "location": "P. HiệP. Bình"
+      "project": "Khu dân cư Him Lam Bên Sông Hiệp Bình Chánh",
+      "trade_name": "Khu dân cư Him Lam Bên Sông Hiệp Bình Chánh",
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 280,
       "investor": "Công ty CP Dịch vụ Tổng hợp Sài Gòn (SAVICO)",
-      "project": "Khu dân cư Savico HiệP. Bình Phước - Tam Bình",
-      "trade_name": "Khu dân cư Savico HiệP. Bình Phước - Tam Bình",
-      "location": "P. HiệP. Bình"
+      "project": "Khu dân cư Savico Hiệp Bình Phước - Tam Bình",
+      "trade_name": "Khu dân cư Savico Hiệp Bình Phước - Tam Bình",
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 281,
       "investor": "Công ty TNHH Xây dựng Việt Quốc",
-      "project": "Khu đô thị Thủ Đức Garden Homes",
-      "trade_name": "Khu đô thị Thủ Đức Garden Homes",
-      "location": "P. HiệP. Bình"
+      "project": "khu đô thị Thủ Đức Garden Homes",
+      "trade_name": "khu đô thị Thủ Đức Garden Homes",
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 282,
       "investor": "Tập đoàn Bất động sản Vạn Phúc",
-      "project": "Khu đô thị Vạn Phúc City",
-      "trade_name": "Khu đô thị Vạn Phúc City",
-      "location": "P. HiệP. Bình"
+      "project": "khu đô thị Vạn Phúc City",
+      "trade_name": "khu đô thị Vạn Phúc City",
+      "location": "P. Hiệp Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 283,
       "investor": "Công ty CP Đầu tư và Xây dựng Công ưình 557 (CIENCO 557)",
       "project": "Khu chung cư Đầm Sen",
@@ -4559,7 +4559,7 @@ window.ANCU2027_DATA = {
       "location": "P. Hòa Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 284,
       "investor": "TTC Land (Sacomreal)",
       "project": "Chung cư Charmington La Pointe",
@@ -4567,7 +4567,7 @@ window.ANCU2027_DATA = {
       "location": "P. Hòa Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 285,
       "investor": "Tập đoàn Hà Đô-Công ty Hà Đô 756 Sài Gòn",
       "project": "Chung cư Hà Đô",
@@ -4575,15 +4575,15 @@ window.ANCU2027_DATA = {
       "location": "P. Hòa Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 286,
       "investor": "Tập đoàn Hà Đô-Công ty Hà Đô 756 Sài Gòn",
-      "project": "Khu chung cư Hà Đò Centrosa Garden",
+      "project": "Khu chung cư Hà Đô Centrosa Garden",
       "trade_name": "Khu chung cư Hà Đô Centrosa Garden",
       "location": "P. Hòa Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 287,
       "investor": "Tập đoàn Hà Đô-Công ty Hà Đô 756 Sài Gòn",
       "project": "Khu dân cư Hà Đô Villas",
@@ -4591,15 +4591,15 @@ window.ANCU2027_DATA = {
       "location": "P. Hòa Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 288,
       "investor": "Masterise Homes",
-      "project": "Chung cư Master! Millennium",
+      "project": "Chung cư Masteri Millennium",
       "trade_name": "Chung cư Masteri Millennium",
       "location": "P. Khánh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 289,
       "investor": "Công Ty TNHH MTV Dịch Vụ Công ích Quận 4",
       "project": "Khu chung cư H2 Hoàng Diệu",
@@ -4607,7 +4607,7 @@ window.ANCU2027_DATA = {
       "location": "P. Khánh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 290,
       "investor": "Công ty TNHH Dịch vụ BĐS Việt Long",
       "project": "Khu chung cư H3 Hoàng Diệu",
@@ -4615,7 +4615,7 @@ window.ANCU2027_DATA = {
       "location": "P. Khánh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 291,
       "investor": "Công Ty TNHH MTV Dịch Vụ Công ích Quận 4",
       "project": "Khu chung cư Vĩnh Hội",
@@ -4623,7 +4623,7 @@ window.ANCU2027_DATA = {
       "location": "P. Khánh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 292,
       "investor": "Công ty Cổ phần Đầu tư Phát triển Đô thị A&T Bình Dương",
       "project": "Chung cư A&T Sky Garden",
@@ -4631,7 +4631,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 293,
       "investor": "Công ty TNHH MTV Setia Lái Thiêu",
       "project": "Chung cư Eco Xuân",
@@ -4639,7 +4639,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 294,
       "investor": "Công ty Cổ phần Tập đoàn Địa ốc Vạn Xuân (Vạn Xuân Group)",
       "project": "Chung Cư Happy One Mori",
@@ -4647,7 +4647,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 295,
       "investor": "Công ty CP Đầu Tư Đại Thịnh Phát",
       "project": "Chung cư Marina Tower",
@@ -4655,7 +4655,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 296,
       "investor": "Công ty Cổ phần Bất động sản Hà An",
       "project": "Chung cư Opal Skyline",
@@ -4663,7 +4663,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 297,
       "investor": "Công ty TNHH Đầu tư vá Phát triển Lê Phong",
       "project": "Chung cư The Emerald Golf View",
@@ -4671,7 +4671,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 298,
       "investor": "Công ty TNHH MTV Sctia Lái Thiêu",
       "project": "Dự án Eco Xuân Lái Thiêu",
@@ -4679,7 +4679,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lải Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 299,
       "investor": "Công ty Cổ phần Đầu tư Đạt Phước",
       "project": "Khu căn hộ Đạt Phước - Rivana",
@@ -4687,7 +4687,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 300,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư EHome 4",
@@ -4695,7 +4695,7 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 301,
       "investor": "Công ty Cổ phần Tập đoàn Đất Xanh",
       "project": "Khu dân cư The Seasons",
@@ -4703,15 +4703,15 @@ window.ANCU2027_DATA = {
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 302,
       "investor": "Công ty Cổ phần Tập đoàn Đất Xanh",
-      "project": "Khu đô thị Thương mại Dịch vụ The Seasons Bình Dương",
-      "trade_name": "Khu đô thị Thương mại Dịch vụ The Seasons Bình Dương",
+      "project": "khu đô thị Thương mại Dịch vụ The Seasons Bình Dương",
+      "trade_name": "khu đô thị Thương mại Dịch vụ The Seasons Bình Dương",
       "location": "P. Lái Thiêu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 303,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Flora Novia",
@@ -4719,7 +4719,7 @@ window.ANCU2027_DATA = {
       "location": "P. Linh Xuân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 304,
       "investor": "Công ty CP sx TM DV Địa Ổc Hoà Bình",
       "project": "Chung Cư Linh Tây Tower",
@@ -4727,7 +4727,7 @@ window.ANCU2027_DATA = {
       "location": "P. Linh Xuân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 305,
       "investor": "Công ty CP BĐS Sài Gòn Vina",
       "project": "Chung cư Linh Trung",
@@ -4735,7 +4735,7 @@ window.ANCU2027_DATA = {
       "location": "P. Linh Xuân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 306,
       "investor": "Công ty CP DV XNK Bình Dương Areco",
       "project": "Khu Nhà ở Phường Linh Tây (Areco)",
@@ -4743,7 +4743,7 @@ window.ANCU2027_DATA = {
       "location": "P. Linh Xuân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 307,
       "investor": "Công ty TNHH Kinh doanh Bất động sản MV1 Việt Nam",
       "project": "Chung cư Glory Heights - Vinhomes Grand Park",
@@ -4751,7 +4751,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 308,
       "investor": "Masterise Homes",
       "project": "Chung cư Lumiere Boulevard - Vinhomes Grand Park",
@@ -4759,15 +4759,15 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 309,
       "investor": "Masterise Homes",
-      "project": "Chung cư Master! Centre Point - Vinhomes Grand Park",
-      "trade_name": "Master! Centre Point",
+      "project": "Chung cư Masteri Centre Point - Vinhomes Grand Park",
+      "trade_name": "Masteri Centre Point",
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 310,
       "investor": "Công ty TNHH Kinh doanh Bất động sản MV1 Việt Nam",
       "project": "Chung cư The Beverly - Vinhomes Grand Park",
@@ -4775,7 +4775,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 311,
       "investor": "Công ty TNHH Kinh doanh Bất động sản MV1 Việt Nam",
       "project": "Chung cư The Beverly Solari - Vinhomes Grand Park",
@@ -4783,7 +4783,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 312,
       "investor": "Công ty TNHH Kinh doanh Bất động sản MV1 Việt Nam",
       "project": "Chung cư The Opus One - Vinhomes Grand Park",
@@ -4791,7 +4791,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 313,
       "investor": "Công ty CP Phát triển Thành phố Xanh",
       "project": "Chung cư The Origami - Vinhomes Grand Park",
@@ -4799,7 +4799,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 314,
       "investor": "Công ty CP Phát triển Thành phố Xanh",
       "project": "Chung cư The Rainbow - Vinhomes Grand Park",
@@ -4807,7 +4807,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 315,
       "investor": "Công ty Cổ phần Đầu tư Thương mại Dịch vụ Địa ốc Thái Dương (Tổng công ty Địa ốc Thái Dương)",
       "project": "Khu dân cư Phước Thiện",
@@ -4815,15 +4815,15 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 316,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
-      "project": "Khu đô thị Thảo Nguyên Sài Gòn",
-      "trade_name": "Khu đô thị Thảo Nguyên Sài Gòn",
+      "project": "khu đô thị Thảo Nguyên Sài Gòn",
+      "trade_name": "khu đô thị Thảo Nguyên Sài Gòn",
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 317,
       "investor": "Công ty CP Phát triển Thành phố Xanh",
       "project": "The Manhattan - Vinhomes Grand Park",
@@ -4831,7 +4831,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 318,
       "investor": "Công ty CP Phát triển Thành phố Xanh",
       "project": "The Manhattan Glory - Vinhomes Grand Park",
@@ -4839,7 +4839,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 319,
       "investor": "Masterise Homes",
       "project": "The Rivus Elie Saab - Vinhomes Grand Park",
@@ -4847,23 +4847,23 @@ window.ANCU2027_DATA = {
       "location": "P. Long Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 320,
       "investor": "Công ty TNHH Xây dựng Đông Nam",
-      "project": "Khu đô thị Ba Ria City Gate",
-      "trade_name": "Khu đô thị Ba Ria City Gate",
+      "project": "khu đô thị Ba Ria City Gate",
+      "trade_name": "khu đô thị Ba Ria City Gate",
       "location": "P. Long Hương"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 321,
       "investor": "Công ty CP BĐS Nam Long Bình Dương",
       "project": "Khu nhà Ở Nam Long 3",
-      "trade_name": "Khu nhà ớ Nam Long 3",
+      "trade_name": "Khu nhà ở Nam Long 3",
       "location": "P. Long Nguyên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 322,
       "investor": "Công ty CP Tư vấn DV-TM Dịa ốc Đại Phúc (Đại Phúc Land)",
       "project": "Khu dân cư Đại Phúc Green Stone",
@@ -4871,7 +4871,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 323,
       "investor": "Công ty CP Thiết kế - Xây dựng - Bất động sản Việt Nhân",
       "project": "Khu dân cư Long Thuận Riverside",
@@ -4879,7 +4879,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 324,
       "investor": "Anpha Holdings",
       "project": "Khu dân cư Sim City",
@@ -4887,7 +4887,7 @@ window.ANCU2027_DATA = {
       "location": "P. Long Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 377,
       "investor": "Công ty CP Ani",
       "project": "Chung cư OSIM1 Phú Mỹ",
@@ -4895,7 +4895,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Mỹ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 378,
       "investor": "Tổng Công ty cổ phân Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Khu dân cư AT A (22ha)",
@@ -4903,7 +4903,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Mỹ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 379,
       "investor": "Công ty CP PT nhà Bà Rịa Vũng Tàu (Hodeco)",
       "project": "Khu dân cư Ecotown Phú Mỹ",
@@ -4911,7 +4911,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Mỹ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 380,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư The Prince Residence",
@@ -4919,7 +4919,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Nhuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 381,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu chung cư Carillon 7",
@@ -4927,7 +4927,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 382,
       "investor": "Công ty TNHH Đầu tư - Xây dựng - Thương mại Địa ốc Quang Thái",
       "project": "Khu chung cư Quang Thái",
@@ -4935,7 +4935,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 383,
       "investor": "Công ty Cổ phần Xây dựng Cotec",
       "project": "Khu chung cư Bigemco Building",
@@ -4943,15 +4943,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 384,
       "investor": "Công ty Cổ phần Cơ khí - Điện Lữ Gia. Dự án Lữ Gia Plaza",
       "project": "Khu chung cư Lữ Gia Plaza",
       "trade_name": "Khu chung cư Lữ Gia Plaza",
-      "location": "P. Phủ Thọ"
+      "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 385,
       "investor": "Công ty TNHH xây dựng thương mại Thuận Việt",
       "project": "Khu chung cư Phú Thọ",
@@ -4959,7 +4959,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 386,
       "investor": "Công ty Cổ phần Phát triển Bất động sản Phát Đạt (PDR)",
       "project": "Khu chung cư The EverRich 1",
@@ -4967,7 +4967,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 387,
       "investor": "Công ty Cổ phần Bảo Gia",
       "project": "Khu chung cư The Flemington",
@@ -4975,7 +4975,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 388,
       "investor": "Công ty TNHH Liên doanh Thuận Việt",
       "project": "Khu chung cư Thuận Việt",
@@ -4983,23 +4983,23 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 389,
       "investor": "Công ty Cổ phần Chương Dương (Chương Dương Corp)",
-      "project": "Chung cư Tàn Hương",
+      "project": "Chung cư Tân Hương",
       "trade_name": "Chung cư Tân Hương",
       "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 390,
-      "investor": "Công ty TNHH MTV Vật liệu xây dựng và Xây lắp. Thương mại BMC",
+      "investor": "Công ty TNHH MTV Vật liệu xây dựng và Xây lắp Thương mại BMC",
       "project": "Khu chung cư BMC Lũy Bán Bích",
       "trade_name": "Khu chung cư BMC Lũy Bán Bích",
       "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 391,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng Công ưinh 557 (Cienco 557)",
       "project": "Khu chung cư cao tàng Âu Cơ - 557",
@@ -5007,15 +5007,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 392,
       "investor": "Công ty TNHH Dịch vụ Thương mại Kim Hồng",
       "project": "Khu chung cư Kim Hồng -Fortuna",
       "trade_name": "Khu chung cư Kim Hồng -Fortuna",
-      "location": "P. Phủ Thọ Hòa"
+      "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 393,
       "investor": "Công ty CP Đầu tư Sơn Thuận",
       "project": "Khu chung cư Oriental Plaza",
@@ -5023,15 +5023,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 394,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu chung cư Sacomreal Hòa Bình",
       "trade_name": "Khu chung cư Sacomreal Hòa Bình",
-      "location": "P. Phủ Thọ Hòa"
+      "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 395,
       "investor": "Công ty Cổ phần Chương Dương (Chương Dương Corp)",
       "project": "Khu chung cư Tân Hương Tower",
@@ -5039,7 +5039,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thọ Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 396,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia)",
       "project": "Chung cư An Gia Riverside - An Gia Skyline",
@@ -5047,7 +5047,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 397,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia)",
       "project": "Chung cư An Gia Skyline",
@@ -5055,7 +5055,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 398,
       "investor": "Vạn Phát Hưng",
       "project": "Chung cư Hoàng Quốc Việt",
@@ -5063,7 +5063,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 399,
       "investor": "TTC Land (Sacomreal)",
       "project": "Chung cư Jamona",
@@ -5071,7 +5071,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 400,
       "investor": "Vạn Phát Hưng",
       "project": "Chung cư Lacasa",
@@ -5079,7 +5079,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 401,
       "investor": "Tập đoàn Đất Xanh",
       "project": "Chung cư LuxGarden",
@@ -5087,7 +5087,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 402,
       "investor": "TTC Land (Sacomreal)",
       "project": "Chung cư Luxury Home - Jamona Apartment",
@@ -5095,7 +5095,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 403,
       "investor": "Công ty cổ phần Hợp tác Kinh tế và Xuất nhập khẩu Savimex",
       "project": "Chung cư Ngọc Lan Apartment",
@@ -5103,7 +5103,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 404,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia)",
       "project": "Chung cư River Panorama",
@@ -5111,7 +5111,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 405,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia)",
       "project": "Chung cư Sky 89",
@@ -5119,7 +5119,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 406,
       "investor": "Liên doanh giữa Công ty xây dựng Hàn Quốc V-Con Invest và Công ty TNHH Tấn Trường (Việt Nam)",
       "project": "Chung cư V-Star",
@@ -5127,7 +5127,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 407,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Nam Long",
@@ -5135,7 +5135,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 408,
       "investor": "Công ty Cổ phần Phát triển Nam Sài Gòn (Sadeco)",
       "project": "Khu dân cư của Công ty ĐT và Xây dựng Tân Thuận",
@@ -5143,7 +5143,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 409,
       "investor": "Vạn Phát Hưng",
       "project": "Khu dân cư của CTY Vạn Phát Hưng",
@@ -5151,7 +5151,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 410,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu dân cư Jamona City",
@@ -5159,7 +5159,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 411,
       "investor": "Công ty Cổ phần Hợp tác Kinh té và Xuất nhập khẩu Savimex",
       "project": "Khu dân cư Savimex",
@@ -5167,15 +5167,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 412,
       "investor": "TTC Land (Sacomreal)",
-      "project": "Khu phức họP. Jamona City",
+      "project": "Khu phức họp Jamona City",
       "trade_name": "Khu phức hợp Jamona City",
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 413,
       "investor": "Vạn Phát Hưng",
       "project": "Khu phức hợp La Casa",
@@ -5183,7 +5183,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phú Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 414,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Chung cư Citrine Apartment",
@@ -5191,7 +5191,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 415,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Ehome 1",
@@ -5199,7 +5199,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 416,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung Cư Ehome 2",
@@ -5207,7 +5207,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 417,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Flora Anh Đào",
@@ -5215,7 +5215,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 418,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Flora-Fuji",
@@ -5223,7 +5223,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 419,
       "investor": "Công ty TNHH Xây dựng - Kinh doanh nhà Gia Hòa",
       "project": "Chung cư Gia Hòa",
@@ -5231,7 +5231,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 420,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Him Lam Phú An",
@@ -5239,7 +5239,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 421,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư Phố Đông- Hoa Sen",
@@ -5247,7 +5247,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 422,
       "investor": "Công ty CP Đầu Tư Thủ Thiêm",
       "project": "Chung cư Phường Phước Long B",
@@ -5255,7 +5255,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 423,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Chung cư TDH Phước Bình",
@@ -5263,7 +5263,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 424,
       "investor": "Công ty TNHH Xây dựng - Kinh doanh nhà Gia Hòa",
       "project": "Chung cư The Art Gia Hòa",
@@ -5271,7 +5271,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 425,
       "investor": "Công ty CP Đầu Tư Thủ Thiêm",
       "project": "Chung cư Thủ Thiêm Garden",
@@ -5279,7 +5279,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 426,
       "investor": "Công ty CP Vinhome",
       "project": "Chung cư Vinhomes Grand Park",
@@ -5287,7 +5287,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 427,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Ehome",
@@ -5295,7 +5295,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 428,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Fuji Residence",
@@ -5303,7 +5303,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 429,
       "investor": "Công ty TNHH Xây dựng - Kinh doanh nhà Gia Hòa",
       "project": "Khu dân cư Gia Hòa",
@@ -5311,7 +5311,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 430,
       "investor": "Công ty Cổ phần Đầu tư và Kinh doanh Nhà Khang Điền",
       "project": "Khu dân cư Khang Điền Intresco",
@@ -5319,7 +5319,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 431,
       "investor": "Công ty Cổ phần Kiến Á (Kiến Á Group)",
       "project": "Khu dân cư Kiên Á",
@@ -5327,7 +5327,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 432,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Nam Long Quận 9",
@@ -5335,7 +5335,7 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 433,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Khu dân cư Phước Long Spring Town",
@@ -5343,15 +5343,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 434,
       "investor": "Công ty TNHH TM DV Xây dựng và Kinh Doanh Nhà Tháp Mười",
-      "project": "Khu dân cư ThảP. Mười Merita",
+      "project": "Khu dân cư Thảp Mười Merita",
       "trade_name": "Khu dân cư Tháp Mười Merita",
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 435,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Khu dân cư The Garland",
@@ -5359,31 +5359,31 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 436,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
-      "project": "Khu đô thị Rio Vista",
-      "trade_name": "Khu đô thị Rio Vista",
+      "project": "khu đô thị Rio Vista",
+      "trade_name": "khu đô thị Rio Vista",
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 437,
       "investor": "Công ty CP Đầu Tư Địa ốc Hưng Phú",
-      "project": "Khu đô thị Riviera Cove",
-      "trade_name": "Khu đô thị Riviera Cove",
+      "project": "khu đô thị Riviera Cove",
+      "trade_name": "khu đô thị Riviera Cove",
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 438,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
-      "project": "Khu đô thị Valora Fuji",
-      "trade_name": "Khu đô thị Valora Fuji",
+      "project": "khu đô thị Valora Fuji",
+      "trade_name": "khu đô thị Valora Fuji",
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 439,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Khu nhà ở TDH",
@@ -5391,15 +5391,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 440,
       "investor": "Công ty TNHH Allgreen - Vượng Thành - Trùng Dương",
-      "project": "Khu đô thị The Maris Vũng Tàu",
-      "trade_name": "Khu đô thị The Maris Vũng Tàu",
+      "project": "khu đô thị The Maris Vũng Tàu",
+      "trade_name": "khu đô thị The Maris Vũng Tàu",
       "location": "P. Phước Thăng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 441,
       "investor": "Công ty Cổ phần Đầu tư Bất động sản Đông Dương",
       "project": "Khu dân cư LaVida Residences Vũng Tàu",
@@ -5407,15 +5407,15 @@ window.ANCU2027_DATA = {
       "location": "P. Phước Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 442,
-      "investor": "Công ty Cổ phần Xây dựng Công nghiệp và Dân dụng Dầu khí (PVC- IC)",
+      "investor": "Công ty Cổ phần Xây dựng Công nghiệp và Dân dụng Dầu khí (PVC-IC)",
       "project": "Chung cư PVC-IC",
       "trade_name": "Chung cư PVC-IC",
       "location": "P. Rạch Dừa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 443,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Vũng tàu Seaview 2",
@@ -5423,7 +5423,7 @@ window.ANCU2027_DATA = {
       "location": "P. Rạch Dừa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 444,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Khu dân cư Đồi 2",
@@ -5431,31 +5431,31 @@ window.ANCU2027_DATA = {
       "location": "P. Rạch Dừa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 445,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
-      "project": "Khu đô thị Chí Linh",
-      "trade_name": "Khu đô thị Chi Linh",
+      "project": "khu đô thị Chí Linh",
+      "trade_name": "khu đô thị Chi Linh",
       "location": "P. Rạch Dừa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 446,
       "investor": "Công ty TNHH Allgreen - Vượng Thành - Trùng Dương",
-      "project": "Khu đô thị The Maris Vũng tàu",
-      "trade_name": "Khu đô thị The Maris Vũng tàu",
+      "project": "khu đô thị The Maris Vũng tàu",
+      "trade_name": "khu đô thị The Maris Vũng tàu",
       "location": "P. Rạch Dừa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 447,
-      "investor": "Mastcrisc Homes",
+      "investor": "Masterise Homes",
       "project": "Khu chung cư Grand Marina Saigon",
       "trade_name": "Khu chung cư Grand Marina Saigon",
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 448,
       "investor": "Công ty CB Richard Ellis Việt Nam (CBRE)",
       "project": "Khu chung cư Indochina Park Tower",
@@ -5463,15 +5463,15 @@ window.ANCU2027_DATA = {
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 449,
-      "investor": "Hongkong Land và tậP. đoàn Hoa Lâm",
+      "investor": "Hongkong Land và tập đoàn Hoa Lâm",
       "project": "Khu chung cư The MarQ",
       "trade_name": "Khu chung cư The MarQ",
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 450,
       "investor": "Vinhomes",
       "project": "Khu chung cư Vinhomes Ba Son",
@@ -5479,7 +5479,7 @@ window.ANCU2027_DATA = {
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 451,
       "investor": "Vinhomes",
       "project": "Khu trung tâm phức hợp Vinhomes Golden River",
@@ -5487,15 +5487,15 @@ window.ANCU2027_DATA = {
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 452,
       "investor": "Vinhomes",
-      "project": "Tòa nhà Vincom Center Đông Khới",
+      "project": "Tòa nhà Vincom Center Đồng Khởi",
       "trade_name": "Tòa nhà Vincom Center Đồng Khởi",
       "location": "P. Sài Gòn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 453,
       "investor": "Công ty Cổ phần Bất động sản SeaHoldings (Sea Holdings)",
       "project": "Chung cư Fresca Riverside",
@@ -5503,7 +5503,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 454,
       "investor": "Công ty TNHH Sản xuất - Thương mại Lan Phương (Lan Phương Group)",
       "project": "Chung cư Sài Gòn Avenue",
@@ -5511,7 +5511,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 455,
       "investor": "STC Corporation",
       "project": "Chung cư Stown",
@@ -5519,7 +5519,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 456,
       "investor": "Công ty TNHH Tư vấn và Kinh doanh Nhà Đạt Gia",
       "project": "Chung cư Tam Phú",
@@ -5527,7 +5527,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 457,
       "investor": "Công ty TNHH Sản xuất - Thương mại Lan Phương (Lan Phương Group)",
       "project": "Chung cư The Navita",
@@ -5535,15 +5535,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 458,
-      "investor": "Công ty CP Phát triển Nhà Thù Đức (Thuduc House)",
+      "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Khu dân cư Bình Chiểu",
       "trade_name": "Khu dân cư Bình Chiểu",
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 459,
       "investor": "Công ty CP Phát triển Nhà Thủ Đức (Thuduc House)",
       "project": "Khu dân cư Bình Chiếu 2",
@@ -5551,15 +5551,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 460,
       "investor": "Công ty CP Tập đoàn Địa ốc Vạn Xuân",
-      "project": "Khu đô thị Vạn Xuân Tam Bình",
-      "trade_name": "Khu đô thị Vạn Xuân Tam Bình",
+      "project": "khu đô thị Vạn Xuân Tam Bình",
+      "trade_name": "khu đô thị Vạn Xuân Tam Bình",
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 461,
       "investor": "Công ty Cổ phần Hưng Phú Invest",
       "project": "Khu phức hợp Thăng Long Home Hưng Phú",
@@ -5567,15 +5567,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 462,
       "investor": "ông ty TNHH Thương mại - Dịch vụ - Xuất nhập khẩu Du lịch Thanh Sơn",
       "project": "Khu dân cư Thanh Sơn Residence",
-      "trade_name": "Khu dàn cư Thanh Sơn Residence",
+      "trade_name": "Khu dân cư Thanh Sơn Residence",
       "location": "P. Tam Long"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 463,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Chung cư Bình An",
@@ -5583,7 +5583,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 464,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Chung cư Bình Giã Resident",
@@ -5591,7 +5591,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 465,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Chí Linh Center Vũng Tàu",
@@ -5599,7 +5599,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thăng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 466,
       "investor": "Tổng Công ty Cổ phần Đầu tư Phát triển Xây dựng ( D1C)",
       "project": "Chung cư Die Lakeside",
@@ -5607,7 +5607,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 467,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Die Phoenix",
@@ -5615,7 +5615,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 468,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Chung cư Hodeco 21 tầng",
@@ -5623,7 +5623,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 469,
       "investor": "Công ty Cỏ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Chung cư Hodeco Plaza",
@@ -5631,7 +5631,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 470,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Lakeside",
@@ -5639,7 +5639,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 471,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Lakeside B",
@@ -5647,7 +5647,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 472,
       "investor": "Công ty Cổ phần Xây dựng Công nghiệp và Dân dụng Dầu khí (PVC-IC)",
       "project": "Chung cư PVC-IC Diamond",
@@ -5655,7 +5655,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 473,
       "investor": "Công ty Cổ phần Thương mại - Du lịch Vũng Tàu - Sài Gòn",
       "project": "Chung cư Vũng Tàu Centre Point",
@@ -5663,7 +5663,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Tháng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 474,
       "investor": "Công ty Cổ phần Thương mại - Du lịch Vũng Tàu - Sài Gòn",
       "project": "Chung cư Vũng Tàu Plaza",
@@ -5671,7 +5671,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 475,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Khu biệt thự Đồi Ngọc Tước 2",
@@ -5679,7 +5679,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 476,
       "investor": "Tổng Công ty cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Khu biệt thự Phương Nam",
@@ -5687,23 +5687,23 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 477,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodcco)",
-      "project": "Khu dân cư Sao mai Bến Đinh",
-      "trade_name": "Khu dân cư Sao mai Bến Đình",
+      "project": "Khu dân cư Sao Mai Bến Đình",
+      "trade_name": "Khu dân cư Sao Mai Bến Đình",
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 478,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
-      "project": "Khu nhà ớ Bình Minh",
-      "trade_name": "Khu nhà ớ Bình Minh",
+      "project": "Khu nhà ở Bình Minh",
+      "trade_name": "Khu nhà ở Bình Minh",
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 479,
       "investor": "Công ty Cổ phần Phát triển Nhà Bà Rịa - Vũng Tàu ( Hodeco)",
       "project": "Khu Trung tâm Thương mại phường 7",
@@ -5711,7 +5711,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Thắng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 480,
       "investor": "Công ty Cổ Phần May Tiến Phát, Công ty cổ phần địa ốc Sài Gòn Thương Tín (Sacomreal)",
       "project": "Chung cư Carillon 1",
@@ -5719,7 +5719,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 481,
       "investor": "Công ty CP Địa ốc Sài Gòn Thương Tín (Sacomreal)",
       "project": "Khu chung cư Chung cư Carillon 3",
@@ -5727,7 +5727,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 482,
       "investor": "Công ty cổ phần Thanh Niên và Công ty CP Vật tư Xuất nhập khẩu Tân Bình (Tamexim)",
       "project": "Khu chung cư The Harmona",
@@ -5735,7 +5735,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Bình"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 483,
       "investor": "Công ty Địa ốc FiCO (Fico HOME).",
       "project": "Khu chung cư Horizon Tower",
@@ -5743,7 +5743,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Định"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 484,
       "investor": "Công ty Cổ phần Xây dựng Tư vấn Đầu tư Bình Dương (BICONS1)",
       "project": "Khu dân cư Biconsi",
@@ -5751,7 +5751,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Đông Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 485,
       "investor": "Công ty Cổ phần Xây dựng Tư vấn Đầu tư Bình Dương (BICONSI)",
       "project": "Khu dân cư Dịch vụ Tân Bình (Biconsi)",
@@ -5759,7 +5759,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Đông Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 486,
       "investor": "Tổng công ty CP Đầu tư và Phát triển Công nghiệp (Becamex IDC Corp)",
       "project": "Khu dân cư Đông An",
@@ -5767,7 +5767,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Đông Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 487,
       "investor": "Công ty Cổ phần Xây dựng Tư vấn Đầu tư Bình Dương (B1CONSI)",
       "project": "Khu dân cư Biconsi",
@@ -5775,15 +5775,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Đông Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 488,
-      "investor": "Công ty TNHH Quản lý Đầu tư Phát triển Đô thị Việt Nam (thuộc tậP. đoàn Phú Hồng Thịnh)",
+      "investor": "Công ty TNHH Quản lý Đầu tư Phát triển Đô thị Việt Nam (thuộc tập đoàn Phú Hồng Thịnh)",
       "project": "Khu nhà ở thương mại Phú Gia",
-      "trade_name": "Khu nhà ớ thương mại Phú Gia",
+      "trade_name": "Khu nhà ở thương mại Phú Gia",
       "location": "P. Tân Đông Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 489,
       "investor": "Công ty Cổ phần Khải Huy Quân & Tập đoàn Hưng Thịnh (Hưng Thịnh Corp)",
       "project": "Chung cư Florita Đức Khải",
@@ -5791,7 +5791,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 490,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Garden Court",
@@ -5799,15 +5799,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 491,
-      "investor": "Công ty TNHH Phát triển Phủ Mỹ Hưng",
+      "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Garden Plaza 1",
       "trade_name": "Chung cư Garden Plaza 1",
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 492,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Garden Plaza 2",
@@ -5815,7 +5815,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 493,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Grand View",
@@ -5823,7 +5823,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 494,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Happy Valley + Happy Valley Premier",
@@ -5831,7 +5831,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 495,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Happy Valley Premium",
@@ -5839,7 +5839,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 496,
       "investor": "Công ty Cổ phần Hoàng Anh Gia Lai (HAGL)",
       "project": "Chung cư Hoàng Anh Gia Lai",
@@ -5847,7 +5847,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 497,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Hưng Vượng 1-2-3",
@@ -5855,7 +5855,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 498,
       "investor": "Công ty Cổ phần Quốc Cường Gia Lai",
       "project": "Chung cư Lavida Plus",
@@ -5863,7 +5863,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 499,
       "investor": "Công ty Cổ phần Đầu tư Thảo Điền và Công ty Cổ phần Đầu tư TCO Việt Nam",
       "project": "Chung cư M-One Nam Sài Gòn",
@@ -5871,7 +5871,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 500,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Cảnh",
@@ -5879,7 +5879,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 501,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Đức",
@@ -5887,15 +5887,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 502,
-      "investor": "Công ty TNHH Phát triển Phủ Mỹ Hưng",
+      "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Khánh 1-4",
       "trade_name": "Chung cư Mỹ Khánh 1-4",
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 503,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Phát",
@@ -5903,7 +5903,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 504,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Phúc",
@@ -5911,7 +5911,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 505,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Mỹ Phước",
@@ -5919,15 +5919,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 558,
-      "investor": "Công ty CP Đầu UI Sơn Thuận",
+      "investor": "Công ty CP Đầu tư Sơn Thuận",
       "project": "Chung cư Oriental Plaza",
       "trade_name": "Chung cư Oriental Plaza",
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 559,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu chung cư Carillon 2 (Đặng Thành)",
@@ -5935,7 +5935,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 560,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu chung cư Carillon 5",
@@ -5943,7 +5943,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 561,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu chung cư Đặng Thành",
@@ -5951,15 +5951,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 562,
-      "investor": "Tập đoàn bất động sản, xây dựng Invcstco",
+      "investor": "Tập đoàn bất động sản, xây dựng Investco",
       "project": "Khu chung cư Investco Babylon",
       "trade_name": "Khu chung cư Investco Babylon",
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 563,
       "investor": "Khang Gia (Công ty TNHH Đầu tư và Phát triển Bất động sản Khang Gia)",
       "project": "Khu chung cư Khang Phú",
@@ -5967,7 +5967,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 564,
       "investor": "Công ty Cổ phần Địa ốc Tân Bình (TanBinhlCC)",
       "project": "Khu chung cư Khuông Việt",
@@ -5975,7 +5975,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 565,
       "investor": "Địa Ốc 11 (RES 11)",
       "project": "Khu chung cư Res Green Tower",
@@ -5983,15 +5983,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Phủ"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 566,
-      "investor": "Công ty TNHH MTV Xày dựng và Kinh doanh Nhà Phú Nhuận",
+      "investor": "Công ty TNHH MTV Xây dựng và Kinh doanh Nhà Phú Nhuận",
       "project": "Khu chung cư Valéo Đầm Sen",
       "trade_name": "Khu chung cư Valéo Đầm Sen",
       "location": "P. Tân Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 567,
       "investor": "Công ty Cổ phần Địa ốc Phúc Yên",
       "project": "Khu chung cư Phúc Yên 2",
@@ -5999,7 +5999,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 568,
       "investor": "Công ty Cổ phần Tân Hoàng Thắng (Tân Hoàng Thăng Group)",
       "project": "Khu chung cư Ruby Garden",
@@ -6007,7 +6007,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 569,
       "investor": "Công ty CP Vật tư XNK Tản Bình (TAMEXIM)",
       "project": "Khu chung cư Central Plaza",
@@ -6015,7 +6015,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 570,
       "investor": "Công ty CP Đầu tư Xây dựng Tân Bình",
       "project": "Khu chung cư Park Legend",
@@ -6023,7 +6023,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 571,
       "investor": "Tập đoàn SSG Group",
       "project": "Khu chung cư Sài Gòn Airport Plaza",
@@ -6031,7 +6031,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 572,
       "investor": "Công ty Cổ phần Địa ốc Sài Gòn (SAIGONRES)",
       "project": "Khu chung cư Gò Dầu 2",
@@ -6039,7 +6039,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Nhi"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 573,
       "investor": "Hưng Thịnh Corp",
       "project": "Khu chung cư Melody Residences",
@@ -6047,7 +6047,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Nhì"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 574,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát triển Bất động sản An Gia)",
       "project": "Khu chung cư The Garden",
@@ -6055,7 +6055,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Nhi"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 575,
       "investor": "An Gia Group (Công ty Cổ phần Đầu tư và Phát trién Bất động sản An Gia)",
       "project": "Khu dân cư An Gia Garden",
@@ -6063,7 +6063,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Sơn Nhi"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 576,
       "investor": "Công ty TNHH MTV Tổng công ty Thái Sơn (Thaison Group)",
       "project": "Khu chung cư Thái Sơn",
@@ -6071,7 +6071,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Tạo"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 577,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu dân cư phía Bắc Kênh Lương Bèo",
@@ -6079,7 +6079,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Tạo"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 578,
       "investor": "Công ty TNHH Xây dựng và Thương mại 12 (công ty con của Licogi 16)",
       "project": "Chung cư The ParkLand Quận 12",
@@ -6087,15 +6087,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thới Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 579,
       "investor": "Công ty TNHH Xây dựng vá Thương mại 12 (công ty con của Licogi 16)",
-      "project": "Khu dân cư HiệP. Thành City",
-      "trade_name": "Khu dân cư HiệP. Thành City",
+      "project": "Khu dân cư Hiệp Thành City",
+      "trade_name": "Khu dân cư Hiệp Thành City",
       "location": "P. Tân Thời Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 580,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư An Hòa 1",
@@ -6103,7 +6103,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 581,
       "investor": "Công ty Cổ phần May Tiến Phát (Con của TTC Land)",
       "project": "Chung cư Jamona Heights",
@@ -6111,7 +6111,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 582,
       "investor": "Tập đoàn Đất Xanh",
       "project": "Chung cư Luxcity",
@@ -6119,7 +6119,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 583,
       "investor": "Công ty Hưng Lộc Phát",
       "project": "Chung cư The Golden Star",
@@ -6127,7 +6127,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 584,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu chung cư An Viên",
@@ -6135,15 +6135,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 585,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
-      "project": "Khu đô thị Nam Long (Nam Long Tân Thuận Đông)",
-      "trade_name": "Khu đô thị Nam Long (Nam Long Tân Thuận Đông)",
+      "project": "khu đô thị Nam Long (Nam Long Tân Thuận Đông)",
+      "trade_name": "khu đô thị Nam Long (Nam Long Tân Thuận Đông)",
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 586,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Xuân Mai Sài Gòn",
       "project": "Khu phức hợp Eco Green Sài Gòn",
@@ -6151,7 +6151,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 587,
       "investor": "TTC Land (Sacomreal)",
       "project": "Khu phức hợp Jamona Golden Silk",
@@ -6159,7 +6159,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Thuận"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 588,
       "investor": "Công ty Cổ phần Xây dựng Tư vấn Bình Dương (Biconsi)",
       "project": "Khu dân cư thương mại Biconsi Uyên Hưng",
@@ -6167,15 +6167,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Uyên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 589,
       "investor": "Công ty Cổ phần Xây dựng Tư vấn Bình Dương (Biconsi)",
       "project": "Khu nhà ở Biconsi Riverside",
-      "trade_name": "Khu nhà ờ Biconsi Riverside",
+      "trade_name": "Khu nhà ở Biconsi Riverside",
       "location": "P. Tân Uyên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 590,
       "investor": "Đây là liên doanh hợp tác giữa Công ty cổ phần Phát triển Nhà Thủ Đức (Thủ Đức House) và đối tác nước ngoài Daewon (Hàn Quốc). [1, A3]",
       "project": "Chung cư Centum Wealth Complex",
@@ -6183,7 +6183,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tăng Nhơn Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 591,
       "investor": "Công ty Phát triển Nhà đất Quận 9",
       "project": "Chung cư Man Thiện",
@@ -6191,7 +6191,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tăng Nhơn Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 592,
       "investor": "Tổng Công ty cổ phần Phong Phú (Phong Phú Group)",
       "project": "Chung cư Nhân Phú",
@@ -6199,7 +6199,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tăng Nhơn Phú"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 593,
       "investor": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khấu Dịch vụ và Đầu tưTan Bình (TANIMEX)",
       "project": "Chung cư Sơn Kỳ 1",
@@ -6207,7 +6207,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tây Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 594,
       "investor": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khấu Dịch vụ và Đầu tư Tan Bình (TANIMEX)",
       "project": "Khu chung cư Sơn Kỳ",
@@ -6215,7 +6215,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tây Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 595,
       "investor": "Công ty Cổ phần Sán xuất Kinh doanh Xuất nhập khấu Dịch vụ và Đầu tư Tân Bình (TANIMEX)",
       "project": "Khu chung cư Sơn Kỳ 1",
@@ -6223,7 +6223,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tây Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 596,
       "investor": "Công ty Cổ phần Sản xuất Kinh doanh Xuất nhập khầu Dịch vụ và Đầu tư Tân Bình (TANIMEX)",
       "project": "Khu chung cư Sơn Kỳ 2",
@@ -6231,15 +6231,15 @@ window.ANCU2027_DATA = {
       "location": "P. Tây Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 597,
       "investor": "Tập đoàn Gamuda Land",
-      "project": "Khu đô thị Celadon City",
-      "trade_name": "Khu đô thị Celadon City",
+      "project": "khu đô thị Celadon City",
+      "trade_name": "khu đô thị Celadon City",
       "location": "P. Tây Thạnh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 598,
       "investor": "Công ty CP Hoàn cẩu Sài Gòn",
       "project": "Chung cư Cantavil Hoàn cầu",
@@ -6247,7 +6247,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 599,
       "investor": "REF1CO (Công ty Phát triển BĐS REFICO)",
       "project": "Chung cư City Garden",
@@ -6255,7 +6255,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 600,
       "investor": "Công ty TNHH Vietnam Land SSG (Vietnam Land)",
       "project": "Chung cư Opal Tower",
@@ -6263,7 +6263,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 601,
       "investor": "Công ty CP Tập đoàn SSG",
       "project": "Chung cư Pearl Plaza",
@@ -6271,7 +6271,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 602,
       "investor": "Công ty TNHH Vietnam Land SSG (Vietnam Land)",
       "project": "Chung cư Saigon Pearl",
@@ -6279,7 +6279,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ TâY"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 603,
       "investor": "CÔNG TY TNHH BAY WATER",
       "project": "Chung cư Sunwah Pearl",
@@ -6287,7 +6287,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 604,
       "investor": "Tập đoàn Bitexco (Bitexco Group)",
       "project": "Chung cư The Manor 2",
@@ -6295,15 +6295,15 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 605,
       "investor": "Công ty CP Đầu tư Xây dựng Tân Liên Phát",
       "project": "Chung cư Vinhomes Central Park",
-      "trade_name": "Chung cư Vinhomes Cenưal Park",
+      "trade_name": "Chung cư Vinhomes Central Park",
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 606,
       "investor": "Công ty CP Sài Gòn Nhà Đất (Saigonland)",
       "project": "Khu chung cư Saigonland",
@@ -6311,7 +6311,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 607,
       "investor": "Công ty CP Thế Ký 21",
       "project": "Khu chung cư Thế kỷ 21",
@@ -6319,7 +6319,7 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 608,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư Wilton Tower",
@@ -6327,63 +6327,63 @@ window.ANCU2027_DATA = {
       "location": "P. Thạnh Mỹ Tây"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 635,
       "investor": "Công ty Quản lý Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở Phú Hồng Phát",
-      "trade_name": "Khu nhà ở Phú Hông Phát",
+      "trade_name": "Khu nhà ở Phú Hồng Phát",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 636,
       "investor": "Tập đoàn Lê Phong (Lê Phong Group)",
       "project": "Khu nhà ở thương mại Lê Phong Bình Chuẩn 2",
-      "trade_name": "Khu nhà ớ thương mại Lê Phong Bình Chuẩn 2",
+      "trade_name": "Khu nhà ở thương mại Lê Phong Bình Chuẩn 2",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 637,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhã ở thương mại Phú Gia Huy",
-      "trade_name": "Khu nhà ờ thương mại Phú Gia Huy",
+      "trade_name": "Khu nhà ở thương mại Phú Gia Huy",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 638,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Lộc",
-      "trade_name": "Khu nhà ớ thương mại Phú Hồng Lộc",
+      "trade_name": "Khu nhà ở thương mại Phú Hồng Lộc",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 639,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh VII",
-      "trade_name": "Khu nhà ờ thương mại Phú Hồng Thịnh VII",
+      "trade_name": "Khu nhà ở thương mại Phú Hồng Thịnh VII",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 640,
       "investor": "Công ty TNHH Bất động sản Phú Hồng Thịnh",
       "project": "Khu nhà ở thương mại Phú Hồng Thịnh VIII",
-      "trade_name": "Khu nhà ờ thương mại Phú Hồng Thịnh VIII",
+      "trade_name": "Khu nhà ở thương mại Phú Hồng Thịnh VIII",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 641,
-      "investor": "Công ty TNHH BĐS Guocoland Bình Dương (thuộc tậP. đoàn danh tiếng của Singapore)",
+      "investor": "Công ty TNHH BĐS Guocoland Bình Dương (thuộc tập đoàn danh tiếng của Singapore)",
       "project": "Khu tổ hợp thương mại Guocoland (Chung cư The Canary)",
       "trade_name": "Khu tổ hợp thương mại Guocoland (Chung cư The Canary)",
       "location": "P. Thuận Giao"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 642,
       "investor": "Công ty CP May - Diêm Sài Gòn",
       "project": "Chung cư Gold View",
@@ -6391,7 +6391,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vĩnh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 643,
       "investor": "Công ty CP TM và ĐT Hồng Hà",
       "project": "Chung cư Grand Riverside",
@@ -6399,7 +6399,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vinh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 644,
       "investor": "Tập đoàn CapitaLand (Singapore)",
       "project": "Khu chung cư De La Sol",
@@ -6407,7 +6407,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vĩnh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 645,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư Galaxy 9",
@@ -6415,7 +6415,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vĩnh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 646,
       "investor": "Công ty Cổ phần Thủy Sản số 4",
       "project": "Khu chung cư Orient",
@@ -6423,7 +6423,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vĩnh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 647,
       "investor": "Công ty Địa ốc Fico (FiCO HOME).",
       "project": "Khu chung cư Vạn Đô",
@@ -6431,23 +6431,23 @@ window.ANCU2027_DATA = {
       "location": "P. Vĩnh Hội"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 648,
       "investor": "Sài Gòn Land Group",
-      "project": "Khu nhà ờ Sài Gòn Land",
-      "trade_name": "Khu nhà ờ Sài Gòn Land",
+      "project": "Khu nhà ở Sài Gòn Land",
+      "trade_name": "Khu nhà ở Sài Gòn Land",
       "location": "P. Vĩnh Tân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 649,
       "investor": "VSIP",
-      "project": "Khu nhà ờ Sun Casa II",
+      "project": "Khu nhà ở Sun Casa II",
       "trade_name": "Khu nhà ở Sun Casa II",
       "location": "P. Vĩnh Tân"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 650,
       "investor": "Công ty CP ĐT PT địa ốc OSC",
       "project": "Chung cư osc Land",
@@ -6455,7 +6455,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vũng Tàu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 651,
       "investor": "Công ty CP địa ốc Sài gòn",
       "project": "Chung cư Saigonres Tower",
@@ -6463,7 +6463,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vũng Tàu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 652,
       "investor": "Liên danh giữa Công ty CP địa ốc Nam Gia và Công ty CP TM tồng hợp Tinh BRVT (Getraco)",
       "project": "Chung cư Silver Sea",
@@ -6471,7 +6471,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vũng Tàu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 653,
       "investor": "Tổng Công ty Cổ phần Đầu tư Phát triển Xây dựng ( DIC)",
       "project": "Chung cư Vũng Tàu Center",
@@ -6479,7 +6479,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vũng Tàu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 654,
       "investor": "Tập đoàn Hưng Thịnh",
       "project": "Chung cư Vũng Tàu Melody",
@@ -6487,7 +6487,7 @@ window.ANCU2027_DATA = {
       "location": "P. Vũng Tàu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 655,
       "investor": "Tập đoàn Novaland",
       "project": "Chung cư The Tresor",
@@ -6495,15 +6495,15 @@ window.ANCU2027_DATA = {
       "location": "P. Xóm Chiếu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 656,
       "investor": "Công ty CP Đầu tư Xây dựng và Xuất nhập khẩu số 2",
       "project": "Khu chung cư Copac Square",
       "trade_name": "Khu chung cư Copac Square",
-      "location": "P. Xóm Chiêu"
+      "location": "P. Xóm Chiếu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 657,
       "investor": "Công ty CP Thương mại Địa ốc Việt",
       "project": "Khu chung cư Riva Park",
@@ -6511,7 +6511,7 @@ window.ANCU2027_DATA = {
       "location": "P. Xóm Chiếu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 658,
       "investor": "Tập đoàn Novaland",
       "project": "Khu chung cư thương mại Icon 56",
@@ -6519,15 +6519,15 @@ window.ANCU2027_DATA = {
       "location": "P. Xóm Chiếu"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 659,
       "investor": "Công ty TNHH Thương mại Dịch vụ và Kinh doanh Địa ốc Thy",
-      "project": "Khu chung cư Cao cấP. Mỹ Vinh",
-      "trade_name": "Khu chung cư Cao cấP. Mỹ Vinh",
+      "project": "Khu chung cư Cao cấp Mỹ Vinh",
+      "trade_name": "Khu chung cư Cao cấp Mỹ Vinh",
       "location": "P. Xuân Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 660,
       "investor": "Công ty Cổ phần C.T Phương Nam",
       "project": "Khu chung cư Leman Luxury Apartments",
@@ -6535,7 +6535,7 @@ window.ANCU2027_DATA = {
       "location": "P. Xuân Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 661,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Ricons",
       "project": "Khu chung cư Saigon Pavilion",
@@ -6543,7 +6543,7 @@ window.ANCU2027_DATA = {
       "location": "P. Xuân Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 662,
       "investor": "Công ty Cổ phần BĐS Sơn Kim Land",
       "project": "Khu chung cư Serenity Sky Villas",
@@ -6551,7 +6551,7 @@ window.ANCU2027_DATA = {
       "location": "P. Xuân Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 663,
       "investor": "Công ty Cổ phần Dầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Khu chung cư Terra Royal",
@@ -6559,23 +6559,23 @@ window.ANCU2027_DATA = {
       "location": "P. Xuân Hòa"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Bình Dương",
       "stt": 664,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu nhà ở Nam Long (Bàu Bàng)",
-      "trade_name": "Khu nhà ờ Nam Long (Bàu Bàng)",
+      "trade_name": "Khu nhà ở Nam Long (Bàu Bàng)",
       "location": "xẵ Bàu Bàng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 665,
-      "investor": "Công ty Cổ phần Địa ốc Nam Phong Group.",
+      "investor": "Công ty Cổ phần Địa ốc Nam Phong Group",
       "project": "Khu dân cư Bình Chánh New Center",
       "trade_name": "Khu dân cư Bình Chánh New Center",
-      "location": "Xã Bình Chành"
+      "location": "Xã Bình Chánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 666,
       "investor": "Công ty Cổ phần Phát Triển Nam Sài Gòn (Sadeco)",
       "project": "Khu định cư An Phú Tây",
@@ -6583,39 +6583,39 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Chánh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 667,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Tân Bình.",
       "project": "Chung cư Calla Garden",
       "trade_name": "Chung cư Calla Garden",
-      "location": "Xà Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 668,
       "investor": "Công ty TNHH Xây dựng, Đầu tư và Phát triển Lĩnh Phong",
       "project": "Chung cư Conic",
       "trade_name": "Chung cư Conic",
-      "location": "Xà Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 669,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Chung cư EHomeS Nam Sài Gòn",
       "trade_name": "Chung cư EHomeS Nam Sài Gòn",
-      "location": "Xẫ Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 670,
-      "investor": "Công ty Cổ phần Đầu tư Hoàng Tháp.",
+      "investor": "Công ty Cổ phần Đầu tư Hoàng Tháp",
       "project": "Chung cư Hoàng Tháp Plaza",
       "trade_name": "Chung cư Hoàng Tháp Plaza",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 671,
       "investor": "Công ty Cổ phần TV-TM-DV Địa ốc Hoàng Quân",
       "project": "Chung cư HQC Plaza",
@@ -6623,7 +6623,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 672,
       "investor": "Công ty Cổ phần Đầu tư và Kinh doanh Nhà Khang Điền",
       "project": "Chung cư Lovera Vista",
@@ -6631,15 +6631,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 673,
       "investor": "Công ty Cổ phần Quốc Cường Gia Lai.",
       "project": "Chung cư Southern Park",
       "trade_name": "Chung cư Southern Park",
-      "location": "Xâ Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 674,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Khang Nam.",
       "project": "Chung cư Terra Mía",
@@ -6647,7 +6647,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 675,
       "investor": "Công ty Cổ phần Đầu tư Địa ốc Khang Nam.",
       "project": "Chung cư Terra Rosa",
@@ -6655,7 +6655,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 676,
       "investor": "Công ty Cổ phần Quốc Cường Gia Lai.",
       "project": "Chung cư The Easter City",
@@ -6663,7 +6663,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 677,
       "investor": "Công ty TNHH Đầu tư Địa ốc Khang Việt + Công ty cổ phần Quốc Cường Gia Lai.",
       "project": "Chung cư The Mansion",
@@ -6671,7 +6671,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 678,
       "investor": "Công ty Cổ phần Phát triển Nam Sài Gòn (Sadeco)",
       "project": "Khu biệt thự Sông ông Lớn",
@@ -6679,7 +6679,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 679,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu chung cư Mizuki Park",
@@ -6687,23 +6687,23 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 680,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Khu dân cư 6B Inưesco",
-      "trade_name": "Khu dãn cư 6B Intresco",
+      "trade_name": "Khu dân cư 6B Intresco",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 681,
       "investor": "Công ty Cổ phần Phát triển Nam Sài Gòn (SADECO).",
       "project": "Khu dân cư An Phú Tây",
       "trade_name": "Khu dân cư An Phú Tây",
-      "location": "Xâ Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 682,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCC1)",
       "project": "Khu dân cư Bình Hưng",
@@ -6711,7 +6711,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 683,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu dân cư Camellia Garden",
@@ -6719,15 +6719,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 684,
       "investor": "Công ty Cổ phần Xây dựng và Kinh doanh Nhà Đại Phúc",
       "project": "Khu dân cư Dương Hồng Garden House",
-      "trade_name": "Khu dản cư Dương Hồng Garden House",
+      "trade_name": "Khu dân cư Dương Hồng Garden House",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 685,
       "investor": "Công ty TNHH Xây dựng - Kinh doanh Nhà Gia Hòa",
       "project": "Khu dân cư Gia Hòa",
@@ -6735,7 +6735,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 686,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Tân Bình (Tán Bình ICC)",
       "project": "Khu dân cư Greenlife - 13C",
@@ -6743,7 +6743,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 687,
       "investor": "Công ty CÔ phần Him Lam",
       "project": "Khu dân cư Him Lam",
@@ -6751,7 +6751,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 688,
       "investor": "Công ty Cổ phần Him Lam",
       "project": "Khu dân cư Him Lam 6A",
@@ -6759,23 +6759,23 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 689,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Khu dân cư Intresco 13E",
-      "trade_name": "Khu dàn cư Inưesco 13E",
+      "trade_name": "Khu dân cư Inưesco 13E",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 690,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Khu dân cư Làng Việt Kiều Phong Phú 13E",
       "trade_name": "Khu dân cư Làng Việt Kiều Phong Phú 13E",
-      "location": "Xẫ Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 691,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCC1)",
       "project": "Khu dân cư Phong Phú 5",
@@ -6783,23 +6783,23 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 692,
       "investor": "Công ty Cổ phần Đầu tư Xây dựng Bình Chánh (BCCI)",
       "project": "Khu dân cư Phong Phú 4",
-      "trade_name": "Khu dàn cư Phong Phú 4",
+      "trade_name": "Khu dân cư Phong Phú 4",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 693,
       "investor": "Công ty Cổ phần Bất động sản Tiến Phước.",
       "project": "Khu dân cư Senturia Nam Sài Gòn",
       "trade_name": "Khu dân cư Senturia Nam Sài Gòn",
-      "location": "Xâ Bình Hưng"
+      "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 694,
       "investor": "Công ty TNHH Xây dựng Thương mại Trung Sơn + Công ty cổ phần Đầu tư Kinh doanh Nhà (Intresco).",
       "project": "Khu dân cư Trung Sơn",
@@ -6807,7 +6807,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 695,
       "investor": "Công ty Cổ phần Đầu tư và Xây dựng nhá Đại Phúc",
       "project": "Khu dân cư Đại Phúc Green Villas",
@@ -6815,15 +6815,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 696,
       "investor": "Công ty Cổ phần Đầu tư Nam Long",
       "project": "Khu Đỏ Thị Mizuki Park",
-      "trade_name": "Khu Đô Thị Mizuki Park",
+      "trade_name": "khu đô thị Mizuki Park",
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 697,
       "investor": "Công ty TNHH Đầu tư Kinh doanh Bất động sản Thuận Phát",
       "project": "Khu Nhà phố Lovera Park",
@@ -6831,7 +6831,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 698,
       "investor": "Công ty Cổ phần Bất động sản Tiến Phước.",
       "project": "Khu Phức hợp Senturia Nam Sài Gòn",
@@ -6839,31 +6839,31 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Hưng"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 699,
       "investor": "Công ty Cổ phần Dịch vụ Bất động sản Danh Khôi (DKRS)",
       "project": "Khu dân cư South Riverside",
       "trade_name": "Khu dân cư South Riverside",
-      "location": "Xà HiệP. Phước"
+      "location": "Xã Hiệp Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 700,
       "investor": "Công ty Cổ phần Đầu tư - Kinh doanh Nhà (INTRESCO)",
       "project": "Khu Dân cư The Star Village",
       "trade_name": "Khu Dân cư The Star Village",
-      "location": "Xã HiệP. Phước"
+      "location": "Xã Hiệp Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 701,
       "investor": "Công ty TNHH MTV Dịch vụ công ích Nhà Bè",
-      "project": "Khu nhà ớ 28ha Nhơn Đức",
+      "project": "Khu nhà ở 28ha Nhơn Đức",
       "trade_name": "Khu nhà ở 28ha Nhơn Đức",
-      "location": "Xã HiệP. Phước"
+      "location": "Xã Hiệp Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 702,
       "investor": "Đơn vị phát triển dự án: Công ty TNHH Đầu tư Bất động sản Phúc Điền",
       "project": "Khu dân cư Golden City",
@@ -6871,15 +6871,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Long Điền"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Đồng Nai",
       "stt": 703,
       "investor": "Công ty TNHH Xây dựng Nam Hải",
       "project": "Marine city Bà Rịa Vũng Tàu",
       "trade_name": "Marine city Bà Rịa Vũng Tàu",
-      "location": "Xâ Long Hài"
+      "location": "Xã Long Hải"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 704,
       "investor": "Keppel Land",
       "project": "Chung cư Celesta Rise",
@@ -6887,7 +6887,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 705,
       "investor": "Công ty Cổ phần Địa ốc Phú Long",
       "project": "Chung cư Dragon Hill Residence and Suites",
@@ -6895,15 +6895,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhả Bé"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 706,
-      "investor": "Công ty Cổ phần Xây lăP. Vật tư Kỹ thuật (TEMATCO)",
+      "investor": "Công ty Cổ phần Xây lăp Vật tư Kỹ thuật (TEMATCO)",
       "project": "Chung cư Goldora Plaza",
       "trade_name": "Chung cư Goldora Plaza",
       "location": "Xã Nhà Bé"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 707,
       "investor": "Tập đoàn Hoàng Anh Gia Lai (HAGL), thông qua công ty thành viên trực thuộc là Công ty TNHH An Tiến",
       "project": "Chung cư Hoàng Anh An Tiến - Gold House",
@@ -6911,7 +6911,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 708,
       "investor": "Tập đoàn Hoàng Anh Gia Lai (HAGL), thông qua công ty thành viên trực thuộc là Công ty TNHH An Tiến",
       "project": "Chung cư Hoàng Anh Gold House",
@@ -6919,7 +6919,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 709,
       "investor": "Công ty TNHH Xây dựng và Sản xuất Hưng Lộc Phát",
       "project": "Chung cư Hưng Phát",
@@ -6927,7 +6927,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 710,
       "investor": "Công ty TNHH Xây dựng và Sân xuất Hưng Lộc Phát",
       "project": "Chung cư Hưng Phát Silver Star",
@@ -6935,7 +6935,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 711,
       "investor": "Công ty Cổ phần Kỹ thuật Xây dựng và Vật liệu Xây dựng Cotec (Cotec Land)",
       "project": "Chung cư Orchid Park",
@@ -6943,15 +6943,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 712,
       "investor": "Công ty Cổ phần Phú Hoàng Anh",
       "project": "Chung cư Phú Hoàng Anh",
       "trade_name": "Chung cư Phú Hoàng Anh",
-      "location": "Xã NhàBè"
+      "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 713,
       "investor": "Công ty TNHH Phát triển Phú Mỹ Hưng",
       "project": "Chung cư Saigon South Residences",
@@ -6959,7 +6959,7 @@ window.ANCU2027_DATA = {
       "location": "Xã Nhà Bè"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 27,
       "investor": "Công ty Cổ phần Sonadezi Giang Điền",
       "project": "Khu dân cư An Bình",
@@ -6967,7 +6967,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 28,
       "investor": "Công ty Cổ phần Miền Đông (MDC)",
       "project": "Khu dân cư Phú Thịnh",
@@ -6975,7 +6975,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 29,
       "investor": "Công ty Cổ phần Đầu tư Phát triển Đô thị Sơn An",
       "project": "Sơn An Plaza",
@@ -6983,23 +6983,23 @@ window.ANCU2027_DATA = {
       "location": "P. Tam Hiệp"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 30,
       "investor": "Đất xanh Đông Nam Bộ",
       "project": "Biên Hòa Golden Town",
-      "trade_name": "Khu đô thị Biên Hòa Golden Town",
+      "trade_name": "khu đô thị Biên Hòa Golden Town",
       "location": "P. Tam Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 31,
-      "investor": "Công ty TNHH Xây dựng vá thương mại AN Tâm",
+      "investor": "Công ty TNHH Xây dựng và thương mại AN Tâm",
       "project": "Khu nhà ở ANTACO Tam Phước",
       "trade_name": "Khu dân cư Dona Green Pearl",
       "location": "P. Tam Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 32,
       "investor": "Công ty Cổ phần Tín Khái (TinKhaiLand)",
       "project": "Khu dân cư đô thị Thạnh Phú, huyện Vĩnh Cửu",
@@ -7007,7 +7007,7 @@ window.ANCU2027_DATA = {
       "location": "P. Tân Triều"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 33,
       "investor": "Công ty TNHH Berjaya - D2D",
       "project": "Chung cư Amber Court",
@@ -7015,7 +7015,7 @@ window.ANCU2027_DATA = {
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 34,
       "investor": "Công ty TNHH Berjaya - D2D",
       "project": "Chung cư Topaz Twins",
@@ -7023,7 +7023,7 @@ window.ANCU2027_DATA = {
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 35,
       "investor": "Công ty Cổ phần Phát triển Đô thị Công nghiệp số 2 (D2D)",
       "project": "Khu dân cư đường 5 nối dài",
@@ -7031,7 +7031,7 @@ window.ANCU2027_DATA = {
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 36,
       "investor": "Công ty TNHH Việt Thuận Thành",
       "project": "Khu dân cư Văn Hoa Villas",
@@ -7039,15 +7039,15 @@ window.ANCU2027_DATA = {
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 37,
       "investor": "Công ty Cổ phần Kinh doanh Nhà Đồng Nai",
-      "project": "Khu dân cư với các dịch vụ thương mại, nhà ở cao cấP. và tái định cư tại phường Bứu Long",
-      "trade_name": "Khu dân cư Bứu Long",
+      "project": "Khu dân cư với các dịch vụ thương mại, nhà ở cao cấp và tái định cư tại phường Bửu Long",
+      "trade_name": "Khu dân cư Bửu Long",
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 38,
       "investor": "Công ty Cổ phần Đầu tư Kiến trúc Xây dựng Toàn Thịnh Phát",
       "project": "The Pegasus Plaza",
@@ -7055,63 +7055,63 @@ window.ANCU2027_DATA = {
       "location": "P. Trấn Biên"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 39,
       "investor": "Công ty Cổ phần Đinh Thuận",
       "project": "Khu dân cư Hưng Thuận",
-      "trade_name": "Khu dân cư Hưng Thuận (Tráng Bom)",
-      "location": "P. Tráng Bom"
+      "trade_name": "Khu dân cư Hưng Thuận (Trảng Bom)",
+      "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 40,
       "investor": "Công ty' TNHH MTV Địa ốc Cao su Đồng Nai (Rubber Land)",
       "project": "Khu dân cư Bàu Xéo",
       "trade_name": "Khu dân cư Bàu Xéo",
-      "location": "P. Tràng Bom"
+      "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 41,
       "investor": "Doanh nghiệp Tư nhân An Phú Hưng",
-      "project": "Khu dân cư theo quy hoạch tại thị trấn Tràng Bom, huyện Tráng Bom",
-      "trade_name": "Khu dân cư An Phú Hưng (Tràng Bom)",
-      "location": "P. Tráng Bom"
+      "project": "Khu dân cư theo quy hoạch tại thị trấn Trảng Bom, huyện Trảng Bom",
+      "trade_name": "Khu dân cư An Phú Hưng (Trảng Bom)",
+      "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 42,
       "investor": "Công ty Cổ phần Dịch vụ Bất động sản Đất Xanh (DXS)",
       "project": "Khu dân cư thị trấn Trảng Bom",
-      "trade_name": "Khu dân cư Gold Hill (Tráng Bom)",
+      "trade_name": "Khu dân cư Gold Hill (Trảng Bom)",
       "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 43,
       "investor": "Công ty TNHH MTV Địa ốc Cao su Đồng Nai (Rubber Land)",
-      "project": "Khu dân cư và siêu thị Tràng Bom",
+      "project": "Khu dân cư và siêu thị Trảng Bom",
       "trade_name": "Khu dân cư và siêu thị Trảng Bom",
-      "location": "P. Tráng Bom"
+      "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 41,
       "investor": "Công ty Cổ phần Đầu tư Việt Hưng Phát",
       "project": "Khu dân cư Xã Đồi 61",
-      "trade_name": "Khu dân cư Diamond City (Tráng Bom)",
+      "trade_name": "Khu dân cư Diamond City (Trảng Bom)",
       "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 45,
       "investor": "Công ty Cổ phần Thống Nhất",
       "project": "Khu trung tâm Dịch vụ Khu công nghiệp Bàu Xéo",
       "trade_name": "Khu dân cư Bàu Xéo",
-      "location": "P. Tráng Bom"
+      "location": "P. Trảng Bom"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 46,
       "investor": "Công ty TNHH Phú Gia",
       "project": "Khu dân cư Phú Gia",
@@ -7119,7 +7119,7 @@ window.ANCU2027_DATA = {
       "location": "P. Trảng Dài"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 47,
       "investor": "Công ty TNHH Phú Gia",
       "project": "Khu dân cư Phú Gia 2",
@@ -7127,7 +7127,7 @@ window.ANCU2027_DATA = {
       "location": "P. Trảng Dài"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 48,
       "investor": "Công ty TNHH Bão Giang",
       "project": "Khu chợ, phố chợ trong khu nhà ở công nhân và khu dân cư",
@@ -7135,15 +7135,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Bình Minh"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 49,
       "investor": "Công ty Cổ phần Vina Đại Phước",
-      "project": "Khu đô thị du lịch sinh thái Đại Phước",
-      "trade_name": "Khu đò thị sinh thái SwanBay Đại Phước",
+      "project": "khu đô thị du lịch sinh thái Đại Phước",
+      "trade_name": "khu đô thị sinh thái SwanBay Đại Phước",
       "location": "Xã Đại Phước"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 50,
       "investor": "Công ty Cổ phần Đầu tư Bất động sản Thành Phương",
       "project": "Khu dân cư nông thôn kiều mầu Xã Tân Phước",
@@ -7151,15 +7151,15 @@ window.ANCU2027_DATA = {
       "location": "Xã Đồng Tàm"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 51,
       "investor": "Công ty Cổ phần Đầu tư và Phát triển Địa ốc Hoàng Cát",
       "project": "Khu dân cư dịch vụ Minh Thắng cũ",
-      "trade_name": "Khu dàn cư Chơn Thành Golden Land",
+      "trade_name": "Khu dân cư Chơn Thành Golden Land",
       "location": "Xã Nha Bích"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 52,
       "investor": "Công ty TNHH Đầu tư và Phát triển Bất động sản Ngọc Việt",
       "project": "Khu dân cư sinh thái Minh Thăng",
@@ -7167,26 +7167,26 @@ window.ANCU2027_DATA = {
       "location": "Xã Nha Bích"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 53,
       "investor": "Công ty TNHH sx TM Tiền Lộc",
-      "project": "Khu dân cư tại xẫ Long Thọ, huyện Nhơn Trạch",
+      "project": "Khu dân cư tại Xã Long Thọ, huyện Nhơn Trạch",
       "trade_name": "Khu dân cư Tiến Lộc Garden",
       "location": "Xã Phước An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 54,
       "investor": "Công ty Cổ phần Địa ốc Thăng Long",
-      "project": "Khu nhà ớ Hưng Phú",
+      "project": "Khu nhà ở Hưng Phú",
       "trade_name": "Thăng Long Home",
       "location": "Xã Phước An"
     },
     {
-      "region": "Khu vực Tỉnh Hưng Yên",
+      "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 55,
       "investor": "Công ty Cổ phần Đầu tư Khương Thịnh",
-      "project": "Khu dàn cư theo quy hoạch tại xâ Tân Hiệp",
+      "project": "Khu dân cư theo quy hoạch tại Xã Tân Hiệp",
       "trade_name": "Long Thành Airport City",
       "location": "Xã Phước Thái"
     }
