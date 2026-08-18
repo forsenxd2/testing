@@ -164,7 +164,7 @@
                 <label for="searchInput" class="form-label visually-hidden">Tìm kiếm</label>
                 <div class="input-group input-group-lg">
                     <span class="input-group-text bg-white border-end-0"><i class="bi bi-search text-success"></i></span>
-                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Ví dụ: Ecopark, Nam Long, Sun Blanca, Xuân Cầu…" autocomplete="off">
+                    <input type="text" id="searchInput" class="form-control border-start-0" placeholder="Ví dụ: Ecopark, Nam Long, Bitexco, Taseco…" autocomplete="off">
                 </div>
             </div>
 
@@ -192,7 +192,7 @@
             phuLuc: 'PHỤ LỤC 01',
             nhom: 'NHÓM CĐT PHÚ MỸ HƯNG',
             investor: 'Phú Mỹ Hưng',
-            projects: 'Nhà ở, shophouse tại các dự án thuộc nhóm Phú Mỹ Hưng; DA Harmonie (ưu đãi 30 tháng). DA VCB cấp tín dụng (tại thời điểm ban hành): Hồng Hạc - Bắc Ninh',
+            projects: 'Nhà ở, shophouse tại các dự án thuộc nhóm Phú Mỹ Hưng (gồm DA Harmonie). DA VCB cấp tín dụng (tại thời điểm ban hành): Hồng Hạc - Bắc Ninh. Gói 24 tháng áp dụng cả có/không HTLS CĐT; gói 30 tháng chỉ khi CĐT hỗ trợ lãi suất, không quá thời gian HTLS. Ân hạn gốc DA Harmonie tối đa 36 tháng (không quá thời gian HTLS CĐT)',
             packages: [
                 {
                     title: 'Ưu đãi lãi suất 24 tháng — DA VCB cấp tín dụng cho CĐT',
@@ -219,7 +219,19 @@
                     ]
                 },
                 {
-                    title: 'Ưu đãi lãi suất 30 tháng (riêng DA Harmonie, không quá thời gian HTLS của CĐT)',
+                    title: 'Ưu đãi lãi suất 30 tháng — DA VCB cấp tín dụng cho CĐT',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                '6 tháng đầu: 9,2%/năm',
+                                'Thời gian còn lại: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Ưu đãi lãi suất 30 tháng — Dự án khác',
                     sections: [
                         {
                             subtitle: null,
@@ -270,7 +282,7 @@
             phuLuc: 'PHỤ LỤC 03',
             nhom: 'NHÓM CĐT CAPITALAND',
             investor: 'Capitaland',
-            projects: 'Lumi Hà Nội, Sycamore, The Senique, The Fullton và các dự án thuộc nhóm Capitaland. DA VCB cấp tín dụng (tại thời điểm ban hành): Lumi Hà Nội, Sycamore, The Senique',
+            projects: 'Lumi Hà Nội, Sycamore, The Senique, The Fullton và các dự án thuộc nhóm Capitaland. DA VCB cấp tín dụng (tại thời điểm ban hành): Lumi Hà Nội, Sycamore, The Senique. Gói 24 tháng gồm HĐCV đã ký trước 01/10/2025 và HĐCV ký mới từ 06/04/2026',
             packages: [
                 {
                     title: 'Cố định LS 12 tháng',
@@ -341,7 +353,7 @@
             phuLuc: 'PHỤ LỤC 04',
             nhom: 'NHÓM CĐT ECOPARK',
             investor: 'Ecopark',
-            projects: 'Eco Retreat Long An, Ecopark Vinh, Haus Đà Lạt',
+            projects: 'Eco Retreat Long An, Ecopark Vinh, Haus Đà Lạt, Ecopark Quảng Ngãi (Khu đô thị sinh thái Coastal Quảng Ngãi)',
             packages: [
                 {
                     title: 'Cố định LS 24 tháng',
@@ -349,8 +361,7 @@
                         {
                             subtitle: null,
                             lines: [
-                                'DA VCB cấp tín dụng cho CĐT: 10%/năm',
-                                'Dự án khác: 10,5%/năm'
+                                '10,5%/năm'
                             ]
                         }
                     ]
@@ -362,7 +373,7 @@
             phuLuc: 'PHỤ LỤC 05',
             nhom: 'NHÓM CĐT GAMUDA LAND',
             investor: 'Gamuda Land',
-            projects: 'Celadon City, Artisan Park, The Meadow, Spring Ville, Elysian, Eaton Park 1',
+            projects: 'Celadon City, Artisan Park, The Meadow, Spring Ville, Elysian, Eaton Park 1. DA VCB cấp tín dụng (tại thời điểm ban hành): The Meadow, Spring Ville, Elysian, Eaton Park',
             packages: [
                 {
                     title: 'Cố định LS 12 tháng',
@@ -427,9 +438,16 @@
                     title: '06 tháng đầu',
                     sections: [
                         {
-                            subtitle: null,
+                            subtitle: 'DA VCB cấp tín dụng cho CĐT',
                             lines: [
                                 'Nhà ở: 9,9%/năm',
+                                'BĐS Thương mại: 9,9%/năm'
+                            ]
+                        },
+                        {
+                            subtitle: 'Dự án khác',
+                            lines: [
+                                'Nhà ở: 10,5%/năm',
                                 'BĐS Thương mại: 10,5%/năm'
                             ]
                         }
@@ -459,28 +477,28 @@
             phuLuc: 'PHỤ LỤC 07',
             nhom: 'NHÓM CĐT TASECO',
             investor: 'Taseco',
-            projects: 'Các dự án BĐS do nhóm CĐT Taseco làm Chủ đầu tư (phân khúc căn hộ/nhà ở)',
+            projects: 'Các dự án BĐS do nhóm CĐT Taseco làm Chủ đầu tư',
             packages: [
-                {
-                    title: 'Cố định lãi suất 6 tháng',
-                    sections: [
-                        {
-                            subtitle: null,
-                            lines: [
-                                'DA VCB cấp tín dụng: 10,0%/năm',
-                                'Dự án khác: 10,2%/năm'
-                            ]
-                        }
-                    ]
-                },
                 {
                     title: 'Cố định lãi suất 12 tháng',
                     sections: [
                         {
                             subtitle: null,
                             lines: [
-                                'DA VCB cấp tín dụng: 10,3%/năm',
-                                'Dự án khác: 10,6%/năm'
+                                'Phần nhà để ở: 9,7%/năm',
+                                'Phần TMDV: 10,5%/năm'
+                            ]
+                        }
+                    ]
+                },
+                {
+                    title: 'Cố định lãi suất 18 tháng',
+                    sections: [
+                        {
+                            subtitle: null,
+                            lines: [
+                                'Phần nhà để ở: 10,5%/năm',
+                                'Phần TMDV: không áp dụng'
                             ]
                         }
                     ]
@@ -562,9 +580,9 @@
         {
             id: 'pl10',
             phuLuc: 'PHỤ LỤC 10',
-            nhom: 'NHÓM CĐT THE MANOR CENTRAL PARK',
-            investor: 'The Manor Central Park',
-            projects: 'Phân khu 19 thuộc Dự án Khu đô thị Nam đường vành đai 3 (phường Đại Kim, quận Hoàng Mai / xã Thanh Liệt, huyện Thanh Trì, Hà Nội)',
+            nhom: 'NHÓM CĐT BITEXCO',
+            investor: 'Bitexco',
+            projects: 'Phân khu 19 thuộc The Manor Central Park (Khu đô thị Nam đường vành đai 3, phường Đại Kim, quận Hoàng Mai / xã Thanh Liệt, huyện Thanh Trì, Hà Nội)',
             packages: [
                 {
                     title: 'Cố định lãi suất 12 tháng',
@@ -579,12 +597,20 @@
             phuLuc: 'PHỤ LỤC 11',
             nhom: 'NHÓM CĐT KHANG ĐIỀN',
             investor: 'Khang Điền',
-            projects: 'Bình Trưng Đông - Bình Trưng Mới; Bình Trưng Đông - Đoàn Nguyên (Gladia by The Waters)',
+            projects: 'Bình Trưng Đông - Bình Trưng Mới; Bình Trưng Đông - Đoàn Nguyên (Gladia by The Waters); Chung cư cao tầng Khu nhà ở phường Bình Trưng Đông, TP Thủ Đức',
             packages: [
                 {
-                    title: 'Cố định lãi suất 12 tháng',
+                    title: 'Bình Trưng Đông - Bình Trưng Mới và Bình Trưng Đông - Đoàn Nguyên',
                     sections: [
-                        { subtitle: null, lines: ['10,9%/năm'] }
+                        { subtitle: 'Cố định lãi suất 12 tháng', lines: ['10,9%/năm'] }
+                    ]
+                },
+                {
+                    title: 'Chung cư cao tầng Khu nhà ở phường Bình Trưng Đông, TP Thủ Đức',
+                    sections: [
+                        { subtitle: 'Cố định lãi suất 12 tháng', lines: ['10,0%/năm'] },
+                        { subtitle: 'Cố định lãi suất 18 tháng', lines: ['10,5%/năm'] },
+                        { subtitle: 'Cố định lãi suất 24 tháng', lines: ['11,0%/năm'] }
                     ]
                 }
             ]
@@ -666,7 +692,7 @@
             phuLuc: 'PHỤ LỤC 14',
             nhom: 'NHÓM CĐT VIỆT NHÂN',
             investor: 'Việt Nhân',
-            projects: 'Centa Riverside Từ Sơn; Nhà ở Việt Nhân số 2; Việt Nhân 3, 4',
+            projects: 'Centa Riverside Từ Sơn; Nhà ở Việt Nhân số 2; Việt Nhân 3, 4; The Greenery 2 – VSIP Hải Phòng; Casa Bonita – VSIP Nghệ An',
             packages: [
                 {
                     title: 'Cố định LS 24 tháng — DA VCB cấp tín dụng cho CĐT',
