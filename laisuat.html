@@ -93,13 +93,39 @@
             margin-top: 24px;
             margin-bottom: 12px;
         }
-        .offer-list {
-            color: #2f2f2f;
-            margin-bottom: 0;
-            padding-left: 20px;
+        .rate-table-wrap {
+            overflow-x: auto;
+            border: 1px solid #d8d8b0;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 16px;
         }
-        .offer-list li {
-            margin-bottom: 6px;
+        .rate-table {
+            width: 100%;
+            min-width: 520px;
+            margin-bottom: 0;
+            font-size: 0.88rem;
+            color: #2f2f2f;
+        }
+        .rate-table th,
+        .rate-table td {
+            border: 1px solid #d8d8b0;
+            padding: 8px 10px;
+            vertical-align: middle;
+            line-height: 1.35;
+        }
+        .rate-table thead th {
+            background: #eaf5e7;
+            color: #1f6f1f;
+            font-weight: 600;
+            text-align: center;
+        }
+        .rate-table td:first-child {
+            white-space: nowrap;
+        }
+        .rate-table td:nth-child(2) {
+            text-align: center;
+            white-space: nowrap;
         }
         .search-box {
             margin-top: 14px;
@@ -173,7 +199,76 @@
                 </div>
 
                 <h2 class="section-title">UDLS SP Nhà Mới An Cư</h2>
-                <ul id="offerSummary" class="offer-list"></ul>
+
+                <div class="rate-table-wrap">
+                    <table class="rate-table">
+                        <thead>
+                            <tr>
+                                <th>Thời gian LS ưu đãi</th>
+                                <th>LS ưu đãi</th>
+                                <th>LS thả nổi sau thời gian ưu đãi</th>
+                                <th>Thời gian ân hạn gốc tối đa</th>
+                                <th>Thời hạn vay tối đa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6 tháng</td>
+                                <td>9,5%/năm</td>
+                                <td rowspan="5">Trong thời gian còn lại: LS vay = LSTK 24T + 3,3%/năm (tối thiểu = LS sàn)</td>
+                                <td rowspan="5">36 tháng</td>
+                                <td rowspan="5">25 năm (300 tháng)</td>
+                            </tr>
+                            <tr>
+                                <td>12 tháng</td>
+                                <td>10,5%/năm</td>
+                            </tr>
+                            <tr>
+                                <td>18 tháng</td>
+                                <td>11,2%/năm</td>
+                            </tr>
+                            <tr>
+                                <td>24 tháng</td>
+                                <td>11,2%/năm</td>
+                            </tr>
+                            <tr>
+                                <td>36 tháng</td>
+                                <td>11,5%/năm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="rate-table-wrap">
+                    <table class="rate-table">
+                        <thead>
+                            <tr>
+                                <th>Thời gian LS ưu đãi</th>
+                                <th>LS ưu đãi</th>
+                                <th>LS thả nổi sau thời gian ưu đãi</th>
+                                <th>Thời gian ân hạn gốc tối đa</th>
+                                <th>Thời hạn vay tối đa</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>6 tháng</td>
+                                <td>8,5%/năm</td>
+                                <td rowspan="3">Trong thời gian còn lại: LS vay = LSTK 12T + 4,0%/năm (tối thiểu = LS sàn)</td>
+                                <td rowspan="3">24 tháng</td>
+                                <td rowspan="3">25 năm (300 tháng)</td>
+                            </tr>
+                            <tr>
+                                <td>12 tháng</td>
+                                <td>8,9%/năm</td>
+                            </tr>
+                            <tr>
+                                <td>18 tháng</td>
+                                <td>9,2%/năm</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
 
                 <h2 class="section-title">Danh sách dự án từ Phụ lục 03</h2>
                 <div class="search-box">
@@ -243,18 +338,6 @@
                 .replace(/\bxã\s+/gi, "Xã ");
         }
 
-        function getOfferSummary(rawSummary) {
-            const defaults = [
-                "Sản phẩm: Cho vay khách hàng cá nhân mua Nhà ở tại Dự án bất động sản (Nhà Mới An Cư).",
-                "Mã sản phẩm: 82660_KHCN.",
-                "Mã lãi suất: Trung hạn 20024, Dài hạn 30038.",
-                "Danh mục dự án áp dụng theo Phụ lục 03 ban hành kèm văn bản."
-            ];
-            const input = Array.isArray(rawSummary) ? rawSummary : [];
-            const merged = input.length ? input : defaults;
-            return merged.map(normalizeText);
-        }
-
         function getProjects(rawProjects) {
             if (!Array.isArray(rawProjects)) return [];
             return rawProjects.map((item) => ({
@@ -264,11 +347,6 @@
                 trade_name: normalizeText(item?.trade_name),
                 location: normalizeText(item?.location)
             })).filter((row) => row.project);
-        }
-
-        function renderOfferSummary(items) {
-            const container = document.getElementById("offerSummary");
-            container.innerHTML = items.map((text) => `<li>${text}</li>`).join("");
         }
 
         function renderProjectRows(rows) {
@@ -287,10 +365,8 @@
 
         (function initAnCu2027() {
             const data = window.ANCU2027_DATA || {};
-            const offers = getOfferSummary(data.summary);
             const allProjects = getProjects(data.projects);
 
-            renderOfferSummary(offers);
             renderProjectRows(allProjects);
 
             const searchInput = document.getElementById("projectSearch");
