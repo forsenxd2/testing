@@ -3426,7 +3426,7 @@ window.ANCU2027_DATA = {
       "region": "Khu vực Thành phố Hồ Chí Minh",
       "stt": 142,
       "investor": "Tập đoàn CapitaLand (Singapore) và Công ty cổ phần Đầu tư và Kinh doanh Nhà Khang Điền.",
-      "project": "Chung cư Kris Vuc",
+      "project": "Chung cư Kris Vue",
       "trade_name": "Chung cư Kris Vue",
       "location": "P. Bình Trưng"
     },
