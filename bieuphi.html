@@ -1,0 +1,440 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu phí dịch vụ KHCN</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #fff;
+            color: #228B22;
+        }
+        .container {
+            max-width: 1400px;
+            width: 100%;
+            margin-top: 32px;
+            margin-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .content-box {
+            background-color: #fff8dc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .main-title {
+            color: #228B22;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.6rem;
+        }
+        .doc-meta {
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 20px;
+        }
+        .back-btn {
+            min-width: 160px;
+        }
+        .search-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: #fff8dc;
+            padding: 10px 0 12px;
+            margin-bottom: 6px;
+        }
+        .search-hint {
+            color: #555;
+            font-size: 0.88rem;
+            margin-top: 6px;
+        }
+        .sec-card {
+            border: 1px solid #cfe3cf;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            border: none;
+            background: #eaf5e7;
+            color: #1f6f1f;
+            font-weight: 700;
+            text-align: left;
+            padding: 12px 14px;
+            cursor: pointer;
+        }
+        .sec-head:hover {
+            background: #ddefd9;
+        }
+        .sec-id {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 42px;
+            height: 28px;
+            padding: 0 8px;
+            border-radius: 6px;
+            background: #228B22;
+            color: #fff;
+            font-size: 0.9rem;
+        }
+        .sec-title {
+            flex: 1 1 auto;
+            font-size: 1rem;
+        }
+        .sec-count {
+            color: #4a7a4a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .sec-body {
+            display: none;
+            padding: 12px 14px 16px;
+        }
+        .sec-card.open .sec-body {
+            display: block;
+        }
+        .sec-card.open .sec-caret {
+            transform: rotate(90deg);
+        }
+        .sec-caret {
+            transition: transform 0.15s ease;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #d8d8b0;
+            border-radius: 8px;
+        }
+        .fee-table {
+            width: 100%;
+            margin-bottom: 0;
+            font-size: 0.86rem;
+            color: #2f2f2f;
+            border-collapse: collapse;
+        }
+        .fee-table th,
+        .fee-table td {
+            border: 1px solid #dcdcc0;
+            padding: 7px 9px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+        .fee-table thead th {
+            background: #f2f8f0;
+            color: #1f6f1f;
+            font-weight: 600;
+            text-align: center;
+            white-space: nowrap;
+        }
+        .fee-table tbody tr:nth-child(even) {
+            background: #fcfcf6;
+        }
+        .col-stt {
+            width: 70px;
+            white-space: nowrap;
+        }
+        .col-code {
+            width: 82px;
+            white-space: nowrap;
+            font-family: Consolas, monospace;
+        }
+        .fee-cell {
+            white-space: pre-line;
+        }
+        tr.row-group > td {
+            font-weight: 700;
+            background: #f6f6e8;
+        }
+        tr.row-sub .svc {
+            padding-left: 22px;
+            font-style: italic;
+        }
+        .tbl-caption {
+            font-weight: 600;
+            color: #1f6f1f;
+            margin: 14px 0 6px;
+            font-size: 0.95rem;
+        }
+        .foot-note {
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            line-height: 1.45;
+        }
+        .note-list {
+            color: #2f2f2f;
+            padding-left: 22px;
+            margin-bottom: 0;
+        }
+        .note-list li {
+            margin-bottom: 10px;
+            line-height: 1.5;
+            white-space: pre-line;
+        }
+        .note-list li .table-wrap {
+            white-space: normal;
+        }
+        mark {
+            background: #ffe066;
+            padding: 0 1px;
+        }
+        .no-result {
+            color: #a33;
+            font-weight: 600;
+            padding: 14px 4px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .fee-table {
+                font-size: 0.8rem;
+            }
+            .sec-title {
+                font-size: 0.92rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <div class="d-flex justify-content-end mb-3">
+                <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.history.back()">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </button>
+            </div>
+
+            <h1 class="main-title">Biểu phí dịch vụ áp dụng cho khách hàng cá nhân</h1>
+            <div id="docMeta" class="doc-meta"></div>
+
+            <div class="search-wrap">
+                <input id="feeSearch" type="text" class="form-control"
+                    placeholder="Tra cứu: tên dịch vụ, mã phí (VD: A001), số tiền...">
+                <div id="searchHint" class="search-hint">Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.</div>
+            </div>
+
+            <div id="sections"></div>
+            <div id="noResult" class="no-result" style="display:none;">Không tìm thấy nội dung phù hợp.</div>
+        </div>
+    </div>
+
+    <script src="bieuphi-data.js"></script>
+    <script>
+        const DATA = window.BIEUPHI_DATA || { meta: {}, sections: [] };
+
+        function fold(str) {
+            return (str || "")
+                .split("")
+                .map((ch) => {
+                    const base = ch.normalize("NFD")[0];
+                    return base === "đ" || base === "Đ" ? "d" : base.toLowerCase();
+                })
+                .join("");
+        }
+
+        function escapeHtml(str) {
+            return (str || "").replace(/[&<>"']/g, (c) => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            })[c]);
+        }
+
+        function highlight(text, keyword) {
+            const raw = text || "";
+            if (!keyword) return escapeHtml(raw);
+            const hay = fold(raw);
+            const needle = fold(keyword);
+            let out = "";
+            let i = 0;
+            while (i < raw.length) {
+                const hit = hay.indexOf(needle, i);
+                if (hit === -1) {
+                    out += escapeHtml(raw.slice(i));
+                    break;
+                }
+                out += escapeHtml(raw.slice(i, hit));
+                out += "<mark>" + escapeHtml(raw.slice(hit, hit + needle.length)) + "</mark>";
+                i = hit + needle.length;
+            }
+            return out;
+        }
+
+        function rowCells(row, columns) {
+            if (Array.isArray(row.cells)) return row.cells;
+            const feeCols = columns.length;
+            if (row.fee_all !== undefined) {
+                return [row.stt || "", row.code || "", row.service || "", row.fee_all, "__SPAN__"].slice(0, 3 + feeCols);
+            }
+            const fees = [];
+            if (feeCols >= 1) fees.push(row.quay || "");
+            if (feeCols >= 2) fees.push(row.nhdt || "");
+            return [row.stt || "", row.code || "", row.service || "", ...fees];
+        }
+
+        function rowText(row, columns) {
+            return rowCells(row, columns).filter((c) => c !== "__SPAN__").join(" ");
+        }
+
+        function renderTable(table, keyword) {
+            const columns = table.columns || [];
+            const isGeneric = columns.length && columns[0] === "STT";
+            const headCols = isGeneric ? columns : ["STT", "Mã phí", "Dịch vụ", ...columns];
+            const feeCount = isGeneric ? columns.length - 3 : columns.length;
+
+            const rows = table.rows.filter((row) => {
+                if (!keyword) return true;
+                return fold(rowText(row, isGeneric ? [] : columns)).includes(fold(keyword));
+            });
+            if (!rows.length) return "";
+
+            const head = headCols.map((c, idx) => {
+                const cls = idx === 0 ? "col-stt" : idx === 1 ? "col-code" : "";
+                return `<th class="${cls}">${escapeHtml(c)}</th>`;
+            }).join("");
+
+            const body = rows.map((row) => {
+                const cells = rowCells(row, isGeneric ? [] : columns);
+                const cls = [row.group ? "row-group" : "", row.sub ? "row-sub" : ""].filter(Boolean).join(" ");
+                let html = "";
+                for (let i = 0; i < cells.length; i += 1) {
+                    if (cells[i] === "__SPAN__") continue;
+                    const isSpan = cells[i + 1] === "__SPAN__";
+                    const span = isSpan ? ` colspan="${feeCount}"` : "";
+                    const tdCls = i === 0 ? "col-stt" : i === 1 ? "col-code" : i === 2 ? "svc" : "fee-cell";
+                    const align = i >= 3 ? ' style="text-align:center;"' : "";
+                    html += `<td class="${tdCls}"${span}${align}>${highlight(cells[i], keyword)}</td>`;
+                }
+                return `<tr class="${cls}">${html}</tr>`;
+            }).join("");
+
+            const caption = table.caption ? `<div class="tbl-caption">${escapeHtml(table.caption)}</div>` : "";
+            const notes = (table.footnotes || []).length
+                ? `<div class="foot-note">${table.footnotes.map((n) => escapeHtml(n)).join("<br>")}</div>`
+                : "";
+
+            return `${caption}<div class="table-wrap"><table class="fee-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>${notes}`;
+        }
+
+        function renderNotes(section, keyword) {
+            const notes = (section.notes || []).filter((n) => {
+                if (!keyword) return true;
+                const tableText = n.table ? JSON.stringify(n.table) : "";
+                return fold(`${n.no} ${n.text} ${tableText}`).includes(fold(keyword));
+            });
+            if (!notes.length) return "";
+            const items = notes.map((n) => {
+                let inner = highlight(n.text, keyword);
+                if (n.table) {
+                    const head = n.table.columns.map((c) => `<th>${escapeHtml(c)}</th>`).join("");
+                    const body = n.table.rows.map((r) => `<tr>${r.map((c) => `<td>${highlight(c, keyword)}</td>`).join("")}</tr>`).join("");
+                    inner += `<div class="table-wrap mt-2"><table class="fee-table"><thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+                }
+                return `<li value="${escapeHtml(n.no)}">${inner}</li>`;
+            }).join("");
+            const extra = (section.extra_footnotes || []).length
+                ? `<div class="foot-note">${section.extra_footnotes.map((n) => escapeHtml(n)).join("<br>")}</div>`
+                : "";
+            return `<ol class="note-list">${items}</ol>${extra}`;
+        }
+
+        function sectionTables(section) {
+            if (Array.isArray(section.tables)) return section.tables;
+            if (Array.isArray(section.rows)) {
+                return [{
+                    caption: "",
+                    columns: section.columns || ["Mức phí"],
+                    rows: section.rows,
+                    footnotes: section.footnotes || []
+                }];
+            }
+            return [];
+        }
+
+        function countItems(section) {
+            if (section.notes) return section.notes.length;
+            return sectionTables(section).reduce((sum, t) => sum + t.rows.length, 0);
+        }
+
+        function render(keyword) {
+            const host = document.getElementById("sections");
+            const openIds = new Set(
+                Array.from(host.querySelectorAll(".sec-card.open")).map((el) => el.dataset.id)
+            );
+            let visible = 0;
+
+            host.innerHTML = DATA.sections.map((section) => {
+                const inner = section.notes
+                    ? renderNotes(section, keyword)
+                    : sectionTables(section).map((t) => renderTable(t, keyword)).join("");
+                const titleHit = keyword && fold(`${section.id} ${section.title}`).includes(fold(keyword));
+                if (keyword && !inner && !titleHit) return "";
+                visible += 1;
+                const shouldOpen = keyword ? Boolean(inner) : openIds.has(section.id);
+                const bodyHtml = inner || `<div class="foot-note">Không có dòng khớp từ khoá trong mục này.</div>`;
+                const unit = section.notes ? "ghi chú" : "dòng";
+                const matchCount = section.notes
+                    ? (keyword ? (inner.match(/<li /g) || []).length : countItems(section))
+                    : (keyword ? (inner.match(/<tr class=/g) || []).length : countItems(section));
+                return `
+                    <div class="sec-card ${shouldOpen ? "open" : ""}" data-id="${escapeHtml(section.id)}">
+                        <button type="button" class="sec-head">
+                            <i class="bi bi-caret-right-fill sec-caret"></i>
+                            <span class="sec-id">${escapeHtml(section.id)}</span>
+                            <span class="sec-title">${escapeHtml(section.title)}</span>
+                            <span class="sec-count">${matchCount} ${unit}</span>
+                        </button>
+                        <div class="sec-body">${bodyHtml}</div>
+                    </div>`;
+            }).join("");
+
+            document.getElementById("noResult").style.display = visible ? "none" : "block";
+
+            host.querySelectorAll(".sec-head").forEach((btn) => {
+                btn.addEventListener("click", () => btn.closest(".sec-card").classList.toggle("open"));
+            });
+        }
+
+        (function init() {
+            const meta = DATA.meta || {};
+            const metaBits = [
+                meta.decision,
+                meta.effective ? `hiệu lực từ ${meta.effective}` : ""
+            ].filter(Boolean);
+            document.getElementById("docMeta").textContent = metaBits.join(" — ");
+
+            const input = document.getElementById("feeSearch");
+            const hint = document.getElementById("searchHint");
+            const preset = new URLSearchParams(location.search).get("q") || "";
+            input.value = preset;
+            render(preset.trim());
+
+            let timer = null;
+            input.addEventListener("input", () => {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    const kw = input.value.trim();
+                    render(kw);
+                    hint.textContent = kw
+                        ? `Đang lọc theo "${kw}" — các mục có kết quả sẽ tự mở.`
+                        : "Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.";
+                }, 150);
+            });
+        })();
+    </script>
+</body>
+</html>
