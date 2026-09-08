@@ -56,6 +56,10 @@
             font-size: 0.88rem;
             margin-top: 6px;
         }
+        .scope-label {
+            color: #2f2f2f;
+            font-size: 0.88rem;
+        }
         .sec-card {
             border: 1px solid #cfe3cf;
             border-radius: 8px;
@@ -226,6 +230,17 @@
             <div class="search-wrap">
                 <input id="feeSearch" type="text" class="form-control"
                     placeholder="Tra cứu: tên dịch vụ, mã phí (VD: A001), số tiền...">
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                    <div class="form-check mb-0">
+                        <input id="scopeOpen" class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label scope-label" for="scopeOpen">
+                            Chỉ tìm trong mục đang mở
+                        </label>
+                    </div>
+                    <button type="button" id="closeAll" class="btn btn-outline-secondary btn-sm">
+                        Đóng hết
+                    </button>
+                </div>
                 <div id="searchHint" class="search-hint">Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.</div>
             </div>
 
@@ -370,21 +385,30 @@
             return sectionTables(section).reduce((sum, t) => sum + t.rows.length, 0);
         }
 
-        function render(keyword) {
+        const openIds = new Set();
+        let keyword = "";
+
+        function scopedSections() {
+            const limitToOpen = document.getElementById("scopeOpen").checked;
+            if (keyword && limitToOpen && openIds.size) {
+                return DATA.sections.filter((s) => openIds.has(s.id));
+            }
+            return DATA.sections;
+        }
+
+        function render() {
             const host = document.getElementById("sections");
-            const openIds = new Set(
-                Array.from(host.querySelectorAll(".sec-card.open")).map((el) => el.dataset.id)
-            );
+            const pool = scopedSections();
             let visible = 0;
 
-            host.innerHTML = DATA.sections.map((section) => {
+            host.innerHTML = pool.map((section) => {
                 const inner = section.notes
                     ? renderNotes(section, keyword)
                     : sectionTables(section).map((t) => renderTable(t, keyword)).join("");
                 const titleHit = keyword && fold(`${section.id} ${section.title}`).includes(fold(keyword));
-                if (keyword && !inner && !titleHit) return "";
+                if (keyword && !inner && !titleHit && !openIds.has(section.id)) return "";
                 visible += 1;
-                const shouldOpen = keyword ? Boolean(inner) : openIds.has(section.id);
+                const shouldOpen = keyword ? (openIds.has(section.id) || Boolean(inner)) : openIds.has(section.id);
                 const bodyHtml = inner || `<div class="foot-note">Không có dòng khớp từ khoá trong mục này.</div>`;
                 const unit = section.notes ? "ghi chú" : "dòng";
                 const matchCount = section.notes
@@ -405,8 +429,38 @@
             document.getElementById("noResult").style.display = visible ? "none" : "block";
 
             host.querySelectorAll(".sec-head").forEach((btn) => {
-                btn.addEventListener("click", () => btn.closest(".sec-card").classList.toggle("open"));
+                btn.addEventListener("click", () => {
+                    const card = btn.closest(".sec-card");
+                    const id = card.dataset.id;
+                    if (openIds.has(id)) {
+                        openIds.delete(id);
+                    } else {
+                        openIds.add(id);
+                    }
+                    render();
+                    updateHint();
+                });
             });
+        }
+
+        function updateHint() {
+            const hint = document.getElementById("searchHint");
+            const limitToOpen = document.getElementById("scopeOpen").checked;
+            const openList = DATA.sections.filter((s) => openIds.has(s.id)).map((s) => s.id).join(", ");
+
+            if (!keyword) {
+                hint.textContent = openIds.size
+                    ? `Đang mở: ${openList}. Gõ từ khoá để tra cứu trong các mục này.`
+                    : "Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.";
+                return;
+            }
+            if (limitToOpen && openIds.size) {
+                hint.textContent = `Đang tìm "${keyword}" chỉ trong mục đang mở: ${openList}. Bỏ chọn ô bên trên để tìm toàn bộ biểu phí.`;
+                return;
+            }
+            hint.textContent = openIds.size
+                ? `Đang tìm "${keyword}" trong toàn bộ biểu phí.`
+                : `Đang tìm "${keyword}" trong toàn bộ biểu phí — chưa mở mục nào nên không giới hạn phạm vi.`;
         }
 
         (function init() {
@@ -418,21 +472,34 @@
             document.getElementById("docMeta").textContent = metaBits.join(" — ");
 
             const input = document.getElementById("feeSearch");
-            const hint = document.getElementById("searchHint");
-            const preset = new URLSearchParams(location.search).get("q") || "";
-            input.value = preset;
-            render(preset.trim());
+            const scope = document.getElementById("scopeOpen");
+            const params = new URLSearchParams(location.search);
+            (params.get("open") || "").split(",").map((s) => s.trim()).filter(Boolean)
+                .forEach((id) => openIds.add(id));
+            input.value = params.get("q") || "";
+            keyword = input.value.trim();
+            render();
+            updateHint();
 
             let timer = null;
             input.addEventListener("input", () => {
                 clearTimeout(timer);
                 timer = setTimeout(() => {
-                    const kw = input.value.trim();
-                    render(kw);
-                    hint.textContent = kw
-                        ? `Đang lọc theo "${kw}" — các mục có kết quả sẽ tự mở.`
-                        : "Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.";
+                    keyword = input.value.trim();
+                    render();
+                    updateHint();
                 }, 150);
+            });
+
+            scope.addEventListener("change", () => {
+                render();
+                updateHint();
+            });
+
+            document.getElementById("closeAll").addEventListener("click", () => {
+                openIds.clear();
+                render();
+                updateHint();
             });
         })();
     </script>
