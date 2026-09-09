@@ -1,0 +1,534 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Biểu phí dịch vụ KHTC</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body {
+            background-color: #fff;
+            color: #228B22;
+        }
+        .container {
+            max-width: 1500px;
+            width: 100%;
+            margin-top: 32px;
+            margin-bottom: 40px;
+            padding-left: 20px;
+            padding-right: 20px;
+        }
+        .content-box {
+            background-color: #fff8dc;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .main-title {
+            color: #228B22;
+            font-weight: bold;
+            text-align: center;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+            font-size: 1.55rem;
+        }
+        .doc-meta {
+            text-align: center;
+            color: #555;
+            font-size: 0.9rem;
+            font-style: italic;
+            margin-bottom: 18px;
+        }
+        .back-btn {
+            min-width: 160px;
+        }
+        .search-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 5;
+            background: #fff8dc;
+            padding: 10px 0 12px;
+        }
+        .search-hint {
+            color: #555;
+            font-size: 0.88rem;
+            margin-top: 6px;
+        }
+        .scope-label {
+            color: #2f2f2f;
+            font-size: 0.88rem;
+        }
+        .part-title {
+            color: #1f6f1f;
+            font-weight: 700;
+            font-size: 1.05rem;
+            margin: 18px 0 10px;
+            padding-bottom: 6px;
+            border-bottom: 2px solid #cfe3cf;
+        }
+        .sec-card {
+            border: 1px solid #cfe3cf;
+            border-radius: 8px;
+            background: #fff;
+            margin-bottom: 10px;
+            overflow: hidden;
+        }
+        .sec-head {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            width: 100%;
+            border: none;
+            background: #eaf5e7;
+            color: #1f6f1f;
+            font-weight: 700;
+            text-align: left;
+            padding: 12px 14px;
+            cursor: pointer;
+        }
+        .sec-head:hover {
+            background: #ddefd9;
+        }
+        .sec-id {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            min-width: 46px;
+            height: 28px;
+            padding: 0 8px;
+            border-radius: 6px;
+            background: #228B22;
+            color: #fff;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .sec-title {
+            flex: 1 1 auto;
+            font-size: 0.98rem;
+        }
+        .sec-count {
+            color: #4a7a4a;
+            font-weight: 500;
+            font-size: 0.85rem;
+            white-space: nowrap;
+        }
+        .sec-body {
+            display: none;
+            padding: 12px 14px 16px;
+        }
+        .sec-card.open .sec-body {
+            display: block;
+        }
+        .sec-card.open .sec-caret {
+            transform: rotate(90deg);
+        }
+        .sec-caret {
+            transition: transform 0.15s ease;
+        }
+        .table-wrap {
+            overflow-x: auto;
+            border: 1px solid #d8d8b0;
+            border-radius: 8px;
+        }
+        .fee-table {
+            width: 100%;
+            min-width: 1080px;
+            margin-bottom: 0;
+            font-size: 0.82rem;
+            color: #2f2f2f;
+            border-collapse: collapse;
+        }
+        .fee-table th,
+        .fee-table td {
+            border: 1px solid #dcdcc0;
+            padding: 6px 8px;
+            vertical-align: top;
+            line-height: 1.4;
+        }
+        .fee-table thead th {
+            background: #f2f8f0;
+            color: #1f6f1f;
+            font-weight: 600;
+            text-align: center;
+        }
+        .fee-table tbody tr:nth-child(even) {
+            background: #fcfcf6;
+        }
+        .col-stt {
+            width: 62px;
+        }
+        .col-code {
+            width: 72px;
+            font-family: Consolas, monospace;
+        }
+        .col-svc {
+            min-width: 300px;
+        }
+        .col-fee {
+            width: 130px;
+        }
+        .col-lim {
+            width: 96px;
+        }
+        .col-nhom {
+            width: 58px;
+            text-align: center;
+        }
+        td.num {
+            text-align: center;
+        }
+        tr.row-group > td {
+            font-weight: 700;
+            background: #f6f6e8;
+        }
+        tr.row-sub .col-svc {
+            padding-left: 20px;
+        }
+        .foot-note {
+            color: #555;
+            font-size: 0.8rem;
+            margin-top: 8px;
+            line-height: 1.45;
+        }
+        .guide-item {
+            margin-bottom: 10px;
+            line-height: 1.55;
+            color: #2f2f2f;
+            white-space: pre-line;
+        }
+        .guide-item.heading {
+            font-weight: 700;
+            color: #1f6f1f;
+            margin-top: 14px;
+        }
+        .guide-no {
+            font-weight: 600;
+            margin-right: 6px;
+        }
+        mark {
+            background: #ffe066;
+            padding: 0 1px;
+        }
+        .no-result {
+            color: #a33;
+            font-weight: 600;
+            padding: 14px 4px;
+        }
+        @media (max-width: 768px) {
+            .container {
+                padding-left: 12px;
+                padding-right: 12px;
+            }
+            .fee-table {
+                font-size: 0.78rem;
+            }
+            .sec-title {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="content-box">
+            <div class="d-flex justify-content-end mb-3">
+                <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.history.back()">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </button>
+            </div>
+
+            <h1 class="main-title">Biểu phí dịch vụ áp dụng với khách hàng tổ chức</h1>
+            <div id="docMeta" class="doc-meta"></div>
+
+            <div class="search-wrap">
+                <input id="feeSearch" type="text" class="form-control"
+                    placeholder="Tra cứu: tên dịch vụ, mã phí (VD: A043), số tiền...">
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                    <div class="form-check mb-0">
+                        <input id="scopeOpen" class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label scope-label" for="scopeOpen">
+                            Chỉ tìm trong mục đang mở
+                        </label>
+                    </div>
+                    <button type="button" id="closeAll" class="btn btn-outline-secondary btn-sm">Đóng hết</button>
+                </div>
+                <div id="searchHint" class="search-hint">Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.</div>
+            </div>
+
+            <div id="parts"></div>
+            <div id="noResult" class="no-result" style="display:none;">Không tìm thấy nội dung phù hợp.</div>
+        </div>
+    </div>
+
+    <script src="bieuphitc-data.js"></script>
+    <script>
+        const DATA = window.BIEUPHITC_DATA || { meta: {}, parts: [] };
+        const ALL_KEYS = ["stt", "code", "charge_type", "service",
+            "q_fee", "q_min", "q_max", "e_fee", "e_min", "e_max", "nhom"];
+
+        function fold(str) {
+            return (str || "")
+                .split("")
+                .map((ch) => {
+                    const base = ch.normalize("NFD")[0];
+                    return base === "đ" || base === "Đ" ? "d" : base.toLowerCase();
+                })
+                .join("");
+        }
+
+        function escapeHtml(str) {
+            return (str || "").replace(/[&<>"']/g, (c) => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            })[c]);
+        }
+
+        function highlight(text, keyword) {
+            const raw = text || "";
+            if (!keyword) return escapeHtml(raw);
+            const hay = fold(raw);
+            const needle = fold(keyword);
+            let out = "";
+            let i = 0;
+            while (i < raw.length) {
+                const hit = hay.indexOf(needle, i);
+                if (hit === -1) {
+                    out += escapeHtml(raw.slice(i));
+                    break;
+                }
+                out += escapeHtml(raw.slice(i, hit));
+                out += "<mark>" + escapeHtml(raw.slice(hit, hit + needle.length)) + "</mark>";
+                i = hit + needle.length;
+            }
+            return out;
+        }
+
+        const openIds = new Set();
+        let keyword = "";
+
+        function rowText(row) {
+            return ALL_KEYS.map((key) => row[key] || "").join(" ");
+        }
+
+        /* Column layout differs by section: some only print the counter channel,
+           and section C adds a Charge type column. */
+        function layoutFor(rows) {
+            const used = (keys) => rows.some((row) => keys.some((k) => row[k]));
+            const cols = [["stt", "STT", "col-stt"], ["code", "Mã phí", "col-code"]];
+            if (used(["charge_type"])) cols.push(["charge_type", "Charge type", "col-code"]);
+            cols.push(["service", "Dịch vụ", "col-svc"]);
+            cols.push(["q_fee", "Mức phí", "col-fee"], ["q_min", "Tối thiểu", "col-lim"], ["q_max", "Tối đa", "col-lim"]);
+            const hasNhdt = used(["e_fee", "e_min", "e_max"]);
+            if (hasNhdt) {
+                cols.push(["e_fee", "Mức phí", "col-fee"], ["e_min", "Tối thiểu", "col-lim"], ["e_max", "Tối đa", "col-lim"]);
+            }
+            if (used(["nhom"])) cols.push(["nhom", "Nhóm", "col-nhom"]);
+            return { cols, hasNhdt };
+        }
+
+        function feeHead(layout) {
+            const lead = layout.cols.filter(([key]) => ["stt", "code", "charge_type", "service"].includes(key));
+            const tail = layout.cols.filter(([key]) => key === "nhom");
+            if (!layout.hasNhdt) {
+                const flat = layout.cols.map(([, label, cssClass]) => `<th class="${cssClass}">${label}</th>`).join("");
+                return `<thead><tr>${flat}</tr></thead>`;
+            }
+            const leadCells = lead.map(([, label, cssClass]) => `<th class="${cssClass}" rowspan="2">${label}</th>`).join("");
+            const tailCells = tail.map(([, label, cssClass]) => `<th class="${cssClass}" rowspan="2">${label}</th>`).join("");
+            return `
+                <thead>
+                    <tr>
+                        ${leadCells}
+                        <th colspan="3">Kênh quầy</th>
+                        <th colspan="3">Kênh NHĐT</th>
+                        ${tailCells}
+                    </tr>
+                    <tr>
+                        <th class="col-fee">Mức phí</th><th class="col-lim">Tối thiểu</th><th class="col-lim">Tối đa</th>
+                        <th class="col-fee">Mức phí</th><th class="col-lim">Tối thiểu</th><th class="col-lim">Tối đa</th>
+                    </tr>
+                </thead>`;
+        }
+
+        function renderFeeSection(section, kw) {
+            const rows = (section.rows || []).filter((row) => !kw || fold(rowText(row)).includes(fold(kw)));
+            if (!rows.length) return { html: "", count: 0 };
+
+            const layout = layoutFor(section.rows || []);
+            const head = feeHead(layout);
+
+            const body = rows.map((row) => {
+                const cls = [row.group ? "row-group" : "", row.sub ? "row-sub" : ""].filter(Boolean).join(" ");
+                const tds = layout.cols.map(([key, , cssClass]) => {
+                    const numeric = !["service", "code", "charge_type"].includes(key);
+                    return `<td class="${cssClass}${numeric ? " num" : ""}">${highlight(row[key], kw)}</td>`;
+                }).join("");
+                return `<tr class="${cls}">${tds}</tr>`;
+            }).join("");
+
+            const notes = (section.footnotes || []).length
+                ? `<div class="foot-note">${section.footnotes.map((n) => escapeHtml(n)).join("<br>")}</div>`
+                : "";
+
+            const minWidth = layout.hasNhdt ? 1080 : 760;
+            return {
+                html: `<div class="table-wrap"><table class="fee-table" style="min-width:${minWidth}px;">` +
+                    `${head}<tbody>${body}</tbody></table></div>${notes}`,
+                count: rows.length
+            };
+        }
+
+        function renderGuideSection(section, kw) {
+            const items = (section.items || []).filter((item) => {
+                if (!kw) return true;
+                const tableText = item.table ? JSON.stringify(item.table) : "";
+                return fold(`${item.no || ""} ${item.text || ""} ${tableText}`).includes(fold(kw));
+            });
+            if (!items.length) return { html: "", count: 0 };
+
+            const html = items.map((item) => {
+                let inner = `<div class="guide-item${item.heading ? " heading" : ""}">`;
+                if (item.no) inner += `<span class="guide-no">${escapeHtml(item.no)}.</span>`;
+                inner += highlight(item.text || "", kw);
+                if (item.table) {
+                    const head = item.table.columns.map((c) => `<th>${escapeHtml(c)}</th>`).join("");
+                    const body = item.table.rows
+                        .map((r) => `<tr>${r.map((c) => `<td>${highlight(c, kw)}</td>`).join("")}</tr>`)
+                        .join("");
+                    inner += `<div class="table-wrap mt-2"><table class="fee-table" style="min-width:0;">` +
+                        `<thead><tr>${head}</tr></thead><tbody>${body}</tbody></table></div>`;
+                }
+                return inner + "</div>";
+            }).join("");
+
+            return { html, count: items.length };
+        }
+
+        function renderSection(section, kw) {
+            return section.items ? renderGuideSection(section, kw) : renderFeeSection(section, kw);
+        }
+
+        function totalItems(section) {
+            return section.items ? section.items.length : (section.rows || []).length;
+        }
+
+        function allSections() {
+            return DATA.parts.flatMap((part) => part.sections.map((s) => ({ part, section: s })));
+        }
+
+        function render() {
+            const host = document.getElementById("parts");
+            const limitToOpen = document.getElementById("scopeOpen").checked;
+            const scoped = Boolean(keyword) && limitToOpen && openIds.size > 0;
+            let visible = 0;
+
+            host.innerHTML = DATA.parts.map((part) => {
+                const cards = part.sections.map((section) => {
+                    const uid = `${part.id}:${section.id}`;
+                    if (scoped && !openIds.has(uid)) return "";
+
+                    let { html, count } = renderSection(section, keyword);
+                    const titleHit = keyword && fold(`${section.id} ${section.title}`).includes(fold(keyword));
+                    if (keyword && !html && !titleHit && !openIds.has(uid)) return "";
+                    /* Keyword only in the heading: show the whole section instead of an empty card. */
+                    if (titleHit && !html) ({ html, count } = renderSection(section, ""));
+                    visible += 1;
+
+                    const isOpen = keyword ? (openIds.has(uid) || Boolean(html)) : openIds.has(uid);
+                    const body = html || `<div class="foot-note">Không có dòng khớp từ khoá trong mục này.</div>`;
+                    const unit = section.items ? "khoản" : "dòng";
+                    const shown = keyword ? count : totalItems(section);
+                    return `
+                        <div class="sec-card ${isOpen ? "open" : ""}" data-uid="${escapeHtml(uid)}">
+                            <button type="button" class="sec-head">
+                                <i class="bi bi-caret-right-fill sec-caret"></i>
+                                <span class="sec-id">${escapeHtml(section.id)}</span>
+                                <span class="sec-title">${escapeHtml(section.title)}</span>
+                                <span class="sec-count">${shown} ${unit}</span>
+                            </button>
+                            <div class="sec-body">${body}</div>
+                        </div>`;
+                }).join("");
+
+                if (!cards.trim()) return "";
+                return `<div class="part-title">${escapeHtml(part.title)}</div>${cards}`;
+            }).join("");
+
+            document.getElementById("noResult").style.display = visible ? "none" : "block";
+
+            host.querySelectorAll(".sec-head").forEach((btn) => {
+                btn.addEventListener("click", () => {
+                    const uid = btn.closest(".sec-card").dataset.uid;
+                    if (openIds.has(uid)) {
+                        openIds.delete(uid);
+                    } else {
+                        openIds.add(uid);
+                    }
+                    render();
+                    updateHint();
+                });
+            });
+        }
+
+        function updateHint() {
+            const hint = document.getElementById("searchHint");
+            const limitToOpen = document.getElementById("scopeOpen").checked;
+            const openList = allSections()
+                .filter(({ part, section }) => openIds.has(`${part.id}:${section.id}`))
+                .map(({ section }) => section.id)
+                .join(", ");
+
+            if (!keyword) {
+                hint.textContent = openIds.size
+                    ? `Đang mở: ${openList}. Gõ từ khoá để tra cứu trong các mục này.`
+                    : "Bấm vào từng mục lớn để xem toàn bộ nội dung bên trong.";
+                return;
+            }
+            if (limitToOpen && openIds.size) {
+                hint.textContent = `Đang tìm "${keyword}" chỉ trong mục đang mở: ${openList}. Bỏ chọn ô bên trên để tìm toàn bộ biểu phí.`;
+                return;
+            }
+            hint.textContent = `Đang tìm "${keyword}" trong toàn bộ biểu phí.`;
+        }
+
+        (function init() {
+            const meta = DATA.meta || {};
+            document.getElementById("docMeta").textContent = [
+                meta.decision,
+                meta.effective ? `hiệu lực từ ${meta.effective}` : ""
+            ].filter(Boolean).join(" — ");
+
+            const input = document.getElementById("feeSearch");
+            const scope = document.getElementById("scopeOpen");
+            const params = new URLSearchParams(location.search);
+            (params.get("open") || "").split(",").map((s) => s.trim()).filter(Boolean)
+                .forEach((uid) => openIds.add(uid));
+            input.value = params.get("q") || "";
+            keyword = input.value.trim();
+            render();
+            updateHint();
+
+            let timer = null;
+            input.addEventListener("input", () => {
+                clearTimeout(timer);
+                timer = setTimeout(() => {
+                    keyword = input.value.trim();
+                    render();
+                    updateHint();
+                }, 150);
+            });
+
+            scope.addEventListener("change", () => {
+                render();
+                updateHint();
+            });
+
+            document.getElementById("closeAll").addEventListener("click", () => {
+                openIds.clear();
+                render();
+                updateHint();
+            });
+        })();
+    </script>
+</body>
+</html>

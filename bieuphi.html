@@ -402,11 +402,14 @@
             let visible = 0;
 
             host.innerHTML = pool.map((section) => {
-                const inner = section.notes
-                    ? renderNotes(section, keyword)
-                    : sectionTables(section).map((t) => renderTable(t, keyword)).join("");
+                const body = (kw) => section.notes
+                    ? renderNotes(section, kw)
+                    : sectionTables(section).map((t) => renderTable(t, kw)).join("");
+                let inner = body(keyword);
                 const titleHit = keyword && fold(`${section.id} ${section.title}`).includes(fold(keyword));
                 if (keyword && !inner && !titleHit && !openIds.has(section.id)) return "";
+                /* Keyword only in the heading: show the whole section instead of an empty card. */
+                if (titleHit && !inner) inner = body("");
                 visible += 1;
                 const shouldOpen = keyword ? (openIds.has(section.id) || Boolean(inner)) : openIds.has(section.id);
                 const bodyHtml = inner || `<div class="foot-note">Không có dòng khớp từ khoá trong mục này.</div>`;
