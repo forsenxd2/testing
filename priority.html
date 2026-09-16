@@ -123,7 +123,7 @@
             text-align: center;
         }
 
-        /* ===== Sơ đồ tiêu chí (tree) ===== */
+        /* ===== Sơ đồ tiêu chí ===== */
         .map-wrap {
             background: #fff;
             border: 1px solid #e8dcc8;
@@ -146,24 +146,15 @@
         }
         .map-grid {
             display: grid;
-            grid-template-columns: 1fr minmax(100px, 140px) 1fr;
-            gap: 10px 8px;
-            align-items: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 10px 12px;
+            align-items: start;
         }
         .map-col {
             display: flex;
             flex-direction: column;
             gap: 10px;
         }
-        .map-tree {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            min-height: 420px;
-            position: relative;
-        }
-        .map-tree svg { width: 100%; max-width: 130px; height: auto; }
         .crit-card {
             border: 1px solid #e6d5b8;
             border-radius: 10px;
@@ -220,15 +211,10 @@
             color: #6b5a45;
             text-align: center;
         }
-        @media (max-width: 900px) {
+        @media (max-width: 768px) {
             .map-grid {
                 grid-template-columns: 1fr;
             }
-            .map-tree {
-                min-height: 160px;
-                order: -1;
-            }
-            .map-tree svg { max-width: 90px; }
         }
         @media (max-width: 576px) {
             .main-title { font-size: 1.1rem; }
@@ -305,23 +291,6 @@
                             <p class="body">Đồng thời ĐK1 (một trong: TG+CCTG <span class="hl">≥ 1 tỷ</span>; dư nợ <span class="hl">≥ 2 tỷ</span>; Platinum+ &amp; DS thẻ <span class="hl">≥ 200 triệu</span>; FWD ≤3 năm &amp; phí <span class="hl">≥ 70 triệu</span>) và ĐK2 (điểm <span class="hl">≥ 10</span> từ ≥ 2 tiêu chí: 200tr TG / 300tr vay / 35tr thẻ / 10tr BH / 500tr NAV).</p>
                             <span class="tag">CCTG 03/09/2026 · còn lại 01/01/2027</span>
                         </button>
-                    </div>
-
-                    <div class="map-tree" aria-hidden="true">
-                        <svg viewBox="0 0 120 420" xmlns="http://www.w3.org/2000/svg">
-                            <rect x="54" y="200" width="12" height="200" rx="4" fill="#9ca3af"/>
-                            <ellipse cx="60" cy="55" rx="28" ry="36" fill="#f59e0b" opacity=".95"/>
-                            <ellipse cx="38" cy="95" rx="26" ry="34" fill="#b45309" opacity=".9"/>
-                            <ellipse cx="82" cy="95" rx="26" ry="34" fill="#d97706" opacity=".9"/>
-                            <ellipse cx="60" cy="130" rx="32" ry="38" fill="#92400e" opacity=".85"/>
-                            <ellipse cx="30" cy="155" rx="22" ry="28" fill="#fbbf24" opacity=".9"/>
-                            <ellipse cx="90" cy="155" rx="22" ry="28" fill="#a16207" opacity=".88"/>
-                            <ellipse cx="60" cy="175" rx="24" ry="30" fill="#78716c" opacity=".75"/>
-                            <circle cx="48" cy="70" r="8" fill="#fdba74"/>
-                            <circle cx="72" cy="110" r="7" fill="#fcd34d"/>
-                            <circle cx="45" cy="145" r="6" fill="#f59e0b"/>
-                            <circle cx="78" cy="165" r="7" fill="#d6d3d1"/>
-                        </svg>
                     </div>
 
                     <div class="map-col">
