@@ -1,0 +1,648 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cơ chế uỷ quyền giảm phí KHTCBL</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body { background: #fff; color: #228B22; }
+        .container-page { max-width: 1180px; margin: 32px auto 48px; padding: 0 14px; }
+        .content-box {
+            background: #fff8dc;
+            border-radius: 8px;
+            padding: 18px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.08);
+        }
+        .main-title {
+            color: #228B22;
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .doc-meta {
+            text-align: center;
+            color: #555;
+            font-size: .85rem;
+            font-style: italic;
+            margin-bottom: 14px;
+        }
+        .back-btn { min-width: 160px; }
+        .tabs { display: flex; gap: 8px; margin-bottom: 14px; flex-wrap: wrap; }
+        .tabs button {
+            flex: 1;
+            min-width: 140px;
+            border: 1px solid #cfe3cf;
+            background: #fff;
+            color: #186018;
+            font-weight: 700;
+            padding: 10px;
+            border-radius: 8px;
+        }
+        .tabs button.active { background: #eaf5e7; border-color: #228B22; }
+        .panel { display: none; }
+        .panel.active { display: block; }
+        .search-wrap {
+            position: sticky;
+            top: 0;
+            z-index: 6;
+            background: #fff8dc;
+            padding: 8px 0 12px;
+        }
+        .howto {
+            background: #fff;
+            border: 1px solid #cfe3cf;
+            border-radius: 8px;
+            padding: 10px 12px;
+            font-size: .88rem;
+            color: #2d4a2d;
+            margin-bottom: 12px;
+        }
+        .card-block {
+            background: #fff;
+            border: 1px solid #cfe3cf;
+            border-radius: 8px;
+            padding: 12px 14px;
+            margin-bottom: 12px;
+        }
+        .card-block h3 {
+            font-size: 1rem;
+            font-weight: 800;
+            color: #1f6f1f;
+            margin: 0 0 8px;
+        }
+        .card-block h4 {
+            font-size: .92rem;
+            font-weight: 700;
+            color: #186018;
+            margin: 12px 0 6px;
+        }
+        .note {
+            font-size: .8rem;
+            color: #6b5a45;
+            margin: 6px 0 0;
+        }
+        .pill {
+            display: inline-block;
+            font-size: .72rem;
+            font-weight: 700;
+            padding: 2px 8px;
+            border-radius: 4px;
+            background: #eaf5e7;
+            color: #186018;
+            margin: 0 4px 4px 0;
+        }
+        .pill.warn { background: #ffedd5; color: #9a3412; }
+        .pill.muted { background: #e8eef5; color: #334155; }
+        table.lookup {
+            width: 100%;
+            border-collapse: collapse;
+            font-size: .82rem;
+            background: #fff;
+        }
+        table.lookup th, table.lookup td {
+            border: 1px solid #d7e6d7;
+            padding: 7px 8px;
+            vertical-align: top;
+            color: #1f2f1f;
+        }
+        table.lookup th {
+            background: #eaf5e7;
+            color: #186018;
+            font-weight: 700;
+            white-space: nowrap;
+        }
+        table.lookup .hl { color: #b45309; font-weight: 800; }
+        .pkg-nav {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 6px;
+            margin-bottom: 12px;
+        }
+        .pkg-nav button {
+            border: 1px solid #cfe3cf;
+            background: #fff;
+            color: #186018;
+            font-weight: 700;
+            font-size: .8rem;
+            padding: 7px 10px;
+            border-radius: 6px;
+        }
+        .pkg-nav button.active {
+            background: #228B22;
+            color: #fff;
+            border-color: #228B22;
+        }
+        .pkg-panel { display: none; }
+        .pkg-panel.active { display: block; }
+        .crit-item {
+            border-left: 3px solid #228B22;
+            padding: 8px 10px;
+            margin-bottom: 8px;
+            background: #f7fbf6;
+            border-radius: 0 6px 6px 0;
+        }
+        .crit-item .n { font-weight: 800; color: #186018; margin-bottom: 2px; }
+        .crit-item p { margin: 0; font-size: .84rem; color: #2d3a2d; }
+        .hidden-by-search { display: none !important; }
+        .no-hit { display: none; text-align: center; color: #777; padding: 18px; }
+        .table-wrap { overflow-x: auto; }
+        @media (max-width: 576px) {
+            .tabs { flex-direction: column; }
+            .main-title { font-size: 1.1rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container-page">
+    <div class="content-box">
+        <div class="d-flex justify-content-end mb-3">
+            <a href="bieuphitc.html" class="btn btn-secondary btn-sm fw-bold back-btn text-decoration-none">
+                <i class="bi bi-arrow-left"></i> Quay lại biểu phí
+            </a>
+        </div>
+
+        <h1 class="main-title">Cơ chế uỷ quyền giảm phí</h1>
+        <div class="doc-meta">
+            Tổng hợp từ CV <strong>16595/VCB-PTSPBL</strong> (03/09/2026) và CV <strong>11290/VCB-CSKHBL</strong> (28/06/2024, HL 01/07/2024)
+        </div>
+
+        <div class="search-wrap">
+            <input id="q" type="search" class="form-control"
+                placeholder="Tra cứu: gói SME, A002, thẻ TDQT, VIP CITT, trường học, KCN, BHXH...">
+        </div>
+
+        <div class="tabs">
+            <button type="button" class="active" data-tab="csud">CSUD tổng hợp</button>
+            <button type="button" data-tab="criteria">Tiêu chí KHTCBL</button>
+            <button type="button" data-tab="goi">Tra cứu theo gói</button>
+        </div>
+
+        <!-- ========== CSUD ========== -->
+        <div class="panel active" id="panel-csud">
+            <div class="howto">
+                <strong>KHBL / KHTCBL</strong> = khách hàng <em>bán lẻ</em> / tổ chức bán lẻ (SME <code>custype 300</code>, hộ KD <code>600</code>).
+                Tab này lấy từ CV 16595: thu phí CT đến NN + tổng hợp thẩm quyền + VIP code + phụ lục các CV còn hiệu lực.
+            </div>
+
+            <div class="card-block searchable" data-keys="chuyển tiền nước ngoài qd 556 10/09/2026 thu phí">
+                <h3>I. Thu phí chuyển tiền đến nước ngoài</h3>
+                <p class="mb-0" style="font-size:.9rem;color:#2d3a2d;">
+                    Từ <span class="hl">10/09/2026</span>, VCB áp dụng thu phí CT đến nước ngoài cho KHTCBL theo Biểu phí
+                    <strong>QĐ 556</strong> (01/04/2026).
+                </p>
+            </div>
+
+            <div class="card-block searchable" data-keys="nguyên tắc thẩm quyền min max thẻ số chọn">
+                <h3>II. Nguyên tắc thẩm quyền CN</h3>
+                <ul style="margin:0;padding-left:1.1rem;font-size:.88rem;color:#2d3a2d;">
+                    <li>Ưu đãi nhằm giữ chân / phát triển KH, gia tăng lợi ích tổng thể.</li>
+                    <li>DS phí theo Biểu phí KH tổ chức — QĐ 556 (và VB SĐBS).</li>
+                    <li>Thẩm quyền CN tại CV <strong>11290, 5076, 8076, 6392</strong> tiếp tục hiệu lực.</li>
+                    <li>Thẩm quyền CN <strong>không gồm phí min/max</strong>, trừ khi miễn giảm <strong>100%</strong>.</li>
+                    <li>Phí DV <strong>thẻ</strong> (nhóm 1 biểu phí): CN tối đa <strong>100%</strong>, gồm cả min/max.</li>
+                    <li>Thẩm quyền TK số chọn &amp; thẻ trong CV 16595 <strong>thay thế</strong> phần tương ứng CV 7874 &amp; CV 37592.</li>
+                    <li>Ngoài thẩm quyền → trình Ban điều hành qua <strong>P. Quản lý kênh CN – TSC</strong>.</li>
+                </ul>
+            </div>
+
+            <div class="card-block searchable" data-keys="tktt số chọn số đẹp sme hộ kinh doanh 03 04 05 08 09 10 chữ số">
+                <h3>Ma trận phí TKTT số chọn (mục 2.6)</h3>
+                <div class="table-wrap">
+                    <table class="lookup">
+                        <thead>
+                            <tr>
+                                <th>Phân khúc</th>
+                                <th>Số đẹp &amp; theo YC — 03, 04 chữ số</th>
+                                <th>Số đẹp 05→08 / theo YC từ 05 chữ số</th>
+                                <th>Số đẹp 09, 10 chữ số</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr><td>SMEs</td><td class="hl">100%</td><td class="hl">50%</td><td class="hl">0%</td></tr>
+                            <tr><td>Hộ kinh doanh</td><td class="hl">100%</td><td class="hl">50%</td><td class="hl">0%</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-block searchable" data-keys="vip code citt s3ci chuyển tiền quốc tế sme advanced">
+                <h3>VIP code — ưu đãi CT đến nước ngoài</h3>
+                <p class="note mb-2">Cài tại mức CIF khi KH thuộc ưu đãi CN theo CV 6392 hoặc phê duyệt GĐK BL.</p>
+                <div class="table-wrap">
+                    <table class="lookup">
+                        <thead><tr><th>Vip code</th><th>Tỷ lệ</th><th>Ghi chú</th></tr></thead>
+                        <tbody>
+                            <tr><td><strong>CITT1</strong></td><td class="hl">25%</td><td>Giảm phí CTQT đến</td></tr>
+                            <tr><td><strong>CITT2</strong></td><td class="hl">50%</td><td>Giảm phí CTQT đến</td></tr>
+                            <tr><td><strong>CITT3</strong></td><td class="hl">75%</td><td>Giảm phí CTQT đến</td></tr>
+                            <tr><td><strong>CITT4</strong></td><td class="hl">100%</td><td>Giảm phí CTQT đến</td></tr>
+                            <tr><td><strong>S3CI1 → S3CI4</strong></td><td class="hl">25%→100%</td><td>CTQT đến + ưu đãi Gói SME Advanced</td></tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note">Lưu ý: Phụ lục STT 8 ghi thẩm quyền CN tối đa <strong>75%</strong> cho phí Swift theo CV 16595; VIP 100% gắn điều kiện CV 6392 / phê duyệt GĐK BL.</p>
+            </div>
+
+            <div class="card-block searchable" data-keys="phụ lục cv 11290 5076 8076 37592 6392 7874 12979 16595 bảo lãnh thẻ TNTN">
+                <h3>Phụ lục — các CV ưu đãi phí KHTCBL còn hiệu lực</h3>
+                <p class="note mb-2">Bảng gốc nhảy STT 1 → 2 → 4 (không có STT 3).</p>
+                <div class="table-wrap">
+                    <table class="lookup">
+                        <thead>
+                            <tr>
+                                <th>STT</th>
+                                <th>CV</th>
+                                <th>Hiệu lực</th>
+                                <th>Phạm vi</th>
+                                <th>Thẩm quyền CN</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>11290/VCB-CSKHBL<br><span class="pill muted">28/06/2024</span></td>
+                                <td>Từ 01/07/2024</td>
+                                <td>Gói GD SME; QLTK; CTđiTN; bảng kê; CTđiNNg; TTTM; TT học phí; thẻ CNQT/TDQT DN</td>
+                                <td>GĐCN: <span class="hl">25/50/75/100%</span> nếu ≥1 tiêu chí (xem tab Tiêu chí). Không gồm min/max trừ miễn phí; không gồm phí bên thứ 3.</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>5076 + 8076<br><span class="pill muted">PTSPBL 2026</span></td>
+                                <td>01/04/2026 → 31/03/2027*</td>
+                                <td>Miễn giảm phí bảo lãnh</td>
+                                <td>GĐCN: <span class="hl">0% → 75%</span></td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>37592/VCB-PTSPBL<br><span class="pill muted">05/09/2022</span></td>
+                                <td>Từ 06/09/2022</td>
+                                <td>Phí DV thẻ GN/TD (PH, TN, PIN, cấp lại…)</td>
+                                <td>GĐCN xem xét từng case (thẩm quyền thẻ đã được CV 16595 điều chỉnh lại)</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>6392/VCB-CSKHBL<br><span class="pill muted">01/04/2026</span></td>
+                                <td>01/04/2026 → 31/12/2026</td>
+                                <td>CTNNg; nhờ thu CT; L/C; Gói SME Advanced/Online</td>
+                                <td>GĐCN UQ tối đa <span class="hl">12 tháng</span>, giảm <span class="hl">50% → 100%</span></td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>7874/VCB-PTSPBL<br><span class="pill muted">19/06/2023</span></td>
+                                <td>Từ 20/06/2023</td>
+                                <td>Phí TKTT số chọn (SME)</td>
+                                <td>GĐCN 0→100% — đã được ma trận CV 16595 thay thế phần tương ứng</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>12979/VCB-PTSPBL</td>
+                                <td>Từ 20/07/2026</td>
+                                <td>Phí trả nợ trước hạn (TNTN)</td>
+                                <td>GĐCN tối đa <span class="hl">75%</span></td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>16595/VCB-PTSPBL<br><span class="pill">chính CV này</span></td>
+                                <td>10/09/2026 → 31/12/2026</td>
+                                <td>Phí CT đến NN Swift</td>
+                                <td>GĐCN tối đa <span class="hl">75%</span> theo điều kiện CV</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <p class="note">* Hoặc tới khi hết quy mô chương trình (điều kiện nào đến trước).</p>
+            </div>
+        </div>
+
+        <!-- ========== TIÊU CHÍ ========== -->
+        <div class="panel" id="panel-criteria">
+            <div class="howto">
+                Theo CV <strong>11290</strong>: GĐCN được miễn/giảm phí khi KHTCBL đáp ứng <strong>ít nhất 01</strong> tiêu chí dưới đây.
+                Các mức ưu đãi: <span class="pill">25%</span><span class="pill">50%</span><span class="pill">75%</span><span class="pill">100%</span>.
+                Thời hạn phê duyệt tối đa <strong>1 năm</strong>; GĐCN được UQ lại cho Phó GĐCN (không UQ tiếp).
+            </div>
+
+            <div class="crit-item searchable" data-keys="sme vừa phân khúc 2.1">
+                <div class="n">2.1 · KH SME vừa</div>
+                <p>Phân khúc SME vừa, định danh trên hệ thống theo quy định VCB (CV 8411/VCB-CSKHBL-PTSPBL 20/12/2022).</p>
+            </div>
+            <div class="crit-item searchable" data-keys="khtcbl mới cif tiềm năng 2.2">
+                <div class="n">2.2 · KHTCBL mới</div>
+                <p>Chưa mở CIF tại VCB; KH tiềm năng / mục tiêu tiếp cận của CN.</p>
+            </div>
+            <div class="crit-item searchable" data-keys="inactive không phát sinh giao dịch 12 tháng 2.3">
+                <div class="n">2.3 · KHTCBL inactive</div>
+                <p>Đã có CIF nhưng không phát sinh GD với VCB trong <strong>12 tháng</strong> gần nhất đến thời điểm xét.</p>
+            </div>
+            <div class="crit-item searchable" data-keys="trả lương 50% 60 cbnv 12 tháng 2.4">
+                <div class="n">2.4 · Trả lương tại VCB</div>
+                <p>Trả lương ≥ <strong>50%</strong> CBNV hoặc ≥ <strong>60</strong> CBNV có TK VCB; cam kết trả lương qua VCB ≥ <strong>12 tháng</strong> liên tục từ khi áp dụng ưu đãi.</p>
+            </div>
+            <div class="crit-item searchable" data-keys="doanh số chuyển tiền 10 tỷ 300000 usd 2.5">
+                <div class="n">2.5 · Doanh số CT lớn</div>
+                <p>CTĐ trong nước ≥ <strong>10 tỷ VND</strong> và/hoặc CTĐ nước ngoài ≥ <strong>300.000 USD</strong> trong 12 tháng ngay trước thời điểm xét.</p>
+            </div>
+            <div class="crit-item searchable" data-keys="sdbq 200 triệu dnbq 5 tỷ pd ccc nợ nhóm 1 2.6">
+                <div class="n">2.6 · SDBQ / DNBQ lớn</div>
+                <p>SDBQ TGTT thông thường (không ƯĐLS) ≥ <strong>200 triệu</strong> và/hoặc DNBQ (không ƯĐLS) ≥ <strong>5 tỷ</strong>; cam kết duy trì 12 tháng. Thêm: XHTD nội bộ PD từ <strong>ccc</strong> trở lên; nợ <strong>nhóm 1</strong>.</p>
+            </div>
+            <div class="crit-item searchable" data-keys="giao dịch thường xuyên 30 món tháng 2.7">
+                <div class="n">2.7 · Giao dịch thường xuyên</div>
+                <p>Số lượng CTĐ trong nước ≥ <strong>30 món/tháng</strong> trong 12 tháng ngay trước thời điểm xét.</p>
+            </div>
+
+            <div class="card-block searchable" data-keys="nguyên tắc min max bên thứ ba thời hạn ủy quyền lại">
+                <h3>Nguyên tắc chung (CV 11290)</h3>
+                <ul style="margin:0;padding-left:1.1rem;font-size:.88rem;color:#2d3a2d;">
+                    <li>Không gồm phí Min/Max trừ miễn phí 100%; không gồm phí trả bên thứ ba.</li>
+                    <li>Nếu KH thỏa nhiều ưu đãi → áp dụng mức/thẩm quyền <strong>cao nhất</strong>.</li>
+                    <li>01 tháng trước hết hạn, CN rà soát lợi ích &amp; cạnh tranh địa bàn để quyết định tiếp tục.</li>
+                    <li>Ngoài thẩm quyền → trình BLĐ qua P. Quản lý kênh chi nhánh – TSC.</li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- ========== GÓI ========== -->
+        <div class="panel" id="panel-goi">
+            <div class="howto">
+                Chọn gói SPDV (Phụ lục 01–06 của CV 11290). Ma trận dưới là mức <strong>tối đa GĐCN</strong> được UQ cho KHTCBL / CBNV tương ứng.
+                KHBB thường áp dụng theo chính sách KHBB hiện hành (không theo cột 1/2 tiêu chí).
+            </div>
+
+            <div class="pkg-nav" id="pkgNav">
+                <button type="button" class="active" data-pkg="pl01">01 · Gói lõi</button>
+                <button type="button" data-pkg="pl02">02 · Trường học</button>
+                <button type="button" data-pkg="pl03">03 · KCN</button>
+                <button type="button" data-pkg="pl04">04 · ĐVHCSN</button>
+                <button type="button" data-pkg="pl05">05 · KHBB lớn/vừa</button>
+                <button type="button" data-pkg="pl06">06 · BHXHVN</button>
+            </div>
+
+            <!-- PL01 -->
+            <div class="pkg-panel active searchable" id="pkg-pl01" data-keys="gói lõi sme online advanced a002 k001 c001 bảng kê thẻ gnqt tdqt lãi suất">
+                <div class="card-block">
+                    <h3>Phụ lục 01 — Gói lõi (KHTC của VCB)</h3>
+                    <p class="note">Đối tượng: KHTC (KHBB/KHTCBL) và KHCN là CBNV nhận lương qua TK VCB.</p>
+                    <h4>KHTCBL — ma trận GĐCN (≥1 tiêu chí mục 3)</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>Phí được miễn/giảm</th><th>1 tiêu chí</th><th>≥ 2 tiêu chí</th></tr></thead>
+                            <tbody>
+                                <tr><td>Gói SME Online</td><td class="hl">50%</td><td class="hl">100%</td></tr>
+                                <tr><td>Gói SME Advanced</td><td class="hl">25%</td><td class="hl">100%</td></tr>
+                                <tr><td>QLTK (A002)</td><td class="hl">50%</td><td class="hl">100%</td></tr>
+                                <tr><td>CTĐ trên IBTC (K001, K003, K004, K003a, K004a)</td><td class="hl">25%</td><td class="hl">50%</td></tr>
+                                <tr><td>CTĐ trong nước tại quầy (C001, C004, C006)</td><td class="hl">25%</td><td class="hl">50%</td></tr>
+                                <tr><td>TT bảng kê / trả lương quầy &amp; IBTC (C009, K005)</td><td class="hl">100%</td><td class="hl">100%</td></tr>
+                                <tr><td>CTĐ nước ngoài / TTTM</td><td class="hl">25%</td><td class="hl">25%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>KHCN = CBNV (điều kiện thẻ: lương VCB + DigiBank)</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>SPDV</th><th>Cán bộ</th><th>Cấp quản lý</th><th>Cấp lãnh đạo</th></tr></thead>
+                            <tbody>
+                                <tr><td>GNNĐ — PH</td><td colspan="3" class="hl">Miễn phát hành</td></tr>
+                                <tr><td>GNQT Visa — PH</td><td colspan="3" class="hl">Miễn PH Visa Classic</td></tr>
+                                <tr><td>GNQT Visa — TN</td><td colspan="2">Miễn TN 1 năm / 1 Classic</td><td>1 năm / 1 Platinum hoặc Classic</td></tr>
+                                <tr><td>TDQT — TN</td><td>Năm đầu Gold/Classic</td><td>Năm đầu hạng bất kỳ</td><td class="hl">2 năm hạng bất kỳ</td></tr>
+                                <tr><td>Kích hoạt quầy / rút ATM trong VCB</td><td colspan="3" class="hl">Miễn</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Giảm LS cho vay tiêu dùng mới (thêm điều kiện ≥1 thẻ TDQT; không gồm CCGTCG / thấu chi / Thẻ TD)</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>Chức danh</th><th>Thu nhập BQ 03 tháng qua TK VCB</th><th>Giảm LS tối đa / 01 năm</th></tr></thead>
+                            <tbody>
+                                <tr><td>Cán bộ</td><td>&lt; 10 triệu</td><td class="hl">0,1%/năm</td></tr>
+                                <tr><td>Cán bộ</td><td>≥ 10 triệu</td><td class="hl">0,2%/năm</td></tr>
+                                <tr><td>Cấp quản lý</td><td>&lt; 20 triệu</td><td class="hl">0,2%/năm</td></tr>
+                                <tr><td>Cấp quản lý</td><td>≥ 20 triệu</td><td class="hl">0,3%/năm</td></tr>
+                                <tr><td>Cấp lãnh đạo</td><td>&lt; 50 triệu</td><td class="hl">0,3%/năm</td></tr>
+                                <tr><td>Cấp lãnh đạo</td><td>≥ 50 triệu</td><td class="hl">0,5%/năm</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="note">Không thấp hơn sàn LS sau ủy quyền theo VB hiện hành (tại thời điểm CV: CV 4220/VCB-PTSPBL).</p>
+                </div>
+            </div>
+
+            <!-- PL02 -->
+            <div class="pkg-panel searchable" id="pkg-pl02" data-keys="trường học đại học mầm non thpt sinh viên billing học phí">
+                <div class="card-block">
+                    <h3>Phụ lục 02 — KH trường học</h3>
+                    <p class="note">ĐH/dạy nghề công lập → định danh KHBB. MN→THPT công lập → KHTCBL. Có thêm ưu đãi SV.</p>
+                    <h4>Trường MN–THPT (KHTCBL) — ma trận GĐCN</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>Phí</th><th>1 tiêu chí</th><th>≥ 2 tiêu chí</th></tr></thead>
+                            <tbody>
+                                <tr><td>SME Online</td><td class="hl">50%</td><td class="hl">100%</td></tr>
+                                <tr><td>SME Advanced</td><td class="hl">25%</td><td class="hl">100%</td></tr>
+                                <tr><td>QLTK (A002)</td><td class="hl">50%</td><td class="hl">100%</td></tr>
+                                <tr><td>CTĐ IBTC</td><td class="hl">25%</td><td class="hl">50%</td></tr>
+                                <tr><td>CTĐ quầy</td><td class="hl">25%</td><td class="hl">50%</td></tr>
+                                <tr><td>Bảng kê / trả lương</td><td class="hl">100%</td><td class="hl">100%</td></tr>
+                                <tr><td>Thanh toán Billing / học phí</td><td class="hl">100%</td><td class="hl">100%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>CBNV trường — giảm LS CV tiêu dùng / năm</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>Nhóm trường</th><th>Cán bộ</th><th>QL</th><th>Lãnh đạo</th></tr></thead>
+                            <tbody>
+                                <tr><td>ĐH / dạy nghề</td><td class="hl">0,2%</td><td class="hl">0,3%</td><td class="hl">0,5%</td></tr>
+                                <tr><td>MN → THPT</td><td class="hl">0,1%</td><td class="hl">0,2%</td><td class="hl">0,5%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>Sinh viên ĐH/dạy nghề công lập</h4>
+                    <ul style="margin:0;padding-left:1.1rem;font-size:.88rem;color:#2d3a2d;">
+                        <li>Thẻ liên kết SV / GNNĐ — miễn PH + duy trì khi: ≥ <strong>500 SV</strong>; trường dùng trả lương VCB; ≥ <strong>20%</strong> CBNV trả lương qua VCB.</li>
+                        <li>Rút ATM trong hệ thống VCB — giảm <strong>50%</strong> với SV ngành đào tạo GV (được hỗ trợ sinh hoạt qua TK SV tại VCB).</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PL03 -->
+            <div class="pkg-panel searchable" id="pkg-pl03" data-keys="kcn fdi thẻ business chuyên gia d001 chuyển tiền quốc tế">
+                <div class="card-block">
+                    <h3>Phụ lục 03 — KHTC tại KCN</h3>
+                    <h4>KHTCBL tại KCN — ma trận GĐCN</h4>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>Phí</th><th>1 tiêu chí</th><th>≥ 2 tiêu chí</th></tr></thead>
+                            <tbody>
+                                <tr><td>SME Online / Advanced / QLTK / CTĐ / bảng kê</td><td colspan="2">Giống Gói lõi (50/25/50/25… → 100/100/100/50…)</td></tr>
+                                <tr><td>TN tối đa 2 thẻ GNQT + 2 thẻ TDQT Visa Business</td><td class="hl">100%</td><td class="hl">100%</td></tr>
+                                <tr><td>CTĐ nước ngoài / TTTM</td><td class="hl">25%</td><td class="hl">50%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <h4>CBNV tại KCN — điểm khác Gói lõi</h4>
+                    <ul style="margin:0;padding-left:1.1rem;font-size:.88rem;color:#2d3a2d;">
+                        <li>TDQT QL: năm đầu Platinum (hoặc tương đương) / Gold / Classic.</li>
+                        <li>Lãnh đạo/Chuyên gia: miễn rút ATM <strong>trong và ngoài</strong> VCB (I007, I009).</li>
+                        <li>Chỉ Lãnh đạo/Chuyên gia: GĐCN giảm <span class="hl">50%</span> phí CT đi NN Swift (D001), không gồm Min/Max.</li>
+                        <li>Giảm LS: CB 0,2% · QL/Chuyên gia 0,3% · Lãnh đạo 0,5%/năm.</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- PL04 -->
+            <div class="pkg-panel searchable" id="pkg-pl04" data-keys="đvhcsn đơn vị hành chính sự nghiệp sms banking vụ trưởng sở">
+                <div class="card-block">
+                    <h3>Phụ lục 04 — CBNV ĐVHCSN</h3>
+                    <p class="note">Nhóm 1: CQ QLNN / tổ chức chính trị cấp TW hoặc tỉnh-TP. Nhóm 2: tổ chức CT-XH cấp TW hoặc tỉnh-TP.</p>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead>
+                                <tr>
+                                    <th>SPDV</th>
+                                    <th>Nhóm 1</th>
+                                    <th>Nhóm 2</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>TDQT — TN Cán bộ</td>
+                                    <td>Năm đầu Classic/Gold</td>
+                                    <td>Năm đầu Classic/Gold</td>
+                                </tr>
+                                <tr>
+                                    <td>TDQT — TN QL</td>
+                                    <td class="hl">02 năm đầu Classic/Gold/Platinum</td>
+                                    <td>Năm đầu Classic/Gold/Platinum</td>
+                                </tr>
+                                <tr>
+                                    <td>TDQT — TN Lãnh đạo</td>
+                                    <td class="hl">Vĩnh viễn Classic/Gold/Platinum</td>
+                                    <td class="hl">02 năm đầu Classic/Gold/Platinum</td>
+                                </tr>
+                                <tr>
+                                    <td>SMS Banking (tối đa 12 tháng)</td>
+                                    <td>CB: không · QL/LĐ: miễn</td>
+                                    <td>CB/QL: không · LĐ: miễn</td>
+                                </tr>
+                                <tr>
+                                    <td>Giảm LS CV tiêu dùng</td>
+                                    <td class="hl">0,2% / 0,5% / 0,7%</td>
+                                    <td class="hl">0,2% / 0,3% / 0,5%</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <p class="note">ATM: CB/QL miễn trong VCB (I007); Lãnh đạo miễn trong+ngoài (I007, I009). Định nghĩa lãnh đạo nhóm 1: từ Vụ trưởng/Phó Vụ trưởng (TW) hoặc GĐ/Phó GĐ Sở (tỉnh) trở lên.</p>
+                </div>
+            </div>
+
+            <!-- PL05 -->
+            <div class="pkg-panel searchable" id="pkg-pl05" data-keys="khbb lớn vừa diamond gold silver potential">
+                <div class="card-block">
+                    <h3>Phụ lục 05 — CBNV KHBB lớn và vừa</h3>
+                    <p class="note">KHBB phân khúc Lớn (Diamond/Potential/Gold/Silver) hoặc Vừa (Potential) theo KHBB từng thời kỳ; dùng dịch vụ trả lương VCB.</p>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>SPDV</th><th>Cán bộ</th><th>QL</th><th>Lãnh đạo</th></tr></thead>
+                            <tbody>
+                                <tr><td>GNNĐ / GNQT PH</td><td colspan="3">Miễn PH (GNQT: Classic)</td></tr>
+                                <tr><td>GNQT TN</td><td colspan="2">Classic 1 năm</td><td>Platinum/Classic 1 năm</td></tr>
+                                <tr><td>TDQT TN</td><td>Năm đầu Gold/Classic</td><td>Năm đầu Platinum(TD)/Gold/Classic</td><td class="hl">2 năm đầu Platinum(TD)/Gold/Classic</td></tr>
+                                <tr><td>Rút ATM trong VCB</td><td colspan="3" class="hl">Miễn</td></tr>
+                                <tr><td>Giảm LS CV tiêu dùng</td><td class="hl">0,2%</td><td class="hl">0,4%</td><td class="hl">0,7%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
+            <!-- PL06 -->
+            <div class="pkg-panel searchable" id="pkg-pl06" data-keys="bhxh bảo hiểm xã hội huyện tỉnh tw">
+                <div class="card-block">
+                    <h3>Phụ lục 06 — CBNV BHXHVN</h3>
+                    <p class="note">Nhóm 1: BHXH TW / tỉnh-TP. Nhóm 2: BHXH huyện / TP thuộc tỉnh.</p>
+                    <div class="table-wrap">
+                        <table class="lookup">
+                            <thead><tr><th>SPDV</th><th>Nhóm 1</th><th>Nhóm 2</th></tr></thead>
+                            <tbody>
+                                <tr><td>TDQT — TN Cán bộ</td><td>01 năm đầu Classic/Gold</td><td><span class="pill warn">Không ghi mức riêng trên bảng</span></td></tr>
+                                <tr><td>TDQT — TN QL</td><td class="hl">02 năm đầu Classic/Gold/Platinum</td><td>01 năm đầu Classic/Gold/Platinum</td></tr>
+                                <tr><td>TDQT — TN Lãnh đạo</td><td class="hl">Vĩnh viễn</td><td class="hl">02 năm đầu</td></tr>
+                                <tr><td>SMS Banking (≤12 tháng)</td><td colspan="2">CB: không · QL/LĐ: miễn</td></tr>
+                                <tr><td>Giảm LS (CB / QL / LĐ)</td><td class="hl">0,2% / 0,5% / 0,7%</td><td class="hl">0,1% / 0,3% / 0,4%</td></tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div id="noHit" class="no-hit">Không tìm thấy nội dung khớp từ khóa.</div>
+    </div>
+</div>
+
+<script>
+    const tabs = document.querySelectorAll('.tabs button');
+    const panels = {
+        csud: document.getElementById('panel-csud'),
+        criteria: document.getElementById('panel-criteria'),
+        goi: document.getElementById('panel-goi')
+    };
+    tabs.forEach(btn => {
+        btn.addEventListener('click', () => {
+            tabs.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            Object.values(panels).forEach(p => p.classList.remove('active'));
+            panels[btn.dataset.tab].classList.add('active');
+            applySearch();
+        });
+    });
+
+    const pkgBtns = document.querySelectorAll('#pkgNav button');
+    pkgBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+            pkgBtns.forEach(b => b.classList.remove('active'));
+            btn.classList.add('active');
+            document.querySelectorAll('.pkg-panel').forEach(p => p.classList.remove('active'));
+            document.getElementById('pkg-' + btn.dataset.pkg).classList.add('active');
+            applySearch();
+        });
+    });
+
+    const qInput = document.getElementById('q');
+    const noHit = document.getElementById('noHit');
+
+    function normalize(s) {
+        return (s || '').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g, '');
+    }
+
+    function applySearch() {
+        const q = normalize(qInput.value.trim());
+        const activePanel = document.querySelector('.panel.active');
+        let visible = 0;
+
+        activePanel.querySelectorAll('.searchable').forEach(el => {
+            if (el.classList.contains('pkg-panel') && !el.classList.contains('active')) {
+                el.classList.add('hidden-by-search');
+                return;
+            }
+            const hay = normalize(el.dataset.keys + ' ' + el.textContent);
+            const show = !q || hay.includes(q);
+            el.classList.toggle('hidden-by-search', !show);
+            if (show) visible++;
+        });
+
+        noHit.style.display = q && visible === 0 ? 'block' : 'none';
+    }
+
+    qInput.addEventListener('input', applySearch);
+</script>
+</body>
+</html>
