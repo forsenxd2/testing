@@ -8,7 +8,7 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
     <style>
         body { background: #fff; color: #228B22; }
-        .container-page { max-width: 860px; margin: 32px auto 48px; padding: 0 14px; }
+        .container-page { max-width: 1100px; margin: 32px auto 48px; padding: 0 14px; }
         .content-box {
             background: #fff8dc;
             border-radius: 8px;
@@ -34,9 +34,11 @@
             display: flex;
             gap: 8px;
             margin-bottom: 14px;
+            flex-wrap: wrap;
         }
         .tabs button {
             flex: 1;
+            min-width: 140px;
             border: 1px solid #cfe3cf;
             background: #fff;
             color: #186018;
@@ -72,6 +74,7 @@
         }
         .verdict.pass { background: #e6f6e6; border-color: #7ec27e; color: #1b7a1b; }
         .verdict.fail { background: #fff1e8; border-color: #f0b090; color: #9a3412; }
+        .verdict.hidden-tab { display: none; }
         .verdict h2 { font-size: 1.15rem; font-weight: 800; margin: 0 0 4px; text-transform: uppercase; }
         .verdict p { margin: 0; font-size: .88rem; }
         .form-label { font-size: .86rem; font-weight: 600; color: #1f4d1f; }
@@ -119,9 +122,121 @@
             color: #666;
             text-align: center;
         }
+
+        /* ===== Sơ đồ tiêu chí (tree) ===== */
+        .map-wrap {
+            background: #fff;
+            border: 1px solid #e8dcc8;
+            border-radius: 12px;
+            padding: 16px 12px 20px;
+            overflow: hidden;
+        }
+        .map-title {
+            text-align: center;
+            font-weight: 800;
+            color: #5c3d1e;
+            font-size: 1.15rem;
+            margin-bottom: 4px;
+        }
+        .map-sub {
+            text-align: center;
+            font-size: .8rem;
+            color: #7a6548;
+            margin-bottom: 16px;
+        }
+        .map-grid {
+            display: grid;
+            grid-template-columns: 1fr minmax(100px, 140px) 1fr;
+            gap: 10px 8px;
+            align-items: center;
+        }
+        .map-col {
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+        }
+        .map-tree {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 420px;
+            position: relative;
+        }
+        .map-tree svg { width: 100%; max-width: 130px; height: auto; }
+        .crit-card {
+            border: 1px solid #e6d5b8;
+            border-radius: 10px;
+            padding: 10px 11px;
+            background: linear-gradient(180deg, #fffdf8 0%, #fff8ec 100%);
+            text-align: left;
+            cursor: pointer;
+            transition: box-shadow .15s, border-color .15s, transform .15s;
+            box-shadow: 0 1px 2px rgba(92, 61, 30, .06);
+        }
+        .crit-card:hover {
+            border-color: #c4a574;
+            box-shadow: 0 4px 12px rgba(92, 61, 30, .12);
+            transform: translateY(-1px);
+        }
+        .crit-card .n {
+            font-weight: 800;
+            color: #5c3d1e;
+            font-size: .92rem;
+            margin-bottom: 4px;
+        }
+        .crit-card .n .code {
+            font-weight: 600;
+            color: #8a6a3d;
+            font-size: .78rem;
+        }
+        .crit-card .body {
+            font-size: .78rem;
+            color: #3d3428;
+            line-height: 1.45;
+            margin: 0;
+        }
+        .crit-card .hl {
+            color: #b45309;
+            font-weight: 800;
+        }
+        .crit-card .tag {
+            display: inline-block;
+            margin-top: 5px;
+            font-size: .68rem;
+            font-weight: 700;
+            padding: 1px 6px;
+            border-radius: 4px;
+            background: #ffedd5;
+            color: #9a3412;
+        }
+        .crit-card .tag.keep {
+            background: #e8eef5;
+            color: #334155;
+        }
+        .map-legend {
+            margin-top: 14px;
+            font-size: .75rem;
+            color: #6b5a45;
+            text-align: center;
+        }
+        @media (max-width: 900px) {
+            .map-grid {
+                grid-template-columns: 1fr;
+            }
+            .map-tree {
+                min-height: 160px;
+                order: -1;
+            }
+            .map-tree svg { max-width: 90px; }
+        }
         @media (max-width: 576px) {
             .main-title { font-size: 1.1rem; }
             .tabs { flex-direction: column; }
+        }
+        @media print {
+            .tabs, .back-btn, .howto { display: none !important; }
+            .map-wrap { border: none; }
         }
     </style>
 </head>
@@ -138,17 +253,118 @@
         <p class="doc-meta">CV 16422/VCB-CSKHBL ngày 27/08/2026 — đúng theo văn bản, không bổ sung tiêu chí ngoài PDF</p>
 
         <div class="tabs">
-            <button type="button" class="active" data-tab="id">1. Định danh</button>
-            <button type="button" data-tab="rank">2. Phân hạng</button>
+            <button type="button" class="active" data-tab="map">Sơ đồ tiêu chí</button>
+            <button type="button" data-tab="id">Định danh</button>
+            <button type="button" data-tab="rank">Phân hạng</button>
         </div>
 
-        <div id="verdict" class="verdict" aria-live="polite">
+        <div id="verdict" class="verdict hidden-tab" aria-live="polite">
             <h2>Chưa kiểm</h2>
             <p>Chọn một đường tiêu chí và nhập số liệu.</p>
         </div>
 
+        <!-- ========== SƠ ĐỒ ========== -->
+        <div class="panel active" id="panel-map">
+            <div class="howto">
+                Tổng quan 12 đường định danh theo <strong>CV 16422/VCB-CSKHBL (27/08/2026)</strong> và phụ lục tóm tắt.
+                Bấm vào một ô để chuyển sang tab <em>Định danh</em> và điền số liệu kiểm tra.
+                Số liệu tô đậm là ngưỡng trong văn bản — không lấy từ sơ đồ cũ.
+            </div>
+            <div class="map-wrap">
+                <div class="map-title">Tiêu chí định danh KH Priority</div>
+                <div class="map-sub">Theo CV 16422/VCB-CSKHBL · hiệu lực theo từng đường (03/09/2026 hoặc 01/01/2027)</div>
+                <div class="map-grid">
+                    <div class="map-col">
+                        <button type="button" class="crit-card" data-goto="p1">
+                            <div class="n">1. Tiền gửi <span class="code">(P1, P1A)</span></div>
+                            <p class="body">SD TG (KKH + CKH) + mệnh giá CCTG do VCB phát hành BQ 12 tháng <span class="hl">≥ 2 tỷ</span>; hoặc tại thời điểm ĐD <span class="hl">≥ 2 tỷ</span> và cam kết duy trì tối thiểu 2 tỷ trong 06 tháng.</p>
+                            <span class="tag">HL 03/09/2026</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p2">
+                            <div class="n">2. Tiền vay <span class="code">(P2, P2A)</span></div>
+                            <p class="body">Dư nợ (đã loại trừ CB VCB &amp; vay CCGTCG) BQ 12 tháng <span class="hl">≥ 3 tỷ</span>; hoặc tại ĐD <span class="hl">≥ 3 tỷ</span> + cam kết duy trì tối thiểu 3 tỷ trong 06 tháng.</p>
+                            <span class="tag">HL 01/01/2027</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p3">
+                            <div class="n">3. Thẻ <span class="code">(P3)</span></div>
+                            <p class="body">Đồng thời: chủ thẻ TDQT CN còn HL, HMTD <span class="hl">Platinum+</span>, DS chi tiêu 12 tháng <span class="hl">≥ 250 triệu</span>; và CASA BQ 12 tháng <span class="hl">≥ 8 triệu</span> (từ 01/01/2027) / <span class="hl">≥ 10 triệu</span> (từ 01/01/2028).</p>
+                            <span class="tag">HL 01/01/2027</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p5">
+                            <div class="n">4. Thu nhập <span class="code">(P5, P5A)</span></div>
+                            <p class="body">Đồng thời: nhận TN qua TKTT VCB, TN BQ/tháng 12 tháng <span class="hl">≥ 50 triệu</span>; và CASA BQ 12 tháng <span class="hl">≥ 8 triệu</span> (2027) / <span class="hl">≥ 10 triệu</span> (2028).</p>
+                            <span class="tag">HL 01/01/2027</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p7">
+                            <div class="n">5. Bảo hiểm <span class="code">(P7)</span></div>
+                            <p class="body">≥1 HĐBH FWD do VCB phân phối, còn HL, phát hành ≤ 3 năm; tổng phí đã đóng 12 tháng <span class="hl">≥ 100 triệu</span>.</p>
+                            <span class="tag keep">Không ĐC bởi CV 16422</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p6">
+                            <div class="n">6. Tổ hợp <span class="code">(P6, P6A)</span></div>
+                            <p class="body">Đồng thời ĐK1 (một trong: TG+CCTG <span class="hl">≥ 1 tỷ</span>; dư nợ <span class="hl">≥ 2 tỷ</span>; Platinum+ &amp; DS thẻ <span class="hl">≥ 200 triệu</span>; FWD ≤3 năm &amp; phí <span class="hl">≥ 70 triệu</span>) và ĐK2 (điểm <span class="hl">≥ 10</span> từ ≥ 2 tiêu chí: 200tr TG / 300tr vay / 35tr thẻ / 10tr BH / 500tr NAV).</p>
+                            <span class="tag">CCTG 03/09/2026 · còn lại 01/01/2027</span>
+                        </button>
+                    </div>
+
+                    <div class="map-tree" aria-hidden="true">
+                        <svg viewBox="0 0 120 420" xmlns="http://www.w3.org/2000/svg">
+                            <rect x="54" y="200" width="12" height="200" rx="4" fill="#9ca3af"/>
+                            <ellipse cx="60" cy="55" rx="28" ry="36" fill="#f59e0b" opacity=".95"/>
+                            <ellipse cx="38" cy="95" rx="26" ry="34" fill="#b45309" opacity=".9"/>
+                            <ellipse cx="82" cy="95" rx="26" ry="34" fill="#d97706" opacity=".9"/>
+                            <ellipse cx="60" cy="130" rx="32" ry="38" fill="#92400e" opacity=".85"/>
+                            <ellipse cx="30" cy="155" rx="22" ry="28" fill="#fbbf24" opacity=".9"/>
+                            <ellipse cx="90" cy="155" rx="22" ry="28" fill="#a16207" opacity=".88"/>
+                            <ellipse cx="60" cy="175" rx="24" ry="30" fill="#78716c" opacity=".75"/>
+                            <circle cx="48" cy="70" r="8" fill="#fdba74"/>
+                            <circle cx="72" cy="110" r="7" fill="#fcd34d"/>
+                            <circle cx="45" cy="145" r="6" fill="#f59e0b"/>
+                            <circle cx="78" cy="165" r="7" fill="#d6d3d1"/>
+                        </svg>
+                    </div>
+
+                    <div class="map-col">
+                        <button type="button" class="crit-card" data-goto="p2b">
+                            <div class="n">7. Vợ chồng <span class="code">(P2B, P2C)</span></div>
+                            <p class="body">Đã khai báo quan hệ vợ/chồng trên hệ thống; và tổng dư nợ 2 vợ chồng (đã loại trừ) BQ 12 tháng <span class="hl">≥ 6 tỷ</span>; hoặc tại ĐD <span class="hl">≥ 6 tỷ</span> + cam kết duy trì tối thiểu 6 tỷ trong 06 tháng.</p>
+                            <span class="tag">HL 01/01/2027</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p4">
+                            <div class="n">8. Gián tiếp <span class="code">(P4, P4A, P4B, P4C, P4E)</span></div>
+                            <p class="body">P4: GĐCN quyết định, ≤ <span class="hl">10%</span> SL Priority trực tiếp CN; P4A chức vụ Đảng/NN cấp TW / PGD Sở+; P4B tiềm năng; P4C đặc biệt dùng thẻ VI; P4E VNA bạch kim / triệu dặm.</p>
+                            <span class="tag keep">Không ĐC bởi CV 16422</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p8">
+                            <div class="n">9. Đầu tư <span class="code">(P8, P8A)</span></div>
+                            <p class="body">Đã liên kết TK VCB với TKGDCCQ/TKGDCK và đồng ý chia sẻ thông tin; tổng NAV tại đối tác BQ 12 tháng hoặc tại ĐD <span class="hl">≥ 5 tỷ</span>.</p>
+                            <span class="tag keep">Không ĐC bởi CV 16422</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p9">
+                            <div class="n">10. AUM <span class="code">(P9, P9A)</span></div>
+                            <p class="body">Đồng thời: AUM (TG+CCTG + NAV) BQ 12T <span class="hl">≥ 2 tỷ</span> (hoặc tại ĐD ≥ 2 tỷ + cam kết 06 tháng); TG+CCTG <span class="hl">≥ 1 tỷ</span>; đã liên kết TK &amp; đồng ý chia sẻ thông tin.</p>
+                            <span class="tag">HL 03/09/2026</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p10">
+                            <div class="n">11. CASA <span class="code">(P10)</span></div>
+                            <p class="body">Số dư tiền gửi không kỳ hạn BQ 12 tháng <span class="hl">≥ 500 triệu</span>.</p>
+                            <span class="tag keep">Không ĐC bởi CV 16422</span>
+                        </button>
+                        <button type="button" class="crit-card" data-goto="p11">
+                            <div class="n">12. Gia đình <span class="code">(P11, P12)</span></div>
+                            <p class="body">TV chính (KH Priority) TG+CCTG <span class="hl">≥ 2 tỷ</span>; đã khai báo QH; tổng hộ: <span class="hl">4–&lt;6 tỷ</span> → +1 TV; <span class="hl">6–&lt;8 tỷ</span> → +2; <span class="hl">≥ 8 tỷ</span> → +3 (tối đa 4 KH Priority/hộ, gồm TV chính). Cam kết duy trì 06 tháng theo điểm l.</p>
+                            <span class="tag">HL 03/09/2026</span>
+                        </button>
+                    </div>
+                </div>
+                <div class="map-legend">
+                    Thẻ cam: đường có điều chỉnh / ngày HL theo CV 16422 · Thẻ xám: giữ nguyên theo phụ lục (CV không điều chỉnh)
+                </div>
+            </div>
+        </div>
+
         <!-- ========== ĐỊNH DANH ========== -->
-        <div class="panel active" id="panel-id">
+        <div class="panel" id="panel-id">
             <div class="howto">
                 Chọn <strong>một</strong> đường định danh theo Điều 5 / phụ lục tóm tắt → chỉ điền các ô của đường đó → kết quả tự cập nhật.
                 Đạt nếu thỏa đủ điều kiện của đường đã chọn (các đường khác là thay thế nhau).
@@ -807,15 +1023,38 @@
         el.addEventListener('change', evaluateRank);
     });
 
-    /* ===== TABS ===== */
+    /* ===== TABS + MAP ===== */
+    function switchTab(name) {
+        document.querySelectorAll('.tabs button').forEach(function (b) {
+            b.classList.toggle('active', b.dataset.tab === name);
+        });
+        document.querySelectorAll('.panel').forEach(function (p) {
+            p.classList.toggle('active', p.id === 'panel-' + name);
+        });
+        const verdict = document.getElementById('verdict');
+        if (name === 'map') {
+            verdict.classList.add('hidden-tab');
+        } else {
+            verdict.classList.remove('hidden-tab');
+            if (name === 'id') evaluateId();
+            else evaluateRank();
+        }
+    }
+
     document.querySelectorAll('.tabs button').forEach(function (btn) {
         btn.addEventListener('click', function () {
-            document.querySelectorAll('.tabs button').forEach(function (b) { b.classList.remove('active'); });
-            document.querySelectorAll('.panel').forEach(function (p) { p.classList.remove('active'); });
-            btn.classList.add('active');
-            document.getElementById('panel-' + btn.dataset.tab).classList.add('active');
-            if (btn.dataset.tab === 'id') evaluateId();
-            else evaluateRank();
+            switchTab(btn.dataset.tab);
+        });
+    });
+
+    document.querySelectorAll('.crit-card[data-goto]').forEach(function (card) {
+        card.addEventListener('click', function () {
+            const key = card.getAttribute('data-goto');
+            switchTab('id');
+            const sel = document.getElementById('idPath');
+            sel.value = key;
+            showPath(key);
+            sel.scrollIntoView({ behavior: 'smooth', block: 'start' });
         });
     });
 })();
