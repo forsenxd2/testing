@@ -1,0 +1,953 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tiêu chí định danh KH Priority</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        :root {
+            --vcb-green: #228B22;
+            --vcb-green-dark: #186018;
+            --cream: #fff8dc;
+            --ok: #1b7a1b;
+            --ok-bg: #e6f6e6;
+            --no: #9a3412;
+            --no-bg: #fff1e8;
+            --wait: #6b7280;
+        }
+        body { background: #fff; color: var(--vcb-green); }
+        .container-page { max-width: 980px; margin: 36px auto 48px; padding: 0 16px; }
+        .content-box {
+            background: var(--cream);
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 2px 4px rgba(0,0,0,.08);
+        }
+        .main-title {
+            color: var(--vcb-green);
+            font-weight: 700;
+            text-align: center;
+            text-transform: uppercase;
+            font-size: 1.45rem;
+            margin-bottom: 6px;
+        }
+        .doc-meta {
+            text-align: center;
+            color: #555;
+            font-size: .88rem;
+            font-style: italic;
+            margin-bottom: 18px;
+        }
+        .howto {
+            background: #fff;
+            border: 1px solid #cfe3cf;
+            border-radius: 8px;
+            padding: 12px 14px;
+            font-size: .9rem;
+            color: #2d4a2d;
+            margin-bottom: 14px;
+        }
+        .verdict {
+            position: sticky;
+            top: 0;
+            z-index: 8;
+            border-radius: 10px;
+            padding: 14px 16px;
+            margin-bottom: 16px;
+            border: 2px solid transparent;
+            background: #fff;
+        }
+        .verdict.pass { background: var(--ok-bg); border-color: #7ec27e; color: var(--ok); }
+        .verdict.fail { background: var(--no-bg); border-color: #f0b090; color: var(--no); }
+        .verdict.empty { background: #f3f4f6; border-color: #e5e7eb; color: var(--wait); }
+        .verdict h2 {
+            font-size: 1.25rem;
+            font-weight: 800;
+            margin: 0 0 4px;
+            text-transform: uppercase;
+        }
+        .verdict .detail { font-size: .9rem; margin: 0; }
+        .verdict ul { margin: 6px 0 0; padding-left: 1.2rem; font-size: .88rem; }
+        .path-card {
+            background: #fff;
+            border: 1px solid #cfe3cf;
+            border-radius: 10px;
+            margin-bottom: 12px;
+            overflow: hidden;
+        }
+        .path-card.open { border-color: #8bc48b; }
+        .path-card.hit { box-shadow: 0 0 0 2px rgba(34,139,34,.25); }
+        .path-head {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border: none;
+            background: #eaf5e7;
+            color: var(--vcb-green-dark);
+            font-weight: 700;
+            text-align: left;
+            padding: 12px 14px;
+        }
+        .path-head .badge-status {
+            margin-left: auto;
+            font-size: .75rem;
+            font-weight: 700;
+            padding: 3px 8px;
+            border-radius: 999px;
+            background: #e5e7eb;
+            color: #4b5563;
+        }
+        .path-card.hit .badge-status { background: #bbf7d0; color: #166534; }
+        .path-body { display: none; padding: 14px 16px 16px; }
+        .path-card.open .path-body { display: block; }
+        .path-card.open .path-caret { transform: rotate(90deg); }
+        .path-caret { transition: transform .15s ease; }
+        .hint {
+            font-size: .82rem;
+            color: #5a6b5a;
+            margin-bottom: 12px;
+        }
+        .form-label { font-size: .88rem; font-weight: 600; color: #1f4d1f; }
+        .unit {
+            background: #eaf5e7;
+            color: #186018;
+            font-weight: 600;
+            font-size: .85rem;
+        }
+        .check-row {
+            display: flex;
+            align-items: flex-start;
+            gap: 8px;
+            margin-top: 10px;
+            font-size: .9rem;
+            color: #244024;
+        }
+        .sub-box {
+            background: #f7fbf7;
+            border: 1px dashed #b7d4b7;
+            border-radius: 8px;
+            padding: 12px;
+            margin-top: 10px;
+        }
+        .sub-title {
+            font-size: .86rem;
+            font-weight: 700;
+            color: var(--vcb-green-dark);
+            margin-bottom: 8px;
+        }
+        .points-live {
+            font-size: .88rem;
+            color: #1f4d1f;
+            margin-top: 8px;
+            padding: 8px 10px;
+            background: #eef8ee;
+            border-radius: 6px;
+        }
+        .eff-note {
+            display: inline-block;
+            font-size: .75rem;
+            font-weight: 600;
+            color: #9a3412;
+            background: #ffedd5;
+            border-radius: 4px;
+            padding: 2px 6px;
+            margin-left: 6px;
+        }
+        .actions {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 8px;
+        }
+        @media (max-width: 576px) {
+            .main-title { font-size: 1.15rem; }
+            .verdict h2 { font-size: 1.05rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container-page">
+    <div class="content-box">
+        <div class="d-flex justify-content-end mb-3">
+            <button type="button" class="btn btn-secondary btn-sm fw-bold" onclick="window.history.back()">
+                <i class="bi bi-arrow-left"></i> Quay lại
+            </button>
+        </div>
+
+        <h1 class="main-title">Tiêu chí định danh KH Priority</h1>
+        <p class="doc-meta">
+            Theo CV 16422/VCB-CSKHBL ngày 27/08/2026 — điều chỉnh chính sách định danh &amp; xếp hạng KH Priority
+        </p>
+
+        <div class="howto">
+            <strong>Cách dùng nhanh:</strong> mở mục tiêu chí phù hợp với KH → nhập số liệu (để trống mục không dùng).
+            Hệ thống tự chốt <em>ĐẠT</em> nếu KH thỏa <strong>ít nhất 1</strong> đường định danh bên dưới.
+            Đơn vị mặc định: <strong>tỷ đồng</strong> với số dư lớn, <strong>triệu đồng</strong> với thu nhập / chi tiêu thẻ / phí BH.
+        </div>
+
+        <div id="verdict" class="verdict empty" aria-live="polite">
+            <h2>Chưa đủ dữ liệu</h2>
+            <p class="detail">Nhập ít nhất một nhóm tiêu chí để kiểm tra.</p>
+        </div>
+
+        <div class="actions mb-3">
+            <button type="button" class="btn btn-outline-success btn-sm fw-bold" id="btnExpandAll">Mở tất cả</button>
+            <button type="button" class="btn btn-outline-secondary btn-sm fw-bold" id="btnCollapseAll">Thu gọn</button>
+            <button type="button" class="btn btn-outline-danger btn-sm fw-bold" id="btnReset">Xóa hết số liệu</button>
+        </div>
+
+        <!-- 1. Tiền gửi -->
+        <section class="path-card open" data-path="deposit">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>1. Tiêu chí tiền gửi</span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Đạt nếu <strong>BQ 12 tháng ≥ 2 tỷ</strong>, hoặc <strong>số dư tại thời điểm định danh ≥ 2 tỷ</strong> và KH cam kết duy trì tối thiểu 2 tỷ trong 6 tháng tiếp theo. Gồm TK không kỳ hạn, có kỳ hạn và mệnh giá CCTG do VCB phát hành (VND + NT quy đổi).</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="depAvg">Số dư tiền gửi BQ 12 tháng</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="depAvg" min="0" step="0.01" placeholder="VD: 2.5" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ đồng</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="depNow">Số dư tại thời điểm định danh</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="depNow" min="0" step="0.01" placeholder="VD: 2.0" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ đồng</span>
+                        </div>
+                    </div>
+                </div>
+                <label class="check-row">
+                    <input type="checkbox" class="form-check-input mt-1" id="depCommit">
+                    <span>KH cam kết duy trì số dư tiền gửi tối thiểu <strong>2 tỷ</strong> trong 6 tháng tiếp theo</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 2. Dư nợ -->
+        <section class="path-card" data-path="loan">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>2. Tiêu chí dư nợ vay <span class="eff-note">HL 03/09/2026</span></span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Đạt nếu dư nợ BQ 12 tháng ≥ <strong>3 tỷ</strong>, hoặc dư nợ hiện tại ≥ <strong>3 tỷ</strong> + cam kết duy trì 6 tháng. <em>Không tính</em> vay ưu đãi CBCNV VCB và vay đảm bảo bằng tiền gửi/GTCG do VCB phát hành.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="loanAvg">Dư nợ BQ 12 tháng (đã loại trừ)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="loanAvg" min="0" step="0.01" placeholder="VD: 3.2" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ đồng</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="loanNow">Dư nợ tại thời điểm định danh</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="loanNow" min="0" step="0.01" placeholder="VD: 3.0" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ đồng</span>
+                        </div>
+                    </div>
+                </div>
+                <label class="check-row">
+                    <input type="checkbox" class="form-check-input mt-1" id="loanCommit">
+                    <span>KH cam kết duy trì dư nợ tối thiểu <strong>3 tỷ</strong> trong 6 tháng tiếp theo</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 3. Thẻ -->
+        <section class="path-card" data-path="card">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>3. Tiêu chí doanh số chi tiêu thẻ <span class="eff-note">HL 01/01/2027</span></span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Phải <strong>đồng thời</strong>: (i) chủ thẻ chính thẻ TDQT cá nhân đang hoạt động, hạn mức hạng <strong>Platinum trở lên</strong> (không tính thẻ ủy quyền DN); (ii) tổng DS chi tiêu mọi thẻ TDQT 12 tháng ≥ <strong>250 triệu</strong>.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="cardTier">Hạng hạn mức thẻ TDQT đang hoạt động</label>
+                        <select class="form-select" id="cardTier">
+                            <option value="">— Chọn —</option>
+                            <option value="below">Dưới Platinum (Standard / Gold…)</option>
+                            <option value="platinum">Platinum trở lên</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="cardSpend">Tổng DS chi tiêu thẻ 12 tháng</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="cardSpend" min="0" step="1" placeholder="VD: 280" inputmode="decimal">
+                            <span class="input-group-text unit">triệu đồng</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 4. Thu nhập -->
+        <section class="path-card" data-path="income">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>4. Tiêu chí thu nhập</span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Phải <strong>đồng thời</strong>: thu nhập BQ/tháng 12 tháng ≥ <strong>50 triệu</strong> (theo CTQL lương VCB hoặc CN xác nhận) <strong>và</strong> số dư TK không kỳ hạn BQ 12 tháng ≥ ngưỡng theo năm định danh.</p>
+                <div class="row g-3">
+                    <div class="col-md-4">
+                        <label class="form-label" for="idYear">Năm định danh</label>
+                        <select class="form-select" id="idYear">
+                            <option value="2027" selected>Từ 01/01/2027 (SDKKH ≥ 8 triệu)</option>
+                            <option value="2028">Từ 01/01/2028 (SDKKH ≥ 10 triệu)</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="incomeAvg">Thu nhập BQ / tháng (12 tháng)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="incomeAvg" min="0" step="1" placeholder="VD: 55" inputmode="decimal">
+                            <span class="input-group-text unit">triệu</span>
+                        </div>
+                    </div>
+                    <div class="col-md-4">
+                        <label class="form-label" for="demandAvg">SD TK không kỳ hạn BQ 12 tháng</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="demandAvg" min="0" step="0.1" placeholder="VD: 8.5" inputmode="decimal">
+                            <span class="input-group-text unit">triệu</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 5. Tổ hợp -->
+        <section class="path-card" data-path="combo">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>5. Tiêu chí tổ hợp doanh số</span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Đạt khi thỏa <strong>đồng thời</strong> Điều kiện 1 (ít nhất 1/4 tiêu chí) <strong>và</strong> Điều kiện 2 (tổng điểm quy đổi ≥ 10, từ ≥ 2 tiêu chí khác nhau).</p>
+
+                <div class="sub-box">
+                    <div class="sub-title">Điều kiện 1 — chọn / nhập tiêu chí có</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="cDep">Số dư TG BQ 12T hoặc tại thời điểm ĐD</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="cDep" min="0" step="0.01" placeholder="Cần ≥ 1 tỷ" inputmode="decimal">
+                                <span class="input-group-text unit">tỷ</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="cLoan">Dư nợ vay (đã loại trừ CBCNV/GTCG)</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="cLoan" min="0" step="0.01" placeholder="Cần ≥ 2 tỷ" inputmode="decimal">
+                                <span class="input-group-text unit">tỷ</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="cCardTier">Thẻ TDQT Platinum+</label>
+                            <select class="form-select" id="cCardTier">
+                                <option value="">— Chọn —</option>
+                                <option value="no">Không / dưới Platinum</option>
+                                <option value="yes">Có, Platinum trở lên</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="cCardSpend">DS chi tiêu thẻ 12 tháng</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="cCardSpend" min="0" step="1" placeholder="Cần ≥ 200" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="check-row mt-0">
+                                <input type="checkbox" class="form-check-input mt-1" id="cInsActive">
+                                <span>Có HĐ bảo hiểm FWD qua VCB còn hiệu lực, phát hành ≤ 3 năm</span>
+                            </label>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="cInsFee">Tổng phí BH FWD-VCB đã nộp 12 tháng</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="cInsFee" min="0" step="1" placeholder="Cần ≥ 70" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sub-box">
+                    <div class="sub-title">Điều kiện 2 — quy đổi điểm (≥ 10 điểm từ ≥ 2 tiêu chí)</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="pDep">Số dư TG (+ CCTG) — 1 điểm / 200 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pDep" min="0" step="1" placeholder="VD: 800" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="pLoan">Dư nợ vay — 1 điểm / 300 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pLoan" min="0" step="1" placeholder="VD: 600" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="pCard">DS chi tiêu thẻ TDQT — 1 điểm / 35 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pCard" min="0" step="1" placeholder="VD: 140" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="pIns">Phí bảo hiểm đã nộp — 1 điểm / 10 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pIns" min="0" step="1" placeholder="VD: 40" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="pNav">Tổng NAV tại VCBS / VCBF / đối tác — 1 điểm / 500 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="pNav" min="0" step="1" placeholder="VD: 1000" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="points-live" id="pointsLive">Điểm: 0 · Số tiêu chí có điểm: 0</div>
+                </div>
+            </div>
+        </section>
+
+        <!-- 6. Người thân -->
+        <section class="path-card" data-path="spouse">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>6. Vợ / chồng của KH Priority</span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Vợ/chồng của KH đã được định danh Priority cũng được định danh Priority nếu quan hệ đã khai báo trên hệ thống VCB.</p>
+                <label class="check-row">
+                    <input type="checkbox" class="form-check-input mt-1" id="isSpouse">
+                    <span>KH là vợ/chồng của KH Priority hiện hữu và quan hệ đã khai báo trên hệ thống</span>
+                </label>
+            </div>
+        </section>
+
+        <!-- 7. Gia đình (thành viên phụ) -->
+        <section class="path-card" data-path="family">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>7. Định danh theo hộ gia đình (thành viên phụ)</span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">Thành viên chính phải có TG + CCTG ≥ <strong>2 tỷ</strong> (BQ 12T hoặc tại thời điểm ĐD). Quan hệ đã khai báo. Cả hộ cam kết duy trì số dư 6 tháng. Số thành viên phụ được định danh theo tổng số dư hộ.</p>
+                <div class="row g-3">
+                    <div class="col-md-6">
+                        <label class="form-label" for="famPrimaryBal">Số dư TG+CCTG của thành viên chính</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="famPrimaryBal" min="0" step="0.01" placeholder="Cần ≥ 2 tỷ" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="famTotalBal">Tổng số dư TG+CCTG cả hộ</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="famTotalBal" min="0" step="0.01" placeholder="VD: 5.5" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ</span>
+                        </div>
+                    </div>
+                </div>
+                <label class="check-row">
+                    <input type="checkbox" class="form-check-input mt-1" id="famDeclared">
+                    <span>Quan hệ gia đình đã khai báo trên hệ thống</span>
+                </label>
+                <label class="check-row">
+                    <input type="checkbox" class="form-check-input mt-1" id="famCommit">
+                    <span>Hộ gia đình cam kết duy trì số dư tối thiểu tương ứng trong 6 tháng tiếp theo</span>
+                </label>
+                <div class="points-live" id="familyLive">Số thành viên phụ được định danh: —</div>
+            </div>
+        </section>
+
+        <!-- 8. Phân hạng -->
+        <section class="path-card open" data-path="rank" id="rankCard">
+            <button type="button" class="path-head">
+                <i class="bi bi-caret-right-fill path-caret"></i>
+                <span>8. Phân hạng Priority (Điều 13) <span class="eff-note">HL chính 01/01/2027</span></span>
+                <span class="badge-status" data-badge>Chưa kiểm</span>
+            </button>
+            <div class="path-body">
+                <p class="hint">
+                    Chỉ áp dụng khi đã <strong>định danh Priority</strong>. Các nhánh Tiền gửi / Dư nợ / Tổ hợp là đường vào <strong>thay thế (OR)</strong>.
+                    TG và dư nợ phải dùng <em>cùng cách tính</em> (cùng BQ 12 tháng hoặc cùng thời điểm rà soát).
+                    Hạng cao nhất khớp sẽ được chọn: Elite → Kim cương → Vàng → còn lại Titan.
+                </p>
+                <div class="row g-3">
+                    <div class="col-md-12">
+                        <label class="form-label" for="rankMethod">Cách lấy số dư / dư nợ</label>
+                        <select class="form-select" id="rankMethod">
+                            <option value="avg">Bình quân 12 tháng liền trước</option>
+                            <option value="now">Tại thời điểm rà soát</option>
+                        </select>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="rankDep">Tổng số dư TG + mệnh giá CCTG</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="rankDep" min="0" step="0.01" placeholder="VD: 22" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ</span>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <label class="form-label" for="rankLoan">Dư nợ vay (đã loại trừ CBCNV / GTCG VCB)</label>
+                        <div class="input-group">
+                            <input type="number" class="form-control" id="rankLoan" min="0" step="0.01" placeholder="VD: 12" inputmode="decimal">
+                            <span class="input-group-text unit">tỷ</span>
+                        </div>
+                    </div>
+                </div>
+                <label class="check-row" id="rankCommitWrap" style="display:none;">
+                    <input type="checkbox" class="form-check-input mt-1" id="rankCommit12">
+                    <span>KH cam kết duy trì TG và/hoặc dư nợ tương ứng trong <strong>12 tháng</strong> tiếp theo (bắt buộc nếu dùng số tại thời điểm để xét sàn tổ hợp)</span>
+                </label>
+
+                <div class="sub-box">
+                    <div class="sub-title">Điểm tổ hợp phân hạng (không gồm NAV) — tự tính</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="rPDep">TG + CCTG — 1đ / 200 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="rPDep" min="0" step="1" placeholder="VD: 5000" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="rPLoan">Dư nợ — 1đ / 300 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="rPLoan" min="0" step="1" placeholder="VD: 12000" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="rPCard">DS chi tiêu thẻ TDQT 12T — 1đ / 35 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="rPCard" min="0" step="1" placeholder="VD: 350" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="rPIns">Phí bảo hiểm — 1đ / 10 triệu</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="rPIns" min="0" step="1" placeholder="VD: 100" inputmode="decimal">
+                                <span class="input-group-text unit">triệu</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="points-live" id="rankPointsLive">Điểm phân hạng: 0</div>
+                </div>
+
+                <div class="sub-box">
+                    <div class="sub-title">Phân hạng thành viên gia đình (nếu xét TV phụ)</div>
+                    <div class="row g-3">
+                        <div class="col-md-6">
+                            <label class="form-label" for="famRankPrimary">Hạng thành viên chính</label>
+                            <select class="form-select" id="famRankPrimary">
+                                <option value="">— Không xét —</option>
+                                <option value="elite">Kim cương Elite</option>
+                                <option value="diamond">Kim cương</option>
+                                <option value="gold">Vàng</option>
+                                <option value="titan">Titan</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6">
+                            <label class="form-label" for="famRankBal">Tổng TG + CCTG gia đình</label>
+                            <div class="input-group">
+                                <input type="number" class="form-control" id="famRankBal" min="0" step="0.01" placeholder="VD: 35" inputmode="decimal">
+                                <span class="input-group-text unit">tỷ</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="points-live" id="famRankLive">Hạng TV gia đình: —</div>
+                </div>
+            </div>
+        </section>
+
+        <div id="rankVerdict" class="verdict empty" style="margin-top:8px;">
+            <h2 style="font-size:1.05rem;">Phân hạng</h2>
+            <p class="detail">Hoàn tất định danh Priority trước, rồi nhập số liệu mục 8.</p>
+        </div>
+
+        <p class="doc-meta mt-3 mb-0" style="font-style:normal;font-size:.8rem;color:#666;">
+            Công cụ hỗ trợ đối chiếu nhanh cho Giao dịch viên — không thay thế phê duyệt chính thức trên hệ thống VCB.
+            Tham chiếu đầy đủ: <code>pdf/priority.pdf</code> (CV 16422/VCB-CSKHBL).
+        </p>
+    </div>
+</div>
+
+<script>
+(function () {
+    const B = 1; // tỷ
+    const M = 1; // triệu (đơn vị nhập)
+
+    function num(id) {
+        const el = document.getElementById(id);
+        if (!el || el.value === '' || el.value == null) return null;
+        const v = Number(el.value);
+        return Number.isFinite(v) ? v : null;
+    }
+    function checked(id) {
+        const el = document.getElementById(id);
+        return !!(el && el.checked);
+    }
+    function val(id) {
+        const el = document.getElementById(id);
+        return el ? el.value : '';
+    }
+    function pts(amountTrieu, per) {
+        if (amountTrieu == null || amountTrieu <= 0) return 0;
+        return Math.floor(amountTrieu / per);
+    }
+
+    function evalDeposit() {
+        const avg = num('depAvg');
+        const now = num('depNow');
+        const commit = checked('depCommit');
+        const used = avg != null || now != null || commit;
+        const ok = (avg != null && avg >= 2) || (now != null && now >= 2 && commit);
+        return { used, ok, label: 'Tiền gửi (≥ 2 tỷ BQ 12T hoặc hiện tại + cam kết 6 tháng)' };
+    }
+
+    function evalLoan() {
+        const avg = num('loanAvg');
+        const now = num('loanNow');
+        const commit = checked('loanCommit');
+        const used = avg != null || now != null || commit;
+        const ok = (avg != null && avg >= 3) || (now != null && now >= 3 && commit);
+        return { used, ok, label: 'Dư nợ vay (≥ 3 tỷ BQ 12T hoặc hiện tại + cam kết 6 tháng)' };
+    }
+
+    function evalCard() {
+        const tier = val('cardTier');
+        const spend = num('cardSpend');
+        const used = !!tier || spend != null;
+        const ok = tier === 'platinum' && spend != null && spend >= 250;
+        return { used, ok, label: 'Thẻ TDQT Platinum+ và DS chi tiêu ≥ 250 triệu/12 tháng' };
+    }
+
+    function evalIncome() {
+        const year = val('idYear');
+        const income = num('incomeAvg');
+        const demand = num('demandAvg');
+        const used = income != null || demand != null;
+        let demandNeed = year === '2028' ? 10 : 8;
+        const ok = income != null && income >= 50 && demand != null && demand >= demandNeed;
+        const label = 'Thu nhập ≥ 50 triệu/tháng và SDKKH BQ ≥ ' + demandNeed + ' triệu';
+        return { used, ok, label };
+    }
+
+    function evalCombo() {
+        const cDep = num('cDep');
+        const cLoan = num('cLoan');
+        const cTier = val('cCardTier');
+        const cSpend = num('cCardSpend');
+        const cIns = checked('cInsActive');
+        const cFee = num('cInsFee');
+
+        const crit1 = [
+            cDep != null && cDep >= 1,
+            cLoan != null && cLoan >= 2,
+            cTier === 'yes' && cSpend != null && cSpend >= 200,
+            cIns && cFee != null && cFee >= 70
+        ];
+        const dk1 = crit1.some(Boolean);
+
+        const pDep = pts(num('pDep'), 200);
+        const pLoan = pts(num('pLoan'), 300);
+        const pCard = pts(num('pCard'), 35);
+        const pIns = pts(num('pIns'), 10);
+        const pNav = pts(num('pNav'), 500);
+        const parts = [pDep, pLoan, pCard, pIns, pNav];
+        const total = parts.reduce((a, b) => a + b, 0);
+        const cats = parts.filter((p) => p > 0).length;
+        const dk2 = total >= 10 && cats >= 2;
+
+        document.getElementById('pointsLive').textContent =
+            'Điểm: ' + total + ' (TG ' + pDep + ' · Vay ' + pLoan + ' · Thẻ ' + pCard +
+            ' · BH ' + pIns + ' · NAV ' + pNav + ') · Số tiêu chí có điểm: ' + cats +
+            (dk2 ? ' → Đạt ĐK2' : ' → Chưa đạt ĐK2');
+
+        const used = [cDep, cLoan, cSpend, cFee, num('pDep'), num('pLoan'), num('pCard'), num('pIns'), num('pNav')]
+            .some((v) => v != null) || cIns || !!cTier;
+        const ok = dk1 && dk2;
+        return {
+            used,
+            ok,
+            label: 'Tổ hợp doanh số (ĐK1 + ĐK2 điểm ≥ 10 từ ≥ 2 tiêu chí)' +
+                (used ? (dk1 ? ' · ĐK1✓' : ' · ĐK1✗') + (dk2 ? ' · ĐK2✓' : ' · ĐK2✗') : '')
+        };
+    }
+
+    function evalSpouse() {
+        const used = checked('isSpouse');
+        return { used, ok: used, label: 'Vợ/chồng KH Priority (đã khai báo quan hệ)' };
+    }
+
+    function evalFamily() {
+        const primary = num('famPrimaryBal');
+        const total = num('famTotalBal');
+        const declared = checked('famDeclared');
+        const commit = checked('famCommit');
+        const used = primary != null || total != null || declared || commit;
+
+        let secondary = 0;
+        if (total != null) {
+            if (total >= 8) secondary = 3;
+            else if (total >= 6) secondary = 2;
+            else if (total >= 4) secondary = 1;
+        }
+        const live = document.getElementById('familyLive');
+        if (total == null) live.textContent = 'Số thành viên phụ được định danh: —';
+        else live.textContent = 'Số thành viên phụ được định danh: ' + secondary +
+            ' (tổng KH Priority trong hộ tối đa ' + (secondary + 1) + ')';
+
+        const ok = primary != null && primary >= 2 && declared && commit && secondary >= 1;
+        return {
+            used,
+            ok,
+            label: ok
+                ? ('Hộ gia đình — được định danh tối đa ' + secondary + ' thành viên phụ')
+                : 'Hộ gia đình (cần TV chính ≥ 2 tỷ, khai báo, cam kết, tổng hộ ≥ 4 tỷ)'
+        };
+    }
+
+    const evaluators = {
+        deposit: evalDeposit,
+        loan: evalLoan,
+        card: evalCard,
+        income: evalIncome,
+        combo: evalCombo,
+        spouse: evalSpouse,
+        family: evalFamily
+    };
+
+    function rankPoints() {
+        const parts = [
+            pts(num('rPDep'), 200),
+            pts(num('rPLoan'), 300),
+            pts(num('rPCard'), 35),
+            pts(num('rPIns'), 10)
+        ];
+        const total = parts.reduce(function (a, b) { return a + b; }, 0);
+        document.getElementById('rankPointsLive').textContent =
+            'Điểm phân hạng: ' + total +
+            ' (TG ' + parts[0] + ' · Vay ' + parts[1] + ' · Thẻ ' + parts[2] + ' · BH ' + parts[3] + ')';
+        return total;
+    }
+
+    function floorBal(raw, method, commit) {
+        if (raw == null) return null;
+        if (method === 'avg') return raw;
+        return commit ? raw : null;
+    }
+
+    function evalFamilyMemberRank() {
+        const primary = val('famRankPrimary');
+        const bal = num('famRankBal');
+        const live = document.getElementById('famRankLive');
+        if (!primary || bal == null) {
+            live.textContent = 'Hạng TV gia đình: —';
+            return null;
+        }
+        let result = null;
+        if (bal >= 75 && primary === 'elite') result = 'Kim cương Elite';
+        else if (bal >= 30 && bal < 75 && (primary === 'elite' || primary === 'diamond')) result = 'Vàng';
+        else if (bal >= 4 && bal < 30 && primary) result = 'Titan';
+        else result = 'Không đủ điều kiện theo bảng TV gia đình';
+        live.textContent = 'Hạng TV gia đình: ' + result;
+        return result;
+    }
+
+    /** Trả về hạng cao nhất khớp, hoặc null nếu thiếu dữ liệu xếp hạng. */
+    function evalRank(isPriority) {
+        const card = document.querySelector('.path-card[data-path="rank"]');
+        const box = document.getElementById('rankVerdict');
+        const method = val('rankMethod') || 'avg';
+        const commit = checked('rankCommit12');
+        const dep = num('rankDep');
+        const loan = num('rankLoan');
+        const points = rankPoints();
+        const famRank = evalFamilyMemberRank();
+
+        const commitWrap = document.getElementById('rankCommitWrap');
+        commitWrap.style.display = method === 'now' ? 'flex' : 'none';
+
+        const used = dep != null || loan != null ||
+            num('rPDep') != null || num('rPLoan') != null || num('rPCard') != null || num('rPIns') != null ||
+            !!val('famRankPrimary') || num('famRankBal') != null;
+
+        if (!isPriority) {
+            setBadge(card, used ? 'fail' : 'idle');
+            box.className = 'verdict empty';
+            box.innerHTML = '<h2 style="font-size:1.05rem;">Phân hạng</h2><p class="detail">Cần đạt định danh Priority trước khi phân hạng.</p>';
+            return;
+        }
+
+        if (!used) {
+            setBadge(card, 'idle');
+            box.className = 'verdict empty';
+            box.innerHTML = '<h2 style="font-size:1.05rem;">Phân hạng</h2><p class="detail">KH đã đủ định danh Priority. Nhập số liệu mục 8 để xác định hạng.</p>';
+            return;
+        }
+
+        const depFloor = floorBal(dep, method, commit);
+        const loanFloor = floorBal(loan, method, commit);
+        // Nhánh TG / dư nợ thuần: dùng số đã nhập theo cách tính đã chọn (không bắt buộc cam kết)
+        const depPure = dep;
+        const loanPure = loan;
+
+        const reasons = [];
+        let tier = null;
+
+        const comboElite = points >= 250 && depFloor != null && depFloor >= 5 && loanFloor != null && loanFloor >= 10;
+        const comboDiamond = points >= 100 && points < 250 && depFloor != null && depFloor >= 5 && loanFloor != null && loanFloor >= 10;
+        const comboGold = points >= 25 && points < 100 && depFloor != null && depFloor >= 2 && loanFloor != null && loanFloor >= 3;
+
+        if ((depPure != null && depPure >= 50) || (loanPure != null && loanPure >= 50) || comboElite) {
+            tier = 'Kim cương Elite';
+            if (depPure != null && depPure >= 50) reasons.push('TG+CCTG ≥ 50 tỷ');
+            if (loanPure != null && loanPure >= 50) reasons.push('Dư nợ ≥ 50 tỷ');
+            if (comboElite) reasons.push('Tổ hợp ≥ 250 điểm + sàn TG ≥ 5 tỷ + dư nợ ≥ 10 tỷ');
+        } else if (
+            (depPure != null && depPure >= 20 && depPure < 50) ||
+            (loanPure != null && loanPure >= 20 && loanPure < 50) ||
+            comboDiamond
+        ) {
+            tier = 'Kim cương';
+            if (depPure != null && depPure >= 20 && depPure < 50) reasons.push('TG+CCTG từ 20 đến dưới 50 tỷ');
+            if (loanPure != null && loanPure >= 20 && loanPure < 50) reasons.push('Dư nợ từ 20 đến dưới 50 tỷ');
+            if (comboDiamond) reasons.push('Tổ hợp 100–&lt;250 điểm + sàn TG ≥ 5 tỷ + dư nợ ≥ 10 tỷ');
+        } else if (
+            (depPure != null && depPure >= 5 && depPure < 20) ||
+            (loanPure != null && loanPure >= 5 && loanPure < 20) ||
+            comboGold
+        ) {
+            tier = 'Vàng';
+            if (depPure != null && depPure >= 5 && depPure < 20) reasons.push('TG+CCTG từ 5 đến dưới 20 tỷ');
+            if (loanPure != null && loanPure >= 5 && loanPure < 20) reasons.push('Dư nợ từ 5 đến dưới 20 tỷ');
+            if (comboGold) reasons.push('Tổ hợp 25–&lt;100 điểm + sàn TG ≥ 2 tỷ + dư nợ ≥ 3 tỷ');
+        } else {
+            tier = 'Titan';
+            reasons.push('KH Priority không thuộc Elite / Kim cương / Vàng');
+        }
+
+        if (method === 'now' && (comboElite || comboDiamond || comboGold) === false &&
+            (num('rPDep') != null || num('rPLoan') != null || num('rPCard') != null || num('rPIns') != null) &&
+            !commit && points >= 25) {
+            reasons.push('Lưu ý: chưa tick cam kết 12 tháng nên sàn tổ hợp (i)/(ii) chưa được tính');
+        }
+
+        setBadge(card, 'ok');
+        box.className = 'verdict pass';
+        let html = '<h2 style="font-size:1.15rem;"><i class="bi bi-award-fill"></i> Hạng: ' + tier + '</h2>';
+        html += '<p class="detail">Căn cứ: ' + reasons.join('; ') + '.</p>';
+        if (famRank) html += '<p class="detail">Thành viên gia đình: <strong>' + famRank + '</strong>.</p>';
+        box.innerHTML = html;
+    }
+
+    function setBadge(card, state) {
+        const badge = card.querySelector('[data-badge]');
+        if (!badge) return;
+        if (state === 'ok') {
+            badge.textContent = 'ĐẠT';
+            card.classList.add('hit');
+        } else if (state === 'fail') {
+            badge.textContent = 'Chưa đạt';
+            card.classList.remove('hit');
+        } else {
+            badge.textContent = 'Chưa kiểm';
+            card.classList.remove('hit');
+        }
+    }
+
+    function evaluate() {
+        const hits = [];
+        const tried = [];
+        Object.keys(evaluators).forEach(function (key) {
+            const card = document.querySelector('.path-card[data-path="' + key + '"]');
+            const r = evaluators[key]();
+            if (!r.used) {
+                setBadge(card, 'idle');
+                return;
+            }
+            tried.push(r);
+            if (r.ok) {
+                hits.push(r);
+                setBadge(card, 'ok');
+            } else {
+                setBadge(card, 'fail');
+            }
+        });
+
+        const box = document.getElementById('verdict');
+        if (!tried.length) {
+            box.className = 'verdict empty';
+            box.innerHTML = '<h2>Chưa đủ dữ liệu</h2><p class="detail">Nhập ít nhất một nhóm tiêu chí để kiểm tra.</p>';
+            evalRank(false);
+            return;
+        }
+        if (hits.length) {
+            box.className = 'verdict pass';
+            box.innerHTML = '<h2><i class="bi bi-check-circle-fill"></i> Đủ điều kiện định danh Priority</h2>' +
+                '<p class="detail">KH thỏa ' + hits.length + ' đường định danh:</p><ul>' +
+                hits.map(function (h) { return '<li>' + h.label + '</li>'; }).join('') +
+                '</ul>';
+            evalRank(true);
+        } else {
+            box.className = 'verdict fail';
+            box.innerHTML = '<h2><i class="bi bi-x-circle-fill"></i> Chưa đủ điều kiện</h2>' +
+                '<p class="detail">Đã kiểm ' + tried.length + ' nhóm — chưa đường nào đạt. Bổ sung số liệu hoặc mở nhóm tiêu chí khác.</p>';
+            evalRank(false);
+        }
+    }
+
+    document.querySelectorAll('.path-head').forEach(function (btn) {
+        btn.addEventListener('click', function () {
+            btn.closest('.path-card').classList.toggle('open');
+        });
+    });
+
+    document.getElementById('btnExpandAll').addEventListener('click', function () {
+        document.querySelectorAll('.path-card').forEach(function (c) { c.classList.add('open'); });
+    });
+    document.getElementById('btnCollapseAll').addEventListener('click', function () {
+        document.querySelectorAll('.path-card').forEach(function (c) { c.classList.remove('open'); });
+    });
+    document.getElementById('btnReset').addEventListener('click', function () {
+        document.querySelectorAll('input[type="number"], select').forEach(function (el) { el.value = ''; });
+        document.querySelectorAll('input[type="checkbox"]').forEach(function (el) { el.checked = false; });
+        document.getElementById('idYear').value = '2027';
+        evaluate();
+    });
+
+    document.querySelectorAll('input, select').forEach(function (el) {
+        el.addEventListener('input', evaluate);
+        el.addEventListener('change', evaluate);
+    });
+
+    evaluate();
+})();
+</script>
+</body>
+</html>
