@@ -55,21 +55,21 @@
             </div>
 
             <div class="tabs">
-                <button type="button" class="active" data-tab="overview">Tổng quan</button>
-                <button type="button" data-tab="general">Quy định chung</button>
-                <button type="button" data-tab="business">Cho vay kinh doanh</button>
-                <button type="button" data-tab="life">Nhu cầu đời sống</button>
-                <button type="button" data-tab="electronic">Cho vay điện tử</button>
-                <button type="button" data-tab="implementation">Tổ chức thực hiện</button>
+                <button type="button" class="active" data-tab="khcn">Quy trình tín dụng KHCN</button>
+                <button type="button" data-tab="khbb">Quy trình tín dụng KHBB</button>
+                <button type="button" data-tab="regulation">Quy chế cho vay</button>
+                <button type="button" data-tab="authority">Thẩm quyền phê duyệt tín dụng</button>
+                <button type="button" data-tab="cards">Chính sách thẻ tín dụng</button>
+                <button type="button" data-tab="collateral">Chính sách bảo đảm tín dụng</button>
             </div>
 
             <div id="panels">
-                <div class="panel active" id="panel-overview"></div>
-                <div class="panel" id="panel-general"></div>
-                <div class="panel" id="panel-business"></div>
-                <div class="panel" id="panel-life"></div>
-                <div class="panel" id="panel-electronic"></div>
-                <div class="panel" id="panel-implementation"></div>
+                <div class="panel active" id="panel-khcn"></div>
+                <div class="panel" id="panel-khbb"></div>
+                <div class="panel" id="panel-regulation"></div>
+                <div class="panel" id="panel-authority"></div>
+                <div class="panel" id="panel-cards"></div>
+                <div class="panel" id="panel-collateral"></div>
             </div>
             <div id="noResult" class="no-result" style="display:none;">Không tìm thấy nội dung phù hợp.</div>
         </div>
@@ -82,13 +82,25 @@
         const noResult = document.getElementById("noResult");
         const search = document.getElementById("documentSearch");
         const panelData = {
-            overview: ["Tổng quan văn bản", source.slice(0, source.indexOf("CHƯƠNG I"))],
-            general: ["Chương I - Quy định chung", source.slice(source.indexOf("CHƯƠNG I"), source.indexOf("CHƯƠNG II"))],
-            business: ["Mục 1 - Hoạt động cho vay phục vụ hoạt động kinh doanh", source.slice(source.indexOf("MỤC 1.", source.indexOf("CHƯƠNG II")), source.indexOf("MỤC 2.", source.indexOf("CHƯƠNG II")))],
-            life: ["Mục 2 - Hoạt động cho vay phục vụ nhu cầu đời sống", source.slice(source.indexOf("MỤC 2.", source.indexOf("CHƯƠNG II")), source.indexOf("MỤC 3.", source.indexOf("CHƯƠNG II")))],
-            electronic: ["Mục 3 - Hoạt động cho vay bằng phương tiện điện tử", source.slice(source.indexOf("MỤC 3.", source.indexOf("CHƯƠNG II")), source.indexOf("CHƯƠNG III"))],
-            implementation: ["Chương III - Tổ chức thực hiện", source.slice(source.indexOf("CHƯƠNG III"))]
+            khcn: { title: "Quy trình tín dụng KHCN", placeholder: true },
+            khbb: { title: "Quy trình tín dụng KHBB", placeholder: true },
+            regulation: { title: "Quy chế cho vay", sections: buildRegulationSections(source) },
+            authority: { title: "Thẩm quyền phê duyệt tín dụng", placeholder: true },
+            cards: { title: "Chính sách thẻ tín dụng", placeholder: true },
+            collateral: { title: "Chính sách bảo đảm tín dụng", placeholder: true }
         };
+
+        function buildRegulationSections(text) {
+            const bodyStart = text.indexOf("QUY ĐỊNH VỀ CHO VAY ĐỐI VỚI KHÁCH HÀNG", text.indexOf("MỤC LỤC"));
+            const body = bodyStart >= 0 ? text.slice(bodyStart) : text;
+            const headings = [...body.matchAll(/(?:^|\n)(CHƯƠNG [IVX]+(?:\s*\n[^\n]*)?|MỤC \d+\.\s*[^\n]+|Điều \d+[a-zA-ZđĐ]*\.)/g)];
+            if (!headings.length) return [{ title: "Toàn văn quy chế", text: body }];
+            return headings.map((heading, index) => ({
+                title: heading[1].replace(/\s+/g, " ").trim(),
+                text: body.slice(heading.index + heading[0].lastIndexOf(heading[1]),
+                    index + 1 < headings.length ? headings[index + 1].index : body.length).trim()
+            })).filter((section) => section.text.length > 20);
+        }
 
         function fold(value) {
             return (value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
@@ -122,12 +134,23 @@
             let matches = 0;
             Object.entries(panelData).forEach(([id, data]) => {
                 const panel = document.getElementById("panel-" + id);
-                const text = data[1] || "";
-                const found = !needle || fold(text).includes(needle);
+                if (data.placeholder) {
+                    panel.innerHTML = `<div class="card-block"><h3>${data.title}</h3><p class="placeholder">Chưa có dữ liệu.</p></div>`;
+                    panel.style.display = "";
+                    return;
+                }
+                const sections = data.sections || [];
+                const foundSections = sections.filter((section) => !needle || fold(section.title + " " + section.text).includes(needle));
+                const found = foundSections.length > 0;
                 panel.style.display = found ? "" : "none";
                 if (found) {
                     matches++;
-                    panel.innerHTML = `<div class="card-block"><h3>${data[0]}</h3><div class="document">${highlight(text, keyword)}</div></div>`;
+                    panel.innerHTML = foundSections.map((section) => `
+                        <div class="card-block searchable">
+                            <h3>${highlight(section.title, keyword)}</h3>
+                            <div class="document">${highlight(section.text, keyword)}</div>
+                        </div>
+                    `).join("");
                 }
             });
             noResult.style.display = needle && matches === 0 ? "block" : "none";
