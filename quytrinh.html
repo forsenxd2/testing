@@ -4,7 +4,190 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Quy trình</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css">
+    <style>
+        body { background: #fff; color: #228B22; }
+        .container { max-width: 1500px; margin: 32px auto 40px; padding: 0 20px; }
+        .content-box { background: #fff8dc; border-radius: 8px; padding: 20px; box-shadow: 0 2px 4px rgba(0,0,0,.1); }
+        .main-title { color: #228B22; font-weight: 700; text-align: center; margin-bottom: 8px; text-transform: uppercase; font-size: 1.6rem; }
+        .doc-meta { color: #555; text-align: center; font-size: .9rem; font-style: italic; margin-bottom: 20px; }
+        .back-btn { min-width: 160px; }
+        .search-wrap { position: sticky; top: 0; z-index: 5; background: #fff8dc; padding: 10px 0 12px; }
+        .search-hint, .scope-label { color: #555; font-size: .88rem; }
+        .sec-card { border: 1px solid #cfe3cf; border-radius: 8px; background: #fff; margin-bottom: 10px; overflow: hidden; }
+        .sec-head { display: flex; align-items: center; gap: 10px; width: 100%; border: 0; background: #eaf5e7; color: #1f6f1f; font-weight: 700; text-align: left; padding: 12px 14px; cursor: pointer; }
+        .sec-head:hover { background: #ddefd9; }
+        .sec-id { display: inline-flex; align-items: center; justify-content: center; min-width: 42px; height: 28px; border-radius: 6px; background: #228B22; color: #fff; font-size: .9rem; }
+        .sec-title { flex: 1; font-size: 1rem; }
+        .sec-count { color: #4a7a4a; font-weight: 500; font-size: .85rem; white-space: nowrap; }
+        .sec-body { display: none; padding: 12px 14px 16px; }
+        .sec-card.open .sec-body { display: block; }
+        .sec-card.open .sec-caret { transform: rotate(90deg); }
+        .sec-caret { transition: transform .15s ease; }
+        .document { max-height: 70vh; overflow: auto; border: 1px solid #d8d8b0; border-radius: 8px; background: #fff; padding: 16px; color: #2f2f2f; white-space: pre-wrap; font: .88rem/1.55 Consolas, "Courier New", monospace; }
+        mark { background: #ffe066; padding: 0 1px; }
+        .placeholder { color: #777; font-style: italic; padding: 4px 0; }
+        .no-result { color: #a33; font-weight: 600; padding: 14px 4px; }
+        @media (max-width: 768px) {
+            .container { padding: 0 12px; }
+            .document { font-size: .8rem; }
+            .sec-title { font-size: .92rem; }
+        }
+    </style>
 </head>
 <body>
+    <div class="container">
+        <div class="content-box">
+            <div class="d-flex justify-content-end mb-3">
+                <button type="button" class="btn btn-secondary btn-sm fw-bold back-btn" onclick="window.history.back()">
+                    <i class="bi bi-arrow-left"></i> Quay lại
+                </button>
+            </div>
+
+            <h1 class="main-title">Quy trình và quy định nghiệp vụ</h1>
+            <div class="doc-meta">Tra cứu tập trung các quy trình, quy định và hướng dẫn nghiệp vụ</div>
+
+            <div class="search-wrap">
+                <input id="documentSearch" type="text" class="form-control"
+                    placeholder="Tra cứu nội dung: điều kiện vay, hồ sơ, lãi suất, tài sản bảo đảm...">
+                <div class="d-flex flex-wrap align-items-center gap-2 mt-2">
+                    <div class="form-check mb-0">
+                        <input id="scopeOpen" class="form-check-input" type="checkbox" checked>
+                        <label class="form-check-label scope-label" for="scopeOpen">Chỉ tìm trong mục đang mở</label>
+                    </div>
+                    <button type="button" id="closeAll" class="btn btn-outline-secondary btn-sm">Đóng hết</button>
+                </div>
+                <div class="search-hint mt-1">Mở từng mục lớn để xem tài liệu. Kết quả tìm kiếm sẽ được tô sáng.</div>
+            </div>
+
+            <div id="sections"></div>
+            <div id="noResult" class="no-result" style="display:none;">Không tìm thấy nội dung phù hợp.</div>
+        </div>
+    </div>
+
+    <script>
+        const SOURCE_URL = "docs/quy che cho vay.txt";
+        const sectionData = [
+            { id: "01", title: "Quy chế cho vay", source: SOURCE_URL },
+            { id: "02", title: "Quy trình tiếp nhận và thẩm định hồ sơ", placeholder: true },
+            { id: "03", title: "Quy trình phê duyệt và giải ngân", placeholder: true },
+            { id: "04", title: "Quy trình quản lý sau cho vay", placeholder: true },
+            { id: "05", title: "Quy trình cơ cấu và xử lý nợ", placeholder: true },
+            { id: "06", title: "Biểu mẫu và hướng dẫn nghiệp vụ", placeholder: true }
+        ];
+        const sections = document.getElementById("sections");
+        const noResult = document.getElementById("noResult");
+        const search = document.getElementById("documentSearch");
+        const scopeOpen = document.getElementById("scopeOpen");
+        const loadedText = new Map();
+
+        function fold(value) {
+            return (value || "").normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+                .replace(/đ/gi, "d").toLowerCase();
+        }
+
+        function escapeHtml(value) {
+            return (value || "").replace(/[&<>"']/g, (character) => ({
+                "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+            }[character]));
+        }
+
+        function highlight(value, keyword) {
+            if (!keyword) return escapeHtml(value);
+            const raw = value || "";
+            const folded = fold(raw);
+            const needle = fold(keyword);
+            if (!needle) return escapeHtml(raw);
+            let output = "", cursor = 0, hit;
+            while ((hit = folded.indexOf(needle, cursor)) !== -1) {
+                output += escapeHtml(raw.slice(cursor, hit));
+                output += "<mark>" + escapeHtml(raw.slice(hit, hit + needle.length)) + "</mark>";
+                cursor = hit + needle.length;
+            }
+            return output + escapeHtml(raw.slice(cursor));
+        }
+
+        function renderSections() {
+            sections.innerHTML = sectionData.map((section) => `
+                <section class="sec-card" data-id="${section.id}">
+                    <button type="button" class="sec-head">
+                        <span class="sec-id">${section.id}</span>
+                        <span class="sec-title">${section.title}</span>
+                        <span class="sec-count">${section.placeholder ? "Đang cập nhật" : "Tài liệu nguồn"}</span>
+                        <i class="bi bi-chevron-right sec-caret"></i>
+                    </button>
+                    <div class="sec-body">
+                        ${section.placeholder
+                            ? '<div class="placeholder">Nội dung sẽ được bổ sung.</div>'
+                            : '<div class="document">Đang tải tài liệu...</div>'}
+                    </div>
+                </section>
+            `).join("");
+
+            document.querySelectorAll(".sec-head").forEach((button) => {
+                button.addEventListener("click", () => {
+                    button.closest(".sec-card").classList.toggle("open");
+                    applySearch();
+                });
+            });
+        }
+
+        async function loadSource(section) {
+            if (loadedText.has(section.id)) return loadedText.get(section.id);
+            try {
+                const response = await fetch(section.source);
+                if (!response.ok) throw new Error("Không thể tải tài liệu nguồn.");
+                const text = await response.text();
+                loadedText.set(section.id, text);
+                const card = document.querySelector(`[data-id="${section.id}"]`);
+                card.querySelector(".document").textContent = text;
+                applySearch();
+                return text;
+            } catch (error) {
+                const card = document.querySelector(`[data-id="${section.id}"]`);
+                card.querySelector(".document").textContent =
+                    "Không thể tải tài liệu. Vui lòng mở trang qua máy chủ web để trình duyệt cho phép đọc file trong thư mục docs.";
+                return "";
+            }
+        }
+
+        function applySearch() {
+            const keyword = search.value.trim();
+            const needle = fold(keyword);
+            let matches = 0;
+            document.querySelectorAll(".sec-card").forEach((card) => {
+                const section = sectionData.find((item) => item.id === card.dataset.id);
+                const isOpen = card.classList.contains("open");
+                const text = loadedText.get(section.id) || "";
+                const shouldSearch = !scopeOpen.checked || isOpen;
+                const visible = !needle || (shouldSearch && fold(text).includes(needle));
+                card.style.display = visible ? "" : "none";
+                if (visible && needle && shouldSearch) {
+                    matches++;
+                    const documentNode = card.querySelector(".document");
+                    if (documentNode && text) documentNode.innerHTML = highlight(text, keyword);
+                } else if (documentNodeFor(card) && text) {
+                    documentNodeFor(card).textContent = text;
+                }
+            });
+            noResult.style.display = needle && matches === 0 ? "block" : "none";
+        }
+
+        function documentNodeFor(card) {
+            return card.querySelector(".document");
+        }
+
+        document.getElementById("closeAll").addEventListener("click", () => {
+            document.querySelectorAll(".sec-card").forEach((card) => card.classList.remove("open"));
+            applySearch();
+        });
+        search.addEventListener("input", applySearch);
+        scopeOpen.addEventListener("change", applySearch);
+
+        renderSections();
+        document.querySelector('[data-id="01"] .sec-head').click();
+        loadSource(sectionData[0]);
+    </script>
 </body>
 </html>
