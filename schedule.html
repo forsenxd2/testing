@@ -343,6 +343,10 @@
                             <label class="form-check-label" for="purpose_general">Mua nhà dự án/nhà ở/đất ở</label>
                         </div>
                         <div class="form-check form-check-inline">
+                            <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_certifiedProject" value="certifiedProject">
+                            <label class="form-check-label" for="purpose_certifiedProject">Mua nhà dự án đã có giấy chứng nhận</label>
+                        </div>
+                        <div class="form-check form-check-inline">
                             <input class="form-check-input" type="radio" name="loanPurpose" id="purpose_consumer" value="consumer">
                             <label class="form-check-label" for="purpose_consumer">Gói vay tiêu dùng</label>
                         </div>
@@ -537,8 +541,15 @@
             return ["6", "12", "18", "24"].includes(fixedPackageValue);
         }
 
+        function isCertifiedProjectPurpose(purpose) {
+            return purpose === 'certifiedProject';
+        }
+
         // Lãi sau ưu đãi: BĐS = LSTK 24T + 3,3%; tiêu dùng = LSTK 12T + 4%
         function getFloatingRateFromSavings(savingsRate, purpose, fixedPackageValue) {
+            if (isCertifiedProjectPurpose(purpose)) {
+                return savingsRate;
+            }
             if (!isStandardFixedPackage(fixedPackageValue)) {
                 return savingsRate;
             }
@@ -594,13 +605,17 @@
                     const fixedPackageValue = fixedPackage;
 
                     // Gói cố định theo mục đích
-                    let list = (purpose === 'general') ? fixedPackages.general : consumerPackages;
+                    let list = purpose === 'general'
+                        ? fixedPackages.general
+                        : (isCertifiedProjectPurpose(purpose) ? certifiedProjectPackages : consumerPackages);
                     const pkg = list.find(p => p.value === fixedPackageValue);
                     if (pkg) {
                         fixedRate = pkg.rate;
                         fixedMonths = pkg.months;
-                        if (pkg.secondRate && pkg.secondMonths) {
-                            secondFixedRate = pkg.secondRate;
+                        if (pkg.secondMonths) {
+                            secondFixedRate = pkg.dynamicSecondRate
+                                ? afterFixedRate - 0.9
+                                : pkg.secondRate;
                             secondFixedMonths = pkg.secondMonths;
                         }
                     }
@@ -904,7 +919,10 @@
             const fixedPackage = document.getElementById('fixedPackage').value;
             const purpose = getLoanPurpose();
             if (isStandardFixedPackage(fixedPackage)) {
-                if (purpose === 'general') {
+                if (isCertifiedProjectPurpose(purpose)) {
+                    afterFixedRateLabel.textContent = 'Lãi suất sau ưu đãi (%/năm)';
+                    afterFixedRateNote.textContent = 'Nhập trực tiếp lãi suất sau ưu đãi (x)';
+                } else if (purpose === 'general') {
                     afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
                     afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi';
                 } else {
@@ -942,9 +960,15 @@
                 fixedRateDisplay = '';
                 const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
                 if (["6","12","18","24"].includes(fixedPackage.value)) {
-                    const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
+                    const packageList = purpose === 'general'
+                        ? (fixedPackages.general || [])
+                        : (isCertifiedProjectPurpose(purpose) ? certifiedProjectPackages : (consumerPackages || []));
                     const pkg = packageList.find(p => p.value === fixedPackage.value);
-                    fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
+                    fixedRateDisplay = pkg
+                        ? (pkg.secondMonths
+                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'x - 0.90%' : pkg.secondRate.toFixed(2) + '%'))
+                            : pkg.rate.toFixed(2) + '%')
+                        : '';
                 }
                 fixedMonthsText = fixedPackage.value + ' tháng';
                 floatingRate = getFloatingRateFromSavings(afterFixedRateRaw, purpose, fixedPackage.value).toFixed(2) + '%';
@@ -1059,9 +1083,15 @@
                 fixedRateDisplay = '';
                 if (["6","12","18","24"].includes(fixedPackage.value)) {
                     const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
-                    const packageList = (purpose === 'general') ? (fixedPackages.general || []) : (consumerPackages || []);
+                    const packageList = purpose === 'general'
+                        ? (fixedPackages.general || [])
+                        : (isCertifiedProjectPurpose(purpose) ? certifiedProjectPackages : (consumerPackages || []));
                     const pkg = packageList.find(p => p.value === fixedPackage.value);
-                    fixedRateDisplay = pkg ? (pkg.secondRate ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + pkg.secondRate.toFixed(2) + '%') : (pkg.rate.toFixed(2) + '%')) : '';
+                    fixedRateDisplay = pkg
+                        ? (pkg.secondMonths
+                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'x - 0.90%' : pkg.secondRate.toFixed(2) + '%'))
+                            : pkg.rate.toFixed(2) + '%')
+                        : '';
                 }
                 fixedMonthsText = fixedPackage.value + ' tháng';
                 floatingRate = getFloatingRateFromSavings(afterFixedRateRaw, purpose, fixedPackage.value).toFixed(2) + '%';
@@ -1161,6 +1191,16 @@
             { value: '12', label: 'Cố định 12 tháng (9,50%/năm)', rate: 9.5, months: 12 },
             { value: '18', label: 'Cố định 18 tháng (9,90%/năm)', rate: 9.9, months: 18 }
         ];
+        const certifiedProjectPackages = [
+            {
+                value: '24',
+                label: 'Ưu đãi tối đa 24 tháng (12 tháng đầu 9,50%/năm; 12 tháng sau x - 0,90%/năm)',
+                rate: 9.5,
+                months: 12,
+                secondMonths: 12,
+                dynamicSecondRate: true
+            }
+        ];
         // Nhánh purpose=consumer dùng cho gói vay tiêu dùng
         function renderFixedPackageOptions() {
             const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
@@ -1171,6 +1211,15 @@
             if (purpose === 'general') {
                 houseBucketGroup.style.display = 'none';
                 (fixedPackages.general || []).forEach(pkg => {
+                    const opt = document.createElement('option');
+                    opt.value = pkg.value;
+                    opt.textContent = pkg.label;
+                    select.appendChild(opt);
+                });
+                if (select.options.length > 0) select.selectedIndex = 0;
+            } else if (isCertifiedProjectPurpose(purpose)) {
+                houseBucketGroup.style.display = 'none';
+                certifiedProjectPackages.forEach(pkg => {
                     const opt = document.createElement('option');
                     opt.value = pkg.value;
                     opt.textContent = pkg.label;
