@@ -1081,8 +1081,8 @@
                 graceMonths = parseInt(document.getElementById('gracePeriod').value, 10) || 0;
                 graceText = graceMonths > 0 ? graceMonths + ' tháng' : '';
                 fixedRateDisplay = '';
+                const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
                 if (["6","12","18","24"].includes(fixedPackage.value)) {
-                    const purpose = document.querySelector('input[name="loanPurpose"]:checked').value;
                     const packageList = purpose === 'general'
                         ? (fixedPackages.general || [])
                         : (isCertifiedProjectPurpose(purpose) ? certifiedProjectPackages : (consumerPackages || []));
