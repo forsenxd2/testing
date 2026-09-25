@@ -27,6 +27,11 @@
         .summary-table { width: 100%; border-collapse: collapse; color: #2d3a2d; font-size: .88rem; }
         .summary-table th, .summary-table td { border: 1px solid #dcdcc0; padding: 7px 9px; vertical-align: top; }
         .summary-table th { background: #f2f8f0; color: #1f6f1f; text-align: left; }
+        .policy-details { border: 1px solid #d8e8d2; border-radius: 7px; margin: 8px 0; background: #fbfdf9; }
+        .policy-details summary { cursor: pointer; padding: 10px 12px; color: #1f6f1f; font-weight: 700; }
+        .policy-details summary:hover { background: #eef7eb; }
+        .policy-details .details-body { padding: 0 12px 12px; }
+        .policy-note { border-left: 4px solid #228B22; background: #f2f8f0; padding: 10px 12px; margin: 8px 0 12px; color: #2d3a2d; }
         mark { background: #ffe066; padding: 0 1px; }
         .placeholder { color: #777; font-style: italic; padding: 4px 0; }
         .no-result { color: #a33; font-weight: 600; padding: 14px 4px; }
@@ -78,6 +83,7 @@
         </div>
     </div>
 
+    <script src="credit-card-groups.js"></script>
     <script>
         const tabs = document.querySelectorAll(".tabs button");
         const noResult = document.getElementById("noResult");
@@ -148,7 +154,58 @@
                 }
             ] },
             authority: { title: "Thẩm quyền phê duyệt tín dụng", placeholder: true },
-            cards: { title: "Chính sách thẻ tín dụng", placeholder: true },
+            cards: { title: "Chính sách thẻ tín dụng", sections: [
+                {
+                    title: "Tổng quan và phạm vi áp dụng",
+                    keys: "quy định phát hành thẻ tín dụng cá nhân XHTDNB mục đích phạm vi quyết định 67 617 707 2303 346 448 2100",
+                    html: "<div class='policy-note'><strong>Văn bản tra cứu:</strong> Quy định về phát hành thẻ tín dụng cá nhân theo hệ thống chấm điểm xếp hạng tín dụng nội bộ (XHTDNB), đã được sửa đổi, bổ sung qua các văn bản được nêu trong DOCX.</div><ul class='summary-list'><li>Mục đích: chuẩn hóa việc đánh giá khách hàng, quyết định hạn mức tín dụng thẻ và quản lý phát hành thẻ trên toàn hệ thống.</li><li>Phạm vi: Hội sở chính, Sở giao dịch, Chi nhánh, Phòng giao dịch, Trung tâm Thẻ và cá nhân/bộ phận liên quan.</li><li>Đối tượng chấm điểm: khách hàng cá nhân là chủ thẻ chính khi phát hành sản phẩm thẻ tín dụng VCB.</li><li>Hệ thống XHTDNB tự động tính điểm, xếp hạng và hạn mức theo bộ chỉ tiêu, tham số thống nhất; cán bộ chịu trách nhiệm về thông tin nhập vào hệ thống.</li></ul>"
+                },
+                {
+                    title: "1. Phân loại sản phẩm thẻ",
+                    keys: "phân loại sản phẩm thẻ không bảo đảm có bảo đảm tài sản bảo đảm bảo lãnh toàn bộ một phần nhóm 1 15 16 17 18 19",
+                    html: "<table class='summary-table'><thead><tr><th>Nhóm sản phẩm</th><th>Đối tượng/đặc điểm tra cứu</th></tr></thead><tbody><tr><td>Không có bảo đảm</td><td>Thẻ cá nhân áp dụng cho nhóm 1-15; thẻ dành cho CBNV VCB áp dụng nhóm 16.</td></tr><tr><td>Có TSBĐ</td><td>TSBĐ toàn bộ áp dụng nhóm 17; TSBĐ một phần áp dụng nhóm 1-15.</td></tr><tr><td>Bảo lãnh</td><td>Bảo lãnh toàn bộ áp dụng nhóm 18; bảo lãnh một phần áp dụng nhóm 1-15.</td></tr><tr><td>TSBĐ của bên thứ ba</td><td>TSBĐ toàn bộ của bên thứ ba áp dụng nhóm 19; TSBĐ một phần của bên thứ ba áp dụng nhóm 1-15.</td></tr></tbody></table>"
+                },
+                {
+                    title: "2. Điều kiện phát hành và tài sản bảo đảm",
+                    keys: "điều kiện chung công dân Việt Nam nước ngoài cư trú tài sản bảo đảm tiền gửi trái phiếu giấy tờ có giá bên thứ ba",
+                    html: "<ul class='summary-list'><li>Khách hàng phải đáp ứng điều kiện phát hành và sử dụng thẻ theo quy định NHNN, VCB và kết quả phân nhóm/XHTDNB tương ứng.</li><li>Đối với thẻ có bảo đảm, TSBĐ và tỷ lệ bảo đảm phải đáp ứng Chính sách bảo đảm tín dụng của VCB từng thời kỳ.</li><li>TSBĐ có thể gồm tiền gửi, tiền gửi tiết kiệm, giấy tờ có giá, trái phiếu và các tài sản được VCB chấp nhận theo quy định hiện hành.</li><li>Trường hợp bảo đảm bằng tài sản của bên thứ ba, phải kiểm tra quyền sở hữu, hồ sơ tài sản và ký hợp đồng cầm cố/bảo đảm phù hợp.</li><li>Người bảo lãnh là CBNV VCB phải đáp ứng điều kiện về thời gian công tác, năng lực bảo lãnh và không có nợ xấu theo quy định.</li></ul>"
+                },
+                {
+                    title: "3. Hồ sơ phát hành thẻ",
+                    keys: "hồ sơ hợp đồng căn cước chứng minh nhân dân hộ chiếu thu nhập vị trí công tác sao kê lương bảo đảm bảo lãnh nhóm",
+                    html: "<ul class='summary-list'><li>Hồ sơ nền tảng: Hợp đồng phát hành và sử dụng thẻ tín dụng bản gốc; CMND/Hộ chiếu/CCCD bản sao.</li><li>Nhóm 4-5: bổ sung giấy tờ chứng minh vị trí công tác.</li><li>Nhóm 6-13: bổ sung giấy tờ chứng minh thu nhập, vị trí công tác và sao kê/bảng lương theo hình thức nhận lương.</li><li>Nhóm 14-15: bổ sung hồ sơ thuế, đăng ký kinh doanh hoặc quyết toán thuế theo loại hình khách hàng.</li><li>Nhóm 16: hồ sơ CBNV VCB và sao kê lương tại VCB; nhóm 17: hồ sơ TSBĐ và hợp đồng cầm cố; nhóm 18: đơn bảo lãnh; nhóm 19: hồ sơ của chủ thẻ và chủ sở hữu TSBĐ bên thứ ba.</li><li>Bản sao phải được đối chiếu bản gốc hoặc thay bằng bản sao chứng thực; hồ sơ TSBĐ/bảo lãnh bổ sung theo sản phẩm lựa chọn.</li></ul>"
+                },
+                {
+                    title: "4. Hạn mức CIF và hạn mức thẻ",
+                    keys: "hạn mức CIF tín chấp lương TSBĐ tổng hạn mức nhiều thẻ khách hàng đặc biệt giới hạn cấp tín dụng",
+                    html: "<ul class='summary-list'><li>Hạn mức CIF được xác định bằng tổng hạn mức tín chấp theo lương và hạn mức cấp theo TSBĐ (nếu có).</li><li>Hạn mức tín chấp theo lương do hệ thống XHTDNB tính theo nhóm, xếp hạng, chức danh và thu nhập; trần hạn mức có thể thay đổi theo từng thời kỳ.</li><li>Mỗi thẻ không được vượt hạn mức CIF; tổng dư nợ sử dụng của tất cả thẻ tại mọi thời điểm không được vượt hạn mức CIF.</li><li>Hạn mức thực tế còn phải tuân thủ quy định về người có liên quan, hạn chế/giới hạn cấp tín dụng và các quy định an toàn hoạt động.</li></ul>"
+                },
+                {
+                    title: "5. Tra cứu nhanh nhóm khách hàng 1-4",
+                    keys: "phụ lục IV chi tiết khách hàng nhóm 1 nhóm 2 nhóm 3 nhóm 4 Bộ Chính trị Ban Bí thư quản lý cao cấp cấp Vụ",
+                    html: "<div class='policy-note'>Mở từng nhóm để xem điều kiện nhận diện, hạn mức tín chấp và danh sách cơ quan, đơn vị, chức danh chi tiết trong Phụ lục IV. Có thể lọc nhanh theo tên cơ quan, đơn vị hoặc chức danh.</div><div id='customerGroupDirectory'></div>"
+                },
+                {
+                    title: "6. Thẩm quyền và thời gian phê duyệt",
+                    keys: "thẩm quyền phê duyệt HMTD Trưởng phòng Giao dịch Trưởng phòng nghiệp vụ Giám đốc Chi nhánh Phó Tổng Giám đốc thời gian trước 11h30",
+                    html: "<table class='summary-table'><thead><tr><th>Cấp phê duyệt</th><th>Thẩm quyền tham khảo</th></tr></thead><tbody><tr><td>Trưởng phòng Giao dịch</td><td>Đến 200 triệu VNĐ đối với sản phẩm không có bảo đảm; đến 500 triệu VNĐ theo bảng thẩm quyền sản phẩm có bảo đảm.</td></tr><tr><td>Trưởng phòng nghiệp vụ tại Chi nhánh</td><td>Đến 500 triệu VNĐ.</td></tr><tr><td>Giám đốc Chi nhánh</td><td>Đến 5 tỷ VNĐ đối với sản phẩm không có bảo đảm; theo bảng thẩm quyền tương ứng đối với sản phẩm có bảo đảm.</td></tr><tr><td>Phó Tổng Giám đốc phụ trách khối bán lẻ/Tổng Giám đốc</td><td>Phần hạn mức vượt thẩm quyền Chi nhánh, theo quy định từng thời kỳ.</td></tr></tbody></table><ul class='summary-list'><li>Hồ sơ đầy đủ nhận trước 11h30: cấp có thẩm quyền tại PGD/CN hoàn thành phê duyệt trong ngày.</li><li>Hồ sơ nhận sau 11h30: hoàn thành chậm nhất vào ngày làm việc kế tiếp.</li><li>Hồ sơ thuộc thẩm quyền Giám đốc Chi nhánh: hoàn thành trong 01 ngày làm việc.</li><li>Hồ sơ vượt thẩm quyền Chi nhánh được chuyển Trung tâm Thẻ trong 01 ngày làm việc; Trung tâm Thẻ phản hồi trong 01 ngày làm việc kể từ khi nhận đủ hồ sơ.</li></ul>"
+                },
+                {
+                    title: "7. Quy trình phát hành thẻ theo XHTDNB",
+                    keys: "quy trình phát hành tiếp nhận hồ sơ xác minh thẩm định Pool dữ liệu chấm điểm XHTDNB Sema tờ trình hợp đồng",
+                    html: "<ol class='summary-list'><li>Tiếp nhận và kiểm tra tính đầy đủ, hợp lệ của hồ sơ và yêu cầu phát hành.</li><li>Xác minh, thẩm định thông tin khách hàng, thu nhập, công việc và TSBĐ/bảo lãnh nếu có.</li><li>Nhập hoặc cập nhật dữ liệu trên Pool; kiểm soát viên duyệt bản ghi.</li><li>Chấm điểm trên hệ thống XHTDNB, chọn sản phẩm, nhập TSBĐ nếu có; hệ thống tính điểm, xếp hạng và hạn mức.</li><li>Kiểm tra kết quả, nhập thông tin thẻ, đẩy chờ duyệt và in/ký Tờ trình.</li><li>Cấp có thẩm quyền duyệt HMTD, ký Tờ trình, Hợp đồng phát hành và sử dụng thẻ cùng hồ sơ liên quan.</li><li>Thực hiện thủ tục phát hành, quản lý trên Sema và bàn giao thẻ/PIN theo Quy trình nghiệp vụ thẻ hiện hành; nếu không đủ điều kiện thì thông báo và tư vấn sản phẩm phù hợp.</li></ol>"
+                },
+                {
+                    title: "8. Thay đổi hạn mức, gia hạn và quản lý nợ",
+                    keys: "thay đổi hạn mức tăng giảm gia hạn thẻ nhóm GH 1 GH 2 GH 3 nhắc nợ quản lý nợ quá hạn CIC",
+                    html: "<ul class='summary-list'><li>Thay đổi hạn mức: chấm điểm lại khi có đủ hồ sơ; phê duyệt và cập nhật hạn mức mới đúng thẩm quyền. Nếu chưa đủ hồ sơ, cấp có thẩm quyền xem xét và yêu cầu bổ sung trong thời hạn quy định.</li><li>Gia hạn: chủ thẻ phải đáp ứng điều kiện NHNN/VCB, không có nợ xấu theo thời gian kiểm tra và đáp ứng điều kiện TSBĐ/bảo lãnh nếu dùng sản phẩm có bảo đảm.</li><li>Hệ thống gia hạn tự động phân loại nhóm GH 1, GH 2, GH 3 dựa trên lịch sử chi tiêu, thanh toán tại VCB và thông tin CIC. Nhiều thẻ của cùng khách hàng áp dụng nguyên tắc phân nhóm nghiêm ngặt hơn nếu có thẻ thuộc GH 3.</li><li>Chi nhánh theo dõi, đôn đốc và thu nợ sao kê theo Quy trình nghiệp vụ thẻ và Chính sách bảo đảm tín dụng từng thời kỳ; nhắc nợ dưới 180 ngày thực hiện theo quy định chuyên biệt.</li></ul>"
+                },
+                {
+                    title: "9. Trách nhiệm và lưu ý kiểm soát",
+                    keys: "trách nhiệm cán bộ thẻ kiểm soát viên cấp phê duyệt chất lượng thông tin giám sát hồ sơ",
+                    html: "<ul class='summary-list'><li>Cán bộ thẻ chịu trách nhiệm nhập thông tin chính xác, đầy đủ, phù hợp hồ sơ và kết quả thẩm định.</li><li>Kiểm soát viên, Trưởng phòng và Giám đốc Chi nhánh kiểm tra tính đầy đủ, chính xác trước khi phê duyệt.</li><li>Cấp có thẩm quyền chịu trách nhiệm về HMTD được phê duyệt và việc ủy quyền phê duyệt nếu có.</li><li>Hội sở chính, Trung tâm Thẻ và các phòng ban liên quan rà soát, kiểm tra và đánh giá việc triển khai XHTDNB.</li><li>Nội dung chưa được quy định tại văn bản này thực hiện theo Quy trình nghiệp vụ thẻ hiện hành; khi có mâu thuẫn, áp dụng quy định ưu tiên được nêu trong văn bản.</li></ul>"
+                }
+            ] },
             collateral: { title: "Chính sách bảo đảm tín dụng", placeholder: true }
         };
 
@@ -178,6 +235,37 @@
             return output + escapeHtml(raw.slice(cursor));
         }
 
+        function renderCustomerGroupDirectory(container) {
+            if (!container || !window.creditCardCustomerGroups) return;
+            const limits = {
+                "1": ["Chức danh do Bộ Chính trị quyết định", "01 tỷ VND"],
+                "2": ["Chức danh do Ban Bí thư quyết định", "01 tỷ VND"],
+                "3": ["Cán bộ quản lý cao cấp", "700 triệu VND"],
+                "4": ["Quản lý cao cấp cấp Vụ và tương đương", "500 triệu VND"]
+            };
+            const groups = window.creditCardCustomerGroups;
+            container.innerHTML = `<input type="search" class="form-control form-control-sm mb-2" data-group-search placeholder="Lọc cơ quan, đơn vị, chức danh trong nhóm 1-4...">` +
+                Object.keys(limits).map((group) => {
+                    const rows = groups[group] || [];
+                    const rowsHtml = rows.map((row) => `<tr data-group-row data-search-text="${escapeHtml([row.agency, row.units, row.positions].join(" "))}"><td>${escapeHtml(row.agency)}</td><td>${escapeHtml(row.units)}</td><td>${escapeHtml(row.positions)}</td></tr>`).join("");
+                    return `<details class="policy-details" data-group-details><summary>Nhóm ${group} - ${limits[group][0]} <span class="badge text-bg-success">${limits[group][1]}</span></summary><div class="details-body"><table class="summary-table"><thead><tr><th>Cơ quan</th><th>Đơn vị trực thuộc</th><th>Chức danh áp dụng</th></tr></thead><tbody>${rowsHtml}</tbody></table></div></details>`;
+                }).join("");
+            const groupSearch = container.querySelector("[data-group-search]");
+            groupSearch.addEventListener("input", () => {
+                const keyword = fold(groupSearch.value.trim());
+                container.querySelectorAll("[data-group-details]").forEach((details) => {
+                    let visible = 0;
+                    details.querySelectorAll("[data-group-row]").forEach((row) => {
+                        const matched = !keyword || fold(row.dataset.searchText).includes(keyword);
+                        row.style.display = matched ? "" : "none";
+                        if (matched) visible++;
+                    });
+                    details.style.display = visible ? "" : "none";
+                    if (keyword && visible) details.open = true;
+                });
+            });
+        }
+
         function applySearch() {
             const keyword = search.value.trim();
             const needle = fold(keyword);
@@ -190,7 +278,10 @@
                     return;
                 }
                 const sections = data.sections || [];
-                const foundSections = sections.filter((section) => !needle || fold(section.title + " " + section.keys).includes(needle));
+                const foundSections = sections.filter((section) => {
+                    const searchableText = section.title + " " + section.keys + " " + section.html.replace(/<[^>]*>/g, " ");
+                    return !needle || fold(searchableText).includes(needle);
+                });
                 const found = foundSections.length > 0;
                 panel.style.display = found ? "" : "none";
                 if (found) {
@@ -201,6 +292,8 @@
                             ${section.html}
                         </div>
                     `).join("");
+                    const customerGroupDirectory = panel.querySelector("#customerGroupDirectory");
+                    renderCustomerGroupDirectory(customerGroupDirectory);
                 }
             });
             noResult.style.display = needle && matches === 0 ? "block" : "none";
