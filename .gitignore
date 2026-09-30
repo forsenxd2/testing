@@ -6,6 +6,7 @@ pdf/Empire City - Narra.pdf
 pdf/CSUD phi dành cho KHTCBL.pdf
 pdf/QD uy quyen doi voi KHBL theo ca goi SPDV.pdf
 *.png
+!images/credit-card-*.png
 
 _tc_json/
 _merge_khtc.py
