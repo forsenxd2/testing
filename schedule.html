@@ -374,10 +374,10 @@
                     <div id="graceError" class="text-danger mt-2" style="display:none;">Thời hạn vay phải lớn hơn hoặc bằng thời gian ân hạn gốc!</div>
                 </div>
                 <div class="mb-3" id="afterFixedRateGroup">
-                    <label for="afterFixedRate" class="form-label" id="afterFixedRateLabel">Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)</label>
+                    <label for="afterFixedRate" class="form-label" id="afterFixedRateLabel">Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)</label>
                     <div class="input-group">
                         <input type="number" class="form-control" id="afterFixedRate" min="0" step="0.01" value="5.5">
-                        <span class="input-group-text" id="afterFixedRateNote">+ 4%/năm = lãi suất sau ưu đãi</span>
+                        <span class="input-group-text" id="afterFixedRateNote">+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm</span>
                     </div>
                 </div>
                 <div class="mb-3">
@@ -545,7 +545,7 @@
             return purpose === 'certifiedProject';
         }
 
-        // Lãi sau ưu đãi: BĐS = LSTK 24T + 3,3%; tiêu dùng = LSTK 12T + 4%
+        // Lãi sau ưu đãi: BĐS và tiêu dùng = LSTK 24T + 3,3%
         function getFloatingRateFromSavings(savingsRate, purpose, fixedPackageValue) {
             if (isCertifiedProjectPurpose(purpose)) {
                 return savingsRate;
@@ -553,11 +553,8 @@
             if (!isStandardFixedPackage(fixedPackageValue)) {
                 return savingsRate;
             }
-            if (purpose === 'general') {
+            if (purpose === 'general' || purpose === 'consumer') {
                 return savingsRate + 3.3;
-            }
-            if (purpose === 'consumer') {
-                return savingsRate + 4;
             }
             return savingsRate;
         }
@@ -924,10 +921,10 @@
                     afterFixedRateNote.textContent = 'Nhập trực tiếp lãi suất sau ưu đãi (x)';
                 } else if (purpose === 'general') {
                     afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
-                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi';
+                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm';
                 } else {
-                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 12 tháng hiện tại (%/năm)';
-                    afterFixedRateNote.textContent = '+ 4%/năm = lãi suất sau ưu đãi';
+                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
+                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm';
                 }
             } else {
                 afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
@@ -1181,9 +1178,8 @@
         // Lãi suất cố định theo bảng chào lãi suất KHCN
         const fixedPackages = {
             general: [
-                { value: '6',  label: 'Cố định 6 tháng (9,90%/năm)',  rate: 9.9, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (10,90%/năm)', rate: 10.9, months: 12 },
-                { value: '18', label: 'Cố định 18 tháng (12,50%/năm)', rate: 12.5, months: 18 },
+                { value: '6',  label: 'Cố định 6 tháng (9,9%/năm)',  rate: 9.9, months: 6 },
+                { value: '12', label: 'Cố định 12 tháng (10,50%/năm)', rate: 10.5, months: 12 },
             ],
         };
         const consumerPackages = [
