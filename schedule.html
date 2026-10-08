@@ -360,6 +360,7 @@
                     <select class="form-select" id="fixedPackage">
                         <!-- Options sẽ được cập nhật động bằng JS -->
                     </select>
+                    <div id="ratePackageNotes" class="form-text mt-2" style="white-space: pre-line;"></div>
                     <div id="gracePeriodGroup" class="mt-3">
                         <label for="gracePeriod" class="form-label">Chọn thời gian ân hạn gốc (tháng)</label>
                         <select class="form-select" id="gracePeriod">
@@ -545,15 +546,12 @@
             return purpose === 'certifiedProject';
         }
 
-        // Lãi sau ưu đãi: BĐS và tiêu dùng = LSTK 24T + 3,3%
+        // Lãi sau ưu đãi: LSTK 24T + 3,3% cho các gói mua BĐS và tiêu dùng
         function getFloatingRateFromSavings(savingsRate, purpose, fixedPackageValue) {
-            if (isCertifiedProjectPurpose(purpose)) {
-                return savingsRate;
-            }
             if (!isStandardFixedPackage(fixedPackageValue)) {
                 return savingsRate;
             }
-            if (purpose === 'general' || purpose === 'consumer') {
+            if (['general', 'consumer', 'certifiedProject'].includes(purpose)) {
                 return savingsRate + 3.3;
             }
             return savingsRate;
@@ -611,7 +609,7 @@
                         fixedMonths = pkg.months;
                         if (pkg.secondMonths) {
                             secondFixedRate = pkg.dynamicSecondRate
-                                ? afterFixedRate - 0.9
+                                ? Math.max(afterFixedRate - 0.9, fixedRate)
                                 : pkg.secondRate;
                             secondFixedMonths = pkg.secondMonths;
                         }
@@ -916,23 +914,28 @@
             const fixedPackage = document.getElementById('fixedPackage').value;
             const purpose = getLoanPurpose();
             if (isStandardFixedPackage(fixedPackage)) {
-                if (isCertifiedProjectPurpose(purpose)) {
-                    afterFixedRateLabel.textContent = 'Lãi suất sau ưu đãi (%/năm)';
-                    afterFixedRateNote.textContent = 'Nhập trực tiếp lãi suất sau ưu đãi (x)';
-                } else if (purpose === 'general') {
-                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
-                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm';
-                } else {
-                    afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
-                    afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm';
-                }
+                afterFixedRateLabel.textContent = 'Lãi suất tiết kiệm 24 tháng hiện tại (%/năm)';
+                afterFixedRateNote.textContent = '+ 3,3%/năm = lãi suất sau ưu đãi, không thấp hơn sàn tại thời điểm';
             } else {
                 afterFixedRateLabel.textContent = 'Lãi suất sau thời gian ưu đãi tạm tính (%/năm)';
                 afterFixedRateNote.textContent = '';
             }
         }
+        function updateRatePackageNotes() {
+            const notes = document.getElementById('ratePackageNotes');
+            const purpose = getLoanPurpose();
+            if (purpose === 'general') {
+                notes.textContent = 'Lưu ý: Nhà ở có giá trị không quá 5 tỷ đồng: sàn lãi suất ưu đãi + 0,2%/năm. Nhận chuyển nhượng quyền sử dụng đất ở: sàn lãi suất ưu đãi + 0,3%/năm.';
+            } else if (isCertifiedProjectPurpose(purpose)) {
+                notes.textContent = '12 tháng đầu: 9,5%/năm. 12 tháng tiếp theo: sàn lãi suất cho vay VNĐ mục đích mua BĐS tiêu dùng - 0,9%/năm, không thấp hơn lãi suất cố định năm đầu.';
+            } else {
+                notes.textContent = '';
+            }
+        }
         document.getElementById('fixedPackage').addEventListener('change', updateAfterFixedRateLabel);
+        document.getElementById('fixedPackage').addEventListener('change', updateRatePackageNotes);
         document.addEventListener('DOMContentLoaded', updateAfterFixedRateLabel);
+        document.addEventListener('DOMContentLoaded', updateRatePackageNotes);
 
         function downloadExcel() {
             // 1. Lấy thông tin khoản vay
@@ -963,7 +966,7 @@
                     const pkg = packageList.find(p => p.value === fixedPackage.value);
                     fixedRateDisplay = pkg
                         ? (pkg.secondMonths
-                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'x - 0.90%' : pkg.secondRate.toFixed(2) + '%'))
+                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'max(x - 0.90%, ' + pkg.rate.toFixed(2) + '%)' : pkg.secondRate.toFixed(2) + '%'))
                             : pkg.rate.toFixed(2) + '%')
                         : '';
                 }
@@ -1086,7 +1089,7 @@
                     const pkg = packageList.find(p => p.value === fixedPackage.value);
                     fixedRateDisplay = pkg
                         ? (pkg.secondMonths
-                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'x - 0.90%' : pkg.secondRate.toFixed(2) + '%'))
+                            ? (pkg.months + 'm ' + pkg.rate.toFixed(2) + '%, ' + pkg.secondMonths + 'm ' + (pkg.dynamicSecondRate ? 'max(x - 0.90%, ' + pkg.rate.toFixed(2) + '%)' : pkg.secondRate.toFixed(2) + '%'))
                             : pkg.rate.toFixed(2) + '%')
                         : '';
                 }
@@ -1179,18 +1182,19 @@
         const fixedPackages = {
             general: [
                 { value: '6',  label: 'Cố định 6 tháng (9,9%/năm)',  rate: 9.9, months: 6 },
-                { value: '12', label: 'Cố định 12 tháng (10,50%/năm)', rate: 10.5, months: 12 },
+                { value: '12', label: 'Cố định 12 tháng (10,5%/năm)', rate: 10.5, months: 12 },
+                { value: '18', label: 'Cố định 18 tháng (11,5%/năm)', rate: 11.5, months: 18 },
             ],
         };
         const consumerPackages = [
-            { value: '6',  label: 'Cố định 6 tháng (9,20%/năm)',  rate: 9.2, months: 6 },
-            { value: '12', label: 'Cố định 12 tháng (9,50%/năm)', rate: 9.5, months: 12 },
-            { value: '18', label: 'Cố định 18 tháng (9,90%/năm)', rate: 9.9, months: 18 }
+            { value: '6',  label: 'Cố định 6 tháng (9,2%/năm)',  rate: 9.2, months: 6 },
+            { value: '12', label: 'Cố định 12 tháng (9,5%/năm)', rate: 9.5, months: 12 },
+            { value: '18', label: 'Cố định 18 tháng (9,9%/năm)', rate: 9.9, months: 18 }
         ];
         const certifiedProjectPackages = [
             {
                 value: '24',
-                label: 'Ưu đãi tối đa 24 tháng (12 tháng đầu 9,50%/năm; 12 tháng sau x - 0,90%/năm)',
+                label: 'Ưu đãi tối đa 24 tháng (12 tháng đầu 9,50%/năm; 12 tháng tiếp theo max(x - 0,90%, 9,50%/năm))',
                 rate: 9.5,
                 months: 12,
                 secondMonths: 12,
@@ -1244,6 +1248,7 @@
                 if (select.options.length > 0) select.selectedIndex = 0;
             }
             updateAfterFixedRateLabel();
+            updateRatePackageNotes();
             // Force reflow và trigger change event
             select.dispatchEvent(new Event('change', { bubbles: true }));
             try { checkPackageTerm(); } catch(e) {}
